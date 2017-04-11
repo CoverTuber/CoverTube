@@ -8,7 +8,10 @@
 
 import UIKit
 
-class PlaylistViewController: UIViewController {
+class PlaylistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+{
+    
+    @IBOutlet weak var playlistTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +22,27 @@ class PlaylistViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.cellForRow(at: indexPath) as! MusicTableViewCell
+        /* make thumbnailImageView circular */
+        cell.thumbnamilImageView.layer.cornerRadius = cell.thumbnamilImageView.frame.size.width / 2.0
+        cell.thumbnamilImageView.clipsToBounds = true
+        /*
+        cell.thumbnamilImageView.image =
+        */
+        
+        return cell
     }
     
 
