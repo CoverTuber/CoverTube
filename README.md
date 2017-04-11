@@ -18,6 +18,8 @@ We will be using YouTube Helper Library.
 https://developers.google.com/youtube/
 
 
+API: We will be using Google's YouTube API to get most of our data.
+
 Model classes we will need
 Playlist
 - number of songs
@@ -26,4 +28,8 @@ Playlist
 
 Video
 - title
-- link
+- id
+- description
+- publishedAt
+- thumbnail
+- relatedPlaylist
