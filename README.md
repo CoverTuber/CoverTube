@@ -18,3 +18,12 @@ We will be using YouTube Helper Library.
 https://developers.google.com/youtube/
 
 
+Model classes we will need
+Playlist
+- number of songs
+- title of playlist
+- list of videos
+
+Video
+- title
+- link
