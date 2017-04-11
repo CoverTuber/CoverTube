@@ -12,3 +12,9 @@ Required (core) user stories for your app in a bulleted list
 
 Optional
 - [ ] The user wants to merge his/her music in YouTube with those in iTunes.
+
+
+We will be using YouTube Helper Library.
+https://developers.google.com/youtube/
+
+
