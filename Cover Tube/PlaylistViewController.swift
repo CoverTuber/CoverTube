@@ -83,9 +83,12 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         shrinkBoundsSizeAnimation.toValue = CGSize(width: shrunkCircleRadius * 2,
                                                    height: shrunkCircleRadius * 2)
         shrinkBoundsSizeAnimation.duration = animationDuration
+        shrinkBoundsSizeAnimation.fillMode = kCAFillModeForwards
+        shrinkBoundsSizeAnimation.isRemovedOnCompletion = false
         shrinkBoundsSizeAnimation.delegate = self
         shrinkBoundsSizeAnimation.setValue("shrinkSize", forKey: "animationID")
         youtubePlayerView.layer.add(shrinkBoundsSizeAnimation, forKey: "bounds.size")
+        
         
         /* change position to bottom center */
         let moveToBottomCenterAnimation = CABasicAnimation(keyPath: "position")
@@ -93,6 +96,8 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         moveToBottomCenterAnimation.toValue = CGPoint(x: screenWidth / 2.0,
                                                       y: screenHeight - shrunkCircleRadius + 10.0)
         moveToBottomCenterAnimation.duration = animationDuration
+        moveToBottomCenterAnimation.fillMode = kCAFillModeForwards
+        moveToBottomCenterAnimation.isRemovedOnCompletion = false
         moveToBottomCenterAnimation.delegate = self
         moveToBottomCenterAnimation.setValue("moveToBottomCenter", forKey: "animationID")
         youtubePlayerView.layer.add(moveToBottomCenterAnimation, forKey: "position")
@@ -103,6 +108,8 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         shrinkToCircleAnimation.fromValue = 0.0
         shrinkToCircleAnimation.toValue = shrunkCircleRadius
         shrinkToCircleAnimation.duration = animationDuration
+        shrinkToCircleAnimation.fillMode = kCAFillModeForwards
+        shrinkToCircleAnimation.isRemovedOnCompletion = false
         shrinkToCircleAnimation.delegate = self
         shrinkToCircleAnimation.setValue("shrinkToCircle", forKey: "animationID")
         
@@ -115,6 +122,7 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let animationID = anim.value(forKey: "animationID")
         {
+            /*
             switch animationID as! String
             {
             case "moveToBottomCenter" :
@@ -125,10 +133,13 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
                 
             case "shrinkToCircle":
                 youtubePlayerView.layer.cornerRadius = shrunkCircleRadius
+                youtubePlayerView.bounds.size = CGSize(width: shrunkCircleRadius * 2, height: shrunkCircleRadius * 2)
+                youtubePlayerView.center = CGPoint(x: screenWidth / 2.0, y: screenHeight - shrunkCircleRadius + 10.0)
                 
             default:
                 print("default")
             }
+            */
         }
     }
     
