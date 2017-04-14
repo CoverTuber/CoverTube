@@ -18,6 +18,7 @@
 		7549D17C1E6925FC00A6FCEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7549D17A1E6925FC00A6FCEF /* LaunchScreen.storyboard */; };
 		75C07B781EA09A9D00045740 /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C07B771EA09A9D00045740 /* YTPlayerView.m */; };
 		75C07B7A1EA09AE600045740 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 75C07B791EA09AE600045740 /* Assets */; };
+		75C07B7C1EA0C3D400045740 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		75C07B761EA09A9D00045740 /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
 		75C07B771EA09A9D00045740 /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
 		75C07B791EA09AE600045740 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
+		75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				75C07B761EA09A9D00045740 /* YTPlayerView.h */,
 				75C07B771EA09A9D00045740 /* YTPlayerView.m */,
 				75C07B751EA09A9C00045740 /* Cover Tube-Bridging-Header.h */,
+				75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */,
 				75C07B791EA09AE600045740 /* Assets */,
 			);
 			path = "Cover Tube";
@@ -163,6 +166,7 @@
 			files = (
 				753B24EA1E9C921C00102148 /* LoginViewController.swift in Sources */,
 				753B24EE1E9C96FC00102148 /* PlaylistViewController.swift in Sources */,
+				75C07B7C1EA0C3D400045740 /* UtilityConstants.swift in Sources */,
 				7549D1741E6925FC00A6FCEF /* ViewController.swift in Sources */,
 				7549D1721E6925FC00A6FCEF /* AppDelegate.swift in Sources */,
 				753B24EC1E9C922500102148 /* MusicSearcherViewController.swift in Sources */,

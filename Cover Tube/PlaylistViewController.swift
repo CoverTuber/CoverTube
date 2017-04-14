@@ -10,6 +10,8 @@ import UIKit
 
 class PlaylistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CAAnimationDelegate
 {
+    /* radius of shrunk youtube player circular spinning button radius */
+    let shrunkCircleRadius = screenWidth * 0.25
     
     @IBOutlet weak var playlistTableView: UITableView!
     
@@ -65,34 +67,68 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func blueButtonTapped(_ sender: UIButton)
     {
-        animateYoutubeVideoPlayerToCircle()
+        animateYoutubeVideoPlayerToShrunkCircle()
     }
     
-    func animateYoutubeVideoPlayerToCircle()
+    /* animate youtube video player to shrunk circle */
+    func animateYoutubeVideoPlayerToShrunkCircle()
     {
-        let animation = CABasicAnimation(keyPath: "cornerRadius")
-        animation.fromValue = 0.0
-        animation.toValue = youtubePlayerView.frame.size.width / 2.0
-        animation.duration = 3.0
-        animation.delegate = self
-        animation.setValue("circle", forKey: "animationID")
+        /* animation duration */
+        let animationDuration = 3.0
         
-        youtubePlayerView.layer.add(animation, forKey: "cornerRadius")
+        
+        /* reduce size */
+        let shrinkBoundsSizeAnimation = CABasicAnimation(keyPath: "bounds.size")
+        shrinkBoundsSizeAnimation.fromValue = youtubePlayerView.bounds.size
+        shrinkBoundsSizeAnimation.toValue = CGSize(width: shrunkCircleRadius * 2,
+                                                   height: shrunkCircleRadius * 2)
+        shrinkBoundsSizeAnimation.duration = animationDuration
+        shrinkBoundsSizeAnimation.delegate = self
+        shrinkBoundsSizeAnimation.setValue("shrinkSize", forKey: "animationID")
+        youtubePlayerView.layer.add(shrinkBoundsSizeAnimation, forKey: "bounds.size")
+        
+        /* change position to bottom center */
+        let moveToBottomCenterAnimation = CABasicAnimation(keyPath: "position")
+        moveToBottomCenterAnimation.fromValue = youtubePlayerView.center
+        moveToBottomCenterAnimation.toValue = CGPoint(x: screenWidth / 2.0,
+                                                      y: screenHeight - shrunkCircleRadius + 10.0)
+        moveToBottomCenterAnimation.duration = animationDuration
+        moveToBottomCenterAnimation.delegate = self
+        moveToBottomCenterAnimation.setValue("moveToBottomCenter", forKey: "animationID")
+        youtubePlayerView.layer.add(moveToBottomCenterAnimation, forKey: "position")
+        
+        
+        /* corner radius animation */
+        let shrinkToCircleAnimation = CABasicAnimation(keyPath: "cornerRadius")
+        shrinkToCircleAnimation.fromValue = 0.0
+        shrinkToCircleAnimation.toValue = shrunkCircleRadius
+        shrinkToCircleAnimation.duration = animationDuration
+        shrinkToCircleAnimation.delegate = self
+        shrinkToCircleAnimation.setValue("shrinkToCircle", forKey: "animationID")
+        
+        youtubePlayerView.layer.add(shrinkToCircleAnimation, forKey: "cornerRadius")
+        
+        
         
     }
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        print("anim = \(anim)")
         if let animationID = anim.value(forKey: "animationID")
         {
-            if animationID as! String == "circle"
+            switch animationID as! String
             {
-                print("youtubePlayerView.frame.size.width = \(youtubePlayerView.frame.size.width / 2.0)")
-                youtubePlayerView.layer.cornerRadius = youtubePlayerView.frame.size.width / 2.0
+            case "moveToBottomCenter" :
+                youtubePlayerView.center = CGPoint(x: screenWidth / 2.0, y: screenHeight - shrunkCircleRadius + 10.0)
+            
+            case "shrinkSize" :
+                youtubePlayerView.bounds.size = CGSize(width: shrunkCircleRadius * 2, height: shrunkCircleRadius * 2)
+                
+            case "shrinkToCircle":
+                youtubePlayerView.layer.cornerRadius = shrunkCircleRadius
+                
+            default:
+                print("default")
             }
-            
-            print("animationId = \(animationID)")
-            
         }
     }
     
