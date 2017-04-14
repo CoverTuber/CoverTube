@@ -23,7 +23,7 @@ class PlaylistViewController: UIViewController, UITableViewDelegate, UITableView
         
         // Do any additional setup after loading the view.
         youtubePlayerView.load(withVideoId: "M7lc1UVf-VE")
-        
+        // youtubePlayerView.delegate = self
         youtubePlayerView.clipsToBounds = true
     }
     
