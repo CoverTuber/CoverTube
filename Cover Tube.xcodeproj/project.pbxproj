@@ -12,6 +12,12 @@
 		7549D1771E6925FC00A6FCEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7549D1751E6925FC00A6FCEF /* Main.storyboard */; };
 		7549D1791E6925FC00A6FCEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7549D1781E6925FC00A6FCEF /* Assets.xcassets */; };
 		7549D17C1E6925FC00A6FCEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7549D17A1E6925FC00A6FCEF /* LaunchScreen.storyboard */; };
+		EE4B598D1EA58B300065DFA8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4B598C1EA58B300065DFA8 /* Security.framework */; };
+		EE4B598F1EA58B480065DFA8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4B598E1EA58B480065DFA8 /* libc++.tbd */; };
+		EE4B59911EA58B5F0065DFA8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4B59901EA58B5F0065DFA8 /* AVFoundation.framework */; };
+		EE4B59931EA58B6D0065DFA8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4B59921EA58B6D0065DFA8 /* AudioToolbox.framework */; };
+		EE4B59981EA5A2D30065DFA8 /* libACRCloud_IOS_SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4B59971EA5A2D30065DFA8 /* libACRCloud_IOS_SDK.a */; };
+		EEE0CAAB1EA5C2D80067331F /* MusicRegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE0CAAA1EA5C2D80067331F /* MusicRegViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,15 @@
 		7549D1781E6925FC00A6FCEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7549D17B1E6925FC00A6FCEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7549D17D1E6925FC00A6FCEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE4B598C1EA58B300065DFA8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		EE4B598E1EA58B480065DFA8 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		EE4B59901EA58B5F0065DFA8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		EE4B59921EA58B6D0065DFA8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		EE4B59951EA5A2C40065DFA8 /* ACRCloudConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACRCloudConfig.h; path = "ACRCloud-ios-sdk-1.5.2/ACRCloudDemoSwift/ACRCloudDemo_Swift/ACRCloudConfig.h"; sourceTree = SOURCE_ROOT; };
+		EE4B59961EA5A2C40065DFA8 /* ACRCloudRecognition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACRCloudRecognition.h; path = "ACRCloud-ios-sdk-1.5.2/ACRCloudDemoSwift/ACRCloudDemo_Swift/ACRCloudRecognition.h"; sourceTree = SOURCE_ROOT; };
+		EE4B59971EA5A2D30065DFA8 /* libACRCloud_IOS_SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libACRCloud_IOS_SDK.a; path = "ACRCloud-ios-sdk-1.5.2/ACRCloudDemoSwift/libACRCloud_IOS_SDK.a"; sourceTree = SOURCE_ROOT; };
+		EEE0CAAA1EA5C2D80067331F /* MusicRegViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicRegViewController.swift; sourceTree = "<group>"; };
+		EEE0CAAC1EA5C2DE0067331F /* Cover Tube-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cover Tube-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +44,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE4B59931EA58B6D0065DFA8 /* AudioToolbox.framework in Frameworks */,
+				EE4B59911EA58B5F0065DFA8 /* AVFoundation.framework in Frameworks */,
+				EE4B598F1EA58B480065DFA8 /* libc++.tbd in Frameworks */,
+				EE4B59981EA5A2D30065DFA8 /* libACRCloud_IOS_SDK.a in Frameworks */,
+				EE4B598D1EA58B300065DFA8 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +60,7 @@
 			children = (
 				7549D1701E6925FC00A6FCEF /* Cover Tube */,
 				7549D16F1E6925FC00A6FCEF /* Products */,
+				EE4B598B1EA58B300065DFA8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +75,10 @@
 		7549D1701E6925FC00A6FCEF /* Cover Tube */ = {
 			isa = PBXGroup;
 			children = (
+				EEE0CAAC1EA5C2DE0067331F /* Cover Tube-Bridging-Header.h */,
+				EE4B59951EA5A2C40065DFA8 /* ACRCloudConfig.h */,
+				EE4B59961EA5A2C40065DFA8 /* ACRCloudRecognition.h */,
+				EEE0CAAA1EA5C2D80067331F /* MusicRegViewController.swift */,
 				7549D1711E6925FC00A6FCEF /* AppDelegate.swift */,
 				7549D1731E6925FC00A6FCEF /* ViewController.swift */,
 				7549D1751E6925FC00A6FCEF /* Main.storyboard */,
@@ -62,6 +87,18 @@
 				7549D17D1E6925FC00A6FCEF /* Info.plist */,
 			);
 			path = "Cover Tube";
+			sourceTree = "<group>";
+		};
+		EE4B598B1EA58B300065DFA8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EE4B59971EA5A2D30065DFA8 /* libACRCloud_IOS_SDK.a */,
+				EE4B59921EA58B6D0065DFA8 /* AudioToolbox.framework */,
+				EE4B59901EA58B5F0065DFA8 /* AVFoundation.framework */,
+				EE4B598E1EA58B480065DFA8 /* libc++.tbd */,
+				EE4B598C1EA58B300065DFA8 /* Security.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEE0CAAB1EA5C2D80067331F /* MusicRegViewController.swift in Sources */,
 				7549D1741E6925FC00A6FCEF /* ViewController.swift in Sources */,
 				7549D1721E6925FC00A6FCEF /* AppDelegate.swift in Sources */,
 			);
@@ -262,8 +300,14 @@
 				DEVELOPMENT_TEAM = 4V845HXYW2;
 				INFOPLIST_FILE = "Cover Tube/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ACRCloud-ios-sdk-1.5.2/ACRCloudLibraies",
+					"$(PROJECT_DIR)/ACRCloud-ios-sdk-1.5.2/ACRCloudDemoSwift",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.covertuber.Cover-Tube";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Cover Tube/Cover Tube-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -275,8 +319,14 @@
 				DEVELOPMENT_TEAM = 4V845HXYW2;
 				INFOPLIST_FILE = "Cover Tube/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ACRCloud-ios-sdk-1.5.2/ACRCloudLibraies",
+					"$(PROJECT_DIR)/ACRCloud-ios-sdk-1.5.2/ACRCloudDemoSwift",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.covertuber.Cover-Tube";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Cover Tube/Cover Tube-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -300,6 +350,7 @@
 				7549D1821E6925FC00A6FCEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
