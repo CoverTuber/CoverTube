@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UDH-mT-Pn7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,96 +26,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="401" y="271"/>
-        </scene>
-        <!--Playlist View Controller-->
-        <scene sceneID="StL-du-7av">
-            <objects>
-                <viewController id="UDH-mT-Pn7" customClass="PlaylistViewController" customModule="Cover_Tube" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="c5v-2y-Bze"/>
-                        <viewControllerLayoutGuide type="bottom" id="ha8-Wm-CCF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bp-62-7IL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PVC-iz-efW">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="EBl-Hq-Arm" customClass="MusicTableViewCell" customModule="Cover_Tube" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EBl-Hq-Arm" id="rQx-Vf-dsJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oly-n0-DxF">
-                                                    <rect key="frame" x="8" y="8" width="84" height="84"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="84" id="Ts6-Vo-gHS"/>
-                                                        <constraint firstAttribute="height" constant="84" id="XhM-cP-9ia"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvb-zI-2XA">
-                                                    <rect key="frame" x="100" y="8" width="267" height="84"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Oly-n0-DxF" firstAttribute="top" secondItem="rQx-Vf-dsJ" secondAttribute="top" constant="8" id="4Lp-sy-k6g"/>
-                                                <constraint firstItem="rvb-zI-2XA" firstAttribute="leading" secondItem="Oly-n0-DxF" secondAttribute="trailing" constant="8" id="7Io-AM-1d0"/>
-                                                <constraint firstItem="rvb-zI-2XA" firstAttribute="top" secondItem="rQx-Vf-dsJ" secondAttribute="top" constant="8" id="Bpc-wO-rhH"/>
-                                                <constraint firstAttribute="bottom" secondItem="rvb-zI-2XA" secondAttribute="bottom" constant="7.5" id="WgW-dn-cQq"/>
-                                                <constraint firstAttribute="trailing" secondItem="rvb-zI-2XA" secondAttribute="trailing" constant="8" id="c4X-kN-a5w"/>
-                                                <constraint firstItem="Oly-n0-DxF" firstAttribute="leading" secondItem="rQx-Vf-dsJ" secondAttribute="leading" constant="8" id="cud-sH-iKw"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="label" destination="rvb-zI-2XA" id="wbh-tJ-pXh"/>
-                                            <outlet property="thumbnamilImageView" destination="Oly-n0-DxF" id="Jnj-o5-UNP"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Veh-ZQ-rAz">
-                                <rect key="frame" x="0.0" y="602" width="375" height="65"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="tqG-rF-app"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="blueButtonTapped:" destination="UDH-mT-Pn7" eventType="touchUpInside" id="Wna-bL-DF7"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cPn-ph-Jlj" customClass="YTPlayerView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="321"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="PVC-iz-efW" firstAttribute="leading" secondItem="8bp-62-7IL" secondAttribute="leading" id="09r-Ty-5lc"/>
-                            <constraint firstAttribute="trailing" secondItem="PVC-iz-efW" secondAttribute="trailing" id="3LN-n0-Wxu"/>
-                            <constraint firstItem="Veh-ZQ-rAz" firstAttribute="leading" secondItem="8bp-62-7IL" secondAttribute="leading" id="7QW-TI-V79"/>
-                            <constraint firstAttribute="trailing" secondItem="Veh-ZQ-rAz" secondAttribute="trailing" id="FB6-7h-K4Y"/>
-                            <constraint firstItem="ha8-Wm-CCF" firstAttribute="top" secondItem="Veh-ZQ-rAz" secondAttribute="bottom" id="RBC-Wg-X0S"/>
-                            <constraint firstItem="ha8-Wm-CCF" firstAttribute="top" secondItem="PVC-iz-efW" secondAttribute="bottom" id="Tnz-8B-Hmj"/>
-                            <constraint firstItem="PVC-iz-efW" firstAttribute="top" secondItem="8bp-62-7IL" secondAttribute="top" id="yat-gZ-3WN"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="playlistTableView" destination="PVC-iz-efW" id="U42-lc-tZ1"/>
-                        <outlet property="youtubePlayerView" destination="cPn-ph-Jlj" id="MIa-Oc-R0Q"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TZP-nQ-G8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1148" y="86.806596701649184"/>
         </scene>
     </scenes>
 </document>
