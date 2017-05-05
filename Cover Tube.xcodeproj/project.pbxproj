@@ -17,6 +17,8 @@
 		7549D17C1E6925FC00A6FCEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7549D17A1E6925FC00A6FCEF /* LaunchScreen.storyboard */; };
 		75C07B7A1EA09AE600045740 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 75C07B791EA09AE600045740 /* Assets */; };
 		75C07B7C1EA0C3D400045740 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */; };
+		75F18C7E1EBC125800358487 /* YouTubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F18C7C1EBC125800358487 /* YouTubePlayer.swift */; };
+		75F18C7F1EBC125800358487 /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = 75F18C7D1EBC125800358487 /* YTPlayer.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		75C07B751EA09A9C00045740 /* Cover Tube-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cover Tube-Bridging-Header.h"; sourceTree = "<group>"; };
 		75C07B791EA09AE600045740 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
+		75F18C7C1EBC125800358487 /* YouTubePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubePlayer.swift; sourceTree = "<group>"; };
+		75F18C7D1EBC125800358487 /* YTPlayer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YTPlayer.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,8 @@
 				7549D17D1E6925FC00A6FCEF /* Info.plist */,
 				75C07B751EA09A9C00045740 /* Cover Tube-Bridging-Header.h */,
 				75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */,
+				75F18C7C1EBC125800358487 /* YouTubePlayer.swift */,
+				75F18C7D1EBC125800358487 /* YTPlayer.html */,
 				75C07B791EA09AE600045740 /* Assets */,
 			);
 			path = "Cover Tube";
@@ -144,6 +150,7 @@
 			files = (
 				7549D17C1E6925FC00A6FCEF /* LaunchScreen.storyboard in Resources */,
 				75C07B7A1EA09AE600045740 /* Assets in Resources */,
+				75F18C7F1EBC125800358487 /* YTPlayer.html in Resources */,
 				7549D1791E6925FC00A6FCEF /* Assets.xcassets in Resources */,
 				7549D1771E6925FC00A6FCEF /* Main.storyboard in Resources */,
 			);
@@ -158,6 +165,7 @@
 			files = (
 				753B24EA1E9C921C00102148 /* LoginViewController.swift in Sources */,
 				75C07B7C1EA0C3D400045740 /* UtilityConstants.swift in Sources */,
+				75F18C7E1EBC125800358487 /* YouTubePlayer.swift in Sources */,
 				7549D1741E6925FC00A6FCEF /* ViewController.swift in Sources */,
 				7549D1721E6925FC00A6FCEF /* AppDelegate.swift in Sources */,
 				753B24EC1E9C922500102148 /* MusicSearcherViewController.swift in Sources */,
