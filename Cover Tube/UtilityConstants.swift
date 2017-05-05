@@ -52,3 +52,22 @@ let changeSizeAnimationDuration = 3.0
 /* This center point is used while minimizing the youtube animation in the center. */
 let youtubePlayerViewAnimationCenterPointX : CGFloat
     = (rectangularFullYouTubePlayerViewSize.width - rectangularFullYouTubePlayerViewSize.height) / 2.0
+
+/* Animation keys */
+// MARK: Minimizing YouTube Player View strings used as keys
+let MinimizeYouTubePlayerViewAnimation_TransformScale = "MinimizeYouTubePlayerViewAnimation_TransformScale"
+let MinimizeYouTubePlayerViewAnimation_BottomCenterPosition = "MinimizeYouTubePlayerViewAnimation_BottomCenterPosition"
+let MinimizeYouTubePlayerViewAnimation_CornerRadius = "MinimizeYouTubePlayerViewAnimation_CornerRadius"
+let MinimizeYouTubePlayerViewAnimation_SquareBoundsSizeWidth = "MinimizeYouTubePlayerViewAnimation_SquareBoundsSizeWidth"
+let MinimizeYouTubePlayerViewAnimation_BoundsOriginX = "MinimizeYouTubePlayerViewAnimation_BoundsOriginX"
+
+
+let MinimizeYouTubePlayerViewAnimationStrings
+    = [MinimizeYouTubePlayerViewAnimation_TransformScale,
+       MinimizeYouTubePlayerViewAnimation_BoundsOriginX,
+       MinimizeYouTubePlayerViewAnimation_CornerRadius,
+       MinimizeYouTubePlayerViewAnimation_SquareBoundsSizeWidth,
+       MinimizeYouTubePlayerViewAnimation_BoundsOriginX ]
+
+/* rotation speed */
+let minimizedYouTubePlayerViewRotationSpeed : Float = 0.35

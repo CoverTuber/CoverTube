@@ -62,7 +62,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nx5-G3-eug">
                                 <rect key="frame" x="164" y="617" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.7723064336670864" green="1" blue="0.64287912117845947" alpha="0.33688129194630873" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="maximizeYouTubePlayerViewButtonTapped:" destination="Snp-cN-62d" eventType="touchUpInside" id="Pyv-tw-JDR"/>
                                 </connections>

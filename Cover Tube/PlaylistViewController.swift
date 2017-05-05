@@ -25,7 +25,10 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
     @IBOutlet weak var minimizedYouTubePlayerViewOverlayButton: UIButton!
     
     /* Whether youtube player view is minimized or not */
-    private var isYouTubePlayerViewIsMinimized = false
+    private var isYouTubePlayerViewMinimized = false
+    
+    /* whether currently in animation or not */
+    private var isChangingYouTubePlayerViewSize = false
     
     /* Whether autoplay has been played or not previously or not.
      This variable is used to prevent autoplaying all the time. */
@@ -83,17 +86,24 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
      Called whenever states, settings change.
      */
     func updateUI () {
-        minimizedYouTubePlayerViewOverlayButton.isHidden = !isYouTubePlayerViewIsMinimized
-        
+        minimizedYouTubePlayerViewOverlayButton.isHidden = !isYouTubePlayerViewMinimized
+        minimizeYouTubePlayerViewButton.isHidden = isYouTubePlayerViewMinimized
     }
     
     /* Animate full youtube player view to minimized circular shape to bottom */
-    func minimizeYouTubePlayerViewAnimation () {
+    func minimizeYouTubePlayerViewAnimation ()
+    {
+        /* if currently animating, return */
+        if isChangingYouTubePlayerViewSize {
+            return
+        }
+        
         CATransaction.begin()
         CATransaction.setCompletionBlock {
-            self.isYouTubePlayerViewIsMinimized = true
+            self.isYouTubePlayerViewMinimized = true
             self.updateUI()
-            // self.startSpinningPlayerView()
+            self.isChangingYouTubePlayerViewSize = false
+            self.startYouTubePlayerViewSpinningAnimation()
         }
         
         /* transformScaleAnimation - shrink size animation */
@@ -129,6 +139,15 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
         squareBoundsSizeWidthAnimation.fillMode = kCAFillModeForwards
         youtubePlayerView.layer.add(squareBoundsSizeWidthAnimation, forKey: "squareBoundsSizeWidthAnimation")
         
+        /* squraeBoundsAnimation - make size into square to make it into perfect circle.
+         If I don't change the size to a square, then the shape will be changed into an oval. */
+        let squareBoundsSizeHeightAnimation = CABasicAnimation(keyPath: "bounds.size.height")
+        squareBoundsSizeHeightAnimation.toValue = squareFullYouTubePlayerSize.height
+        squareBoundsSizeHeightAnimation.duration = changeSizeAnimationDuration
+        squareBoundsSizeHeightAnimation.isRemovedOnCompletion = false
+        squareBoundsSizeHeightAnimation.fillMode = kCAFillModeForwards
+        youtubePlayerView.layer.add(squareBoundsSizeHeightAnimation, forKey: "squareBoundsSizeHeightAnimation")
+        
         /* keep youtube video in center */
         let keepYouTubeInCenterAnimation = CABasicAnimation(keyPath: "bounds.origin.x")
         keepYouTubeInCenterAnimation.toValue = youtubePlayerViewAnimationCenterPointX
@@ -137,18 +156,28 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
         keepYouTubeInCenterAnimation.fillMode = kCAFillModeForwards
         youtubePlayerView.layer.add(keepYouTubeInCenterAnimation, forKey: "keepInCenter")
         
+        isChangingYouTubePlayerViewSize = true
+        
         CATransaction.commit()
 
     }
     
     /* animate youtube player view from minimized circular shape at bottom to full rectuangular size at top */
-    func maximizeAnimation() {
+    func maximizeYouTubePlayerViewAnimation()
+    {
+        /* if currently animating, return */
+        if isChangingYouTubePlayerViewSize {
+            return
+        }
+        
+        // hide upper right button tapped to minimize youtube player view
         minimizedYouTubePlayerViewOverlayButton.isHidden = true
         
         CATransaction.begin()
         CATransaction.setCompletionBlock {
-            self.isYouTubePlayerViewIsMinimized = false
+            self.isYouTubePlayerViewMinimized = false
             self.updateUI()
+            self.isChangingYouTubePlayerViewSize = false
         }
         
         /* transformScaleAnimation */
@@ -197,8 +226,23 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
         youtubePlayerView.layer.add(keepYouTubeInCenterAnimation, forKey: "keepInCenter")
         
         CATransaction.commit()
+        self.isChangingYouTubePlayerViewSize = true
     }
-
+    
+    /* spins youtube player view is currently playing. */
+    func startYouTubePlayerViewSpinningAnimation() {
+        /* if youtube video is not playing, don't spin */
+        if youtubePlayerView.playerState != YouTubePlayerState.Playing { return }
+        
+        let spinningAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        spinningAnimation.toValue = M_PI_2
+        spinningAnimation.repeatCount = .infinity
+        spinningAnimation.repeatDuration = 10.0
+        spinningAnimation.speed = minimizedYouTubePlayerViewRotationSpeed
+        spinningAnimation.isCumulative = true
+        youtubePlayerView.layer.add(spinningAnimation, forKey: "spinningAnimation")
+    }
+    
     
 
     /*
@@ -248,7 +292,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
     /* user taps this button to maximize youtube player view and stop spinning. */
     @IBAction func maximizeYouTubePlayerViewButtonTapped(_ sender: UIButton)
     {
-        maximizeAnimation()
+        maximizeYouTubePlayerViewAnimation()
     }
     
     
@@ -271,5 +315,8 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
         }
     }
 
+    override var prefersStatusBarHidden : Bool {
+        return true
+    }
 
 }
