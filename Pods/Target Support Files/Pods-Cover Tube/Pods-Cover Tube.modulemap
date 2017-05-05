@@ -1,0 +1,6 @@
+framework module Pods_Cover_Tube {
+  umbrella header "Pods-Cover Tube-umbrella.h"
+
+  export *
+  module * { export * }
+}

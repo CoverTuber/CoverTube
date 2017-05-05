@@ -19,6 +19,9 @@
 		75C07B7C1EA0C3D400045740 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */; };
 		75F18C7E1EBC125800358487 /* YouTubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F18C7C1EBC125800358487 /* YouTubePlayer.swift */; };
 		75F18C7F1EBC125800358487 /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = 75F18C7D1EBC125800358487 /* YTPlayer.html */; };
+		75F18C811EBC12D600358487 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F18C801EBC12D600358487 /* PlaylistViewController.swift */; };
+		75F18C831EBC157100358487 /* YouTubePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75F18C821EBC157100358487 /* YouTubePlayer.framework */; };
+		BCA878E819F08A5283997CCD /* Pods_Cover_Tube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E447337DE82272774F2BA9 /* Pods_Cover_Tube.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,11 @@
 		75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
 		75F18C7C1EBC125800358487 /* YouTubePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubePlayer.swift; sourceTree = "<group>"; };
 		75F18C7D1EBC125800358487 /* YTPlayer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YTPlayer.html; sourceTree = "<group>"; };
+		75F18C801EBC12D600358487 /* PlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
+		75F18C821EBC157100358487 /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubePlayer.framework; path = "../../Library/Developer/Xcode/DerivedData/Cover_Tube-ducmdaowsnmaaygkuwqihdiqnrqd/Build/Products/Debug-iphonesimulator/YouTubePlayer/YouTubePlayer.framework"; sourceTree = "<group>"; };
+		B3D95F9CBC8688B7C394C0D9 /* Pods-Cover Tube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cover Tube.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cover Tube/Pods-Cover Tube.debug.xcconfig"; sourceTree = "<group>"; };
+		B4E447337DE82272774F2BA9 /* Pods_Cover_Tube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cover_Tube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E57D64D983DF4BB1BDA870EA /* Pods-Cover Tube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cover Tube.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cover Tube/Pods-Cover Tube.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,17 +52,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75F18C831EBC157100358487 /* YouTubePlayer.framework in Frameworks */,
+				BCA878E819F08A5283997CCD /* Pods_Cover_Tube.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		503449A357613FCDBF5C8A7E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B3D95F9CBC8688B7C394C0D9 /* Pods-Cover Tube.debug.xcconfig */,
+				E57D64D983DF4BB1BDA870EA /* Pods-Cover Tube.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7549D1651E6925FC00A6FCEF = {
 			isa = PBXGroup;
 			children = (
 				7549D1701E6925FC00A6FCEF /* Cover Tube */,
 				7549D16F1E6925FC00A6FCEF /* Products */,
+				503449A357613FCDBF5C8A7E /* Pods */,
+				834AD4D2A943C1CA6BE27CB2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +93,7 @@
 				7549D1711E6925FC00A6FCEF /* AppDelegate.swift */,
 				7549D1731E6925FC00A6FCEF /* ViewController.swift */,
 				7549D1751E6925FC00A6FCEF /* Main.storyboard */,
+				75F18C801EBC12D600358487 /* PlaylistViewController.swift */,
 				753B24E91E9C921C00102148 /* LoginViewController.swift */,
 				753B24EB1E9C922500102148 /* MusicSearcherViewController.swift */,
 				753B24EF1E9C983900102148 /* MusicTableViewCell.swift */,
@@ -87,6 +109,15 @@
 			path = "Cover Tube";
 			sourceTree = "<group>";
 		};
+		834AD4D2A943C1CA6BE27CB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75F18C821EBC157100358487 /* YouTubePlayer.framework */,
+				B4E447337DE82272774F2BA9 /* Pods_Cover_Tube.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -94,9 +125,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7549D1801E6925FC00A6FCEF /* Build configuration list for PBXNativeTarget "Cover Tube" */;
 			buildPhases = (
+				DCCAEF1B3E1BA6A8ABD76D0B /* [CP] Check Pods Manifest.lock */,
 				7549D16A1E6925FC00A6FCEF /* Sources */,
 				7549D16B1E6925FC00A6FCEF /* Frameworks */,
 				7549D16C1E6925FC00A6FCEF /* Resources */,
+				46BAB632DF3D8819FD357DCB /* [CP] Embed Pods Frameworks */,
+				19E0EB2999EB36428A60D237 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -158,11 +192,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		19E0EB2999EB36428A60D237 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cover Tube/Pods-Cover Tube-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		46BAB632DF3D8819FD357DCB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cover Tube/Pods-Cover Tube-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DCCAEF1B3E1BA6A8ABD76D0B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7549D16A1E6925FC00A6FCEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75F18C811EBC12D600358487 /* PlaylistViewController.swift in Sources */,
 				753B24EA1E9C921C00102148 /* LoginViewController.swift in Sources */,
 				75C07B7C1EA0C3D400045740 /* UtilityConstants.swift in Sources */,
 				75F18C7E1EBC125800358487 /* YouTubePlayer.swift in Sources */,
@@ -288,6 +371,7 @@
 		};
 		7549D1811E6925FC00A6FCEF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3D95F9CBC8688B7C394C0D9 /* Pods-Cover Tube.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -304,6 +388,7 @@
 		};
 		7549D1821E6925FC00A6FCEF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E57D64D983DF4BB1BDA870EA /* Pods-Cover Tube.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Snp-cN-62d">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,6 +27,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="401" y="271"/>
+        </scene>
+        <!--Playlist View Controller-->
+        <scene sceneID="2Od-QC-Ylj">
+            <objects>
+                <viewController id="Snp-cN-62d" customClass="PlaylistViewController" customModule="Cover_Tube" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ymo-m2-GKf"/>
+                        <viewControllerLayoutGuide type="bottom" id="76h-wT-ZlE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="He9-qw-xo2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEI-bQ-1Z0" customClass="YouTubePlayerView" customModule="Cover_Tube" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
+                                <color key="backgroundColor" red="1" green="0.86072467701218003" blue="0.6403513363564679" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aEI-bQ-1Z0" secondAttribute="height" multiplier="375:233" id="dBQ-Pe-ARA"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxD-m9-hdK">
+                                <rect key="frame" x="8" y="8" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Km5-hn-oJN"/>
+                                    <constraint firstAttribute="width" constant="30" id="WEN-Jn-t3Z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="▼"/>
+                                <connections>
+                                    <action selector="minimizeYouTubePlayerViewButtonTapped:" destination="Snp-cN-62d" eventType="touchUpInside" id="RYg-jx-y4H"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nx5-G3-eug">
+                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.7723064336670864" green="1" blue="0.64287912117845947" alpha="0.33688129194630873" colorSpace="custom" customColorSpace="sRGB"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aEI-bQ-1Z0" secondAttribute="trailing" id="Gpj-GW-ZPg"/>
+                            <constraint firstItem="aEI-bQ-1Z0" firstAttribute="leading" secondItem="He9-qw-xo2" secondAttribute="leading" id="NMU-no-RSH"/>
+                            <constraint firstItem="aEI-bQ-1Z0" firstAttribute="top" secondItem="He9-qw-xo2" secondAttribute="top" id="c2g-1x-WDX"/>
+                            <constraint firstItem="yxD-m9-hdK" firstAttribute="top" secondItem="He9-qw-xo2" secondAttribute="top" constant="8" id="d5B-uL-LQB"/>
+                            <constraint firstItem="yxD-m9-hdK" firstAttribute="leading" secondItem="He9-qw-xo2" secondAttribute="leading" constant="8" id="kbK-fX-DYj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="minimizeYouTubePlayerViewButton" destination="yxD-m9-hdK" id="sel-B6-mBh"/>
+                        <outlet property="minimizedYouTubePlayerViewOverlayButton" destination="Nx5-G3-eug" id="xkI-lz-J8F"/>
+                        <outlet property="youtubePlayerView" destination="aEI-bQ-1Z0" id="Mbt-99-GFy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HJd-5E-46E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1260" y="259.52023988005999"/>
         </scene>
     </scenes>
 </document>

@@ -1,0 +1,18 @@
+{
+  "iOS" : [
+    {
+      "hash" : "a6c7a1cef3388ec626b5a4a60ae79a6a1ca2af82a0abd6e215a92f6ae913d21c",
+      "name" : "YouTubePlayer"
+    }
+  ],
+  "commitish" : "v0.4.0",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+
+  ]
+}
