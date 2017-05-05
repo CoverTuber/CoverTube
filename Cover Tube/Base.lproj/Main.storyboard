@@ -63,6 +63,9 @@
                                 <rect key="frame" x="164" y="617" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.7723064336670864" green="1" blue="0.64287912117845947" alpha="0.33688129194630873" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="maximizeYouTubePlayerViewButtonTapped:" destination="Snp-cN-62d" eventType="touchUpInside" id="Pyv-tw-JDR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

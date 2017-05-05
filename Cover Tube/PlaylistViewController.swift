@@ -140,6 +140,64 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
         CATransaction.commit()
 
     }
+    
+    /* animate youtube player view from minimized circular shape at bottom to full rectuangular size at top */
+    func maximizeAnimation() {
+        minimizedYouTubePlayerViewOverlayButton.isHidden = true
+        
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            self.isYouTubePlayerViewIsMinimized = false
+            self.updateUI()
+        }
+        
+        /* transformScaleAnimation */
+        let transformScaleAnimation = CABasicAnimation(keyPath: "transform")
+        transformScaleAnimation.fromValue = CATransform3DScale(CATransform3DIdentity, 0.5, 0.5, 1.0)
+        transformScaleAnimation.toValue = CATransform3DScale(CATransform3DIdentity, 1.0, 1.0, 1.0)
+        transformScaleAnimation.duration = changeSizeAnimationDuration
+        transformScaleAnimation.isRemovedOnCompletion = false
+        transformScaleAnimation.fillMode = kCAFillModeForwards
+        youtubePlayerView.layer.add(transformScaleAnimation, forKey: "transformScaleAnimation2")
+        
+        /* change position to top center */
+        let movePositionToTopCenterAnimation = CABasicAnimation(keyPath: "position")
+        movePositionToTopCenterAnimation.toValue = fullSizeTopYouTubePlayerCenterPoint
+        movePositionToTopCenterAnimation.duration = changeSizeAnimationDuration
+        movePositionToTopCenterAnimation.isRemovedOnCompletion = false
+        movePositionToTopCenterAnimation.fillMode = kCAFillModeForwards
+        youtubePlayerView.layer.add(movePositionToTopCenterAnimation, forKey: "movePositionToTopCenterAnimation")
+        
+        /* cornerRadius */
+        let cornerRadiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
+        cornerRadiusAnimation.fromValue = fullYouTubePlayerCornerRadius
+        cornerRadiusAnimation.toValue = 0.0
+        cornerRadiusAnimation.duration = changeSizeAnimationDuration
+        cornerRadiusAnimation.isRemovedOnCompletion = false
+        cornerRadiusAnimation.fillMode = kCAFillModeForwards
+        youtubePlayerView.layer.add(cornerRadiusAnimation, forKey: "cornerRadius")
+        
+        /* squraeBoundsAnimation */
+        let rectangularBoundsSizeWidthAnimation = CABasicAnimation(keyPath: "bounds.size.width")
+        rectangularBoundsSizeWidthAnimation.fromValue = squareFullYouTubePlayerSize.width
+        rectangularBoundsSizeWidthAnimation.toValue = rectangularFullYouTubePlayerViewSize.width
+        rectangularBoundsSizeWidthAnimation.duration = changeSizeAnimationDuration
+        rectangularBoundsSizeWidthAnimation.isRemovedOnCompletion = false
+        rectangularBoundsSizeWidthAnimation.fillMode = kCAFillModeForwards
+        youtubePlayerView.layer.add(rectangularBoundsSizeWidthAnimation,
+                                    forKey: "squareBoundsSizeWidthAnimation")
+        
+        /* keep youtube video in center */
+        let keepYouTubeInCenterAnimation = CABasicAnimation(keyPath: "bounds.origin.x")
+        keepYouTubeInCenterAnimation.fromValue = youtubePlayerViewAnimationCenterPointX
+        keepYouTubeInCenterAnimation.toValue = 0.0
+        keepYouTubeInCenterAnimation.duration = changeSizeAnimationDuration
+        keepYouTubeInCenterAnimation.isRemovedOnCompletion = false
+        keepYouTubeInCenterAnimation.fillMode = kCAFillModeForwards
+        youtubePlayerView.layer.add(keepYouTubeInCenterAnimation, forKey: "keepInCenter")
+        
+        CATransaction.commit()
+    }
 
     
 
@@ -180,12 +238,19 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
         }
     }
     
-    
+    /* user taps this button to minimize youtube player view */
     @IBAction func minimizeYouTubePlayerViewButtonTapped(_ sender: UIButton)
     {
         sender.isHidden = true
         minimizeYouTubePlayerViewAnimation()
     }
+    
+    /* user taps this button to maximize youtube player view and stop spinning. */
+    @IBAction func maximizeYouTubePlayerViewButtonTapped(_ sender: UIButton)
+    {
+        maximizeAnimation()
+    }
+    
     
     @IBAction func playButtonTapped(_ sender: UIButton) {
         playYouTubePlayerView()
