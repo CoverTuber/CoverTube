@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CircularSpinner" customModule="CircularSpinner" customModuleProvider="target">
+            <connections>
+                <outlet property="dismissButton" destination="dIs-Hl-b2h" id="ZS6-5l-Azp"/>
+                <outlet property="titleLabel" destination="pP8-UQ-VJj" id="M0a-IZ-ixh"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elaborazione in corso..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="pP8-UQ-VJj">
+                    <rect key="frame" x="120" y="161" width="135" height="53"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="pP8-UQ-VJj" secondAttribute="height" multiplier="48:19" id="1Na-8d-BeW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
+                    <color key="textColor" red="0.43529411764705883" green="0.43529411764705883" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIs-Hl-b2h">
+                    <rect key="frame" x="334" y="30" width="21" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="21" id="6z0-j0-9Bg"/>
+                        <constraint firstAttribute="height" constant="22" id="KSk-K9-CLk"/>
+                    </constraints>
+                    <state key="normal" image="x_darkGray.png">
+                        <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="dismissButtonTapped:" destination="-1" eventType="touchUpInside" id="xY8-A0-g0Q"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="dIs-Hl-b2h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="A07-rB-1xz"/>
+                <constraint firstItem="pP8-UQ-VJj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aj5-ks-Ldr"/>
+                <constraint firstItem="pP8-UQ-VJj" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="240:667" id="nSO-DT-Y2L"/>
+                <constraint firstItem="pP8-UQ-VJj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="tKe-05-yts"/>
+                <constraint firstAttribute="trailing" secondItem="dIs-Hl-b2h" secondAttribute="trailing" constant="20" id="utY-wl-cWu"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="480.5" y="553.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="x_darkGray.png" width="21" height="21"/>
+    </resources>
+</document>

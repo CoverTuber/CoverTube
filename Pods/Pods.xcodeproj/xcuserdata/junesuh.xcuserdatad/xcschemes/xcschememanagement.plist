@@ -4,7 +4,32 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>CircularSpinner-CircularSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CircularSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Cover Tube.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ReactiveSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Result.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -14,15 +39,80 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>YoutubeEngine.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>02FC970B582DAE26BE4C61E3029D64BC</key>
+		<key>0EE640E596CE0B3C85F36969F534F7E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8FC5435ED43944E952874771B1A18332</key>
+		<key>174A7030C12AD7732D93CA7941AB4A12</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1B602ADF978A59A24D92E4FF89F7F070</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1BFA5E610115AFF816332CE7639881B5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>502CFE793ED4E420E94B283C00791F75</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5D6D18D20622F3EF82229720B2A59B30</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7C09AC629E1CCCA6CC5E729E8152B0DC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8446A7A7DA44D131748D565175D05458</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>90EE8F93F46EEA5D4367B23A28C5C7CB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9CA407645FFCF948B35750E8FD682CCC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BA3E08489BDB4AD87B3C1F8D5EF98ED4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C63CB4AE559E609E163642ED2A914D4D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CEF2869F8A450A18D79E3475C8561D65</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D780F80A5793F3EFDAC1606AAA75B388</key>
 		<dict>
 			<key>primary</key>
 			<true/>

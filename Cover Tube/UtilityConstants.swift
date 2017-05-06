@@ -39,12 +39,16 @@ let fullSizeTopYouTubePlayerCenterPoint
 /* Minimized YouTube player view's center point when in bottom center */
 let minimizedSizeBottomCenterYouTubePlayerCenterPoint
     = CGPoint(x: screenWidth / 2.0,
-              y: screenHeight - squareMinimizedYouTubePlayerSize.height / 2.0 + 5.0)
+              y: screenHeight - squareMinimizedYouTubePlayerSize.height / 2.0 + 20.0)
 
 /* Minimized YouTube player view's frame.origin */
 let minimizedSizeBottomCenterYouTubePlayerFrameOriginPoint
     = CGPoint(x: screenWidth / 2.0 - squareMinimizedYouTubePlayerSize.width / 2.0,
-              y : screenHeight - squareMinimizedYouTubePlayerSize.height + 10.0)
+              y : screenHeight - squareMinimizedYouTubePlayerSize.height + 40.0)
+
+/* circular progress bar frame size */
+let circularProgressBarFrameSize = CGSize(width: squareMinimizedYouTubePlayerSize.width + 45.0,
+                                          height: squareMinimizedYouTubePlayerSize.height + 45.0)
 
 /* Size changing animation duration */
 let changeSizeAnimationDuration = 3.0

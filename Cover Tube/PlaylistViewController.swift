@@ -11,6 +11,8 @@
 
 import UIKit
 import YouTubePlayer
+import YoutubeEngine
+import CircularSpinner
 
 class PlaylistViewController: UIViewController, YouTubePlayerDelegate
 {
@@ -20,14 +22,19 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
     /* User taps this button to make YouTubePlayerView small */
     @IBOutlet weak var minimizeYouTubePlayerViewButton: UIButton!
     
-    
     /* button that handles user interaction when youtube player view is minimized */
     @IBOutlet weak var minimizedYouTubePlayerViewOverlayButton: UIButton!
+    
+    /* circular progress bar when youtube player view is minimized. Shows how much time passed in video */
+    var circularTimeProgressBar = CircularSpinner(frame: CGRect.zero)
+    
+    /* circularPro */
+    private var updateCircularTimeProgressBarTimer : Timer? = nil
     
     /* Whether youtube player view is minimized or not */
     private var isYouTubePlayerViewMinimized = false
     
-    /* whether currently in animation or not */
+    /* whether currently in animation or not. Only visible when youtube player view visible */
     private var isChangingYouTubePlayerViewSize = false
     
     /* Whether autoplay has been played or not previously or not.
@@ -51,6 +58,26 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
         
         /*  load video */
         loadVideo()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        youtubePlayerView.frame = rectangularFullYouTubePlayerViewSize
+        
+        if updateCircularTimeProgressBarTimer == nil {
+            updateCircularTimeProgressBarTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateCircularTimeProgressBar) , userInfo: nil, repeats: true)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        circularTimeProgressBar.removeFromSuperview()
+        
+        /* disable update circular time progress bar timer */
+        if updateCircularTimeProgressBarTimer != nil {
+            updateCircularTimeProgressBarTimer!.invalidate()
+            updateCircularTimeProgressBarTimer = nil
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,6 +108,18 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
         
         /* set up play,pause button */
         
+        /* set up circular progress bar */
+        circularTimeProgressBar.type = .determinate
+        circularTimeProgressBar.showDismissButton = false
+        if circularTimeProgressBar.superview == nil {
+            view.addSubview(circularTimeProgressBar)
+        }
+        circularTimeProgressBar.value = 0
+        circularTimeProgressBar.frame.size = circularProgressBarFrameSize
+        circularTimeProgressBar.center = minimizedSizeBottomCenterYouTubePlayerCenterPoint
+        circularTimeProgressBar.backgroundColor = UIColor.clear
+        circularTimeProgressBar.titleLabel.isHidden = true
+        circularTimeProgressBar.isUserInteractionEnabled = false
     }
     
     /*
@@ -90,6 +129,17 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
     func updateUI () {
         minimizedYouTubePlayerViewOverlayButton.isHidden = !isYouTubePlayerViewMinimized
         minimizeYouTubePlayerViewButton.isHidden = isYouTubePlayerViewMinimized
+        
+        circularTimeProgressBar.isHidden = !isYouTubePlayerViewMinimized
+        
+        circularTimeProgressBar.frame.size = circularProgressBarFrameSize
+        circularTimeProgressBar.center = minimizedSizeBottomCenterYouTubePlayerCenterPoint
+        
+        youtubePlayerView.frame = rectangularFullYouTubePlayerViewSize
+    }
+    
+    func updateCircularTimeProgressBar () {
+        circularTimeProgressBar.setValue(youtubePlayerView.getTimePercentage(), animated: true)
     }
     
     /* Animate full youtube player view to minimized circular shape to bottom */
@@ -150,13 +200,21 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
         squareBoundsSizeHeightAnimation.fillMode = kCAFillModeForwards
         youtubePlayerView.layer.add(squareBoundsSizeHeightAnimation, forKey: "squareBoundsSizeHeightAnimation")
         
-        /* keep youtube video in center */
-        let keepYouTubeInCenterAnimation = CABasicAnimation(keyPath: "bounds.origin.x")
-        keepYouTubeInCenterAnimation.toValue = youtubePlayerViewAnimationCenterPointX
-        keepYouTubeInCenterAnimation.duration = changeSizeAnimationDuration
-        keepYouTubeInCenterAnimation.isRemovedOnCompletion = false
-        keepYouTubeInCenterAnimation.fillMode = kCAFillModeForwards
-        youtubePlayerView.layer.add(keepYouTubeInCenterAnimation, forKey: "keepInCenter")
+        /* keep youtube video at horizontal center */
+        let keepYouTubeInHorizontalCenterAnimation = CABasicAnimation(keyPath: "bounds.origin.x")
+        keepYouTubeInHorizontalCenterAnimation.toValue = youtubePlayerViewAnimationCenterPointX
+        keepYouTubeInHorizontalCenterAnimation.duration = changeSizeAnimationDuration
+        keepYouTubeInHorizontalCenterAnimation.isRemovedOnCompletion = false
+        keepYouTubeInHorizontalCenterAnimation.fillMode = kCAFillModeForwards
+        youtubePlayerView.layer.add(keepYouTubeInHorizontalCenterAnimation, forKey: "keepInHorizontalCenter")
+        
+        /* keep youtube video at vertical center */
+        let keepYouTubeInVerticalCenterAnimation = CABasicAnimation(keyPath: "bounds.origin.y")
+        keepYouTubeInVerticalCenterAnimation.toValue = 0.0
+        keepYouTubeInVerticalCenterAnimation.duration = changeSizeAnimationDuration
+        keepYouTubeInVerticalCenterAnimation.isRemovedOnCompletion = false
+        keepYouTubeInVerticalCenterAnimation.fillMode = kCAFillModeForwards
+        youtubePlayerView.layer.add(keepYouTubeInVerticalCenterAnimation, forKey: "keepInVerticalCenter")
         
         isChangingYouTubePlayerViewSize = true
         
@@ -208,7 +266,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
         cornerRadiusAnimation.fillMode = kCAFillModeForwards
         youtubePlayerView.layer.add(cornerRadiusAnimation, forKey: "cornerRadius")
         
-        /* squraeBoundsAnimation */
+        /* horizontal rectuangular boundsAnimation */
         let rectangularBoundsSizeWidthAnimation = CABasicAnimation(keyPath: "bounds.size.width")
         rectangularBoundsSizeWidthAnimation.fromValue = squareFullYouTubePlayerSize.width
         rectangularBoundsSizeWidthAnimation.toValue = rectangularFullYouTubePlayerViewSize.width
@@ -217,6 +275,16 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
         rectangularBoundsSizeWidthAnimation.fillMode = kCAFillModeForwards
         youtubePlayerView.layer.add(rectangularBoundsSizeWidthAnimation,
                                     forKey: "squareBoundsSizeWidthAnimation")
+        
+        /* vertical rectuangular boundsAnimation */
+        let rectangularBoundsSizeHeightAnimation = CABasicAnimation(keyPath: "bounds.size.height")
+        rectangularBoundsSizeHeightAnimation.fromValue = squareFullYouTubePlayerSize.height
+        rectangularBoundsSizeHeightAnimation.toValue = rectangularFullYouTubePlayerViewSize.height
+        rectangularBoundsSizeHeightAnimation.duration = changeSizeAnimationDuration
+        rectangularBoundsSizeHeightAnimation.isRemovedOnCompletion = false
+        rectangularBoundsSizeHeightAnimation.fillMode = kCAFillModeForwards
+        youtubePlayerView.layer.add(rectangularBoundsSizeHeightAnimation,
+                                    forKey: "squareBoundsSizeHeightAnimation")
         
         /* keep youtube video in center */
         let keepYouTubeInCenterAnimation = CABasicAnimation(keyPath: "bounds.origin.x")
@@ -277,7 +345,9 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
         
         /* load video with youtube video's id. */
         // youtubePlayerView.loadVideoID("PT2_F-1esPk") // chainsmokers closer original video
-        youtubePlayerView.loadVideoID("WsptdUFthWI") // chainsmokers closer cover video
+        youtubePlayerView.loadVideoID("WsptdUFthWI")
+        // chainsmokers closer cover video - WsptdUFthWI
+        // test rectangle - wM0HvuP5Aps
     }
     
     // MARK: YouTubePlayer delegate
@@ -303,13 +373,28 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
     @IBAction func minimizeYouTubePlayerViewButtonTapped(_ sender: UIButton)
     {
         sender.isHidden = true
+        
+        circularTimeProgressBar.alpha = 0.0
+        circularTimeProgressBar.isHidden = false
+        UIView.animate(withDuration: 0.5) {
+            self.circularTimeProgressBar.alpha = 1.0
+        }
+        
         minimizeYouTubePlayerViewAnimation()
     }
     
     /* user taps this button to maximize youtube player view and stop spinning. */
     @IBAction func maximizeYouTubePlayerViewButtonTapped(_ sender: UIButton)
     {
+        
+        circularTimeProgressBar.alpha = 1.0
+        circularTimeProgressBar.isHidden = false
+        UIView.animate(withDuration: 0.5) {
+            self.circularTimeProgressBar.alpha = 0.0
+        }
+        
         maximizeYouTubePlayerViewAnimation()
+        
     }
     
     

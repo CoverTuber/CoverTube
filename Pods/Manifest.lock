@@ -1,12 +1,27 @@
 PODS:
+  - CircularSpinner (1.2.0)
+  - ReactiveSwift (1.1.1):
+    - Result (~> 3.2)
+  - Result (3.2.1)
+  - SwiftyJSON (3.1.4)
+  - YoutubeEngine (0.2.3):
+    - ReactiveSwift (~> 1.0)
+    - SwiftyJSON (~> 3.1.4)
   - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
+  - CircularSpinner
+  - YoutubeEngine
   - YouTubePlayer
 
 SPEC CHECKSUMS:
+  CircularSpinner: 80b8ee3eda59b66d20631d4ca7c7c83720931739
+  ReactiveSwift: 2489549e3231a6ff68ec99f3d320bb264f10ba0a
+  Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  YoutubeEngine: ca07527596e92434605e0b5d88b881d3cf6b792e
   YouTubePlayer: '028451f6772f372d4759866db99824c676ac1473'
 
-PODFILE CHECKSUM: 043a2e79135895fb0301724e6f14c9b512bbd859
+PODFILE CHECKSUM: b29a80b08bf73550114454a8dbca7c197d9d62fa
 
 COCOAPODS: 1.2.0

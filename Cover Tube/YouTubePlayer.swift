@@ -191,12 +191,36 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
         evaluatePlayerCommand("seekTo(\(seconds), \(seekAhead))")
     }
     
-    open func getDuration() -> String? {
+    open func getDurationString() -> String? {
         return evaluatePlayerCommand("getDuration()")
     }
     
-    open func getCurrentTime() -> String? {
+    /* gets duration of the video. -1.0 if cannot get duration. */
+    func getDuration() -> Float {
+        if let durationString = getDurationString() {
+            return (durationString as NSString).floatValue
+        } else {
+            return -1.0
+        }
+    }
+    
+    open func getCurrentTimeString() -> String? {
         return evaluatePlayerCommand("getCurrentTime()")
+    }
+    
+    /* gets current time of youtube video */
+    open func getCurrentTime() -> Float {
+        if let currentTimeStr = getCurrentTimeString() {
+            return (currentTimeStr as NSString).floatValue
+        }
+        else {
+            return -1.0
+        }
+    }
+    
+    /* returns current time / duration, the percentage of how much time has ellapsed */
+    func getTimePercentage () -> Float {
+        return getCurrentTime() / getDuration()
     }
     
     // MARK: Playlist controls
