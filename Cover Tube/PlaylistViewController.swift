@@ -79,6 +79,8 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
             = CGRect(origin: minimizedSizeBottomCenterYouTubePlayerFrameOriginPoint,
                      size: squareMinimizedYouTubePlayerSize)
         
+        /* set up play,pause button */
+        
     }
     
     /*
@@ -232,12 +234,14 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
     /* spins youtube player view is currently playing. */
     func startYouTubePlayerViewSpinningAnimation() {
         /* if youtube video is not playing, don't spin */
-        if youtubePlayerView.playerState != YouTubePlayerState.Playing { return }
+        if youtubePlayerView.playerState != YouTubePlayerState.Playing {
+            return
+        }
         
         let spinningAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        spinningAnimation.toValue = M_PI_2
+        spinningAnimation.toValue = Double.pi * 2
         spinningAnimation.repeatCount = .infinity
-        spinningAnimation.repeatDuration = 10.0
+        spinningAnimation.duration = (CFTimeInterval(Float(1.0) / minimizedYouTubePlayerViewRotationSpeed)) * 0.75
         spinningAnimation.speed = minimizedYouTubePlayerViewRotationSpeed
         spinningAnimation.isCumulative = true
         youtubePlayerView.layer.add(spinningAnimation, forKey: "spinningAnimation")
@@ -272,13 +276,26 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate
         ]
         
         /* load video with youtube video's id. */
-        youtubePlayerView.loadVideoID("XKu_SEDAykw") // google vid
+        // youtubePlayerView.loadVideoID("PT2_F-1esPk") // chainsmokers closer original video
+        youtubePlayerView.loadVideoID("WsptdUFthWI") // chainsmokers closer cover video
     }
     
     // MARK: YouTubePlayer delegate
     func playerReady(_ videoPlayer: YouTubePlayerView) {
         if videoPlayer == youtubePlayerView && !didAutoplayPreviously {
             self.playYouTubePlayerView()
+        }
+    }
+    
+    /*
+     NOTE: UIAlertView - you can play the music by swiping up.
+                       - when the music stops, this delegate method is being called
+     */
+    func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
+        if videoPlayer.playerState == YouTubePlayerState.Playing && isYouTubePlayerViewMinimized {
+            self.startYouTubePlayerViewSpinningAnimation()
+        } else if videoPlayer.playerState == YouTubePlayerState.Paused {
+            
         }
     }
     

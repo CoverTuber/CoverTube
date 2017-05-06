@@ -47,6 +47,12 @@
                                     <constraint firstAttribute="width" secondItem="aEI-bQ-1Z0" secondAttribute="height" multiplier="375:233" id="dBQ-Pe-ARA"/>
                                 </constraints>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANZ-S0-0ML">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="0.30298343120805371" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="play_icon_white"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxD-m9-hdK">
                                 <rect key="frame" x="8" y="8" width="30" height="30"/>
                                 <constraints>
@@ -85,7 +91,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJd-5E-46E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1260" y="259.52023988005999"/>
+            <point key="canvasLocation" x="1248.8" y="259.52023988005999"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="play_icon_white" width="256" height="256"/>
+    </resources>
 </document>
