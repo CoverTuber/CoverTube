@@ -97,7 +97,8 @@ open class CircularSpinner: UIView {
         }
     }
     
-    private var bgColor = UIColor(colorLiteralRed: 238.0/255, green: 238.0/255, blue: 238.0/255, alpha: 1) {
+    private var bgColor = UIColor(colorLiteralRed: 220.0/255, green: 220.0/255, blue: 220.0/255, alpha: 1)
+        {
         didSet {
             appearanceBackgroundLayer()
         }

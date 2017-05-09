@@ -14,12 +14,12 @@ let screenHeight = UIScreen.main.bounds.size.height
 
 // MARK: PlaylistViewController's constants
 /* rectangular full youtube player view's size */
-let rectangularFullYouTubePlayerViewSize = CGRect(x: 0.0, y: 0.0,
+let rectangularFullYouTubePlayerViewFrame = CGRect(x: 0.0, y: 0.0,
                                                   width: screenWidth, height: 233.0)
 
 /* square full youtube player view's size */
-let squareFullYouTubePlayerSize = CGSize(width: rectangularFullYouTubePlayerViewSize.height,
-                                         height: rectangularFullYouTubePlayerViewSize.height)
+let squareFullYouTubePlayerSize = CGSize(width: rectangularFullYouTubePlayerViewFrame.size.height,
+                                         height: rectangularFullYouTubePlayerViewFrame.size.height)
 
 /* square minimized youtube player view's size */
 let squareMinimizedYouTubePlayerSize = CGSize(width: squareFullYouTubePlayerSize.width / 2.0,
@@ -34,7 +34,7 @@ let minimizedYouTubePlayerCornerRadius = fullYouTubePlayerCornerRadius / 2.0
 /* Full sized YouTube player view's top center point */
 let fullSizeTopYouTubePlayerCenterPoint
     = CGPoint(x: screenWidth / 2.0,
-              y: rectangularFullYouTubePlayerViewSize.height / 2.0)
+              y: rectangularFullYouTubePlayerViewFrame.height / 2.0)
 
 /* Minimized YouTube player view's center point when in bottom center */
 let minimizedSizeBottomCenterYouTubePlayerCenterPoint
@@ -55,7 +55,7 @@ let changeSizeAnimationDuration = 3.0
 
 /* This center point is used while minimizing the youtube animation in the center. */
 let youtubePlayerViewAnimationCenterPointX : CGFloat
-    = (rectangularFullYouTubePlayerViewSize.width - rectangularFullYouTubePlayerViewSize.height) / 2.0
+    = (rectangularFullYouTubePlayerViewFrame.width - rectangularFullYouTubePlayerViewFrame.height) / 2.0
 
 /* Animation keys */
 // MARK: Minimizing YouTube Player View strings used as keys
@@ -75,3 +75,11 @@ let MinimizeYouTubePlayerViewAnimationStrings
 
 /* rotation speed */
 let minimizedYouTubePlayerViewRotationSpeed : Float = 0.35
+
+
+/* YouTube player view's size state */
+enum YouTubePlayerViewSizeState {
+    case minimized
+    case fullScreen
+    case hidden
+}

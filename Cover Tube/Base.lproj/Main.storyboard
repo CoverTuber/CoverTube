@@ -53,6 +53,15 @@
                                 <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="0.30298343120805371" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="play_icon_white"/>
                             </button>
+                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L52-z0-ylg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="0.27705536912751677" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="xN7-Ts-Meo" appends="YES" id="HUD-X4-eX8"/>
+                                </connections>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxD-m9-hdK">
                                 <rect key="frame" x="8" y="8" width="30" height="30"/>
                                 <constraints>
@@ -68,7 +77,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nx5-G3-eug">
                                 <rect key="frame" x="164" y="617" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.34999999999999998" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="maximizeYouTubePlayerViewButtonTapped:" destination="Snp-cN-62d" eventType="touchUpInside" id="Pyv-tw-JDR"/>
                                 </connections>
@@ -84,12 +93,19 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="fullYouTubePlayerViewOverlayView" destination="L52-z0-ylg" id="Irm-Gl-26U"/>
                         <outlet property="minimizeYouTubePlayerViewButton" destination="yxD-m9-hdK" id="sel-B6-mBh"/>
                         <outlet property="minimizedYouTubePlayerViewOverlayButton" destination="Nx5-G3-eug" id="xkI-lz-J8F"/>
                         <outlet property="youtubePlayerView" destination="aEI-bQ-1Z0" id="Mbt-99-GFy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJd-5E-46E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="xN7-Ts-Meo">
+                    <connections>
+                        <action selector="handleMinimizingGestureRecognizer:" destination="Snp-cN-62d" id="CB9-nJ-ARn"/>
+                        <outlet property="delegate" destination="Snp-cN-62d" id="vyB-qe-JlA"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1248.8" y="259.52023988005999"/>
         </scene>
