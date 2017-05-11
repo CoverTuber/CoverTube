@@ -1,0 +1,18 @@
+{
+  "iOS" : [
+    {
+      "hash" : "ee156d03f06cda47f3019c6ce9ce7a9a718053037d9a391d04fc4d933059267a",
+      "name" : "SwiftMessages"
+    }
+  ],
+  "commitish" : "3.3.3",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+
+  ]
+}

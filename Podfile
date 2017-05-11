@@ -3,5 +3,6 @@ target 'Cover Tube' do
 	pod 'YouTubePlayer'
         pod "YoutubeEngine"
 	pod 'CircularSpinner'
+	pod 'SwiftMessages'
 end
 

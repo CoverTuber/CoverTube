@@ -23,6 +23,7 @@
 		75F18C811EBC12D600358487 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F18C801EBC12D600358487 /* PlaylistViewController.swift */; };
 		75F18C831EBC157100358487 /* YouTubePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75F18C821EBC157100358487 /* YouTubePlayer.framework */; };
 		75F18C8F1EBC5D0400358487 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F18C8E1EBC5D0400358487 /* UIImageExtension.swift */; };
+		75F38CA21EC43D75001EC4B3 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F38CA11EC43D75001EC4B3 /* Notification.swift */; };
 		BCA878E819F08A5283997CCD /* Pods_Cover_Tube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E447337DE82272774F2BA9 /* Pods_Cover_Tube.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		75F18C801EBC12D600358487 /* PlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		75F18C821EBC157100358487 /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubePlayer.framework; path = "../../Library/Developer/Xcode/DerivedData/Cover_Tube-ducmdaowsnmaaygkuwqihdiqnrqd/Build/Products/Debug-iphonesimulator/YouTubePlayer/YouTubePlayer.framework"; sourceTree = "<group>"; };
 		75F18C8E1EBC5D0400358487 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		75F38CA11EC43D75001EC4B3 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		B3D95F9CBC8688B7C394C0D9 /* Pods-Cover Tube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cover Tube.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cover Tube/Pods-Cover Tube.debug.xcconfig"; sourceTree = "<group>"; };
 		B4E447337DE82272774F2BA9 /* Pods_Cover_Tube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cover_Tube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57D64D983DF4BB1BDA870EA /* Pods-Cover Tube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cover Tube.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cover Tube/Pods-Cover Tube.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				7549D17D1E6925FC00A6FCEF /* Info.plist */,
 				75C07B751EA09A9C00045740 /* Cover Tube-Bridging-Header.h */,
 				75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */,
+				75F38CA11EC43D75001EC4B3 /* Notification.swift */,
 				75EE1CB31EBDCADF00C5CAA7 /* YouTubeSearcher.swift */,
 				75F18C8E1EBC5D0400358487 /* UIImageExtension.swift */,
 				75F18C8D1EBC5C5300358487 /* YouTube Player View */,
@@ -267,6 +270,7 @@
 				7549D1741E6925FC00A6FCEF /* ViewController.swift in Sources */,
 				75F18C8F1EBC5D0400358487 /* UIImageExtension.swift in Sources */,
 				7549D1721E6925FC00A6FCEF /* AppDelegate.swift in Sources */,
+				75F38CA21EC43D75001EC4B3 /* Notification.swift in Sources */,
 				753B24EC1E9C922500102148 /* MusicSearcherViewController.swift in Sources */,
 				753B24F01E9C983900102148 /* MusicTableViewCell.swift in Sources */,
 			);
