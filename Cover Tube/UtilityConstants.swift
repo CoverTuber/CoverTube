@@ -17,6 +17,12 @@ let screenHeight = UIScreen.main.bounds.size.height
 let rectangularFullYouTubePlayerViewFrame = CGRect(x: 0.0, y: 0.0,
                                                    width: screenWidth, height: 233.0)
 
+/* rectangular full youtube player overlay view's size. A little shorter than player view's height to distinguish user interaction between time slider and player */
+let rectangularFullYouTubePlayerOverlayViewFrame
+    = CGRect(origin: rectangularFullYouTubePlayerViewFrame.origin,
+             size: CGSize(width: rectangularFullYouTubePlayerViewFrame.size.width,
+                          height: rectangularFullYouTubePlayerViewFrame.size.height - 20.0))
+
 /* square full youtube player view's size */
 let squareFullYouTubePlayerSize = CGSize(width: rectangularFullYouTubePlayerViewFrame.size.height,
                                          height: rectangularFullYouTubePlayerViewFrame.size.height)
@@ -53,6 +59,10 @@ let minimizedSizeBottomCenterYouTubePlayerFrame
 
 let minimizedYouTubePlayerViewTransformScale = CATransform3DScale(CATransform3DIdentity, 0.5, 0.5, 1.0)
 let maximizedYouTubePlayerViewTransformScale = CATransform3DScale(CATransform3DIdentity, 1.0, 1.0, 1.0)
+
+/* frame of linear time progress bar below youtube player view, indicating time. */
+let linearTimeProgressBarFrame = CGRect(origin: CGPoint.zero,
+                                        size: CGSize(width: screenWidth, height: 6.0))
 
 /* circular progress bar frame size */
 let circularProgressBarFrameSize = CGSize(width: squareMinimizedYouTubePlayerSize.width + 45.0,
@@ -132,3 +142,10 @@ enum YouTubePlayerViewOverlayDirection {
     case up
 }
 
+/*  */
+let lightGrayColor = UIColor(colorLiteralRed: 220.0/255, green: 220.0/255, blue: 220.0/255, alpha: 1)
+
+/* color used for passed time in slider, CircularSpinner */
+let minimumTrackColor = UIColor(colorLiteralRed: 47.0/255, green: 177.0/255, blue: 254.0/255, alpha: 1)
+
+let maximumTrackColor = lightGrayColor

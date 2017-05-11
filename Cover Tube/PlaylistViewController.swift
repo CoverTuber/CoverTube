@@ -29,13 +29,16 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     /* button that handles user interaction when youtube player view is minimized */
     @IBOutlet weak var minimizedYouTubePlayerViewOverlayButton: UIButton!
     
+    /* linear time progress bar. Below rectangular youtube player view that's customized */
+    let linearTimeProgressBar = UISlider(frame: linearTimeProgressBarFrame)
     
-    
+    /* timer that regularly linear time progress bar timer */
+    private var updateLinearTimeProgressBarTimer : Timer? = nil
     
     /* circular progress bar when youtube player view is minimized. Shows how much time passed in video */
-    var circularTimeProgressBar = CircularSpinner(frame: CGRect.zero)
+    let circularTimeProgressBar = CircularSpinner(frame: CGRect.zero)
     
-    /* circularPro */
+    /* circular time progress bar timer */
     private var updateCircularTimeProgressBarTimer : Timer? = nil
     
     /* Whether youtube player view is minimized or not */
@@ -80,23 +83,35 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         loadVideo()
         
         youtubePlayerView.frame = rectangularFullYouTubePlayerViewFrame
-        youTubePlayerViewOverlayView.frame = rectangularFullYouTubePlayerViewFrame
+        youTubePlayerViewOverlayView.frame = rectangularFullYouTubePlayerOverlayViewFrame
         youtubePlayerViewSizeState = YouTubePlayerViewSizeState.fullScreen
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         youtubePlayerView.frame = rectangularFullYouTubePlayerViewFrame
-        youTubePlayerViewOverlayView.frame = rectangularFullYouTubePlayerViewFrame
+        youTubePlayerViewOverlayView.frame = rectangularFullYouTubePlayerOverlayViewFrame
         
+        /* if linear time progress bar timer isn't set, initialize it */
+        if updateLinearTimeProgressBarTimer == nil {
+            updateLinearTimeProgressBarTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(updateLinearTimeProgressBar) , userInfo: nil, repeats: true)
+        }
+        
+        /* if circular time progress bar timer isn't set, initialize it. */
         if updateCircularTimeProgressBarTimer == nil {
-            updateCircularTimeProgressBarTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateCircularTimeProgressBar) , userInfo: nil, repeats: true)
+            updateCircularTimeProgressBarTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(updateCircularTimeProgressBar) , userInfo: nil, repeats: true)
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         circularTimeProgressBar.removeFromSuperview()
+        
+        /* disable update linear time progress bar timer */
+        if updateLinearTimeProgressBarTimer != nil {
+            updateLinearTimeProgressBarTimer!.invalidate()
+            updateLinearTimeProgressBarTimer = nil
+        }
         
         /* disable update circular time progress bar timer */
         if updateCircularTimeProgressBarTimer != nil {
@@ -141,6 +156,16 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         
         /* set up play,pause button */
         
+        /* set up linear time progress bar */
+        // linearTimeProgressBar.currentThumbImage =
+        linearTimeProgressBar.minimumTrackTintColor = minimumTrackColor
+        linearTimeProgressBar.maximumTrackTintColor = maximumTrackColor
+        linearTimeProgressBar.addTarget(self,
+                                        action: #selector(linearTimeProgressBarValueChangec(_:)),
+                                        for: .valueChanged)
+        view.addSubview(linearTimeProgressBar)
+        linearTimeProgressBar.center = CGPoint(x: screenWidth / 2.0, y: youtubePlayerView.frame.size.height)
+        
         /* set up circular progress bar */
         circularTimeProgressBar.type = .determinate
         circularTimeProgressBar.showDismissButton = false
@@ -163,6 +188,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         minimizedYouTubePlayerViewOverlayButton.isHidden = !isYouTubePlayerViewMinimized
         minimizeYouTubePlayerViewButton.isHidden = isYouTubePlayerViewMinimized
         
+        linearTimeProgressBar.isHidden = isYouTubePlayerViewMinimized
         circularTimeProgressBar.isHidden = !isYouTubePlayerViewMinimized
         
         circularTimeProgressBar.frame.size = circularProgressBarFrameSize
@@ -172,6 +198,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         
         view.bringSubview(toFront: youTubePlayerViewOverlayView)
         view.bringSubview(toFront: minimizeYouTubePlayerViewButton)
+        view.bringSubview(toFront: linearTimeProgressBar)
     }
     
     /* update UI with scale factor */
@@ -242,16 +269,31 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         
         print("\(scaleFactor) // \(reverseScaleFactor)")
         
+        /* alpha for UIViews that are most visible when player view is maximized */
+        let maximizedScaledAlpha = 3.3 * reverseScaleFactor - 2.3
+        
+        /* alpha for UIViews that are most visible when player view is minimized */
+        let minimizedScaledAlpha = 1.4 * scaleFactor - 0.4 // (1.0 / 0.7 * (scaleFactor - 1.0)) + 1.0
+        
+        print("maximizedScaledAlpha = \(maximizedScaledAlpha)")
+        print("minimizedScaledAlpha = \(minimizedScaledAlpha)")
+        
+        /* linearTimeProgressBar */
+        linearTimeProgressBar.isHidden = false
+        linearTimeProgressBar.alpha = maximizedScaledAlpha
+        
         /* circularTimeProgressBar won't be visible till scaleFactor reaches 0.3 */
         circularTimeProgressBar.isHidden = false
-        let scaledAlpha = 1.4 * scaleFactor - 0.4 // (1.0 / 0.7 * (scaleFactor - 1.0)) + 1.0
-        print("scaledAlpha = \(scaledAlpha)")
-        circularTimeProgressBar.alpha = scaleFactor < 0.3 ? 0.0 : scaledAlpha
+        circularTimeProgressBar.alpha = scaleFactor < 0.3 ? 0.0 : minimizedScaledAlpha
         
     }
     
+    /* called regularly via updateLinearTimeProgressBarTimer. Update the time passed of video */
+    func updateLinearTimeProgressBar () {
+        linearTimeProgressBar.setValue(youtubePlayerView.getTimePercentage(), animated: true)
+    }
     
-    
+    /* called regularly via updateCircleTimeProgressBarTimer. Update the time passed of video. */
     func updateCircularTimeProgressBar () {
         circularTimeProgressBar.setValue(youtubePlayerView.getTimePercentage(), animated: true)
     }
@@ -381,8 +423,11 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
                        options: UIViewAnimationOptions.curveEaseOut ,
                        animations: {
                         self.youTubePlayerViewOverlayView.frame = minimizedSizeBottomCenterYouTubePlayerFrame
+                        self.linearTimeProgressBar.alpha = 0.0
                         self.circularTimeProgressBar.alpha = 1.0
-        }) { (completed : Bool) in }
+        }) { (completed : Bool) in
+            self.linearTimeProgressBar.isHidden = true
+        }
         
     }
     
@@ -497,9 +542,11 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         /* animate fullYouTubePlayerViewOverlayView and circularTimeProgressBar */
         
         UIView.animate(withDuration: changeSizeAnimationDuration, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            self.youTubePlayerViewOverlayView.frame = rectangularFullYouTubePlayerViewFrame
+            self.youTubePlayerViewOverlayView.frame = rectangularFullYouTubePlayerOverlayViewFrame
+            self.linearTimeProgressBar.alpha = 1.0
             self.circularTimeProgressBar.alpha = 0.0
         }) { (completed : Bool) in
+            self.linearTimeProgressBar.isHidden = false
             self.circularTimeProgressBar.isHidden = true
         }
         
@@ -714,6 +761,13 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             }
         }
         
+    }
+    
+    /* called when value of linearTimeProgressBar changed */
+    func linearTimeProgressBarValueChangec(_ sender : UISlider)
+    {
+        let seconds = sender.value * youtubePlayerView.getDuration()
+        youtubePlayerView.seekTo(seconds, seekAhead: true)
     }
     
     /* Whenever a user likes a video, 

@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 import SwiftMessages
 
+/*
+ Displays thin line at top of the screen temporary notification
+ */
 func showStatusLineNotification (title : String,
                                  bodyText : String,
                                  duration : TimeInterval,
