@@ -15,7 +15,7 @@ let screenHeight = UIScreen.main.bounds.size.height
 // MARK: PlaylistViewController's constants
 /* rectangular full youtube player view's size */
 let rectangularFullYouTubePlayerViewFrame = CGRect(x: 0.0, y: 0.0,
-                                                  width: screenWidth, height: 233.0)
+                                                   width: screenWidth, height: 233.0)
 
 /* square full youtube player view's size */
 let squareFullYouTubePlayerSize = CGSize(width: rectangularFullYouTubePlayerViewFrame.size.height,
@@ -39,39 +39,81 @@ let fullSizeTopYouTubePlayerCenterPoint
 /* Minimized YouTube player view's center point when in bottom center */
 let minimizedSizeBottomCenterYouTubePlayerCenterPoint
     = CGPoint(x: screenWidth / 2.0,
-              y: screenHeight - squareMinimizedYouTubePlayerSize.height / 2.0 + 20.0)
+              y: screenHeight - squareMinimizedYouTubePlayerSize.height / 2.0 - 20.0) // + 20.0)
 
 /* Minimized YouTube player view's frame.origin */
 let minimizedSizeBottomCenterYouTubePlayerFrameOriginPoint
     = CGPoint(x: screenWidth / 2.0 - squareMinimizedYouTubePlayerSize.width / 2.0,
-              y : screenHeight - squareMinimizedYouTubePlayerSize.height + 40.0)
+              y : screenHeight - squareMinimizedYouTubePlayerSize.height - 20.0) // + 40.0)
+
+let minimizedSizeBottomCenterYouTubePlayerFrame
+    = CGRect(origin: minimizedSizeBottomCenterYouTubePlayerFrameOriginPoint,
+             size: squareMinimizedYouTubePlayerSize)
+
+
+let minimizedYouTubePlayerViewTransformScale = CATransform3DScale(CATransform3DIdentity, 0.5, 0.5, 1.0)
+let maximizedYouTubePlayerViewTransformScale = CATransform3DScale(CATransform3DIdentity, 1.0, 1.0, 1.0)
 
 /* circular progress bar frame size */
 let circularProgressBarFrameSize = CGSize(width: squareMinimizedYouTubePlayerSize.width + 45.0,
                                           height: squareMinimizedYouTubePlayerSize.height + 45.0)
 
 /* Size changing animation duration */
-let changeSizeAnimationDuration = 3.0
+let changeSizeAnimationDuration = 0.75
 
 /* This center point is used while minimizing the youtube animation in the center. */
 let youtubePlayerViewAnimationCenterPointX : CGFloat
     = (rectangularFullYouTubePlayerViewFrame.width - rectangularFullYouTubePlayerViewFrame.height) / 2.0
 
-/* Animation keys */
-// MARK: Minimizing YouTube Player View strings used as keys
-let MinimizeYouTubePlayerViewAnimation_TransformScale = "MinimizeYouTubePlayerViewAnimation_TransformScale"
-let MinimizeYouTubePlayerViewAnimation_BottomCenterPosition = "MinimizeYouTubePlayerViewAnimation_BottomCenterPosition"
-let MinimizeYouTubePlayerViewAnimation_CornerRadius = "MinimizeYouTubePlayerViewAnimation_CornerRadius"
-let MinimizeYouTubePlayerViewAnimation_SquareBoundsSizeWidth = "MinimizeYouTubePlayerViewAnimation_SquareBoundsSizeWidth"
-let MinimizeYouTubePlayerViewAnimation_BoundsOriginX = "MinimizeYouTubePlayerViewAnimation_BoundsOriginX"
+// MARK: Animation Keys for YouTube Player View
+let YouTubePlayerViewAnimation_TransformScale
+    = "YouTubePlayerViewAnimation_TransformScale"
+
+let YouTubePlayerViewAnimation_Position
+    = "YouTubePlayerViewAnimation_Position"
+
+let YouTubePlayerViewAnimation_CornerRadius
+    = "YouTubePlayerViewAnimation_CornerRadius"
 
 
-let MinimizeYouTubePlayerViewAnimationStrings
-    = [MinimizeYouTubePlayerViewAnimation_TransformScale,
-       MinimizeYouTubePlayerViewAnimation_BoundsOriginX,
-       MinimizeYouTubePlayerViewAnimation_CornerRadius,
-       MinimizeYouTubePlayerViewAnimation_SquareBoundsSizeWidth,
-       MinimizeYouTubePlayerViewAnimation_BoundsOriginX ]
+let YouTubePlayerViewAnimation_BoundsSizeWidth
+    = "YouTubePlayerViewAnimation_BoundsSizeWidth"
+
+let YouTubePlayerViewAnimation_BoundsSizeHeight
+    = "YouTubePlayerViewAnimation_BoundsSizeHeight"
+
+let YouTubePlayerViewAnimation_BoundsOriginX
+    = "YouTubePlayerViewAnimation_BoundsOriginX"
+
+let YouTubePlayerViewAnimation_BoundsOriginY
+    = "YouTubePlayerViewAnimation_BoundsOriginY"
+
+let MaximizeYouTubePlayerViewAnimation_TransformScale
+    = "MaximizeYouTubePlayerViewAnimation_TransformScale"
+let MaximizeYouTubePlayerViewAnimation_TopCenterPosition
+    = "MaximizeYouTubePlayerViewAnimation_TopCenterPosition"
+
+let MaximizeYouTubePlayerViewAnimation_SquareBoundsSizeWidth
+    = "MaximizeYouTubePlayerViewAnimation_SquareBoundsSizeWidth"
+let MaximizeYouTubePlayerViewAnimation_SquareBoundsSizeHeight
+    = "MaximizeYouTubePlayerViewAnimation_SquareBoundsSizeHeight"
+let MaximizeYouTubePlayerViewAnimation_BoundsOriginX
+    = "MaximizeYouTubePlayerViewAnimation_BoundsOriginX"
+let MaximizeYouTubePlayerViewAnimation_BoundsOriginY
+    = "MaximizeYouTubePlayerViewAnimation_BoundsOriginY"
+
+// MARK: Animation Keys for overlay view
+let MinimizeYouTubePlayerOverlayViewAnimation_TransformScale
+    = "MinimizeYouTubePlayerOverlayViewAnimation_TransformScale"
+let MinimizeYouTubePlayerOverlayViewAnimation_BottomCenterPosition
+    = "MinimizeYouTubePlayerOverlayViewAnimation_BottomCenterPosition"
+let MinimizeYouTubePlayerOverlayViewAnimation_CornerRadius
+    = "MinimizeYouTubePlayerOverlayViewAnimation_CornerRadius"
+let MinimizeYouTubePlayerOverlayViewAnimation_SquareBoundsSizeWidth
+    = "MinimizeYouTubePlayerOverlayViewAnimation_SquareBoundsSizeWidth"
+let MinimizeYouTubePlayerOverlayViewAnimation_BoundsOriginX
+    = "MinimizeYouTubePlayerOverlayViewAnimation_BoundsOriginX"
+
 
 /* rotation speed */
 let minimizedYouTubePlayerViewRotationSpeed : Float = 0.35
@@ -83,3 +125,10 @@ enum YouTubePlayerViewSizeState {
     case fullScreen
     case hidden
 }
+
+/* YouTube player overlay view's gesture direction */
+enum YouTubePlayerViewOverlayDirection {
+    case down
+    case up
+}
+

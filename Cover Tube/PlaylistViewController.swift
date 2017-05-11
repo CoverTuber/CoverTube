@@ -20,7 +20,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     @IBOutlet weak var youtubePlayerView : YouTubePlayerView!
     
     /* UIView on top of youtube player view to handle pan gesture recognizer since it doesn't handle any user interaction. This handles them instead. */
-    @IBOutlet weak var fullYouTubePlayerViewOverlayView: UIView!
+    @IBOutlet weak var youTubePlayerViewOverlayView: UIView!
     
     
     /* User taps this button to make YouTubePlayerView small */
@@ -51,6 +51,17 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     /* youtube player view's state. full, minimized, hidden */
     private var youtubePlayerViewSizeState = YouTubePlayerViewSizeState.fullScreen
     
+    /*  */
+    private var youtubePlayerViewCurrentCornerRadius : CGFloat = 0.0
+    
+    private var overlayViewCurrentCornerRadius : CGFloat = 0.0
+    
+    private var youtubePlayerViewCurrentTransformScale = maximizedYouTubePlayerViewTransformScale
+    
+    /* youtube player overlay view's pan gesture direction - up or down */
+    private var youtubePlayerOverlayViewPanGestureDirection = YouTubePlayerViewOverlayDirection.down
+    private var isUserPanningYoutubePlayerOverlayView = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,14 +80,14 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         loadVideo()
         
         youtubePlayerView.frame = rectangularFullYouTubePlayerViewFrame
-        fullYouTubePlayerViewOverlayView.frame = rectangularFullYouTubePlayerViewFrame
+        youTubePlayerViewOverlayView.frame = rectangularFullYouTubePlayerViewFrame
         youtubePlayerViewSizeState = YouTubePlayerViewSizeState.fullScreen
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         youtubePlayerView.frame = rectangularFullYouTubePlayerViewFrame
-        fullYouTubePlayerViewOverlayView.frame = rectangularFullYouTubePlayerViewFrame
+        youTubePlayerViewOverlayView.frame = rectangularFullYouTubePlayerViewFrame
         
         if updateCircularTimeProgressBarTimer == nil {
             updateCircularTimeProgressBarTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateCircularTimeProgressBar) , userInfo: nil, repeats: true)
@@ -113,8 +124,8 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         youtubePlayerView.layer.cornerRadius = 0.0
         
         /* set up youtube player view's overlay view settings */
-        fullYouTubePlayerViewOverlayView.clipsToBounds = true
-        fullYouTubePlayerViewOverlayView.layer.cornerRadius = 0.0
+        youTubePlayerViewOverlayView.clipsToBounds = true
+        youTubePlayerViewOverlayView.layer.cornerRadius = 0.0
         
         /* set up minimized youtube player view's overlay button.
          Make it into circle. */
@@ -158,35 +169,87 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         circularTimeProgressBar.center = minimizedSizeBottomCenterYouTubePlayerCenterPoint
         
         minimizedYouTubePlayerViewOverlayButton.center = minimizedSizeBottomCenterYouTubePlayerCenterPoint
+        
+        view.bringSubview(toFront: youTubePlayerViewOverlayView)
+        view.bringSubview(toFront: minimizeYouTubePlayerViewButton)
     }
     
     /* update UI with scale factor */
     func updateUI(withScale scaleFactor: CGFloat, toState : YouTubePlayerViewSizeState) {
-        // minimizeButton.alpha = 1 - scaleFactor
-        // tableView.alpha = 1 - scaleFactor
-        let scale = CGAffineTransform.init(scaleX: (1 - 0.5 * scaleFactor), y: (1 - 0.5 * scaleFactor))
-        print("updateUI scaleFractor = \(scaleFactor)")
-        let scaledTransform = scale.concatenating(CGAffineTransform.init(translationX: -(fullYouTubePlayerViewOverlayView.bounds.width / 4 * scaleFactor),
-                                                                         y: -(fullYouTubePlayerViewOverlayView.bounds.height / 4 * scaleFactor)))
         
-        print("updateUI translation = \(-(fullYouTubePlayerViewOverlayView.bounds.width / 4 * scaleFactor)), \(-(fullYouTubePlayerViewOverlayView.bounds.height / 4 * scaleFactor)))")
-        // youtubePlayerView.transform = scaledTransform
+        youtubePlayerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_CornerRadius)
+        youtubePlayerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_TransformScale)
         
-        fullYouTubePlayerViewOverlayView.transform = scaledTransform
+        let reverseScaleFactor = 1 - 0.5 * scaleFactor
+        let scale = CGAffineTransform.init(scaleX: reverseScaleFactor, y: reverseScaleFactor)
+        let scaledTransform = scale.concatenating(CGAffineTransform.init(translationX: -(youTubePlayerViewOverlayView.bounds.width / 4 * scaleFactor),
+                                                                         y: -(youTubePlayerViewOverlayView.bounds.height / 4 * scaleFactor)))
         
-        /* from swipeToMinimize */
-        // youtubePlayerView.center.x = screenWidth / 2.0
-        // youtubePlayerView.center.y = positionDuringSwipe(scaleFactor: scaleFactor).y
+        youTubePlayerViewOverlayView.transform = scaledTransform
         
-        // fullYouTubePlayerViewOverlayView.center.x = screenWidth / 2.0
-        // fullYouTubePlayerViewOverlayView.center.y = positionDuringSwipe(scaleFactor: scaleFactor).y
-        fullYouTubePlayerViewOverlayView.frame.origin = positionDuringSwipe(scaleFactor: scaleFactor)
+        youtubePlayerView.layer.transform =  CATransform3DMakeAffineTransform(scaledTransform)
+        youtubePlayerViewCurrentTransformScale = youtubePlayerView.layer.transform
         
-        fullYouTubePlayerViewOverlayView.layer.cornerRadius = scaleFactor * fullYouTubePlayerCornerRadius
+        youTubePlayerViewOverlayView.layer.cornerRadius = scaleFactor * fullYouTubePlayerCornerRadius
+        youtubePlayerView.layer.cornerRadius = scaleFactor * fullYouTubePlayerCornerRadius
         
         // TODO: Need to fix it still.
-        fullYouTubePlayerViewOverlayView.layer.bounds.size.width = screenWidth - ( scaleFactor) * (screenWidth - squareFullYouTubePlayerSize.width)
+        youTubePlayerViewOverlayView.layer.bounds.size.width = screenWidth - scaleFactor * (screenWidth - squareFullYouTubePlayerSize.width)
+        
+        
+        
+        let s = (1 - 0.5 * scaleFactor)
+        
+        let x = (screenWidth / 2.0) - ( youTubePlayerViewOverlayView.layer.bounds.width) / 2.0 * s
+        // + (screenWidth - fullYouTubePlayerViewOverlayView.layer.bounds.width) / 2.0 * s
+        
+        print("scaledWidth = \(youTubePlayerViewOverlayView.bounds.width * (1 ))")
+        
+        youTubePlayerViewOverlayView.frame.origin.x = x
+        youTubePlayerViewOverlayView.frame.origin.y = screenHeight * scaleFactor
+        
+        
+        CATransaction.begin()
+        
+        
+        /* change position to bottom center */
+        let movePositionToBottomCenterAnimation = CABasicAnimation(keyPath: "position")
+        movePositionToBottomCenterAnimation.toValue = youTubePlayerViewOverlayView.center
+        movePositionToBottomCenterAnimation.duration = 0.00001
+        movePositionToBottomCenterAnimation.isRemovedOnCompletion = false
+        movePositionToBottomCenterAnimation.fillMode = kCAFillModeForwards
+        youtubePlayerView.layer.add(movePositionToBottomCenterAnimation, forKey: "movePositionToBottomCenterAnimationInUpdateUI")
+        
+        let squareBoundsSizeWidthAnimation = CABasicAnimation(keyPath: "bounds.size.width")
+        squareBoundsSizeWidthAnimation.toValue = screenWidth - scaleFactor * (screenWidth - squareFullYouTubePlayerSize.width)
+        squareBoundsSizeWidthAnimation.duration = 0.00001
+        squareBoundsSizeWidthAnimation.isRemovedOnCompletion = false
+        squareBoundsSizeWidthAnimation.fillMode = kCAFillModeForwards
+        youtubePlayerView.layer.add(squareBoundsSizeWidthAnimation, forKey: "squareBoundsSizeWidthAnimationInUpdateUI")
+        CATransaction.commit()
+        
+        
+        // youtubePlayerView.layer.frame.size.width = screenWidth - scaleFactor * (screenWidth - squareFullYouTubePlayerSize.width) // glitches!
+        
+        
+        // youtubePlayerView.frame.size.width = screenWidth - scaleFactor * (screenWidth - squareFullYouTubePlayerSize.width) // glitches
+        // youtubePlayerView.bounds.size.width = screenWidth - scaleFactor * (screenWidth - squareFullYouTubePlayerSize.width) // Glitches!
+        
+        // youtubePlayerView.layer.bounds.size.width = screenWidth - scaleFactor * ((screenWidth - squareFullYouTubePlayerSize.width)) // Glitches!
+        
+        print("fullYouTubePlayerViewOverlayView.layer.bounds.size = \(youTubePlayerViewOverlayView.layer.bounds.size)")
+        
+        
+        print("\(scaleFactor) // \(reverseScaleFactor)")
+        
+        /* circularTimeProgressBar won't be visible till scaleFactor reaches 0.3 */
+        circularTimeProgressBar.isHidden = false
+        let scaledAlpha = 1.4 * scaleFactor - 0.4 // (1.0 / 0.7 * (scaleFactor - 1.0)) + 1.0
+        print("scaledAlpha = \(scaledAlpha)")
+        circularTimeProgressBar.alpha = scaleFactor < 0.3 ? 0.0 : scaledAlpha
+        
     }
+    
     
     
     func updateCircularTimeProgressBar () {
@@ -208,31 +271,65 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             self.isChangingYouTubePlayerViewSize = false
             self.startYouTubePlayerViewSpinningAnimation()
             self.youtubePlayerViewSizeState = YouTubePlayerViewSizeState.minimized
+            self.youtubePlayerViewCurrentCornerRadius = fullYouTubePlayerCornerRadius
+            self.overlayViewCurrentCornerRadius = minimizedYouTubePlayerCornerRadius
+            
+            self.youtubePlayerViewCurrentTransformScale = minimizedYouTubePlayerViewTransformScale
+            self.youtubePlayerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_TransformScale)
+            self.youtubePlayerView.layer.transform = minimizedYouTubePlayerViewTransformScale
+            
+            self.youtubePlayerView.layer.position = minimizedSizeBottomCenterYouTubePlayerCenterPoint
+            self.youtubePlayerView.layer.cornerRadius = fullYouTubePlayerCornerRadius
+            self.youTubePlayerViewOverlayView.layer.cornerRadius = minimizedYouTubePlayerCornerRadius
+            // self.youtubePlayerView.layer.bounds.size.width = squareFullYouTubePlayerSize.width
+            // self.youtubePlayerView.layer.bounds.size.height = squareFullYouTubePlayerSize.height
+            
+            self.youTubePlayerViewOverlayView.frame = minimizedSizeBottomCenterYouTubePlayerFrame
+            print("overlayView.frame = \(self.youTubePlayerViewOverlayView.frame)")
+            print("expected = \(minimizedSizeBottomCenterYouTubePlayerFrame)")
         }
+        
+        youtubePlayerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_TransformScale)
         
         /* transformScaleAnimation - shrink size animation */
         let transformScaleAnimation = CABasicAnimation(keyPath: "transform")
-        transformScaleAnimation.toValue = CATransform3DScale(CATransform3DIdentity, 0.5, 0.5, 1.0)
+        transformScaleAnimation.fromValue = youtubePlayerViewCurrentTransformScale
+        transformScaleAnimation.toValue = minimizedYouTubePlayerViewTransformScale
         transformScaleAnimation.duration = changeSizeAnimationDuration
         transformScaleAnimation.isRemovedOnCompletion = false
         transformScaleAnimation.fillMode = kCAFillModeForwards
-        youtubePlayerView.layer.add(transformScaleAnimation, forKey: "transformScaleAnimation1")
+        transformScaleAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        youtubePlayerView.layer.add(transformScaleAnimation, forKey: YouTubePlayerViewAnimation_TransformScale)
         
         /* change position to bottom center */
         let movePositionToBottomCenterAnimation = CABasicAnimation(keyPath: "position")
+        movePositionToBottomCenterAnimation.fromValue = youTubePlayerViewOverlayView.center // from wherever the current position is since the player view moves exactly the same as the overlay view.
         movePositionToBottomCenterAnimation.toValue = minimizedSizeBottomCenterYouTubePlayerCenterPoint
         movePositionToBottomCenterAnimation.duration = changeSizeAnimationDuration
         movePositionToBottomCenterAnimation.isRemovedOnCompletion = false
         movePositionToBottomCenterAnimation.fillMode = kCAFillModeForwards
-        youtubePlayerView.layer.add(movePositionToBottomCenterAnimation, forKey: "movePositionToBottomCenterAnimation")
+        movePositionToBottomCenterAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        youtubePlayerView.layer.add(movePositionToBottomCenterAnimation, forKey: YouTubePlayerViewAnimation_Position)
         
-        /* cornerRadius to make shape into circular */
-        let cornerRadiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
-        cornerRadiusAnimation.toValue = fullYouTubePlayerCornerRadius
-        cornerRadiusAnimation.duration = changeSizeAnimationDuration
-        cornerRadiusAnimation.isRemovedOnCompletion = false
-        cornerRadiusAnimation.fillMode = kCAFillModeForwards
-        youtubePlayerView.layer.add(cornerRadiusAnimation, forKey: "cornerRadius")
+        /* cornerRadius to make youtube player view shape into circular */
+        let youtubePlayerViewCornerRadiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
+        youtubePlayerViewCornerRadiusAnimation.fromValue = youtubePlayerViewCurrentCornerRadius
+        youtubePlayerViewCornerRadiusAnimation.toValue = fullYouTubePlayerCornerRadius
+        youtubePlayerViewCornerRadiusAnimation.duration = changeSizeAnimationDuration
+        // youtubePlayerViewCornerRadiusAnimation.isRemovedOnCompletion = false
+        // youtubePlayerViewCornerRadiusAnimation.fillMode = kCAFillModeForwards
+        youtubePlayerViewCornerRadiusAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        youtubePlayerView.layer.add(youtubePlayerViewCornerRadiusAnimation, forKey: YouTubePlayerViewAnimation_CornerRadius)
+        
+        /* cornerRadius to make overlay view shape into circular */
+        let overlayViewCornerRadiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
+        overlayViewCornerRadiusAnimation.toValue = minimizedYouTubePlayerCornerRadius
+        overlayViewCornerRadiusAnimation.duration = changeSizeAnimationDuration
+        // overlayViewCornerRadiusAnimation.isRemovedOnCompletion = false
+        // overlayViewCornerRadiusAnimation.fillMode = kCAFillModeForwards
+        overlayViewCornerRadiusAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        youTubePlayerViewOverlayView.layer.add(overlayViewCornerRadiusAnimation, forKey: MinimizeYouTubePlayerOverlayViewAnimation_CornerRadius)
+        
         
         /* squraeBoundsAnimation - make size into square to make it into perfect circle.
          If I don't change the size to a square, then the shape will be changed into an oval. */
@@ -241,7 +338,9 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         squareBoundsSizeWidthAnimation.duration = changeSizeAnimationDuration
         squareBoundsSizeWidthAnimation.isRemovedOnCompletion = false
         squareBoundsSizeWidthAnimation.fillMode = kCAFillModeForwards
-        youtubePlayerView.layer.add(squareBoundsSizeWidthAnimation, forKey: "squareBoundsSizeWidthAnimation")
+        squareBoundsSizeWidthAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        youtubePlayerView.layer.add(squareBoundsSizeWidthAnimation,
+                                    forKey: YouTubePlayerViewAnimation_BoundsSizeWidth)
         
         /* squraeBoundsAnimation - make size into square to make it into perfect circle.
          If I don't change the size to a square, then the shape will be changed into an oval. */
@@ -250,7 +349,8 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         squareBoundsSizeHeightAnimation.duration = changeSizeAnimationDuration
         squareBoundsSizeHeightAnimation.isRemovedOnCompletion = false
         squareBoundsSizeHeightAnimation.fillMode = kCAFillModeForwards
-        youtubePlayerView.layer.add(squareBoundsSizeHeightAnimation, forKey: "squareBoundsSizeHeightAnimation")
+        squareBoundsSizeWidthAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        youtubePlayerView.layer.add(squareBoundsSizeHeightAnimation, forKey: YouTubePlayerViewAnimation_BoundsSizeHeight)
         
         /* keep youtube video at horizontal center */
         let keepYouTubeInHorizontalCenterAnimation = CABasicAnimation(keyPath: "bounds.origin.x")
@@ -258,7 +358,8 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         keepYouTubeInHorizontalCenterAnimation.duration = changeSizeAnimationDuration
         keepYouTubeInHorizontalCenterAnimation.isRemovedOnCompletion = false
         keepYouTubeInHorizontalCenterAnimation.fillMode = kCAFillModeForwards
-        youtubePlayerView.layer.add(keepYouTubeInHorizontalCenterAnimation, forKey: "keepInHorizontalCenter")
+        keepYouTubeInHorizontalCenterAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        youtubePlayerView.layer.add(keepYouTubeInHorizontalCenterAnimation, forKey: YouTubePlayerViewAnimation_BoundsOriginX)
         
         /* keep youtube video at vertical center */
         let keepYouTubeInVerticalCenterAnimation = CABasicAnimation(keyPath: "bounds.origin.y")
@@ -266,11 +367,22 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         keepYouTubeInVerticalCenterAnimation.duration = changeSizeAnimationDuration
         keepYouTubeInVerticalCenterAnimation.isRemovedOnCompletion = false
         keepYouTubeInVerticalCenterAnimation.fillMode = kCAFillModeForwards
-        youtubePlayerView.layer.add(keepYouTubeInVerticalCenterAnimation, forKey: "keepInVerticalCenter")
+        keepYouTubeInVerticalCenterAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        youtubePlayerView.layer.add(keepYouTubeInVerticalCenterAnimation, forKey: YouTubePlayerViewAnimation_BoundsOriginY)
         
         isChangingYouTubePlayerViewSize = true
         
         CATransaction.commit()
+        
+        
+        /* animate fullYouTubePlayerViewOverlayView */
+        UIView.animate(withDuration: changeSizeAnimationDuration,
+                       delay: 0.0,
+                       options: UIViewAnimationOptions.curveEaseOut ,
+                       animations: {
+                        self.youTubePlayerViewOverlayView.frame = minimizedSizeBottomCenterYouTubePlayerFrame
+                        self.circularTimeProgressBar.alpha = 1.0
+        }) { (completed : Bool) in }
         
     }
     
@@ -282,6 +394,8 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             return
         }
         
+        /* remove previous animations */
+        
         // minimizedYouTubePlayerViewOverlayButton.isHidden = true
         
         CATransaction.begin()
@@ -290,16 +404,31 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             self.updateUI()
             self.isChangingYouTubePlayerViewSize = false
             self.youtubePlayerViewSizeState = YouTubePlayerViewSizeState.fullScreen
+            self.youtubePlayerView.layer.cornerRadius = 0.0
+            self.youtubePlayerViewCurrentCornerRadius = 0.0
+            self.youTubePlayerViewOverlayView.layer.cornerRadius = 0.0
+            self.overlayViewCurrentCornerRadius = 0.0
+            self.youtubePlayerViewCurrentTransformScale = maximizedYouTubePlayerViewTransformScale
+            self.youtubePlayerView.layer.transform = maximizedYouTubePlayerViewTransformScale
+            self.stopYouTubePlayerViewSpinningAnimation()
         }
         
+        youtubePlayerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_TransformScale)
+        youtubePlayerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_CornerRadius)
+        
         /* transformScaleAnimation */
+        // youtubePlayerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_TransformScale)
+        
         let transformScaleAnimation = CABasicAnimation(keyPath: "transform")
-        transformScaleAnimation.fromValue = CATransform3DScale(CATransform3DIdentity, 0.5, 0.5, 1.0)
-        transformScaleAnimation.toValue = CATransform3DScale(CATransform3DIdentity, 1.0, 1.0, 1.0)
+        transformScaleAnimation.fromValue = youtubePlayerViewCurrentTransformScale
+        // minimizedYouTubePlayerViewTransformScale
+        
+        transformScaleAnimation.toValue = maximizedYouTubePlayerViewTransformScale
         transformScaleAnimation.duration = changeSizeAnimationDuration
-        transformScaleAnimation.isRemovedOnCompletion = false
-        transformScaleAnimation.fillMode = kCAFillModeForwards
-        youtubePlayerView.layer.add(transformScaleAnimation, forKey: "transformScaleAnimation2")
+        // transformScaleAnimation.isRemovedOnCompletion = false
+        // transformScaleAnimation.fillMode = kCAFillModeForwards
+        transformScaleAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        youtubePlayerView.layer.add(transformScaleAnimation, forKey: MaximizeYouTubePlayerViewAnimation_TransformScale)
         
         /* change position to top center */
         let movePositionToTopCenterAnimation = CABasicAnimation(keyPath: "position")
@@ -307,16 +436,28 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         movePositionToTopCenterAnimation.duration = changeSizeAnimationDuration
         movePositionToTopCenterAnimation.isRemovedOnCompletion = false
         movePositionToTopCenterAnimation.fillMode = kCAFillModeForwards
-        youtubePlayerView.layer.add(movePositionToTopCenterAnimation, forKey: "movePositionToTopCenterAnimation")
+        movePositionToTopCenterAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        youtubePlayerView.layer.add(movePositionToTopCenterAnimation, forKey: MaximizeYouTubePlayerViewAnimation_TopCenterPosition)
         
-        /* cornerRadius */
-        let cornerRadiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
-        cornerRadiusAnimation.fromValue = fullYouTubePlayerCornerRadius
-        cornerRadiusAnimation.toValue = 0.0
-        cornerRadiusAnimation.duration = changeSizeAnimationDuration
-        cornerRadiusAnimation.isRemovedOnCompletion = false
-        cornerRadiusAnimation.fillMode = kCAFillModeForwards
-        youtubePlayerView.layer.add(cornerRadiusAnimation, forKey: "cornerRadius")
+        /* cornerRadius for youtubePlayerView */
+        let youtubePlayerViewCornerRadiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
+        youtubePlayerViewCornerRadiusAnimation.fromValue = youtubePlayerViewCurrentCornerRadius
+        youtubePlayerViewCornerRadiusAnimation.toValue = 0.0
+        youtubePlayerViewCornerRadiusAnimation.duration = changeSizeAnimationDuration
+        // youtubePlayerViewCornerRadiusAnimation.isRemovedOnCompletion = false
+        // youtubePlayerViewCornerRadiusAnimation.fillMode = kCAFillModeForwards
+        youtubePlayerViewCornerRadiusAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        youtubePlayerView.layer.add(youtubePlayerViewCornerRadiusAnimation, forKey: "cornerRadius")
+        
+        /* cornerRadius for overlayView */
+        let overlayViewCornerRadiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
+        overlayViewCornerRadiusAnimation.fromValue = overlayViewCurrentCornerRadius
+        overlayViewCornerRadiusAnimation.toValue = 0.0
+        overlayViewCornerRadiusAnimation.duration = changeSizeAnimationDuration
+        // overlayViewCornerRadiusAnimation.isRemovedOnCompletion = false
+        // overlayViewCornerRadiusAnimation.fillMode = kCAFillModeForwards
+        overlayViewCornerRadiusAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        youTubePlayerViewOverlayView.layer.add(overlayViewCornerRadiusAnimation, forKey: "cornerRadius")
         
         /* horizontal rectuangular boundsAnimation */
         let rectangularBoundsSizeWidthAnimation = CABasicAnimation(keyPath: "bounds.size.width")
@@ -325,6 +466,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         rectangularBoundsSizeWidthAnimation.duration = changeSizeAnimationDuration
         rectangularBoundsSizeWidthAnimation.isRemovedOnCompletion = false
         rectangularBoundsSizeWidthAnimation.fillMode = kCAFillModeForwards
+        rectangularBoundsSizeWidthAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         youtubePlayerView.layer.add(rectangularBoundsSizeWidthAnimation,
                                     forKey: "squareBoundsSizeWidthAnimation")
         
@@ -335,6 +477,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         rectangularBoundsSizeHeightAnimation.duration = changeSizeAnimationDuration
         rectangularBoundsSizeHeightAnimation.isRemovedOnCompletion = false
         rectangularBoundsSizeHeightAnimation.fillMode = kCAFillModeForwards
+        rectangularBoundsSizeWidthAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         youtubePlayerView.layer.add(rectangularBoundsSizeHeightAnimation,
                                     forKey: "squareBoundsSizeHeightAnimation")
         
@@ -345,10 +488,21 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         keepYouTubeInCenterAnimation.duration = changeSizeAnimationDuration
         keepYouTubeInCenterAnimation.isRemovedOnCompletion = false
         keepYouTubeInCenterAnimation.fillMode = kCAFillModeForwards
+        keepYouTubeInCenterAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         youtubePlayerView.layer.add(keepYouTubeInCenterAnimation, forKey: "keepInCenter")
         
         CATransaction.commit()
         self.isChangingYouTubePlayerViewSize = true
+        
+        /* animate fullYouTubePlayerViewOverlayView and circularTimeProgressBar */
+        
+        UIView.animate(withDuration: changeSizeAnimationDuration, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.youTubePlayerViewOverlayView.frame = rectangularFullYouTubePlayerViewFrame
+            self.circularTimeProgressBar.alpha = 0.0
+        }) { (completed : Bool) in
+            self.circularTimeProgressBar.isHidden = true
+        }
+        
     }
     
     /* spins youtube player view is currently playing. */
@@ -365,6 +519,10 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         spinningAnimation.speed = minimizedYouTubePlayerViewRotationSpeed
         spinningAnimation.isCumulative = true
         youtubePlayerView.layer.add(spinningAnimation, forKey: "spinningAnimation")
+    }
+    
+    func stopYouTubePlayerViewSpinningAnimation () {
+        youtubePlayerView.layer.removeAnimation(forKey: "spinningAnimation")
     }
     
     
@@ -429,9 +587,13 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         /* animate circular time progress bar */
         circularTimeProgressBar.alpha = 0.0
         circularTimeProgressBar.isHidden = false
-        UIView.animate(withDuration: 0.5) {
-            self.circularTimeProgressBar.alpha = 1.0
-        }
+        
+        UIView.animate(withDuration: changeSizeAnimationDuration * 0.5,
+                       delay: changeSizeAnimationDuration * 0.5,
+                       options: UIViewAnimationOptions.curveEaseOut,
+                       animations: {
+                        self.circularTimeProgressBar.alpha = 1.0
+        }) { (completed : Bool) in }
         
         /* animate youtube player view */
         minimizeYouTubePlayerViewAnimation()
@@ -440,12 +602,15 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     /* user taps this button to maximize youtube player view and stop spinning. */
     @IBAction func maximizeYouTubePlayerViewButtonTapped(_ sender: UIButton)
     {
-        
+        /* Animate circular progress bar to hide */
         circularTimeProgressBar.alpha = 1.0
         circularTimeProgressBar.isHidden = false
-        UIView.animate(withDuration: 0.5) {
-            self.circularTimeProgressBar.alpha = 0.0
-        }
+        UIView.animate(withDuration: changeSizeAnimationDuration * 0.5,
+                       delay: changeSizeAnimationDuration * 0.5,
+                       options: UIViewAnimationOptions.curveEaseOut,
+                       animations: {
+                        self.circularTimeProgressBar.alpha = 0.0
+        }) { (completed : Bool) in self.circularTimeProgressBar.isHidden = true }
         
         maximizeYouTubePlayerViewAnimation()
         
@@ -490,14 +655,27 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     
     // MARK: UIGestureRecognizer handling functions
     /*
-     Reduce size of youtube player view as user swipes the youtube player view to the bottom.
+     Reduce size of youtube player view as user pans the youtube player view to the bottom.
      */
     @IBAction func handleMinimizingGestureRecognizer(_ sender: UIPanGestureRecognizer)
     {
         if sender.state == .began {
             let velocity = sender.velocity(in: nil)
-            
+            print("velocity = \(velocity)")
+            if velocity.y > 0
+            {
+                /* downwards swipe */
+                youtubePlayerOverlayViewPanGestureDirection = YouTubePlayerViewOverlayDirection.down
+            }
+            else
+            {
+                /* upwards swipe */
+                youtubePlayerOverlayViewPanGestureDirection = YouTubePlayerViewOverlayDirection.up
+            }
+            isUserPanningYoutubePlayerOverlayView = true
         }
+        
+        stopYouTubePlayerViewSpinningAnimation()
         
         var finalState = YouTubePlayerViewSizeState.fullScreen
         switch youtubePlayerViewSizeState
@@ -519,42 +697,37 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         
         if sender.state == .ended
         {
-            /*
             youtubePlayerViewSizeState = finalState
-            animate()
-            didEndedSwipe(toState: youtubePlayerViewSizeState)
-            if youtubePlayerViewSizeState == .hidden {
-                // self.videoPlayer.pause()
+            
+            /*
+             animate()
+             didEndedSwipe(toState: youtubePlayerViewSizeState)
+             if youtubePlayerViewSizeState == .hidden {
+             // self.videoPlayer.pause()
+             }
+             */
+            isUserPanningYoutubePlayerOverlayView = false
+            if youtubePlayerOverlayViewPanGestureDirection == YouTubePlayerViewOverlayDirection.down {
+                minimizeYouTubePlayerViewAnimation()
+            } else {
+                maximizeYouTubePlayerViewAnimation()
             }
-            */
         }
         
     }
     
-    func animate()  {
-        switch youtubePlayerViewSizeState {
-        case .fullScreen:
-            UIView.animate(withDuration: 0.3, animations: {
-                /*
-                 self.minimizeButton.alpha = 1
-                 self.tableView.alpha = 1
-                 */
-                self.youtubePlayerView.transform = CGAffineTransform.identity
-                UIApplication.shared.isStatusBarHidden = true
-            })
-        case .minimized:
-            UIView.animate(withDuration: 0.3, animations: {
-                // UIApplication.shared.isStatusBarHidden = false
-                // self.minimizeButton.alpha = 0
-                // self.tableView.alpha = 0
-                let scale = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
-                let trasform = scale.concatenating(CGAffineTransform.init(translationX: -self.youtubePlayerView.bounds.width/4,
-                                                                          y: -self.youtubePlayerView.bounds.height/4))
-                self.youtubePlayerView.transform = trasform
-            })
-        default: break
+    /* Whenever a user likes a video, 
+     overlay view like???
+     
+     */
+    @IBAction func handleDoubleTapGestureRecognizerOnYouTubePlayerView(_ sender: UITapGestureRecognizer)
+    {
+        if  sender.view == youTubePlayerViewOverlayView
+        {
+            
         }
     }
+    
     
     func didEndedSwipe(toState: YouTubePlayerViewSizeState){
         self.animatePlayView(toState: toState)

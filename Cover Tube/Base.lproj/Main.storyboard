@@ -53,13 +53,14 @@
                                 <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="0.30298343120805371" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="play_icon_white"/>
                             </button>
-                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L52-z0-ylg">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L52-z0-ylg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="0.27705536912751677" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="xN7-Ts-Meo" appends="YES" id="HUD-X4-eX8"/>
+                                    <outletCollection property="gestureRecognizers" destination="6Ou-7p-B2c" appends="YES" id="WUh-za-AiG"/>
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxD-m9-hdK">
@@ -93,9 +94,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="fullYouTubePlayerViewOverlayView" destination="L52-z0-ylg" id="Irm-Gl-26U"/>
                         <outlet property="minimizeYouTubePlayerViewButton" destination="yxD-m9-hdK" id="sel-B6-mBh"/>
                         <outlet property="minimizedYouTubePlayerViewOverlayButton" destination="Nx5-G3-eug" id="xkI-lz-J8F"/>
+                        <outlet property="youTubePlayerViewOverlayView" destination="L52-z0-ylg" id="D3H-g5-FCN"/>
                         <outlet property="youtubePlayerView" destination="aEI-bQ-1Z0" id="Mbt-99-GFy"/>
                     </connections>
                 </viewController>
@@ -106,6 +107,11 @@
                         <outlet property="delegate" destination="Snp-cN-62d" id="vyB-qe-JlA"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="6Ou-7p-B2c">
+                    <connections>
+                        <action selector="handleDoubleTapGestureRecognizerOnYouTubePlayerView:" destination="Snp-cN-62d" id="jVm-fy-nTJ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1248.8" y="259.52023988005999"/>
         </scene>
