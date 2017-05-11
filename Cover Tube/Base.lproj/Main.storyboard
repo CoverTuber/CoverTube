@@ -47,16 +47,48 @@
                                     <constraint firstAttribute="width" secondItem="aEI-bQ-1Z0" secondAttribute="height" multiplier="375:233" id="dBQ-Pe-ARA"/>
                                 </constraints>
                             </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mac-t2-MPe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="curr" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D3d-6H-7EK">
+                                        <rect key="frame" x="10" y="202" width="42" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="42" id="NKO-hI-pjj"/>
+                                            <constraint firstAttribute="height" constant="21" id="SWo-d2-Jp6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="curr" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YSP-N0-xRU">
+                                        <rect key="frame" x="323" y="202" width="42" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="PBO-c8-bfH"/>
+                                            <constraint firstAttribute="width" constant="42" id="q2d-CE-F2s"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="D3d-6H-7EK" firstAttribute="leading" secondItem="Mac-t2-MPe" secondAttribute="leading" constant="10" id="4BW-JE-VQw"/>
+                                    <constraint firstAttribute="bottom" secondItem="D3d-6H-7EK" secondAttribute="bottom" constant="10" id="5nn-Da-ijR"/>
+                                    <constraint firstAttribute="trailing" secondItem="YSP-N0-xRU" secondAttribute="trailing" constant="10" id="Tsl-D4-vxm"/>
+                                    <constraint firstAttribute="bottom" secondItem="YSP-N0-xRU" secondAttribute="bottom" constant="10" id="gBx-6w-qn0"/>
+                                </constraints>
+                            </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANZ-S0-0ML">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="0.30298343120805371" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="play_icon_white"/>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L52-z0-ylg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="0.27705536912751677" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="xN7-Ts-Meo" appends="YES" id="HUD-X4-eX8"/>
@@ -86,7 +118,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Mac-t2-MPe" firstAttribute="top" secondItem="He9-qw-xo2" secondAttribute="top" id="Fzr-NW-051"/>
                             <constraint firstAttribute="trailing" secondItem="aEI-bQ-1Z0" secondAttribute="trailing" id="Gpj-GW-ZPg"/>
+                            <constraint firstItem="Mac-t2-MPe" firstAttribute="leading" secondItem="He9-qw-xo2" secondAttribute="leading" id="IMl-Qu-j7q"/>
                             <constraint firstItem="aEI-bQ-1Z0" firstAttribute="leading" secondItem="He9-qw-xo2" secondAttribute="leading" id="NMU-no-RSH"/>
                             <constraint firstItem="aEI-bQ-1Z0" firstAttribute="top" secondItem="He9-qw-xo2" secondAttribute="top" id="c2g-1x-WDX"/>
                             <constraint firstItem="yxD-m9-hdK" firstAttribute="top" secondItem="He9-qw-xo2" secondAttribute="top" constant="8" id="d5B-uL-LQB"/>
@@ -94,10 +128,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentTimeLabel" destination="D3d-6H-7EK" id="DRs-ym-3VL"/>
+                        <outlet property="durationLabel" destination="YSP-N0-xRU" id="KIv-b0-DIc"/>
                         <outlet property="minimizeYouTubePlayerViewButton" destination="yxD-m9-hdK" id="sel-B6-mBh"/>
                         <outlet property="minimizedYouTubePlayerViewOverlayButton" destination="Nx5-G3-eug" id="xkI-lz-J8F"/>
-                        <outlet property="youTubePlayerViewOverlayView" destination="L52-z0-ylg" id="D3H-g5-FCN"/>
-                        <outlet property="youtubePlayerView" destination="aEI-bQ-1Z0" id="Mbt-99-GFy"/>
+                        <outlet property="playerOverlayView" destination="Mac-t2-MPe" id="63Q-E1-JXz"/>
+                        <outlet property="playerView" destination="aEI-bQ-1Z0" id="xiV-s6-UyQ"/>
+                        <outlet property="playerViewGestureHandlerView" destination="L52-z0-ylg" id="Q7I-rN-UN3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJd-5E-46E" userLabel="First Responder" sceneMemberID="firstResponder"/>
