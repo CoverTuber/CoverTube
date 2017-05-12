@@ -174,6 +174,11 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         circularTimeProgressBar.backgroundColor = UIColor.clear
         circularTimeProgressBar.titleLabel.isHidden = true
         circularTimeProgressBar.isUserInteractionEnabled = false
+        
+        currentTimeLabel.frame = CGRect(x: 10.0, y: playerOverlayView.frame.size.height - 21.0 - 30.0,
+                                        width: 42, height: 21)
+        durationLabel.frame = CGRect(x: screenWidth - 10.0 - 42.0, y: playerOverlayView.frame.size.height - 21.0 - 30.0, width: 42.0, height: 21.0)
+
     }
     
     /*
@@ -181,6 +186,11 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
      Called whenever states, settings change.
      */
     func updateUI () {
+        
+        currentTimeLabel.frame = CGRect(x: 10.0, y: playerOverlayView.frame.size.height - 21.0 - 25.0,
+                                        width: 42, height: 21)
+        durationLabel.frame = CGRect(x: screenWidth - 10.0 - 42.0, y: playerOverlayView.frame.size.height - 21.0 - 25.0, width: 42.0, height: 21.0)
+        
         minimizedYouTubePlayerViewOverlayButton.isHidden = !isYouTubePlayerViewMinimized
         minimizeYouTubePlayerViewButton.isHidden = isYouTubePlayerViewMinimized
         
@@ -292,8 +302,8 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     /* called repeatedly via updateVideoTimeInfoTimer. Updates the time passed of video */
     func updateVideoTimeInfo ()
     {
-        currentTimeLabel.text = playerView.getCurrentTimeString()
-        durationLabel.text = playerView.getDurationString()
+        currentTimeLabel.text = playerView.getCurrentTimeFormattedString()
+        durationLabel.text = playerView.getDurationFormattedString()
         linearTimeProgressBar.setValue(playerView.getTimePercentage(), animated: true)
         circularTimeProgressBar.setValue(playerView.getTimePercentage(), animated: true)
     }
