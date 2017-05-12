@@ -68,15 +68,13 @@
                                         <color key="shadowColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Heart_Red_Emoji" translatesAutoresizingMaskIntoConstraints="NO" id="e0I-ax-XYo">
+                                        <rect key="frame" x="129" y="52" width="125" height="125"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="0.0" colorSpace="calibratedRGB"/>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANZ-S0-0ML">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="play_icon_white"/>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L52-z0-ylg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -122,6 +120,7 @@
                     <connections>
                         <outlet property="currentTimeLabel" destination="D3d-6H-7EK" id="DRs-ym-3VL"/>
                         <outlet property="durationLabel" destination="YSP-N0-xRU" id="KIv-b0-DIc"/>
+                        <outlet property="likeImageView" destination="e0I-ax-XYo" id="xU0-Go-LVO"/>
                         <outlet property="minimizeYouTubePlayerViewButton" destination="yxD-m9-hdK" id="sel-B6-mBh"/>
                         <outlet property="minimizedYouTubePlayerViewOverlayButton" destination="Nx5-G3-eug" id="xkI-lz-J8F"/>
                         <outlet property="playerOverlayView" destination="Mac-t2-MPe" id="63Q-E1-JXz"/>
@@ -146,6 +145,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="play_icon_white" width="256" height="256"/>
+        <image name="Heart_Red_Emoji" width="500" height="500"/>
     </resources>
 </document>

@@ -22,6 +22,8 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     /* Player view's overlay view to display buttons, info on top of player view */
     @IBOutlet weak var playerOverlayView: UIView!
     
+    @IBOutlet weak var likeImageView: UIImageView!
+    
     /* UIView on top of youtube player view to handle pan gesture recognizer since it doesn't handle any user interaction. This handles them instead. */
     @IBOutlet weak var playerViewGestureHandlerView: UIView!
     
@@ -76,6 +78,8 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        likeImageView.isHidden = true
         
         didAutoplayPreviously = false
         
@@ -793,7 +797,24 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     {
         if  sender.view == playerViewGestureHandlerView
         {
+            likeImageView.frame = CGRect(x: screenWidth/2.0 - 125.0 / 2.0,
+                                         y: rectangularFullYouTubePlayerViewFrame.size.height / 2.0 - 125.0 / 2.0,
+                                         width: 125.0, height: 125.0)
             
+            likeImageView.alpha = 1.0
+            likeImageView.isHidden = false
+            UIView.animate(withDuration: 2.0, delay: 0.0,
+                           options: UIViewAnimationOptions.curveEaseInOut,
+                           animations: {
+                self.likeImageView.center = CGPoint(x: screenWidth / 2.0,
+                                                    y: rectangularFullYouTubePlayerViewFrame.size.height)
+                        self.likeImageView.frame = CGRect(x: screenWidth/2.0 - 250.0 / 2.0,
+                                                         y: rectangularFullYouTubePlayerViewFrame.size.height / 2.0 - 250.0 / 2.0,
+                                                         width: 250.0, height: 250.0)
+                self.likeImageView.alpha = 0.0
+            }, completion: { (completed : Bool) in
+                self.likeImageView.isHidden = true
+            })
         }
     }
     
