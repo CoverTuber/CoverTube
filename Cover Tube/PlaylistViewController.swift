@@ -623,6 +623,11 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         pauseLayerAnimation(layer: playerView.layer)
     }
     
+    /* resume playerView spinning animation */
+    func resumePlayerViewSpinningAnimation () {
+        resumeLayerAnimation(layer: playerView.layer)
+    }
+    
     
     /*
      // MARK: - Navigation
@@ -881,7 +886,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             if isPlayerViewMinimized // minimized
             {
                 minimizedPlayerViewOverlayButton.isSelected = false
-                // startPlayerViewSpinningAnimation()
+                resumePlayerViewSpinningAnimation ()
             }
             else // full size
             {

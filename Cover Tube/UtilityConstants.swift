@@ -180,9 +180,22 @@ func timeString (seconds : Int) -> String {
 }
 
 
-/* paused layer's animation animation */
+/*
+ Learned from: https://stackoverflow.com/questions/15789986/pause-and-resume-cabasicanimation-for-loading-screen
+ */
+/* paused layer's animation */
 func pauseLayerAnimation (layer : CALayer) {
     let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
     layer.speed = 0.0
     layer.timeOffset = pausedTime
+}
+
+/* resume layer's animation */
+func resumeLayerAnimation ( layer : CALayer) {
+    let pausedTime = layer.timeOffset
+    layer.speed = 1.0
+    layer.timeOffset = 0.0
+    layer.beginTime = 0.0
+    let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+    layer.beginTime = timeSincePause
 }
