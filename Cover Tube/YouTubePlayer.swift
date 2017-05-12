@@ -204,8 +204,63 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
         }
     }
     
+    open func getDurationInSecondsString () -> String? {
+        if let durationTimeStr = getDurationString() {
+            let secondsString = durationTimeStr.components(separatedBy: ".")[0]
+            return secondsString
+        } else {
+            return nil
+        }
+    }
+    
+    /*
+     get the duration of the video in seconds. 
+     0 if cannot get duration (e.g. when video is not loaded yet)
+     */
+    open func getDurationTimeInSeconds () -> Int {
+        if let durationTimeSecondsStr = getDurationInSecondsString() {
+            return (durationTimeSecondsStr as NSString).integerValue
+        }else {
+            return 0
+        }
+    }
+    
+    /*
+     returns duration in hh:mm:ss format
+     */
+    open func getDurationFormattedString () -> String {
+        return timeString(seconds: getDurationTimeInSeconds())
+    }
+    
+    /*
+     returns current time in hh:mm:ss format
+     */
+    open func getCurrentTimeFormattedString () -> String {
+        return timeString(seconds: getCurrentTimeInSeconds())
+    }
+    
     open func getCurrentTimeString() -> String? {
         return evaluatePlayerCommand("getCurrentTime()")
+    }
+    
+    open func getCurrentTimeInSecondsString() -> String? {
+        if let currentTimeStr = getCurrentTimeString()
+        {
+            let secondsString = currentTimeStr.components(separatedBy: ".")[0]
+            return secondsString
+        }
+        else {
+            return nil
+        }
+    }
+    
+    open func getCurrentTimeInSeconds () -> Int {
+        let currentTimeSecondsStr = getCurrentTimeInSecondsString()
+        if currentTimeSecondsStr == nil || currentTimeSecondsStr?.characters.count == 0 {
+            return 0
+        } else {
+            return (currentTimeSecondsStr! as NSString).integerValue
+        }
     }
     
     /* gets current time of youtube video */
