@@ -178,3 +178,11 @@ func timeString (seconds : Int) -> String {
         return "\(timeText(h)):\(timeText(m)):\(timeText(s))"
     }
 }
+
+
+/* paused layer's animation animation */
+func pauseLayerAnimation (layer : CALayer) {
+    let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
+    layer.speed = 0.0
+    layer.timeOffset = pausedTime
+}

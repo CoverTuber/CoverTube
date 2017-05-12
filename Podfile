@@ -4,5 +4,6 @@ target 'Cover Tube' do
         pod "YoutubeEngine"
 	pod 'CircularSpinner'
 	pod 'SwiftMessages'
+	pod "UXMVolumeOverlay"
 end
 

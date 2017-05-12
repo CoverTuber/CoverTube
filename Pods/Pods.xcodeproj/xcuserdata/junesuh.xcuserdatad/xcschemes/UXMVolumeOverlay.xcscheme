@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'ECFDBA85E02203AE1027DACD965971FE'
-               BlueprintName = 'SwiftyJSON'
+               BlueprintIdentifier = '868B499C37461C23DCF2B986D8E75765'
+               BlueprintName = 'UXMVolumeOverlay'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SwiftyJSON.framework'>
+               BuildableName = 'UXMVolumeOverlay.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

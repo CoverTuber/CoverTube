@@ -78,11 +78,12 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L52-z0-ylg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="xN7-Ts-Meo" appends="YES" id="HUD-X4-eX8"/>
                                     <outletCollection property="gestureRecognizers" destination="6Ou-7p-B2c" appends="YES" id="WUh-za-AiG"/>
+                                    <outletCollection property="gestureRecognizers" destination="laA-ke-g5e" appends="YES" id="QMh-Ax-itb"/>
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxD-m9-hdK">
@@ -94,15 +95,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="▼"/>
                                 <connections>
-                                    <action selector="minimizeYouTubePlayerViewButtonTapped:" destination="Snp-cN-62d" eventType="touchUpInside" id="RYg-jx-y4H"/>
+                                    <action selector="minimizeYouTubePlayerViewButtonTapped:" destination="Snp-cN-62d" eventType="touchUpInside" id="Vkd-7K-gR5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nx5-G3-eug">
-                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nx5-G3-eug">
+                                <rect key="frame" x="150" y="572" width="75" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.34999999999999998" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="play_icon_white_half"/>
+                                <state key="selected" image="Pause"/>
                                 <connections>
-                                    <action selector="maximizeYouTubePlayerViewButtonTapped:" destination="Snp-cN-62d" eventType="touchUpInside" id="Pyv-tw-JDR"/>
+                                    <action selector="minimizedPlayerOverlayViewTapped:" destination="Snp-cN-62d" eventType="touchUpInside" id="SEX-ff-N8Q"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -120,9 +123,12 @@
                     <connections>
                         <outlet property="currentTimeLabel" destination="D3d-6H-7EK" id="DRs-ym-3VL"/>
                         <outlet property="durationLabel" destination="YSP-N0-xRU" id="KIv-b0-DIc"/>
-                        <outlet property="likeImageView" destination="e0I-ax-XYo" id="xU0-Go-LVO"/>
-                        <outlet property="minimizeYouTubePlayerViewButton" destination="yxD-m9-hdK" id="sel-B6-mBh"/>
-                        <outlet property="minimizedYouTubePlayerViewOverlayButton" destination="Nx5-G3-eug" id="xkI-lz-J8F"/>
+                        <outlet property="minimizePlayerViewButton" destination="yxD-m9-hdK" id="BiL-OS-cm5"/>
+                        <outlet property="minimizedPlayerViewOverlayButton" destination="Nx5-G3-eug" id="Ae2-bZ-1YD"/>
+                        <outlet property="overlayImageView" destination="e0I-ax-XYo" id="iZg-tA-ZV6"/>
+                        <outlet property="overlayViewDoubleTapGestureRecognizer" destination="6Ou-7p-B2c" id="MZX-tU-dib"/>
+                        <outlet property="overlayViewPanGestureRecognizer" destination="xN7-Ts-Meo" id="EUp-nR-RhQ"/>
+                        <outlet property="overlayViewSingleTapGestureRecognizer" destination="laA-ke-g5e" id="J4Y-l6-aNY"/>
                         <outlet property="playerOverlayView" destination="Mac-t2-MPe" id="63Q-E1-JXz"/>
                         <outlet property="playerView" destination="aEI-bQ-1Z0" id="xiV-s6-UyQ"/>
                         <outlet property="playerViewGestureHandlerView" destination="L52-z0-ylg" id="Q7I-rN-UN3"/>
@@ -131,7 +137,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJd-5E-46E" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="xN7-Ts-Meo">
                     <connections>
-                        <action selector="handleMinimizingGestureRecognizer:" destination="Snp-cN-62d" id="CB9-nJ-ARn"/>
+                        <action selector="handlePanGestureRecognizer:" destination="Snp-cN-62d" id="f6U-pk-QUH"/>
                         <outlet property="delegate" destination="Snp-cN-62d" id="vyB-qe-JlA"/>
                     </connections>
                 </panGestureRecognizer>
@@ -140,11 +146,18 @@
                         <action selector="handleDoubleTapGestureRecognizerOnYouTubePlayerView:" destination="Snp-cN-62d" id="jVm-fy-nTJ"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="laA-ke-g5e">
+                    <connections>
+                        <action selector="handleSingleTapGestureRecognizerOnPlayerView:" destination="Snp-cN-62d" id="1pt-ui-iPC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1248.8" y="259.52023988005999"/>
         </scene>
     </scenes>
     <resources>
         <image name="Heart_Red_Emoji" width="500" height="500"/>
+        <image name="Pause" width="350" height="350"/>
+        <image name="play_icon_white_half" width="250" height="250"/>
     </resources>
 </document>
