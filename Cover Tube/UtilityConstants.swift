@@ -75,6 +75,12 @@ let changeSizeAnimationDuration = 0.75
 let youtubePlayerViewAnimationCenterPointX : CGFloat
     = (rectangularFullYouTubePlayerViewFrame.width - rectangularFullYouTubePlayerViewFrame.height) / 2.0
 
+/* frame of currentPlaylistTableview */
+let currentPlaylistTableviewFrame = CGRect(origin: CGPoint(x: 0.0,
+                                                           y : rectangularFullYouTubePlayerViewFrame.height),
+                                           size: CGSize(width: screenWidth,
+                                                        height: screenHeight - rectangularFullYouTubePlayerViewFrame.height) )
+
 // MARK: Animation Keys for YouTube Player View
 let YouTubePlayerViewAnimation_TransformScale
     = "YouTubePlayerViewAnimation_TransformScale"

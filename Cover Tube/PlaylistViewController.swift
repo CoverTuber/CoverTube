@@ -15,7 +15,7 @@ import YoutubeEngine
 import CircularSpinner
 import UXMVolumeOverlay
 
-class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGestureRecognizerDelegate
+class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource
 {
     /* YouTube player view */
     @IBOutlet weak var playerView : YouTubePlayerView!
@@ -44,6 +44,10 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     
     /* button that handles user interaction when youtube player view is minimized */
     @IBOutlet weak var minimizedPlayerViewOverlayButton: UIButton!
+    
+    /* displays songs in current playlist */
+    @IBOutlet weak var currentPlaylistTableview: UITableView!
+    
     
     private var updateVideoTimeInfoTimer : Timer? = nil
     
@@ -200,6 +204,9 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         UXMVolumeOverlay.shared.backgroundColor = UIColor.clear
         (UXMVolumeOverlay.shared.progressIndicator as! UXMVolumeProgressView).trackColor = minimumTrackColor
         
+        /* setup currentPlaylistTableView */
+        currentPlaylistTableview.frame = currentPlaylistTableviewFrame
+        
     }
     
     /*
@@ -243,8 +250,8 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     /* update UI with scale factor */
     func updateUI(withScale scaleFactor: CGFloat, toState : YouTubePlayerViewSizeState) {
         
-        playerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_CornerRadius)
-        playerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_TransformScale)
+        // playerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_CornerRadius)
+        // playerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_TransformScale)
         
         let reverseScaleFactor = 1 - 0.5 * scaleFactor
         let scale = CGAffineTransform.init(scaleX: reverseScaleFactor, y: reverseScaleFactor)
@@ -318,8 +325,9 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         print("minimizedScaledAlpha = \(minimizedScaledAlpha)")
         
         /* playerOverlayView will be visible when full mode. */
-        // playerOverlayView.isHidden = false
         playerOverlayView.alpha = maximizedScaledAlpha
+        
+        currentPlaylistTableview.alpha = maximizedScaledAlpha
         
         /* linearTimeProgressBar will be visible when full mode. */
         linearTimeProgressBar.isHidden = false
@@ -373,7 +381,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             print("expected = \(minimizedSizeBottomCenterYouTubePlayerFrame)")
         }
         
-        playerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_TransformScale)
+        // playerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_TransformScale)
         
         /* transformScaleAnimation - shrink size animation */
         let transformScaleAnimation = CABasicAnimation(keyPath: "transform")
@@ -466,11 +474,14 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
                        animations: {
                         self.playerViewGestureHandlerView.frame = minimizedSizeBottomCenterYouTubePlayerFrame
                         self.playerOverlayView.alpha = 0.0
+                        self.currentPlaylistTableview.alpha = 0.0
                         self.linearTimeProgressBar.alpha = 0.0
                         self.circularTimeProgressBar.alpha = 1.0
+                        self.currentPlaylistTableview.alpha = 0.0
         }) { (completed : Bool) in
-            // self.playerOverlayView.isHidden = true
+            self.currentPlaylistTableview.isHidden = true
             self.linearTimeProgressBar.isHidden = true
+            self.currentPlaylistTableview.isHidden = true
         }
         
     }
@@ -502,8 +513,8 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             self.stopPlayerViewSpinningAnimation()
         }
         
-        playerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_TransformScale)
-        playerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_CornerRadius)
+        // playerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_TransformScale)
+        // playerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_CornerRadius)
         
         let transformScaleAnimation = CABasicAnimation(keyPath: "transform")
         transformScaleAnimation.fromValue = playerViewCurrentTransformScale
@@ -586,10 +597,11 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             self.playerOverlayView.frame = rectangularFullYouTubePlayerOverlayViewFrame
             self.playerViewGestureHandlerView.frame = rectangularFullYouTubePlayerOverlayViewFrame
             self.playerOverlayView.alpha = 1.0
+            self.currentPlaylistTableview.alpha = 1.0
             self.linearTimeProgressBar.alpha = 1.0
             self.circularTimeProgressBar.alpha = 0.0
         }) { (completed : Bool) in
-            // self.playerOverlayView.isHidden = false
+            self.currentPlaylistTableview.isHidden = false
             self.linearTimeProgressBar.isHidden = false
             self.circularTimeProgressBar.isHidden = true
         }
@@ -674,12 +686,29 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
      - when the music stops, this delegate method is being called
      */
     func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
-        /*
-        if videoPlayer.playerState == YouTubePlayerState.Playing && isYouTubePlayerViewMinimized {
-            self.startPlayerViewSpinningAnimation()
-        } else if videoPlayer.playerState == YouTubePlayerState.Paused {
-            
-        } */
+        if videoPlayer.playerState == YouTubePlayerState.Playing
+        {
+            if isPlayerViewMinimized
+            {
+                minimizedPlayerViewOverlayButton.isSelected = false
+                resumePlayerViewSpinningAnimation()
+            }
+            else // full
+            {
+                
+            }
+        } else if videoPlayer.playerState == YouTubePlayerState.Paused
+        {
+            if isPlayerViewMinimized
+            {
+                minimizedPlayerViewOverlayButton.isSelected = true
+                pausePlayerViewSpinningAnimation()
+            }
+            else // full
+            {
+                
+            }
+        }
     }
     
     /* user taps this button to minimize youtube player view */
@@ -785,8 +814,15 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             print("velocity = \(velocity)")
             if velocity.y > 0
             {
-                /* downwards swipe */
-                youtubePlayerOverlayViewPanGestureDirection = YouTubePlayerViewOverlayDirection.down
+                if playerViewSizeState == .minimized
+                {
+                    return
+                }
+                else
+                {
+                    /* downwards swipe */
+                    youtubePlayerOverlayViewPanGestureDirection = YouTubePlayerViewOverlayDirection.down
+                }
             }
             else
             {
@@ -857,8 +893,8 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             /* animate appropriate to video size */
             if isPlayerViewMinimized // minimized
             {
-                minimizedPlayerViewOverlayButton.isSelected = true
-                pausePlayerViewSpinningAnimation()
+                // minimizedPlayerViewOverlayButton.isSelected = true
+                // pausePlayerViewSpinningAnimation()
             }
             else // full size
             {
@@ -922,7 +958,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
                                 y: rectangularFullYouTubePlayerViewFrame.size.height / 2.0 - 250.0 / 2.0,
                                 width: 250.0, height: 250.0)
             
-            animateOverlayWithImage(image: #imageLiteral(resourceName: "Heart_Red_Emoji"), fromRect: fromRect, toRect: toRect, withDuration: 2.0)
+            animateOverlayWithImage(image: #imageLiteral(resourceName: "Heart_Red_Emoji"), fromRect: fromRect, toRect: toRect, withDuration: 1.0)
         }
     }
     
@@ -968,6 +1004,36 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             })
         }
     }
+
+    // MARK: Gesture Recognizer delegate
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if gestureRecognizer == overlayViewPanGestureRecognizer
+        {
+            let velocity = overlayViewPanGestureRecognizer.velocity(in: nil)
+            print("yyyy = \(velocity.y)")
+            if ( velocity.y > 0
+                // && overlayViewPanGestureRecognizer.state == .began
+                && isPlayerViewMinimized )
+            {
+                return false
+            }
+        }
+        return true
+    }
     
+    // MARK: UITableView Datasource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "songTableViewCell")!
+        return cell
+    }
+    
+    // MARK: UITableView Delegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        /* load new video */
+    }
     
 }
