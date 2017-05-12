@@ -149,3 +149,32 @@ let lightGrayColor = UIColor(colorLiteralRed: 220.0/255, green: 220.0/255, blue:
 let minimumTrackColor = UIColor(colorLiteralRed: 47.0/255, green: 177.0/255, blue: 254.0/255, alpha: 1)
 
 let maximumTrackColor = lightGrayColor
+
+
+
+
+/*
+ Source: https://stackoverflow.com/questions/26794703/swift-integer-conversion-to-hours-minutes-seconds
+ */
+/*
+ Given a certain amount of seconds, returns a converted time in a tuple format (hours, minutes, seconds)
+ */
+func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
+    return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+}
+
+/*
+ Given a certain amount of seconds
+ */
+func timeText(_ s: Int) -> String {
+    return s < 10 ? "0\(s)" : "\(s)"
+}
+
+func timeString (seconds : Int) -> String {
+    let (h, m, s) = secondsToHoursMinutesSeconds(seconds: seconds)
+    if h == 0 {
+        return "\(timeText(m)):\(timeText(s))"
+    } else {
+        return "\(timeText(h)):\(timeText(m)):\(timeText(s))"
+    }
+}
