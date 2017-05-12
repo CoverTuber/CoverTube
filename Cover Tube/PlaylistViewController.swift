@@ -15,7 +15,7 @@ import YoutubeEngine
 import CircularSpinner
 import UXMVolumeOverlay
 
-class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource
+class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource
 {
     /* YouTube player view */
     @IBOutlet weak var playerView : YouTubePlayerView!
@@ -921,8 +921,8 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             /* update UI depending on  */
             if isPlayerViewMinimized // minimized
             {
-                minimizedPlayerViewOverlayButton.isSelected = false
-                resumePlayerViewSpinningAnimation ()
+                // minimizedPlayerViewOverlayButton.isSelected = false
+                // resumePlayerViewSpinningAnimation ()
             }
             else // full size
             {
@@ -1019,6 +1019,21 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             }
         }
         return true
+    }
+    
+    // MARK: UICollectionView Datasource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playlistCell", for: indexPath)
+        return cell
+    }
+    
+    // MARK: UICOllectioView Delegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
     
     // MARK: UITableView Datasource

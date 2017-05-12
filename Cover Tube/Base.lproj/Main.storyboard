@@ -40,6 +40,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qXu-vs-U07">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Oig-TC-fTP">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="EYq-QQ-mWI">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Snp-cN-62d" id="dbg-QG-Q17"/>
+                                    <outlet property="delegate" destination="Snp-cN-62d" id="5Ik-7M-khS"/>
+                                </connections>
+                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEI-bQ-1Z0" customClass="YouTubePlayerView" customModule="Cover_Tube" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
                                 <color key="backgroundColor" red="1" green="0.86072467701218003" blue="0.6403513363564679" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -125,9 +149,13 @@
                             <constraint firstAttribute="trailing" secondItem="aEI-bQ-1Z0" secondAttribute="trailing" id="Gpj-GW-ZPg"/>
                             <constraint firstItem="Mac-t2-MPe" firstAttribute="leading" secondItem="He9-qw-xo2" secondAttribute="leading" id="IMl-Qu-j7q"/>
                             <constraint firstItem="aEI-bQ-1Z0" firstAttribute="leading" secondItem="He9-qw-xo2" secondAttribute="leading" id="NMU-no-RSH"/>
+                            <constraint firstAttribute="trailing" secondItem="qXu-vs-U07" secondAttribute="trailing" id="O2B-3J-POz"/>
+                            <constraint firstItem="qXu-vs-U07" firstAttribute="leading" secondItem="He9-qw-xo2" secondAttribute="leading" id="RCL-Zj-6SD"/>
                             <constraint firstItem="aEI-bQ-1Z0" firstAttribute="top" secondItem="He9-qw-xo2" secondAttribute="top" id="c2g-1x-WDX"/>
                             <constraint firstItem="yxD-m9-hdK" firstAttribute="top" secondItem="He9-qw-xo2" secondAttribute="top" constant="8" id="d5B-uL-LQB"/>
                             <constraint firstItem="yxD-m9-hdK" firstAttribute="leading" secondItem="He9-qw-xo2" secondAttribute="leading" constant="8" id="kbK-fX-DYj"/>
+                            <constraint firstItem="qXu-vs-U07" firstAttribute="top" secondItem="He9-qw-xo2" secondAttribute="top" id="pit-IZ-M5S"/>
+                            <constraint firstItem="76h-wT-ZlE" firstAttribute="top" secondItem="qXu-vs-U07" secondAttribute="bottom" id="zpi-eL-gkS"/>
                         </constraints>
                     </view>
                     <connections>
