@@ -9,17 +9,21 @@
 import UIKit
 import AppAuth
 
+/*
+ https://github.com/openid/AppAuth-iOS
+ */
+var currentAuthorizationFlow : OIDAuthorizationFlowSession? = nil
+var youTubeAuthState : OIDAuthState? = nil
+let request = OIDAuthorizationRequest(configuration: configuration,
+                                      clientId: clientID,
+                                      clientSecret: nil,
+                                      scopes: [OIDScopeOpenID, OIDScopeProfile],
+                                      redirectURL: localHostURL!, // NOTE: Not sure!!!
+                                      responseType: OIDResponseTypeCode,
+                                      additionalParameters: nil)
+
 class ViewController: UIViewController {
     
-    var currentAuthorizationFlow : OIDAuthorizationFlowSession? = nil
-    var youTubeAuthState : OIDAuthState? = nil
-    let request = OIDAuthorizationRequest(configuration: configuration,
-                                          clientId: clientID,
-                                          clientSecret: nil,
-                                          scopes: [OIDScopeOpenID, OIDScopeProfile],
-                                          redirectURL: authorizationEndpointURL, // NOTE: Not sure!!!
-        responseType: OIDResponseTypeCode,
-        additionalParameters: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,18 +40,20 @@ class ViewController: UIViewController {
                                                             if authState != nil
                                                             {
                                                                 print("got authroization. token = \(authState?.lastTokenResponse?.accessToken)")
+                                                                youTubeAuthState = authState
                                                             } else {
                                                                 print("error : \(error!.localizedDescription)")
+                                                                youTubeAuthState = nil
                                                             }
         })
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
