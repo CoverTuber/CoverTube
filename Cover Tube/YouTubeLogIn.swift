@@ -8,8 +8,7 @@
 
 import Foundation
 import AppAuth
-let scope = "https://www.googleapis.com/auth/youtube"
-let scopeURL = URL(string: scope)!
+
 let clientID = "426605566501-i5urvqr6npalrt3niffmo96rard4rf1n.apps.googleusercontent.com"
 let reversedClientID = "com.googleusercontent.apps.426605566501-i5urvqr6npalrt3niffmo96rard4rf1n"
 let reversedClientIDURL = URL(string: reversedClientID)
@@ -19,16 +18,6 @@ let iOSURL = URL(string: iOSURL_scheme)
 
 let localHostURL = URL(string: "http://127.0.0.1")
 
-let authorizationEndpointURLString = "https://accounts.google.com/o/oauth2/v2/auth"
-let authorizationEndpointURL = URL(string: authorizationEndpointURLString)!
-
-let tokenEndpointString = "https://accounts.google.com/o/oauth2/v2/auth"
-let tokenEndpointURL = URL(string: tokenEndpointString)!
-
-let configuration = OIDServiceConfiguration(authorizationEndpoint: authorizationEndpointURL,
-                                            tokenEndpoint: tokenEndpointURL)
-
-let apiKey = "AIzaSyAeHzUzfQOUnwwMIdcwj9sw6Ct-yG_lErw"
 
 /*
  Obtaining OAuth 2.0 access tokens
