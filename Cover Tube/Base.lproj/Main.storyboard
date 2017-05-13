@@ -119,7 +119,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="▼"/>
                                 <connections>
-                                    <action selector="minimizeYouTubePlayerViewButtonTapped:" destination="Snp-cN-62d" eventType="touchUpInside" id="Vkd-7K-gR5"/>
+                                    <action selector="minimizePlayerViewButtonTapped:" destination="Snp-cN-62d" eventType="touchUpInside" id="i4P-7J-HT8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nx5-G3-eug">
@@ -128,9 +128,6 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.34999999999999998" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="play_icon_white_half"/>
                                 <state key="selected" image="Pause"/>
-                                <connections>
-                                    <action selector="minimizedPlayerOverlayViewTapped:" destination="Snp-cN-62d" eventType="touchUpInside" id="SEX-ff-N8Q"/>
-                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RUS-2i-HTE">
                                 <rect key="frame" x="0.0" y="233" width="375" height="434"/>

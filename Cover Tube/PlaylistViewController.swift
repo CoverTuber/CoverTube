@@ -173,7 +173,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             = CGRect(origin: minimizedSizeBottomCenterYouTubePlayerFrameOriginPoint,
                      size: squareMinimizedYouTubePlayerSize)
         minimizedPlayerViewOverlayButton.setImage(UIImage.init(named: "play_icon_white_half.png") ,
-                                                         for: UIControlState.normal)
+                                                  for: UIControlState.normal)
         
         minimizedPlayerViewOverlayButton.tintColor = UIColor.white
         
@@ -205,7 +205,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         currentTimeLabel.frame = CGRect(x: 10.0, y: playerOverlayView.frame.size.height - 21.0 - 30.0,
                                         width: 42, height: 21)
         durationLabel.frame = CGRect(x: screenWidth - 10.0 - 42.0, y: playerOverlayView.frame.size.height - 21.0 - 30.0, width: 42.0, height: 21.0)
-
+        
         
         /* set up volume UI at top of screen */
         UXMVolumeOverlay.shared.load()
@@ -440,7 +440,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         squareBoundsSizeWidthAnimation.fillMode = kCAFillModeForwards
         squareBoundsSizeWidthAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         playerView.layer.add(squareBoundsSizeWidthAnimation,
-                                    forKey: YouTubePlayerViewAnimation_BoundsSizeWidth)
+                             forKey: YouTubePlayerViewAnimation_BoundsSizeWidth)
         
         /* squraeBoundsAnimation - make size into square to make it into perfect circle.
          If I don't change the size to a square, then the shape will be changed into an oval. */
@@ -462,13 +462,13 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         playerView.layer.add(keepYouTubeInHorizontalCenterAnimation, forKey: YouTubePlayerViewAnimation_BoundsOriginX)
         
         /* keep youtube video at vertical center */
-        let keepYouTubeInVerticalCenterAnimation = CABasicAnimation(keyPath: "bounds.origin.y")
-        keepYouTubeInVerticalCenterAnimation.toValue = 0.0
-        keepYouTubeInVerticalCenterAnimation.duration = changeSizeAnimationDuration
-        keepYouTubeInVerticalCenterAnimation.isRemovedOnCompletion = false
-        keepYouTubeInVerticalCenterAnimation.fillMode = kCAFillModeForwards
-        keepYouTubeInVerticalCenterAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        playerView.layer.add(keepYouTubeInVerticalCenterAnimation, forKey: YouTubePlayerViewAnimation_BoundsOriginY)
+        let keepVideoInVerticalCenterAnimation = CABasicAnimation(keyPath: "bounds.origin.y")
+        keepVideoInVerticalCenterAnimation.toValue = 0.0
+        keepVideoInVerticalCenterAnimation.duration = changeSizeAnimationDuration
+        keepVideoInVerticalCenterAnimation.isRemovedOnCompletion = false
+        keepVideoInVerticalCenterAnimation.fillMode = kCAFillModeForwards
+        keepVideoInVerticalCenterAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        playerView.layer.add(keepVideoInVerticalCenterAnimation, forKey: YouTubePlayerViewAnimation_BoundsOriginY)
         
         isChangingYouTubePlayerViewSize = true
         
@@ -573,7 +573,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         rectangularBoundsSizeWidthAnimation.fillMode = kCAFillModeForwards
         rectangularBoundsSizeWidthAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         playerView.layer.add(rectangularBoundsSizeWidthAnimation,
-                                    forKey: "squareBoundsSizeWidthAnimation")
+                             forKey: "squareBoundsSizeWidthAnimation")
         
         /* vertical rectuangular boundsAnimation */
         let rectangularBoundsSizeHeightAnimation = CABasicAnimation(keyPath: "bounds.size.height")
@@ -584,7 +584,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         rectangularBoundsSizeHeightAnimation.fillMode = kCAFillModeForwards
         rectangularBoundsSizeWidthAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         playerView.layer.add(rectangularBoundsSizeHeightAnimation,
-                                    forKey: "squareBoundsSizeHeightAnimation")
+                             forKey: "squareBoundsSizeHeightAnimation")
         
         /* keep youtube video in center */
         let keepYouTubeInCenterAnimation = CABasicAnimation(keyPath: "bounds.origin.x")
@@ -648,18 +648,28 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         resumeLayerAnimation(layer: playerView.layer)
     }
     
-    
     /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
+     Animates the overlay image view with given image
+     Starts with the fromRect and becomes the toRect during animation
      */
+    func animateOverlayWithImage(image : UIImage, fromRect : CGRect, toRect : CGRect, withDuration duration : TimeInterval)
+    {
+        overlayImageView.image = image
+        overlayImageView.frame = fromRect
+        
+        overlayImageView.alpha = 1.0
+        overlayImageView.isHidden = false
+        UIView.animate(withDuration: duration, delay: 0.0,
+                       options: UIViewAnimationOptions.curveEaseInOut,
+                       animations: {
+                        self.overlayImageView.frame = toRect
+                        self.overlayImageView.alpha = 0.0
+        }, completion: { (completed : Bool) in
+            self.overlayImageView.isHidden = true
+        })
+    }
     
-    
+    // MARK: YouTube Video functions
     /*
      function loadVideo sets up the YouTubePlayer view's parameters and gives the youtube video's id
      */
@@ -720,7 +730,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     }
     
     /* user taps this button to minimize youtube player view */
-    @IBAction func minimizeYouTubePlayerViewButtonTapped(_ sender: UIButton)
+    @IBAction func minimizePlayerViewButtonTapped(_ sender: UIButton)
     {
         sender.isHidden = true
         
@@ -739,41 +749,6 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         minimizeYouTubePlayerViewAnimation()
     }
     
-    /* user taps this button to maximize youtube player view and stop spinning. */
-    @IBAction func maximizeYouTubePlayerViewButtonTapped(_ sender: UIButton)
-    {
-        /* Animate circular progress bar to hide */
-        circularTimeProgressBar.alpha = 1.0
-        circularTimeProgressBar.isHidden = false
-        UIView.animate(withDuration: changeSizeAnimationDuration * 0.5,
-                       delay: changeSizeAnimationDuration * 0.5,
-                       options: UIViewAnimationOptions.curveEaseOut,
-                       animations: {
-                        self.circularTimeProgressBar.alpha = 0.0
-        }) { (completed : Bool) in self.circularTimeProgressBar.isHidden = true }
-        
-        maximizeYouTubePlayerViewAnimation()
-        
-    }
-    
-    /* user taps this button to play, pause button */
-    @IBAction func minimizedPlayerOverlayViewTapped(_ sender: UIButton)
-    {
-        sender.isSelected = !sender.isSelected
-        if playerView.playerState == YouTubePlayerState.Playing {
-            playerView.pause()
-            pausePlayerViewSpinningAnimation()
-        } else if playerView.playerState == YouTubePlayerState.Paused {
-            playerView.play ()
-            startPlayerViewSpinningAnimation()
-        }
-    }
-    
-    
-    
-    @IBAction func playButtonTapped(_ sender: UIButton) {
-        playYouTubePlayerView()
-    }
     
     /*
      If the youtube player view is ready, play it.
@@ -790,28 +765,8 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         }
     }
     
-    override var prefersStatusBarHidden : Bool {
-        return true
-    }
-    
-    
-    func positionDuringSwipe(scaleFactor: CGFloat) -> CGPoint {
-        let reverseScaleFactor = 1 - 0.5 * scaleFactor
-        let playerViewWidth = screenWidth * reverseScaleFactor
-        let x : CGFloat = ((screenWidth - playerViewWidth) / 2.0) + (screenWidth - squareFullYouTubePlayerSize.width) * 0.5 * scaleFactor
-        
-        // screenWidth / 2.0 - width / 2.0
-        let y = screenHeight * scaleFactor // (screenHeight - 10) * scaleFactor - height
-        let coordinate = CGPoint.init(x: x, y: y)
-        return coordinate
-    }
-    
     
     // MARK: UIGestureRecognizer handling functions
-    
-    
-    
-    
     /*
      Reduce size of youtube player view as user pans the youtube player view to the bottom.
      */
@@ -970,27 +925,6 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
         }
     }
     
-    /* 
-     Animates the overlay image view with given image
-     Starts with the fromRect and becomes the toRect during animation
-     */
-    func animateOverlayWithImage(image : UIImage, fromRect : CGRect, toRect : CGRect, withDuration duration : TimeInterval)
-    {
-        overlayImageView.image = image
-        overlayImageView.frame = fromRect
-        
-        overlayImageView.alpha = 1.0
-        overlayImageView.isHidden = false
-        UIView.animate(withDuration: duration, delay: 0.0,
-                       options: UIViewAnimationOptions.curveEaseInOut,
-                       animations: {
-                        self.overlayImageView.frame = toRect
-                        self.overlayImageView.alpha = 0.0
-        }, completion: { (completed : Bool) in
-            self.overlayImageView.isHidden = true
-        })
-    }
-    
     
     func didEndedSwipe(toState: YouTubePlayerViewSizeState){
         self.animatePlayView(toState: toState)
@@ -1012,7 +946,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
             })
         }
     }
-
+    
     // MARK: Gesture Recognizer delegate
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if gestureRecognizer == overlayViewPanGestureRecognizer
@@ -1058,5 +992,23 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         /* load new video */
     }
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    /* hide status bar */
+    override var prefersStatusBarHidden : Bool {
+        return true
+    }
+    
+    
     
 }
