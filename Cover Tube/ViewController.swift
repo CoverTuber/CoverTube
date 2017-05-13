@@ -14,11 +14,13 @@ import AppAuth
  */
 var currentAuthorizationFlow : OIDAuthorizationFlowSession? = nil
 var youTubeAuthState : OIDAuthState? = nil
+let oauthURL = URL(string: "\(iOSURL_scheme):/oauth/callback")!
+
 let request = OIDAuthorizationRequest(configuration: configuration,
                                       clientId: clientID,
                                       clientSecret: nil,
                                       scopes: [OIDScopeOpenID, OIDScopeProfile],
-                                      redirectURL: localHostURL!, // NOTE: Not sure!!!
+                                      redirectURL: oauthURL,
                                       responseType: OIDResponseTypeCode,
                                       additionalParameters: nil)
 
@@ -30,9 +32,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func loginButtonTapped(_ sender: UIButton)
+    {
         currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request,
                                                           presenting: self,
                                                           callback: { (authState : OIDAuthState?,
@@ -42,17 +49,12 @@ class ViewController: UIViewController {
                                                                 print("got authroization. token = \(authState?.lastTokenResponse?.accessToken)")
                                                                 youTubeAuthState = authState
                                                             } else {
-                                                                print("error : \(error!.localizedDescription)")
+                                                                print("login error : \(error!.localizedDescription)")
                                                                 youTubeAuthState = nil
                                                             }
         })
-        
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     
 }
