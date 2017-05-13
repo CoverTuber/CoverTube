@@ -17,26 +17,23 @@ import UXMVolumeOverlay
 
 class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource
 {
+    // MARK: UI Element properties
     /* YouTube player view */
     @IBOutlet weak var playerView : YouTubePlayerView!
     
     /* Player view's overlay view to display buttons, info on top of player view */
     @IBOutlet weak var playerOverlayView: UIView!
     
+    /* image used to animate like, play, pause, next, previous on top of player view */
     @IBOutlet weak var overlayImageView: UIImageView!
     
     /* UIView on top of youtube player view to handle pan gesture recognizer since it doesn't handle any user interaction. This handles them instead. */
     @IBOutlet weak var playerViewGestureHandlerView: UIView!
     
-    @IBOutlet var overlayViewSingleTapGestureRecognizer: UITapGestureRecognizer!
-    
-    @IBOutlet var overlayViewDoubleTapGestureRecognizer: UITapGestureRecognizer!
-    
-    @IBOutlet var overlayViewPanGestureRecognizer: UIPanGestureRecognizer!
-    
-    
+    /* displays current time of video */
     @IBOutlet weak var currentTimeLabel: UILabel!
     
+    /* displays duration of video */
     @IBOutlet weak var durationLabel: UILabel!
     
     /* User taps this button to make PlayerView small */
@@ -47,15 +44,21 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     
     /* displays songs in current playlist */
     @IBOutlet weak var currentPlaylistTableview: UITableView!
-    
-    
-    private var updateVideoTimeInfoTimer : Timer? = nil
-    
     /* linear time progress bar. Below rectangular youtube player view that's customized */
     let linearTimeProgressBar = UISlider(frame: linearTimeProgressBarFrame)
     
     /* circular progress bar when youtube player view is minimized. Shows how much time passed in video */
     let circularTimeProgressBar = CircularSpinner(frame: CGRect.zero)
+    
+    // MARK: gesture recognizers
+    @IBOutlet var overlayViewSingleTapGestureRecognizer: UITapGestureRecognizer!
+    
+    @IBOutlet var overlayViewDoubleTapGestureRecognizer: UITapGestureRecognizer!
+    
+    @IBOutlet var overlayViewPanGestureRecognizer: UIPanGestureRecognizer!
+    
+    // MARK: timer
+    private var updateVideoTimeInfoTimer : Timer? = nil
     
     /* Whether youtube player view is minimized or not */
     private var isPlayerViewMinimized = false
@@ -70,17 +73,22 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
     /* youtube player view's state. full, minimized, hidden */
     private var playerViewSizeState = YouTubePlayerViewSizeState.fullScreen
     
-    /*  */
+    /* playerView's current corner radius */
     private var playerViewCurrentCornerRadius : CGFloat = 0.0
     
+    /* overlay view's current corner radius */
     private var overlayViewCurrentCornerRadius : CGFloat = 0.0
     
+    /* playerView's current transform scale */
     private var playerViewCurrentTransformScale = maximizedYouTubePlayerViewTransformScale
     
     /* youtube player overlay view's pan gesture direction - up or down */
     private var youtubePlayerOverlayViewPanGestureDirection = YouTubePlayerViewOverlayDirection.down
-    private var isUserPanningYoutubePlayerOverlayView = false
     
+    /* whether user is panning video player or not */
+    private var isUserPanningPlayerOverlayView = false
+    
+    // MARK: ViewController life cycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -829,7 +837,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
                 /* upwards swipe */
                 youtubePlayerOverlayViewPanGestureDirection = YouTubePlayerViewOverlayDirection.up
             }
-            isUserPanningYoutubePlayerOverlayView = true
+            isUserPanningPlayerOverlayView = true
         }
         
         stopPlayerViewSpinningAnimation()
@@ -863,7 +871,7 @@ class PlaylistViewController: UIViewController, YouTubePlayerDelegate, UIGesture
              // self.videoPlayer.pause()
              }
              */
-            isUserPanningYoutubePlayerOverlayView = false
+            isUserPanningPlayerOverlayView = false
             if youtubePlayerOverlayViewPanGestureDirection == YouTubePlayerViewOverlayDirection.down {
                 minimizeYouTubePlayerViewAnimation()
             } else {
