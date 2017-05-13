@@ -1,3 +1,4 @@
 github "gilesvangruisen/Swift-YouTube-Player"
 github "Igor-Palaguta/YoutubeEngine"
 github "SwiftKickMobile/SwiftMessages"
+github "openid/AppAuth-iOS" "master"

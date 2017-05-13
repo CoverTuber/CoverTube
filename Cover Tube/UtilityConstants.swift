@@ -205,3 +205,7 @@ func resumeLayerAnimation ( layer : CALayer) {
     let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
     layer.beginTime = timeSincePause
 }
+
+
+
+let appDelegate = UIApplication.shared.delegate

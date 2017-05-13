@@ -1,4 +1,5 @@
 PODS:
+  - AppAuth (0.9.0)
   - CircularSpinner (1.2.0)
   - ReactiveSwift (1.1.2):
     - Result (~> 3.2)
@@ -12,6 +13,7 @@ PODS:
   - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
+  - AppAuth
   - CircularSpinner
   - SwiftMessages
   - UXMVolumeOverlay
@@ -19,6 +21,7 @@ DEPENDENCIES:
   - YouTubePlayer
 
 SPEC CHECKSUMS:
+  AppAuth: 4fabb6b8068a2e61b914b41071bdbd95da2c9553
   CircularSpinner: 80b8ee3eda59b66d20631d4ca7c7c83720931739
   ReactiveSwift: 507089cf806c42e09db96f9e48477b777f0e02ba
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
@@ -28,6 +31,6 @@ SPEC CHECKSUMS:
   YoutubeEngine: ca07527596e92434605e0b5d88b881d3cf6b792e
   YouTubePlayer: '028451f6772f372d4759866db99824c676ac1473'
 
-PODFILE CHECKSUM: bac643e91e45b31bb6aa1b460b05f870eb0e8d0a
+PODFILE CHECKSUM: 0aadd791726e3f519f86bf15f09fb287741b0449
 
 COCOAPODS: 1.2.0

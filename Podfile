@@ -5,5 +5,6 @@ target 'Cover Tube' do
 	pod 'CircularSpinner'
 	pod 'SwiftMessages'
 	pod "UXMVolumeOverlay"
+	pod 'AppAuth'
 end
 
