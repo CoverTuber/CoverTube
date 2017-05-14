@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SnapchatSwipeContainer
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

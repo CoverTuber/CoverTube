@@ -1,0 +1,6 @@
+framework module SnapchatSwipeContainer {
+  umbrella header "SnapchatSwipeContainer-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -6,5 +6,6 @@ target 'Cover Tube' do
 	pod 'SwiftMessages'
 	pod "UXMVolumeOverlay"
 	pod 'AppAuth'
+	pod "SnapchatSwipeContainer"
 end
 

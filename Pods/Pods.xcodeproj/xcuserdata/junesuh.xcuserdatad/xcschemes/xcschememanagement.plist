@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SnapchatSwipeContainer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftMessages-SwiftMessages.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,17 +72,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>17EE664035B146FB52E646B69E21E6AC</key>
+		<key>02F5B5A2A0D62B0FFB3AE37D0C4BBFD7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>28BE8AC1F35101B9A82C46F23ED52488</key>
+		<key>134C6FFB1A8D0B578226073AC340B785</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>42D962C52225BD53FC1A529B58E211C6</key>
+		<key>49FDDADB894AD052C3DD3FDB8D37A251</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53E298C202A579B4E1EB5168B786E412</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>561CE789F62F2B6A3DC920DF928B3DE8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>71468F40FE8CE99665EC108C726B2A13</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,27 +107,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F249C31C2D5FA51ECAEEE7D3F6507B1</key>
+		<key>8B3A96C63B284398DDB5741A93A6A570</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A766DB3972BD641260D5814CBE45E874</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B6C9443A9DE08C54B112B2AC077D7B3B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B8D77CAB79E0909D0D71F535A28854B1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BFB0202FD84851C15035B1BE57AB1FEB</key>
+		<key>B831A412B3FDFFCAE47700F3E072FC10</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,12 +122,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D780F80A5793F3EFDAC1606AAA75B388</key>
+		<key>CB6F8A9C718257B8D93ACA02E592CAF0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EA7FA1EB8B0D8101AD68EB0A3E4571DD</key>
+		<key>D20F833DC4CDAC5A054818EADCE21BF8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D780F80A5793F3EFDAC1606AAA75B388</key>
 		<dict>
 			<key>primary</key>
 			<true/>

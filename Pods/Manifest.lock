@@ -4,6 +4,7 @@ PODS:
   - ReactiveSwift (1.1.2):
     - Result (~> 3.2)
   - Result (3.2.1)
+  - SnapchatSwipeContainer (0.1.0)
   - SwiftMessages (3.3.3)
   - SwiftyJSON (3.1.4)
   - UXMVolumeOverlay (0.2.0)
@@ -15,6 +16,7 @@ PODS:
 DEPENDENCIES:
   - AppAuth
   - CircularSpinner
+  - SnapchatSwipeContainer
   - SwiftMessages
   - UXMVolumeOverlay
   - YoutubeEngine
@@ -25,12 +27,13 @@ SPEC CHECKSUMS:
   CircularSpinner: 80b8ee3eda59b66d20631d4ca7c7c83720931739
   ReactiveSwift: 507089cf806c42e09db96f9e48477b777f0e02ba
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
+  SnapchatSwipeContainer: e456f161ada5b50747a0f362b5f83d55dfcadff8
   SwiftMessages: '09cea3336e3fb63c3578983c8aac65acaa6d884a'
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   UXMVolumeOverlay: e506f32de550f7b6959c190590146c0c9cd77da4
   YoutubeEngine: ca07527596e92434605e0b5d88b881d3cf6b792e
   YouTubePlayer: '028451f6772f372d4759866db99824c676ac1473'
 
-PODFILE CHECKSUM: 0aadd791726e3f519f86bf15f09fb287741b0449
+PODFILE CHECKSUM: 7c99d5691f907bceb023f7fa3917f85353c94385
 
 COCOAPODS: 1.2.0
