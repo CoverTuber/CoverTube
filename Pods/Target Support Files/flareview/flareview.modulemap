@@ -1,0 +1,6 @@
+framework module flareview {
+  umbrella header "flareview-umbrella.h"
+
+  export *
+  module * { export * }
+}

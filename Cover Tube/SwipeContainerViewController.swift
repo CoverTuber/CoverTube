@@ -5,16 +5,16 @@
 //  Created by June Suh on 5/4/17.
 //  Copyright © 2017 CoverTuber. All rights reserved.
 //
-
+//  The YouTube Video player is on top of all view controllers
 //  NOTE: The youtube player view does not handle user interaction direction.
 //        They are handled by its delegate methods and other ui components.
 
 import UIKit
-// import YouTubePlayer
 import YoutubeEngine
 import CircularSpinner
 import UXMVolumeOverlay
 import SnapchatSwipeContainer
+import flareview
 
 class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     YouTubePlayerDelegate, UIGestureRecognizerDelegate,
@@ -276,6 +276,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         view.bringSubview(toFront: minimizePlayerViewButton)
         view.bringSubview(toFront: minimizedPlayerViewOverlayButton)
         view.bringSubview(toFront: linearTimeProgressBar)
+        
+        playerOverlayView.frame = rectangularFullYouTubePlayerViewFrame
     }
     
     /* update UI with scale factor */
@@ -689,6 +691,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
                         self.overlayImageView.alpha = 0.0
         }, completion: { (completed : Bool) in
             self.overlayImageView.isHidden = true
+            self.overlayImageView.frame = fromRect;
         })
     }
     
@@ -871,6 +874,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
      */
     @IBAction func handleSingleTapGestureRecognizerOnPlayerView(_ sender: UITapGestureRecognizer)
     {
+        playerOverlayView.frame = rectangularFullYouTubePlayerViewFrame
+        print("playerOverlayView.frame > \(playerOverlayView.frame)")
         if playerView.playerState == YouTubePlayerState.Playing
         {
             /* video currently playing. user tapped to pause */
@@ -937,6 +942,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     {
         if  sender.view == playerViewGestureHandlerView
         {
+            /*
             let fromRect = CGRect(x: screenWidth/2.0 - 125.0 / 2.0,
                                   y: rectangularFullYouTubePlayerViewFrame.size.height / 2.0 - 125.0 / 2.0,
                                   width: 125.0, height: 125.0)
@@ -945,6 +951,10 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
                                 width: 250.0, height: 250.0)
             
             animateOverlayWithImage(image: #imageLiteral(resourceName: "Heart_Red_Emoji"), fromRect: fromRect, toRect: toRect, withDuration: 1.0)
+            */
+            overlayImageView.isHidden = false
+            overlayImageView.image = #imageLiteral(resourceName: "Heart_Red_Emoji")
+            FlareView.sharedCenter().flarify(overlayImageView, inParentView: view, with: UIColor.red)
         }
     }
     

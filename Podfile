@@ -7,5 +7,6 @@ target 'Cover Tube' do
 	pod "UXMVolumeOverlay"
 	pod 'AppAuth'
 	pod "SnapchatSwipeContainer"
+	pod 'flareview'
 end
 

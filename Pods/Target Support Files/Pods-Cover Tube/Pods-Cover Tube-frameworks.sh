@@ -99,6 +99,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/UXMVolumeOverlay/UXMVolumeOverlay.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YouTubePlayer/YouTubePlayer.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YoutubeEngine/YoutubeEngine.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/flareview/flareview.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AppAuth/AppAuth.framework"
@@ -111,6 +112,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/UXMVolumeOverlay/UXMVolumeOverlay.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YouTubePlayer/YouTubePlayer.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YoutubeEngine/YoutubeEngine.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/flareview/flareview.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

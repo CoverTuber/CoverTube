@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -126,15 +125,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UNt-LS-fji" customClass="YouTubePlayerView" customModule="Cover_Tube" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UNt-LS-fji" customClass="YouTubePlayerView" customModule="Cover_Tube" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.86072467699999999" blue="0.64035133639999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="UNt-LS-fji" secondAttribute="height" multiplier="375:233" id="R7w-iG-Xxl"/>
-                                </constraints>
                             </view>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78f-pT-ExC">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78f-pT-ExC">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="curr" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zsn-0M-yiA">
                                         <rect key="frame" x="10" y="202" width="42" height="21"/>
@@ -159,7 +157,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="0.80114828020134232" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MbF-O4-dy1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
@@ -204,26 +202,21 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="0.51525796979865768" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="UNt-LS-fji" firstAttribute="leading" secondItem="CHG-hy-30k" secondAttribute="leading" id="2K6-o9-q6M"/>
                             <constraint firstItem="Uhy-ZL-Lzs" firstAttribute="top" secondItem="CHG-hy-30k" secondAttribute="top" constant="8" id="3Jh-IE-alY"/>
-                            <constraint firstAttribute="trailing" secondItem="UNt-LS-fji" secondAttribute="trailing" id="C64-RH-1IJ"/>
-                            <constraint firstItem="UNt-LS-fji" firstAttribute="top" secondItem="CHG-hy-30k" secondAttribute="top" id="Mvo-Xc-qlk"/>
                             <constraint firstItem="Uhy-ZL-Lzs" firstAttribute="leading" secondItem="CHG-hy-30k" secondAttribute="leading" constant="8" id="nFo-NR-LN9"/>
-                            <constraint firstItem="78f-pT-ExC" firstAttribute="leading" secondItem="CHG-hy-30k" secondAttribute="leading" id="sFg-Zu-NQ8"/>
-                            <constraint firstItem="78f-pT-ExC" firstAttribute="top" secondItem="CHG-hy-30k" secondAttribute="top" id="sJj-bm-G0l"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="currentPlaylistTableview" destination="IbJ-m6-6ef" id="Px9-Vb-Pwj"/>
-                        <outlet property="currentTimeLabel" destination="zsn-0M-yiA" id="tOV-dD-nSa"/>
-                        <outlet property="durationLabel" destination="q4T-Br-C10" id="NlA-1T-jgK"/>
+                        <outlet property="currentTimeLabel" destination="zsn-0M-yiA" id="oRC-ff-ZOC"/>
+                        <outlet property="durationLabel" destination="q4T-Br-C10" id="gYw-NY-THT"/>
                         <outlet property="minimizePlayerViewButton" destination="Uhy-ZL-Lzs" id="2jl-E1-K4i"/>
                         <outlet property="minimizedPlayerViewOverlayButton" destination="Nfy-LJ-rh5" id="Den-yd-4lp"/>
-                        <outlet property="overlayImageView" destination="OVm-Si-vMs" id="Oo7-3a-MkU"/>
+                        <outlet property="overlayImageView" destination="OVm-Si-vMs" id="Q10-XV-ZOE"/>
                         <outlet property="overlayViewDoubleTapGestureRecognizer" destination="vXz-wr-eQ1" id="RdI-II-MVg"/>
                         <outlet property="overlayViewPanGestureRecognizer" destination="iMf-fu-u0V" id="99f-sP-QCN"/>
                         <outlet property="overlayViewSingleTapGestureRecognizer" destination="t03-hN-kWW" id="66e-t7-e0f"/>
-                        <outlet property="playerOverlayView" destination="78f-pT-ExC" id="K9B-cc-2QU"/>
+                        <outlet property="playerOverlayView" destination="78f-pT-ExC" id="iYk-zE-h1d"/>
                         <outlet property="playerView" destination="UNt-LS-fji" id="BQB-y9-XUb"/>
                         <outlet property="playerViewGestureHandlerView" destination="MbF-O4-dy1" id="0xG-pz-qKC"/>
                     </connections>
@@ -258,12 +251,19 @@
                     <view key="view" contentMode="scaleToFill" id="PPZ-gW-r92">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6PW-aS-F5F">
+                                <rect key="frame" x="16" y="318" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hN7-hT-JVT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="374" y="1499"/>
+            <point key="canvasLocation" x="373.60000000000002" y="1498.2008995502249"/>
         </scene>
     </scenes>
     <resources>

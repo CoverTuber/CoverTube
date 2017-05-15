@@ -69,35 +69,40 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>flareview.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>02F5B5A2A0D62B0FFB3AE37D0C4BBFD7</key>
+		<key>22CAAC1B19F2EF8D20F980581B6B55F8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>134C6FFB1A8D0B578226073AC340B785</key>
+		<key>3DE34AD3A4E575F33DC7E282F22C303B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>49FDDADB894AD052C3DD3FDB8D37A251</key>
+		<key>3E77A428ADCF7C710475592EF81DF81C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>53E298C202A579B4E1EB5168B786E412</key>
+		<key>5E59208F69FA8F8A2A0230D03097FCF8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>561CE789F62F2B6A3DC920DF928B3DE8</key>
+		<key>60BF7A299E94111303B8BC890BC95045</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>71468F40FE8CE99665EC108C726B2A13</key>
+		<key>7111DE6190F711DA518170E54424BEDF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,12 +112,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8B3A96C63B284398DDB5741A93A6A570</key>
+		<key>BC5BE4E623474C68D51A29C1ACFC6651</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B831A412B3FDFFCAE47700F3E072FC10</key>
+		<key>C5A2303F92044E5AB8A1C2F78E3ACB47</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,17 +127,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CB6F8A9C718257B8D93ACA02E592CAF0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D20F833DC4CDAC5A054818EADCE21BF8</key>
+		<key>D174A2BE56F6C72881A8C1BE674377EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D780F80A5793F3EFDAC1606AAA75B388</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E4FF4DB22344B54F1F7281C9FDDC3B9E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F679C52A4B09D6A4AAD951B08C7B22F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

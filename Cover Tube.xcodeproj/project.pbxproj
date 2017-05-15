@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		750A078C1EC8402F00559062 /* MusicDetectionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A078B1EC8402F00559062 /* MusicDetectionConstants.swift */; };
 		753B24EA1E9C921C00102148 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B24E91E9C921C00102148 /* LoginViewController.swift */; };
 		753B24F01E9C983900102148 /* MusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B24EF1E9C983900102148 /* MusicTableViewCell.swift */; };
 		7549D1721E6925FC00A6FCEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D1711E6925FC00A6FCEF /* AppDelegate.swift */; };
@@ -17,6 +18,11 @@
 		75AF13831EC8240100F26E3F /* MusicDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF13821EC8240100F26E3F /* MusicDetectionViewController.swift */; };
 		75AF13851EC8244700F26E3F /* SwipeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF13841EC8244700F26E3F /* SwipeContainerViewController.swift */; };
 		75AF13871EC8254C00F26E3F /* BilboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF13861EC8254C00F26E3F /* BilboardViewController.swift */; };
+		75AF13A01EC83A2100F26E3F /* libACRCloud_IOS_SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AF139F1EC83A2100F26E3F /* libACRCloud_IOS_SDK.a */; };
+		75AF13A41EC83ABE00F26E3F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AF13A31EC83ABE00F26E3F /* AudioToolbox.framework */; };
+		75AF13A61EC83ABE00F26E3F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AF13A51EC83ABE00F26E3F /* AVFoundation.framework */; };
+		75AF13A81EC83AC000F26E3F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AF13A71EC83AC000F26E3F /* libc++.tbd */; };
+		75AF13AA1EC83AC600F26E3F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AF13A91EC83AC600F26E3F /* Security.framework */; };
 		75C07B7A1EA09AE600045740 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 75C07B791EA09AE600045740 /* Assets */; };
 		75C07B7C1EA0C3D400045740 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */; };
 		75EA10501EC6C95B00113C91 /* YouTubeLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA104F1EC6C95B00113C91 /* YouTubeLogIn.swift */; };
@@ -31,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		750A078B1EC8402F00559062 /* MusicDetectionConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicDetectionConstants.swift; sourceTree = "<group>"; };
 		753B24E91E9C921C00102148 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		753B24EF1E9C983900102148 /* MusicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTableViewCell.swift; sourceTree = "<group>"; };
 		7549D16E1E6925FC00A6FCEF /* Cover Tube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cover Tube.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +50,13 @@
 		75AF13821EC8240100F26E3F /* MusicDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicDetectionViewController.swift; sourceTree = "<group>"; };
 		75AF13841EC8244700F26E3F /* SwipeContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeContainerViewController.swift; sourceTree = "<group>"; };
 		75AF13861EC8254C00F26E3F /* BilboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BilboardViewController.swift; sourceTree = "<group>"; };
+		75AF139F1EC83A2100F26E3F /* libACRCloud_IOS_SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libACRCloud_IOS_SDK.a; sourceTree = "<group>"; };
+		75AF13A11EC83A2B00F26E3F /* ACRCloudConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRCloudConfig.h; sourceTree = "<group>"; };
+		75AF13A21EC83A2B00F26E3F /* ACRCloudRecognition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACRCloudRecognition.h; sourceTree = "<group>"; };
+		75AF13A31EC83ABE00F26E3F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		75AF13A51EC83ABE00F26E3F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		75AF13A71EC83AC000F26E3F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		75AF13A91EC83AC600F26E3F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		75C07B751EA09A9C00045740 /* Cover Tube-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cover Tube-Bridging-Header.h"; sourceTree = "<group>"; };
 		75C07B791EA09AE600045740 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
@@ -64,8 +78,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75AF13AA1EC83AC600F26E3F /* Security.framework in Frameworks */,
+				75AF13A81EC83AC000F26E3F /* libc++.tbd in Frameworks */,
+				75AF13A61EC83ABE00F26E3F /* AVFoundation.framework in Frameworks */,
+				75AF13A41EC83ABE00F26E3F /* AudioToolbox.framework in Frameworks */,
 				75F18C831EBC157100358487 /* YouTubePlayer.framework in Frameworks */,
 				BCA878E819F08A5283997CCD /* Pods_Cover_Tube.framework in Frameworks */,
+				75AF13A01EC83A2100F26E3F /* libACRCloud_IOS_SDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +128,7 @@
 				75AF13841EC8244700F26E3F /* SwipeContainerViewController.swift */,
 				753B24EF1E9C983900102148 /* MusicTableViewCell.swift */,
 				75AF13821EC8240100F26E3F /* MusicDetectionViewController.swift */,
+				750A078B1EC8402F00559062 /* MusicDetectionConstants.swift */,
 				75F18C801EBC12D600358487 /* PlaylistViewController.swift */,
 				75AF13861EC8254C00F26E3F /* BilboardViewController.swift */,
 				7549D1781E6925FC00A6FCEF /* Assets.xcassets */,
@@ -120,6 +140,9 @@
 				75F18C8E1EBC5D0400358487 /* UIImageExtension.swift */,
 				75EA104F1EC6C95B00113C91 /* YouTubeLogIn.swift */,
 				75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */,
+				75AF139F1EC83A2100F26E3F /* libACRCloud_IOS_SDK.a */,
+				75AF13A11EC83A2B00F26E3F /* ACRCloudConfig.h */,
+				75AF13A21EC83A2B00F26E3F /* ACRCloudRecognition.h */,
 				75F18C8D1EBC5C5300358487 /* YouTube Player View */,
 				75C07B791EA09AE600045740 /* Assets */,
 			);
@@ -138,6 +161,10 @@
 		834AD4D2A943C1CA6BE27CB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				75AF13A91EC83AC600F26E3F /* Security.framework */,
+				75AF13A71EC83AC000F26E3F /* libc++.tbd */,
+				75AF13A51EC83ABE00F26E3F /* AVFoundation.framework */,
+				75AF13A31EC83ABE00F26E3F /* AudioToolbox.framework */,
 				75F18C821EBC157100358487 /* YouTubePlayer.framework */,
 				B4E447337DE82272774F2BA9 /* Pods_Cover_Tube.framework */,
 			);
@@ -282,6 +309,7 @@
 				75F18C7E1EBC125800358487 /* YouTubePlayer.swift in Sources */,
 				7549D1741E6925FC00A6FCEF /* ViewController.swift in Sources */,
 				75F18C8F1EBC5D0400358487 /* UIImageExtension.swift in Sources */,
+				750A078C1EC8402F00559062 /* MusicDetectionConstants.swift in Sources */,
 				7549D1721E6925FC00A6FCEF /* AppDelegate.swift in Sources */,
 				75F38CA21EC43D75001EC4B3 /* Notification.swift in Sources */,
 				753B24F01E9C983900102148 /* MusicTableViewCell.swift in Sources */,
@@ -410,6 +438,11 @@
 				DEVELOPMENT_TEAM = 4V845HXYW2;
 				INFOPLIST_FILE = "Cover Tube/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Cover\\ Tube",
+					"$(PROJECT_DIR)/Cover\\ Tube",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.covertuber.Cover-Tube";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cover Tube/Cover Tube-Bridging-Header.h";
@@ -427,6 +460,11 @@
 				DEVELOPMENT_TEAM = 4V845HXYW2;
 				INFOPLIST_FILE = "Cover Tube/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Cover\\ Tube",
+					"$(PROJECT_DIR)/Cover\\ Tube",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.covertuber.Cover-Tube";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cover Tube/Cover Tube-Bridging-Header.h";
