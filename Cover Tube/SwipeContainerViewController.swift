@@ -942,16 +942,9 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     {
         if  sender.view == playerViewGestureHandlerView
         {
-            /*
-            let fromRect = CGRect(x: screenWidth/2.0 - 125.0 / 2.0,
-                                  y: rectangularFullYouTubePlayerViewFrame.size.height / 2.0 - 125.0 / 2.0,
-                                  width: 125.0, height: 125.0)
-            let toRect = CGRect(x: screenWidth/2.0 - 250.0 / 2.0,
-                                y: rectangularFullYouTubePlayerViewFrame.size.height / 2.0 - 250.0 / 2.0,
-                                width: 250.0, height: 250.0)
-            
-            animateOverlayWithImage(image: #imageLiteral(resourceName: "Heart_Red_Emoji"), fromRect: fromRect, toRect: toRect, withDuration: 1.0)
-            */
+            /*  */
+            likeVideo(videoID: "aClxtDcdps")
+            /* like animation */
             overlayImageView.isHidden = false
             overlayImageView.image = #imageLiteral(resourceName: "Heart_Red_Emoji")
             FlareView.sharedCenter().flarify(overlayImageView, inParentView: view, with: UIColor.red)

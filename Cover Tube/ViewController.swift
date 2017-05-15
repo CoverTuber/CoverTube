@@ -37,6 +37,7 @@ let request = OIDAuthorizationRequest(configuration: configuration,
                                       responseType: OIDResponseTypeCode,
                                       additionalParameters: nil)
 
+
 class ViewController: UIViewController {
     
     
@@ -59,7 +60,10 @@ class ViewController: UIViewController {
                                                             error : Error?) in
                                                             if authState != nil
                                                             {
-                                                                print("got authroization. token = \(authState?.lastTokenResponse?.accessToken)")
+                                                                print("got authroization. token = \(authState!.lastTokenResponse?.accessToken)")
+                                                                
+                                                                youtubeToken = authState!.lastTokenResponse!.accessToken!
+                                                                
                                                                 youTubeAuthState = authState
                                                             } else {
                                                                 print("login error : \(error!.localizedDescription)")
