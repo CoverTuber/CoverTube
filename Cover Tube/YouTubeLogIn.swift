@@ -8,22 +8,82 @@
 
 import Foundation
 import AppAuth
+import KeychainSwift
 
-let clientID = "426605566501-i5urvqr6npalrt3niffmo96rard4rf1n.apps.googleusercontent.com"
-let reversedClientID = "com.googleusercontent.apps.426605566501-i5urvqr6npalrt3niffmo96rard4rf1n"
+let keychain = KeychainSwift()
+
 let reversedClientIDURL = URL(string: reversedClientID)
 
-let iOSURL_scheme = "com.googleusercontent.apps.426605566501-i5urvqr6npalrt3niffmo96rard4rf1n"
 let iOSURL = URL(string: iOSURL_scheme)
 
-let localHostURL = URL(string: "http://127.0.0.1")
+let OAuth2_Token_Key = "OAuth2Token"
 
+/* Checks whether user is logged in or not */
+func isUserLoggedIn () -> Bool {
+    let auth2TokenStr = getAuth2TokenString()
+    if auth2TokenStr == nil { return false }
+    else {
+        return !auth2TokenStr!.isEmpty
+    }
+}
 
-/*
- Obtaining OAuth 2.0 access tokens
- step 1. Send a request to Google's OAuth 2.0 server https://accounts.google.com/o/oauth2/v2/auth.
- This endpoint handles active session lookup, authenticates the user, and obtains user consent. The endpoint is only accessible over SSL, and it refuses HTTP (non-SSL) connections.
- 
- @param - client_id, redirect_uri
- 
- */
+/* returns oauth2 token string if exists */
+func getAuth2TokenString () -> String? {
+    return keychain.get(OAuth2_Token_Key)
+}
+
+/* saves parameter string as OAuth2 string */
+func saveAuth2Token (tokenString : String) {
+    keychain.set(tokenString, forKey: OAuth2_Token_Key)
+}
+
+/* updates root view controller based on logged in or not. */
+func updateRootViewController ()
+{
+    let appDelegate = UIApplication.shared.delegate
+    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    
+    if appDelegate == nil { return }
+    if appDelegate!.window == nil { return }
+    if appDelegate!.window! == nil { return }
+    
+    let window = appDelegate!.window!!
+    
+    let currentRootVC = window.rootViewController
+    
+    if isUserLoggedIn()
+    {
+        let swipeContainerVC = storyBoard.instantiateViewController(withIdentifier: "SwipeContainerVC")
+        
+        if currentRootVC == nil {
+            window.rootViewController = swipeContainerVC
+        } else if !(window.rootViewController is SwipeContainerViewController) {
+            window.rootViewController = swipeContainerVC
+        } else {
+            // already swipeContainerVC is root
+        }
+    }
+    else // user is not logged in
+    {
+        let loginVC = storyBoard.instantiateViewController(withIdentifier: "VC")
+        
+        if currentRootVC == nil {
+            window.rootViewController = loginVC
+        }
+        else
+        {
+            if !(window.rootViewController! is ViewController) {
+                window.rootViewController = loginVC
+            }
+            else {
+                // already loginVC is root
+            }
+            
+        }
+    }
+}
+
+/* logs user out */
+func logout() {
+    keychain.delete(OAuth2_Token_Key)
+}

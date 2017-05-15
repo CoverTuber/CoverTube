@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		750A078C1EC8402F00559062 /* MusicDetectionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A078B1EC8402F00559062 /* MusicDetectionConstants.swift */; };
 		750A078E1EC934C200559062 /* YouTube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A078D1EC934C200559062 /* YouTube.swift */; };
+		750A07901EC971CC00559062 /* YouTubeLogInCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A078F1EC971CC00559062 /* YouTubeLogInCredentials.swift */; };
 		753B24EA1E9C921C00102148 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B24E91E9C921C00102148 /* LoginViewController.swift */; };
 		753B24F01E9C983900102148 /* MusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B24EF1E9C983900102148 /* MusicTableViewCell.swift */; };
 		7549D1721E6925FC00A6FCEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D1711E6925FC00A6FCEF /* AppDelegate.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		750A078B1EC8402F00559062 /* MusicDetectionConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicDetectionConstants.swift; sourceTree = "<group>"; };
 		750A078D1EC934C200559062 /* YouTube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTube.swift; sourceTree = "<group>"; };
+		750A078F1EC971CC00559062 /* YouTubeLogInCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeLogInCredentials.swift; sourceTree = "<group>"; };
 		753B24E91E9C921C00102148 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		753B24EF1E9C983900102148 /* MusicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTableViewCell.swift; sourceTree = "<group>"; };
 		7549D16E1E6925FC00A6FCEF /* Cover Tube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cover Tube.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +143,7 @@
 				75EE1CB31EBDCADF00C5CAA7 /* YouTubeSearcher.swift */,
 				75F18C8E1EBC5D0400358487 /* UIImageExtension.swift */,
 				75EA104F1EC6C95B00113C91 /* YouTubeLogIn.swift */,
+				750A078F1EC971CC00559062 /* YouTubeLogInCredentials.swift */,
 				750A078D1EC934C200559062 /* YouTube.swift */,
 				75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */,
 				75AF139F1EC83A2100F26E3F /* libACRCloud_IOS_SDK.a */,
@@ -315,6 +318,7 @@
 				75F18C8F1EBC5D0400358487 /* UIImageExtension.swift in Sources */,
 				750A078C1EC8402F00559062 /* MusicDetectionConstants.swift in Sources */,
 				7549D1721E6925FC00A6FCEF /* AppDelegate.swift in Sources */,
+				750A07901EC971CC00559062 /* YouTubeLogInCredentials.swift in Sources */,
 				75F38CA21EC43D75001EC4B3 /* Notification.swift in Sources */,
 				753B24F01E9C983900102148 /* MusicTableViewCell.swift in Sources */,
 			);

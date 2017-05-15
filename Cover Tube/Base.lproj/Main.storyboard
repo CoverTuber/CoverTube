@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Cover_Tube" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VC" id="BYZ-38-t0r" customClass="ViewController" customModule="Cover_Tube" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -116,7 +116,7 @@
         <!--Swipe Container View Controller-->
         <scene sceneID="EMM-ty-sc2">
             <objects>
-                <viewController id="hlX-dJ-DKt" customClass="SwipeContainerViewController" customModule="Cover_Tube" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SwipeContainerVC" id="hlX-dJ-DKt" customClass="SwipeContainerViewController" customModule="Cover_Tube" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nox-Qf-HUt"/>
                         <viewControllerLayoutGuide type="bottom" id="GaJ-Nb-Em0"/>

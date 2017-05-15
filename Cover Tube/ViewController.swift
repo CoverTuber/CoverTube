@@ -63,7 +63,8 @@ class ViewController: UIViewController {
                                                                 print("got authroization. token = \(authState!.lastTokenResponse?.accessToken)")
                                                                 
                                                                 youtubeToken = authState!.lastTokenResponse!.accessToken!
-                                                                
+                                                                keychain.set(youtubeToken, forKey: OAuth2_Token_Key)
+                                                                updateRootViewController()
                                                                 youTubeAuthState = authState
                                                             } else {
                                                                 print("login error : \(error!.localizedDescription)")

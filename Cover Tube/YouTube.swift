@@ -16,14 +16,21 @@ let likeURLString = "\(baseURLString)/videos/rate"
 // "WsptdUFthWI"
 func likeVideo (videoID : String)
 {
-    print("tok = \(youtubeToken)")
-    let likeURLString = "https://www.googleapis.com/youtube/v3/videos/rate"
+    print("tok = \(keychain.get(OAuth2_Token_Key))")
+    let likeURLString = "https://www.googleapis.com/youtube/v3/videos/rate?id=\(videoID)&rating=like"
     let likeURL = URL(string: likeURLString)!
     var request = URLRequest(url: likeURL)
     request.httpMethod = "POST"
     
     /* ???? */
-    let paramString = "access_token=\(youtubeToken)&id=\(videoID)&rate=like"
+    
+    if keychain.get(OAuth2_Token_Key) == nil {
+        print("OAuth2TokenKey is empty")
+        return
+    }
+    
+    
+    let paramString = "access_token=\(keychain.get(OAuth2_Token_Key)!)"
     request.httpBody = paramString.data(using: .utf8)
     
     let task = URLSession.shared.dataTask(with: request,
