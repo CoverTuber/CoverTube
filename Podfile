@@ -8,5 +8,6 @@ target 'Cover Tube' do
 	pod 'AppAuth'
 	pod "SnapchatSwipeContainer"
 	pod 'flareview'
+	pod 'KeychainSwift', '~> 8.0'
 end
 

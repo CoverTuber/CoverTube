@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6933DCD83CED34E3950D5A3175AF22C9'
-               BlueprintName = 'UXMVolumeOverlay'
+               BlueprintIdentifier = '38ACA430605AFB4229712A18BDDF5086'
+               BlueprintName = 'KeychainSwift'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'UXMVolumeOverlay.framework'>
+               BuildableName = 'KeychainSwift.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

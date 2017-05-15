@@ -91,6 +91,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AppAuth/AppAuth.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CircularSpinner/CircularSpinner.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/KeychainSwift/KeychainSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ReactiveSwift/ReactiveSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Result/Result.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SnapchatSwipeContainer/SnapchatSwipeContainer.framework"
@@ -104,6 +105,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AppAuth/AppAuth.framework"
   install_framework "$BUILT_PRODUCTS_DIR/CircularSpinner/CircularSpinner.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/KeychainSwift/KeychainSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ReactiveSwift/ReactiveSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Result/Result.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SnapchatSwipeContainer/SnapchatSwipeContainer.framework"

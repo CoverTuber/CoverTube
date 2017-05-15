@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>KeychainSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Cover Tube.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -76,77 +81,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>22CAAC1B19F2EF8D20F980581B6B55F8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3DE34AD3A4E575F33DC7E282F22C303B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3E77A428ADCF7C710475592EF81DF81C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5E59208F69FA8F8A2A0230D03097FCF8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>60BF7A299E94111303B8BC890BC95045</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7111DE6190F711DA518170E54424BEDF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>842F72DCDC6161BB37D6B901E9301ED8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BC5BE4E623474C68D51A29C1ACFC6651</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C5A2303F92044E5AB8A1C2F78E3ACB47</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C63CB4AE559E609E163642ED2A914D4D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D174A2BE56F6C72881A8C1BE674377EA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D780F80A5793F3EFDAC1606AAA75B388</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E4FF4DB22344B54F1F7281C9FDDC3B9E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F679C52A4B09D6A4AAD951B08C7B22F4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

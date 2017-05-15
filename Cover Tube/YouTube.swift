@@ -16,6 +16,7 @@ let likeURLString = "\(baseURLString)/videos/rate"
 // "WsptdUFthWI"
 func likeVideo (videoID : String)
 {
+    print("tok = \(youtubeToken)")
     let likeURLString = "https://www.googleapis.com/youtube/v3/videos/rate"
     let likeURL = URL(string: likeURLString)!
     var request = URLRequest(url: likeURL)
