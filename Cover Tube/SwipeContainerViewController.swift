@@ -125,8 +125,6 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        overlayImageView.isHidden = true
-        
         didAutoplayPreviously = false
         
         updateUI()
@@ -968,11 +966,10 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         {
             /*  */
             likeVideo(videoID: "zu4GOlrFDh4")
-            return
             /* like animation */
-            // overlayImageView.isHidden = false
-            // overlayImageView.image = #imageLiteral(resourceName: "Heart_Red_Emoji")
-            // FlareView.sharedCenter().flarify(overlayImageView, inParentView: view, with: UIColor.red)
+            overlayImageView.isHidden = false
+            overlayImageView.image = #imageLiteral(resourceName: "Heart_Red_Emoji")
+            FlareView.sharedCenter().flarify(overlayImageView, inParentView: view, with: UIColor.red)
         }
     }
     

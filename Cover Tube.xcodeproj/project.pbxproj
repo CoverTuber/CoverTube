@@ -28,6 +28,7 @@
 		75C07B7A1EA09AE600045740 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 75C07B791EA09AE600045740 /* Assets */; };
 		75C07B7C1EA0C3D400045740 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */; };
 		75EA10501EC6C95B00113C91 /* YouTubeLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA104F1EC6C95B00113C91 /* YouTubeLogIn.swift */; };
+		75EC3DE91ECB86B000E7F477 /* ReplayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC3DE81ECB86B000E7F477 /* ReplayButton.swift */; };
 		75EE1CB41EBDCADF00C5CAA7 /* YouTubeSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EE1CB31EBDCADF00C5CAA7 /* YouTubeSearcher.swift */; };
 		75F18C7E1EBC125800358487 /* YouTubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F18C7C1EBC125800358487 /* YouTubePlayer.swift */; };
 		75F18C7F1EBC125800358487 /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = 75F18C7D1EBC125800358487 /* YTPlayer.html */; };
@@ -65,6 +66,7 @@
 		75C07B791EA09AE600045740 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
 		75EA104F1EC6C95B00113C91 /* YouTubeLogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeLogIn.swift; sourceTree = "<group>"; };
+		75EC3DE81ECB86B000E7F477 /* ReplayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayButton.swift; sourceTree = "<group>"; };
 		75EE1CB31EBDCADF00C5CAA7 /* YouTubeSearcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeSearcher.swift; sourceTree = "<group>"; };
 		75F18C7C1EBC125800358487 /* YouTubePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubePlayer.swift; sourceTree = "<group>"; };
 		75F18C7D1EBC125800358487 /* YTPlayer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YTPlayer.html; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				750A078F1EC971CC00559062 /* YouTubeLogInCredentials.swift */,
 				750A078D1EC934C200559062 /* YouTube.swift */,
 				75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */,
+				75EC3DE81ECB86B000E7F477 /* ReplayButton.swift */,
 				75AF139F1EC83A2100F26E3F /* libACRCloud_IOS_SDK.a */,
 				75AF13A11EC83A2B00F26E3F /* ACRCloudConfig.h */,
 				75AF13A21EC83A2B00F26E3F /* ACRCloudRecognition.h */,
@@ -314,6 +317,7 @@
 				75EA10501EC6C95B00113C91 /* YouTubeLogIn.swift in Sources */,
 				75C07B7C1EA0C3D400045740 /* UtilityConstants.swift in Sources */,
 				75F18C7E1EBC125800358487 /* YouTubePlayer.swift in Sources */,
+				75EC3DE91ECB86B000E7F477 /* ReplayButton.swift in Sources */,
 				7549D1741E6925FC00A6FCEF /* ViewController.swift in Sources */,
 				75F18C8F1EBC5D0400358487 /* UIImageExtension.swift in Sources */,
 				750A078C1EC8402F00559062 /* MusicDetectionConstants.swift in Sources */,
