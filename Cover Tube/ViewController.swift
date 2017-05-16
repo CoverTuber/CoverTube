@@ -13,7 +13,7 @@ import AppAuth
  https://github.com/openid/AppAuth-iOS
  */
 
-let scope = "https://www.googleapis.com/auth/youtube"
+let scope = "https://www.googleapis.com/auth/youtube.force-ssl"
 let scopeURL = URL(string: scope)!
 
 var currentAuthorizationFlow : OIDAuthorizationFlowSession? = nil
@@ -32,7 +32,7 @@ let configuration = OIDServiceConfiguration(authorizationEndpoint: authorization
 let request = OIDAuthorizationRequest(configuration: configuration,
                                       clientId: clientID,
                                       clientSecret: nil,
-                                      scopes: [OIDScopeOpenID, OIDScopeProfile],
+                                      scopes: [ OIDScopeOpenID, OIDScopeProfile, scope],
                                       redirectURL: oauthURL,
                                       responseType: OIDResponseTypeCode,
                                       additionalParameters: nil)
@@ -44,6 +44,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
     
     

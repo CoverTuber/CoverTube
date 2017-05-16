@@ -45,6 +45,12 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     /* button that handles user interaction when youtube player view is minimized */
     @IBOutlet weak var minimizedPlayerViewOverlayButton: UIButton!
     
+    /* button for previous song */
+    @IBOutlet weak var prevButton: UIButton!
+    
+    /* button for next song */
+    @IBOutlet weak var nextButton: UIButton!
+    
     /* displays songs in current playlist */
     @IBOutlet weak var currentPlaylistTableview: UITableView!
     
@@ -198,6 +204,16 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         
         /* set up play,pause button */
         
+        /* set up previous button */
+        prevButton.clipsToBounds = true
+        prevButton.layer.cornerRadius = previousButtonCornerRadius
+        prevButton.center = previousButtonCenter
+        
+        /* set up next button */
+        nextButton.clipsToBounds = true
+        nextButton.layer.cornerRadius = nextButtonCornerRadius
+        nextButton.center = nextButtonCenter
+        
         /* set up linear time progress bar */
         // linearTimeProgressBar.currentThumbImage =
         linearTimeProgressBar.minimumTrackTintColor = minimumTrackColor
@@ -255,6 +271,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         durationLabel.frame = CGRect(x: screenWidth - 10.0 - 42.0, y: playerOverlayView.frame.size.height - 21.0 - 25.0, width: 42.0, height: 21.0)
         
         minimizedPlayerViewOverlayButton.isHidden = !isPlayerViewMinimized
+        prevButton.isHidden = !isPlayerViewMinimized
+        nextButton.isHidden = !isPlayerViewMinimized
         minimizePlayerViewButton.isHidden = isPlayerViewMinimized
         
         // playerOverlayView.isHidden = isYouTubePlayerViewMinimized
@@ -266,7 +284,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         circularTimeProgressBar.center = minimizedSizeBottomCenterYouTubePlayerCenterPoint
         
         minimizedPlayerViewOverlayButton.center = minimizedSizeBottomCenterYouTubePlayerCenterPoint
-        
+        prevButton.center = previousButtonCenter
+        nextButton.center = nextButtonCenter
         
         
         view.bringSubview(toFront: currentPlaylistTableview)
@@ -274,6 +293,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         view.bringSubview(toFront: playerOverlayView)
         view.bringSubview(toFront: playerViewGestureHandlerView)
         view.bringSubview(toFront: minimizePlayerViewButton)
+        view.bringSubview(toFront: prevButton)
+        view.bringSubview(toFront: nextButton)
         view.bringSubview(toFront: minimizedPlayerViewOverlayButton)
         view.bringSubview(toFront: linearTimeProgressBar)
         
@@ -360,7 +381,9 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         /* playerOverlayView will be visible when full mode. */
         playerOverlayView.alpha = maximizedScaledAlpha
         
-        currentPlaylistTableview.alpha = maximizedScaledAlpha
+        // MARK: REMOVE
+        currentPlaylistTableview.alpha = 0.0
+        // currentPlaylistTableview.alpha = maximizedScaledAlpha
         
         /* linearTimeProgressBar will be visible when full mode. */
         linearTimeProgressBar.isHidden = false
@@ -510,7 +533,6 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
                         self.currentPlaylistTableview.alpha = 0.0
                         self.linearTimeProgressBar.alpha = 0.0
                         self.circularTimeProgressBar.alpha = 1.0
-                        self.currentPlaylistTableview.alpha = 0.0
         }) { (completed : Bool) in
             self.currentPlaylistTableview.isHidden = true
             self.linearTimeProgressBar.isHidden = true
@@ -630,7 +652,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             self.playerOverlayView.frame = rectangularFullYouTubePlayerOverlayViewFrame
             self.playerViewGestureHandlerView.frame = rectangularFullYouTubePlayerOverlayViewFrame
             self.playerOverlayView.alpha = 1.0
-            self.currentPlaylistTableview.alpha = 1.0
+            // self.currentPlaylistTableview.alpha = 1.0
+            self.currentPlaylistTableview.alpha = 0.0
             self.linearTimeProgressBar.alpha = 1.0
             self.circularTimeProgressBar.alpha = 0.0
         }) { (completed : Bool) in
@@ -713,7 +736,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         
         /* load video with youtube video's id. */
         // youtubePlayerView.loadVideoID("PT2_F-1esPk") // chainsmokers closer original video
-        playerView.loadVideoID("WsptdUFthWI")
+        playerView.loadVideoID("zu4GOlrFDh4")
+        // playerView.loadVideoID("WsptdUFthWI")
         // chainsmokers closer cover video - WsptdUFthWI
         // test rectangle - wM0HvuP5Aps
     }
@@ -943,11 +967,12 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         if  sender.view == playerViewGestureHandlerView
         {
             /*  */
-            likeVideo(videoID: "aClxtDcdps")
+            likeVideo(videoID: "zu4GOlrFDh4")
+            return
             /* like animation */
-            overlayImageView.isHidden = false
-            overlayImageView.image = #imageLiteral(resourceName: "Heart_Red_Emoji")
-            FlareView.sharedCenter().flarify(overlayImageView, inParentView: view, with: UIColor.red)
+            // overlayImageView.isHidden = false
+            // overlayImageView.image = #imageLiteral(resourceName: "Heart_Red_Emoji")
+            // FlareView.sharedCenter().flarify(overlayImageView, inParentView: view, with: UIColor.red)
         }
     }
     

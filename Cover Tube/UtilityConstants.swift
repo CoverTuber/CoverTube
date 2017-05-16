@@ -60,6 +60,22 @@ let minimizedSizeBottomCenterYouTubePlayerFrame
 let minimizedYouTubePlayerViewTransformScale = CATransform3DScale(CATransform3DIdentity, 0.5, 0.5, 1.0)
 let maximizedYouTubePlayerViewTransformScale = CATransform3DScale(CATransform3DIdentity, 1.0, 1.0, 1.0)
 
+
+/* previous button size */
+let previousButtonWidth = squareMinimizedYouTubePlayerSize.width * 0.8
+let previousButtonHeight = previousButtonWidth
+let previousButtonSize = CGSize(width: previousButtonWidth,
+                                height: previousButtonHeight)
+let previousButtonCornerRadius = previousButtonWidth / 2.0
+let previousButtonCenter = CGPoint(x: minimizedSizeBottomCenterYouTubePlayerCenterPoint.x - previousButtonWidth * 0.7, y: minimizedSizeBottomCenterYouTubePlayerCenterPoint.y)
+
+/* next button size. same as previous button's size */
+let nextButtonWidth = previousButtonWidth
+let nextButtonHeight = previousButtonHeight
+let nextButtonSize = CGSize(width: nextButtonWidth, height: nextButtonHeight)
+let nextButtonCornerRadius = nextButtonWidth / 2.0
+let nextButtonCenter = CGPoint(x: minimizedSizeBottomCenterYouTubePlayerCenterPoint.x + nextButtonWidth * 0.7, y: minimizedSizeBottomCenterYouTubePlayerCenterPoint.y)
+
 /* frame of linear time progress bar below youtube player view, indicating time. */
 let linearTimeProgressBarFrame = CGRect(origin: CGPoint.zero,
                                         size: CGSize(width: screenWidth, height: 6.0))

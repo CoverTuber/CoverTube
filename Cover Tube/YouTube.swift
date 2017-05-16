@@ -22,16 +22,17 @@ func likeVideo (videoID : String)
     var request = URLRequest(url: likeURL)
     request.httpMethod = "POST"
     
-    /* ???? */
-    
     if keychain.get(OAuth2_Token_Key) == nil {
         print("OAuth2TokenKey is empty")
+        // MARK: Go to login view
         return
     }
     
     
     let paramString = "access_token=\(keychain.get(OAuth2_Token_Key)!)"
-    request.httpBody = paramString.data(using: .utf8)
+//    request.httpBody = paramString.data(using: .utf8)
+    //request.addValue("Token token=884288bae150b9f2f68d8dc3a932071d", forHTTPHeaderField: "Authorization")
+    request.addValue("Bearer \(keychain.get(OAuth2_Token_Key)!)", forHTTPHeaderField: "Authorization")
     
     let task = URLSession.shared.dataTask(with: request,
                                           completionHandler: { (data : Data?,

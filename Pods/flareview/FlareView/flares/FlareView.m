@@ -95,7 +95,6 @@ static FlareView *sharedFlareViewCenter = nil;
                                   } completion:^(BOOL finished) {
                                       childView.hidden = true;
                                       childView.transform = CGAffineTransformIdentity;
-                                      childView.hidden = false;
                                       childView.alpha = 1.0;
                                   }];
                               }];
