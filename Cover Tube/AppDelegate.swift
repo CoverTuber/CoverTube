@@ -10,17 +10,77 @@ import UIKit
 import SnapchatSwipeContainer
 
 
+/* setup swipe view controllers */
+let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    /* Two main view controllers for this app
+     NOTE: swipeContainerVC contains three view controllers. */
+    private var vc : ViewController? = nil
+    private var swipeContainerVC : SnapchatSwipeContainerViewController? = nil
+    
+    /* return app delegate */
+    class func getAppDelegate () -> AppDelegate?
+    {
+        if let appDelegate = UIApplication.shared.delegate {
+            return UIApplication.shared.delegate as! AppDelegate
+        } else {
+            return nil
+        }
+    }
+    
+    /* return view controller to log in  */
+    class func getViewController() -> ViewController? {
+        if let appDelegate = getAppDelegate() {
+            return appDelegate.vc
+        } else {
+            return nil
+        }
+    }
+    
+    /* set VC to log in */
+    class func setViewController () {
+        if storyboard == nil { return }
+        if let appDelegate = getAppDelegate() {
+            appDelegate.vc = storyboard.instantiateViewController(withIdentifier: "VC") as? ViewController
+        }
+    }
+    
+    /* return Snapchat swipe container view controller */
+    class func getSnapchatSwipeContainerVC () -> SnapchatSwipeContainerViewController? {
+        if let appDelegate = getAppDelegate() {
+            return appDelegate.swipeContainerVC
+        } else {
+            return nil
+        }
+    }
+    
+    /* set Snapchat swipe container view controller */
+    class func setSnapchatSwipeContainerVC () {
+        if let appDelegate = getAppDelegate() {
+            appDelegate.swipeContainerVC = storyboard.instantiateViewController(withIdentifier: "SwipeContainerVC") as? SnapchatSwipeContainerViewController
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        // logout()
-        updateRootViewController()
+        /*
+        keychain.delete("Oauth2AuthState")
+        keychain.delete("Oauth2Token")
+        keychain.delete("OAuth2RefreshToken")
+        keychain.delete("OAuth2AccessToken")
+        */
+        getAuthState()
+        isAuthTokenActive()
+        AppDelegate.setViewController()
+        AppDelegate.setSnapchatSwipeContainerVC()
+        logout()
+        window?.rootViewController = AppDelegate.getSnapchatSwipeContainerVC()
+        // updateRootViewController()
         return true
     }
 

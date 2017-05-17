@@ -130,20 +130,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.86072467699999999" blue="0.64035133639999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MbF-O4-dy1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.40000000600000002" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="t03-hN-kWW" appends="YES" id="CK3-TY-IMg"/>
+                                    <outletCollection property="gestureRecognizers" destination="vXz-wr-eQ1" appends="YES" id="Suv-2p-Xwx"/>
+                                    <outletCollection property="gestureRecognizers" destination="iMf-fu-u0V" appends="YES" id="4mq-bc-BZJ"/>
+                                </connections>
+                            </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78f-pT-ExC">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANa-Wx-QVZ" customClass="ReplayButton" customModule="Cover_Tube" customModuleProvider="target">
-                                        <rect key="frame" x="164" y="8" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="shu"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcY-Jl-uen">
-                                        <rect key="frame" x="300" y="8" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="curr" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zsn-0M-yiA">
                                         <rect key="frame" x="10" y="202" width="42" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -169,17 +170,22 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MbF-O4-dy1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANa-Wx-QVZ" customClass="RepeatButton" customModule="Cover_Tube" customModuleProvider="target">
+                                <rect key="frame" x="173" y="8" width="28" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.80000001190000003" green="0.40000000600000002" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <gestureRecognizers/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="t03-hN-kWW" appends="YES" id="CK3-TY-IMg"/>
-                                    <outletCollection property="gestureRecognizers" destination="vXz-wr-eQ1" appends="YES" id="Suv-2p-Xwx"/>
-                                    <outletCollection property="gestureRecognizers" destination="iMf-fu-u0V" appends="YES" id="4mq-bc-BZJ"/>
+                                    <action selector="repeatButtonTapped:" destination="hlX-dJ-DKt" eventType="touchUpInside" id="4AV-QC-x32"/>
                                 </connections>
-                            </view>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcY-Jl-uen">
+                                <rect key="frame" x="250" y="8" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="Button" image="Shuffle_White">
+                                    <color key="titleShadowColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uhy-ZL-Lzs">
                                 <rect key="frame" x="8" y="8" width="30" height="30"/>
                                 <constraints>
@@ -243,6 +249,8 @@
                         <outlet property="playerView" destination="UNt-LS-fji" id="BQB-y9-XUb"/>
                         <outlet property="playerViewGestureHandlerView" destination="MbF-O4-dy1" id="0xG-pz-qKC"/>
                         <outlet property="prevButton" destination="fuW-We-KJP" id="oEj-8g-n9x"/>
+                        <outlet property="repeatButton" destination="ANa-Wx-QVZ" id="fkT-uS-cZO"/>
+                        <outlet property="shuffleButton" destination="UcY-Jl-uen" id="APA-ZD-Pdf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQ2-EI-4FO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -293,6 +301,7 @@
     <resources>
         <image name="Pause" width="350" height="350"/>
         <image name="Play_Pre_White_Icon" width="352" height="250"/>
+        <image name="Shuffle_White" width="256" height="256"/>
         <image name="play_icon_white_half" width="250" height="250"/>
     </resources>
 </document>

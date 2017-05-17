@@ -27,6 +27,10 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     /* Player view's overlay view to display buttons, info on top of player view */
     @IBOutlet weak var playerOverlayView: UIView!
     
+    @IBOutlet weak var repeatButton: RepeatButton!
+    
+    @IBOutlet weak var shuffleButton: UIButton!
+    
     /* image used to animate like, play, pause, next, previous on top of player view */
     @IBOutlet weak var overlayImageView: UIImageView!
     
@@ -106,20 +110,25 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         setupUI()
         
         overlayViewSingleTapGestureRecognizer.require(toFail: overlayViewDoubleTapGestureRecognizer)
+        overlayViewSingleTapGestureRecognizer.require(toFail: overlayViewPanGestureRecognizer)
+        // overlayViewSingleTapGestureRecognizer.requiresExclusiveTouchType = true
+        // overlayViewSingleTapGestureRecognizer.cancelsTouchesInView = false
+        overlayViewPanGestureRecognizer.cancelsTouchesInView = true
+        
+        overlayViewPanGestureRecognizer.require(toFail: overlayViewSingleTapGestureRecognizer)
+        overlayViewSingleTapGestureRecognizer.delegate = self
         overlayViewPanGestureRecognizer.delegate = self
         
-        /* setup swipe view controllers */
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let musicDetectionViewController = storyboard.instantiateViewController(withIdentifier: "MusicDetectionVC")
-        
-        let playlistViewController = storyboard.instantiateViewController(withIdentifier: "PlaylistVC")
-        
-        let bilboardViewController = storyboard.instantiateViewController(withIdentifier: "BilboardVC")
-        
-        let viewControllers = [musicDetectionViewController, playlistViewController, bilboardViewController]
-        setupScrollView(viewControllers: viewControllers)
-        
-        
+        if storyboard != nil {
+            let musicDetectionViewController = storyboard!.instantiateViewController(withIdentifier: "MusicDetectionVC")
+            
+            let playlistViewController = storyboard!.instantiateViewController(withIdentifier: "PlaylistVC")
+            
+            let bilboardViewController = storyboard!.instantiateViewController(withIdentifier: "BilboardVC")
+            
+            let viewControllers = [musicDetectionViewController, playlistViewController, bilboardViewController]
+            setupScrollView(viewControllers: viewControllers)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -184,7 +193,13 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         playerView.clipsToBounds = true
         playerView.layer.cornerRadius = 0.0
         
-        /* set up youtube player view's overlay view settings */
+        /* set up player view's overlay view */
+        repeatButton.center = CGPoint(x: screenWidth / 2.0,
+                                      y: 8.0 + repeatButton.frame.size.height / 2.0)
+        
+        
+        
+        /* set up youtube player's view that handles gestures settings */
         playerViewGestureHandlerView.clipsToBounds = true
         playerViewGestureHandlerView.layer.cornerRadius = 0.0
         
@@ -285,11 +300,12 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         prevButton.center = previousButtonCenter
         nextButton.center = nextButtonCenter
         
-        
+        /* set hiearchy */
         view.bringSubview(toFront: currentPlaylistTableview)
         view.bringSubview(toFront: playerView)
-        view.bringSubview(toFront: playerOverlayView)
         view.bringSubview(toFront: playerViewGestureHandlerView)
+        view.bringSubview(toFront: playerOverlayView)
+        view.bringSubview(toFront: repeatButton)
         view.bringSubview(toFront: minimizePlayerViewButton)
         view.bringSubview(toFront: prevButton)
         view.bringSubview(toFront: nextButton)
@@ -735,8 +751,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         /* load video with youtube video's id. */
         // youtubePlayerView.loadVideoID("PT2_F-1esPk") // chainsmokers closer original video
         playerView.loadVideoID("zu4GOlrFDh4")
-        // playerView.loadVideoID("WsptdUFthWI")
-        // chainsmokers closer cover video - WsptdUFthWI
+        // playerView.loadVideoID("OcPRNIycl7U") // minions
+        // playerView.loadVideoID("WsptdUFthWI") // chainsmokers cover
         // test rectangle - wM0HvuP5Aps
     }
     
@@ -796,6 +812,12 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         /* animate youtube player view */
         minimizeYouTubePlayerViewAnimation()
     }
+    
+    @IBAction func repeatButtonTapped(_ sender: RepeatButton)
+    {
+        sender.tapped()
+    }
+    
     
     
     /*
@@ -928,6 +950,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             }
         }
         else if playerView.playerState == YouTubePlayerState.Paused
+            || playerView.playerState == .Ended
         {
             playerView.play()
             
@@ -996,8 +1019,38 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     }
     
     // MARK: Gesture Recognizer delegate
+    /*
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer is UIPanGestureRecognizer {
+            let panGestureRecognizer = gestureRecognizer as! UIPanGestureRecognizer
+            let velocity = panGestureRecognizer.velocity(in: view)
+            return abs(velocity.y) > abs(velocity.x)
+        }
+        return true
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer)
+        -> Bool
+    {
+        if gestureRecognizer is UIPanGestureRecognizer
+            && otherGestureRecognizer is UITapGestureRecognizer
+        {
+            return true
+        }
+        return false
+    }
+    */
+    
+    /*
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if gestureRecognizer == overlayViewPanGestureRecognizer
+        print("gestureRecogznier = \( type(of: gestureRecognizer))")
+        
+        if touch.view == repeatButton {
+            return false
+        }
+        
+        if gestureRecognizer == overlayViewPanGestureRecognizer && touch.view != repeatButton
         {
             let velocity = overlayViewPanGestureRecognizer.velocity(in: nil)
             print("yyyy = \(velocity.y)")
@@ -1008,8 +1061,20 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
                 return false
             }
         }
+        else if gestureRecognizer == overlayViewSingleTapGestureRecognizer { // check if it's on screen
+            if (touch.view! != playerViewGestureHandlerView) {
+                return false
+            } else if touch.view == repeatButton {
+                repeatButton.tapped()
+                return false
+            } else if touch.view is UIButton {
+                return false
+            }
+        }
+        
         return true
     }
+    */
     
     // MARK: UITableView Datasource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

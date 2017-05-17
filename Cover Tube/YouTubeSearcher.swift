@@ -13,7 +13,7 @@ import YoutubeEngine
 import ReactiveSwift
 
 let _defaultEngine: Engine = {
-    let engine = Engine(.key("AIzaSyCgwWIve2NhQOb5IHMdXxDaRHOnDrLdrLg"))
+    let engine = Engine(.key(YouTubeAPIKey))
     engine.logEnabled = true
     return engine
 }()

@@ -167,8 +167,11 @@ enum YouTubePlayerViewOverlayDirection {
 /*  */
 let lightGrayColor = UIColor(colorLiteralRed: 220.0/255, green: 220.0/255, blue: 220.0/255, alpha: 1)
 
-/* color used for passed time in slider, CircularSpinner */
+/* color used for passed time in slider, CircularSpinner, light blue */
 let minimumTrackColor = UIColor(colorLiteralRed: 47.0/255, green: 177.0/255, blue: 254.0/255, alpha: 1)
+
+/* light blue */
+let lightBlueColor = minimumTrackColor
 
 let maximumTrackColor = lightGrayColor
 
@@ -222,6 +225,3 @@ func resumeLayerAnimation ( layer : CALayer) {
     layer.beginTime = timeSincePause
 }
 
-
-
-let appDelegate = UIApplication.shared.delegate

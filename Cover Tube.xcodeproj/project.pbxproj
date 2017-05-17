@@ -12,6 +12,7 @@
 		750A07901EC971CC00559062 /* YouTubeLogInCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A078F1EC971CC00559062 /* YouTubeLogInCredentials.swift */; };
 		753B24EA1E9C921C00102148 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B24E91E9C921C00102148 /* LoginViewController.swift */; };
 		753B24F01E9C983900102148 /* MusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B24EF1E9C983900102148 /* MusicTableViewCell.swift */; };
+		75424B091ECC102900FB66F3 /* RepeatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75424B081ECC102900FB66F3 /* RepeatButton.swift */; };
 		7549D1721E6925FC00A6FCEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D1711E6925FC00A6FCEF /* AppDelegate.swift */; };
 		7549D1741E6925FC00A6FCEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D1731E6925FC00A6FCEF /* ViewController.swift */; };
 		7549D1771E6925FC00A6FCEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7549D1751E6925FC00A6FCEF /* Main.storyboard */; };
@@ -28,7 +29,6 @@
 		75C07B7A1EA09AE600045740 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 75C07B791EA09AE600045740 /* Assets */; };
 		75C07B7C1EA0C3D400045740 /* UtilityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */; };
 		75EA10501EC6C95B00113C91 /* YouTubeLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EA104F1EC6C95B00113C91 /* YouTubeLogIn.swift */; };
-		75EC3DE91ECB86B000E7F477 /* ReplayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC3DE81ECB86B000E7F477 /* ReplayButton.swift */; };
 		75EE1CB41EBDCADF00C5CAA7 /* YouTubeSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EE1CB31EBDCADF00C5CAA7 /* YouTubeSearcher.swift */; };
 		75F18C7E1EBC125800358487 /* YouTubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F18C7C1EBC125800358487 /* YouTubePlayer.swift */; };
 		75F18C7F1EBC125800358487 /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = 75F18C7D1EBC125800358487 /* YTPlayer.html */; };
@@ -45,6 +45,7 @@
 		750A078F1EC971CC00559062 /* YouTubeLogInCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeLogInCredentials.swift; sourceTree = "<group>"; };
 		753B24E91E9C921C00102148 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		753B24EF1E9C983900102148 /* MusicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTableViewCell.swift; sourceTree = "<group>"; };
+		75424B081ECC102900FB66F3 /* RepeatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatButton.swift; sourceTree = "<group>"; };
 		7549D16E1E6925FC00A6FCEF /* Cover Tube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cover Tube.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7549D1711E6925FC00A6FCEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7549D1731E6925FC00A6FCEF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		75C07B791EA09AE600045740 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityConstants.swift; sourceTree = "<group>"; };
 		75EA104F1EC6C95B00113C91 /* YouTubeLogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeLogIn.swift; sourceTree = "<group>"; };
-		75EC3DE81ECB86B000E7F477 /* ReplayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayButton.swift; sourceTree = "<group>"; };
 		75EE1CB31EBDCADF00C5CAA7 /* YouTubeSearcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeSearcher.swift; sourceTree = "<group>"; };
 		75F18C7C1EBC125800358487 /* YouTubePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubePlayer.swift; sourceTree = "<group>"; };
 		75F18C7D1EBC125800358487 /* YTPlayer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YTPlayer.html; sourceTree = "<group>"; };
@@ -134,7 +134,6 @@
 				75AF13841EC8244700F26E3F /* SwipeContainerViewController.swift */,
 				753B24EF1E9C983900102148 /* MusicTableViewCell.swift */,
 				75AF13821EC8240100F26E3F /* MusicDetectionViewController.swift */,
-				750A078B1EC8402F00559062 /* MusicDetectionConstants.swift */,
 				75F18C801EBC12D600358487 /* PlaylistViewController.swift */,
 				75AF13861EC8254C00F26E3F /* BilboardViewController.swift */,
 				7549D1781E6925FC00A6FCEF /* Assets.xcassets */,
@@ -142,20 +141,29 @@
 				7549D17D1E6925FC00A6FCEF /* Info.plist */,
 				75C07B751EA09A9C00045740 /* Cover Tube-Bridging-Header.h */,
 				75F38CA11EC43D75001EC4B3 /* Notification.swift */,
-				75EE1CB31EBDCADF00C5CAA7 /* YouTubeSearcher.swift */,
 				75F18C8E1EBC5D0400358487 /* UIImageExtension.swift */,
+				750A078D1EC934C200559062 /* YouTube.swift */,
+				75EE1CB31EBDCADF00C5CAA7 /* YouTubeSearcher.swift */,
 				75EA104F1EC6C95B00113C91 /* YouTubeLogIn.swift */,
 				750A078F1EC971CC00559062 /* YouTubeLogInCredentials.swift */,
-				750A078D1EC934C200559062 /* YouTube.swift */,
 				75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */,
-				75EC3DE81ECB86B000E7F477 /* ReplayButton.swift */,
-				75AF139F1EC83A2100F26E3F /* libACRCloud_IOS_SDK.a */,
-				75AF13A11EC83A2B00F26E3F /* ACRCloudConfig.h */,
-				75AF13A21EC83A2B00F26E3F /* ACRCloudRecognition.h */,
+				75424B081ECC102900FB66F3 /* RepeatButton.swift */,
+				756278C01ECCF5C9007DBB52 /* Music Detection */,
 				75F18C8D1EBC5C5300358487 /* YouTube Player View */,
 				75C07B791EA09AE600045740 /* Assets */,
 			);
 			path = "Cover Tube";
+			sourceTree = "<group>";
+		};
+		756278C01ECCF5C9007DBB52 /* Music Detection */ = {
+			isa = PBXGroup;
+			children = (
+				75AF139F1EC83A2100F26E3F /* libACRCloud_IOS_SDK.a */,
+				75AF13A11EC83A2B00F26E3F /* ACRCloudConfig.h */,
+				75AF13A21EC83A2B00F26E3F /* ACRCloudRecognition.h */,
+				750A078B1EC8402F00559062 /* MusicDetectionConstants.swift */,
+			);
+			name = "Music Detection";
 			sourceTree = "<group>";
 		};
 		75F18C8D1EBC5C5300358487 /* YouTube Player View */ = {
@@ -317,9 +325,9 @@
 				75EA10501EC6C95B00113C91 /* YouTubeLogIn.swift in Sources */,
 				75C07B7C1EA0C3D400045740 /* UtilityConstants.swift in Sources */,
 				75F18C7E1EBC125800358487 /* YouTubePlayer.swift in Sources */,
-				75EC3DE91ECB86B000E7F477 /* ReplayButton.swift in Sources */,
 				7549D1741E6925FC00A6FCEF /* ViewController.swift in Sources */,
 				75F18C8F1EBC5D0400358487 /* UIImageExtension.swift in Sources */,
+				75424B091ECC102900FB66F3 /* RepeatButton.swift in Sources */,
 				750A078C1EC8402F00559062 /* MusicDetectionConstants.swift in Sources */,
 				7549D1721E6925FC00A6FCEF /* AppDelegate.swift in Sources */,
 				750A07901EC971CC00559062 /* YouTubeLogInCredentials.swift in Sources */,
