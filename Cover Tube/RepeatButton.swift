@@ -9,9 +9,10 @@
 import UIKit
 
 enum RepeatButtonState {
-    case repeatOff
-    case repeatOn       // When user repeats one song infinitely
-    case repeatXTimes   // When user repeats one song X times
+    case repeatOff          // repeat nothing
+    case repeatPlaylist     // When user repeats playlist
+    case repeatSong         // repeats single song infinitely
+    case repeat3Times       // Repeats one song 3 times
     
 }
 
@@ -23,18 +24,7 @@ class RepeatButton: UIButton {
     /* custom state: off, on (infinite), on (x times) */
     var currentState = RepeatButtonState.repeatOff {
         didSet {
-            switch currentState {
-            case .repeatOff:
-                repeatCount = 0
-                repeatLabel?.isHidden = true
-            case .repeatOn:
-                repeatCount = IntMax.max
-                repeatLabel?.isHidden = true
-            case .repeatXTimes:
-                repeatCount = 3
-                repeatLabel?.isHidden = false
-            }
-            repeatLabel?.text = "\(repeatCount)"
+            update()
         }
     }
     
@@ -83,12 +73,49 @@ class RepeatButton: UIButton {
     func tapped () {
         switch currentState
         {
-            case .repeatOff:
-                currentState = .repeatOn
-            case .repeatOn:
-                currentState = .repeatXTimes
-            case .repeatXTimes:
-                currentState = .repeatOff
+        case .repeatOff:
+            currentState = .repeatPlaylist
+        case .repeatPlaylist:
+            currentState = .repeatSong
+        case .repeatSong:
+            currentState = .repeat3Times
+        case .repeat3Times:
+            currentState = .repeatOff
+        }
+    }
+    
+    /* updates image, repeatCount, label, etc */
+    func update() {
+        switch currentState {
+        case .repeatOff:
+            repeatCount = 0
+            repeatLabel?.isHidden = true
+            setImage(#imageLiteral(resourceName: "Repeat_Grey"), for: UIControlState.normal)
+            
+        case .repeatPlaylist :
+            repeatCount = 0
+            repeatLabel?.isHidden = true
+            setImage(#imageLiteral(resourceName: "Repeat_White"), for: UIControlState.normal)
+            
+        case .repeatSong:
+            repeatCount = IntMax.max
+            repeatLabel?.isHidden = false
+            // repeatLabel?.backgroundColor = UIColor.clear
+            repeatLabel?.text = "🎵"
+            repeatLabel!.font = UIFont(name: "ArialRoundedMTBold ", size: 2.0)
+            repeatLabel?.layer.cornerRadius = repeatLabel!.frame.width / 4.0
+            // repeatLabel?.clipsToBounds = true
+            setImage(#imageLiteral(resourceName: "Repeat_White"), for: UIControlState.normal)
+            
+        case .repeat3Times:
+            repeatCount = 3
+            repeatLabel?.isHidden = false
+            // repeatLabel?.backgroundColor = lightBlueColor
+            repeatLabel?.layer.cornerRadius = repeatLabel!.frame.width / 2.0
+            repeatLabel?.text = "\(repeatCount)"
+            repeatLabel!.font = UIFont(name: "ArialRoundedMTBold ", size: 6.0)
+            // repeatLabel?.clipsToBounds = true
+            setImage(#imageLiteral(resourceName: "Repeat_White"), for: UIControlState.normal)
         }
     }
     

@@ -31,11 +31,14 @@ class PlaylistViewController: UIViewController,
     
     // MARK: UICollectionView Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return playlists.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playlistCell", for: indexPath)
+        
+        let playlist = playlists[indexPath.item]
+        // cell.text
         return cell
     }
     

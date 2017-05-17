@@ -24,15 +24,12 @@ let OAuth2_Access_Token_Key = "OAuth2AccessToken"
 
 /* Checks whether user is logged in or not */
 func isUserLoggedIn () -> Bool {
-    if isAuthTokenActive() {
-        if let authSTate = getAuthState() {
-            return false
-        }
-        // return getAuthState()?.lastTokenResponse
+    if let authState = getAuthState() {
+        print("authState = \(authState)")
+        return isAuthTokenActive()
     } else {
         return false
     }
-    return false
 }
 
 /* Checks whether auth token expired or not. */
@@ -47,14 +44,14 @@ func isAuthTokenActive () -> Bool{
         let now = Date()
         let remainingTime = now.timeIntervalSince(accessTokenExpirationDate)
         print("remainingTime = \(remainingTime)")
-        if remainingTime < -5 * 60 {
-            /* more than 5 minutes remaining */
+        if remainingTime < -5 {
+            /* more than 1 minute remaining */
             return true
         } else {
             return false
         }
     } else {
-        // no authToken
+        // no authState
         return false
     }
 }
@@ -188,48 +185,6 @@ func getAuthState() -> OIDAuthState? {
 }
 
 
-/*
- Likes the video using OAuth2 token
- */
-func likeVideo (videoID : String)
-{
-    if keychain.get(OAuth2_Access_Token_Key) == nil {
-        print("OAuth2TokenKey is empty")
-        // MARK: Go to login view
-        updateRootViewController()
-        return
-    }
-    
-    print("tok = \(keychain.get(OAuth2_Access_Token_Key))")
-    let likeURLString = "https://www.googleapis.com/youtube/v3/videos/rate?id=\(videoID)&rating=like"
-    let likeURL = URL(string: likeURLString)!
-    var request = URLRequest(url: likeURL)
-    request.httpMethod = "POST"
-    
-    
-    // let paramString = "access_token=\(keychain.get(OAuth2_Access_Token_Key)!)"
-    //    request.httpBody = paramString.data(using: .utf8)
-    // request.addValue("Token token=884288bae150b9f2f68d8dc3a932071d", forHTTPHeaderField: "Authorization")
-    request.addValue("Bearer \(keychain.get(OAuth2_Access_Token_Key)!)",
-        forHTTPHeaderField: "Authorization")
-    
-    let task = URLSession.shared.dataTask(with: request,
-                                          completionHandler: { (data : Data?,
-                                            response : URLResponse?, error : Error?) in
-                                            if error == nil {
-                                                let dataStr = String(data : data!, encoding : String.Encoding.utf8)
-                                                print("dataString = \(dataStr)")
-                                                validateToken()
-                                            }
-                                            else {
-                                                print("likeVid error = \(error!.localizedDescription)")
-                                            }
-    })
-    
-    task.resume()
-    
-}
-
 
 /* logs user out */
 func logout() {
@@ -258,6 +213,7 @@ func validateToken()
                                  encoding : String.Encoding.utf8)
             
             print("val dataStr = \(String(describing: dataStr))")
+            getPlaylists()
         } else {
             print("validate : error = \(error?.localizedDescription)")
         }
@@ -269,3 +225,17 @@ func validateToken()
 /*
  Refresh token
  */
+
+
+/* returns whether refresh token exists or not */
+func isRefreshTokenStored() -> Bool {
+    if let authState = getAuthState() {
+        if let refreshToken = authState.refreshToken {
+            return !refreshToken.isEmpty
+        } else {
+            return false
+        }
+    } else {
+        return false
+    }
+}

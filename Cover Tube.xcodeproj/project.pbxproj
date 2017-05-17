@@ -18,6 +18,8 @@
 		7549D1771E6925FC00A6FCEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7549D1751E6925FC00A6FCEF /* Main.storyboard */; };
 		7549D1791E6925FC00A6FCEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7549D1781E6925FC00A6FCEF /* Assets.xcassets */; };
 		7549D17C1E6925FC00A6FCEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7549D17A1E6925FC00A6FCEF /* LaunchScreen.storyboard */; };
+		756278C21ECD068D007DBB52 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756278C11ECD068D007DBB52 /* Playlist.swift */; };
+		756278C41ECD0FAD007DBB52 /* PlaylistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756278C31ECD0FAD007DBB52 /* PlaylistCollectionViewCell.swift */; };
 		75AF13831EC8240100F26E3F /* MusicDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF13821EC8240100F26E3F /* MusicDetectionViewController.swift */; };
 		75AF13851EC8244700F26E3F /* SwipeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF13841EC8244700F26E3F /* SwipeContainerViewController.swift */; };
 		75AF13871EC8254C00F26E3F /* BilboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF13861EC8254C00F26E3F /* BilboardViewController.swift */; };
@@ -53,6 +55,8 @@
 		7549D1781E6925FC00A6FCEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7549D17B1E6925FC00A6FCEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7549D17D1E6925FC00A6FCEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		756278C11ECD068D007DBB52 /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		756278C31ECD0FAD007DBB52 /* PlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
 		75AF13821EC8240100F26E3F /* MusicDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicDetectionViewController.swift; sourceTree = "<group>"; };
 		75AF13841EC8244700F26E3F /* SwipeContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeContainerViewController.swift; sourceTree = "<group>"; };
 		75AF13861EC8254C00F26E3F /* BilboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BilboardViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 				753B24EF1E9C983900102148 /* MusicTableViewCell.swift */,
 				75AF13821EC8240100F26E3F /* MusicDetectionViewController.swift */,
 				75F18C801EBC12D600358487 /* PlaylistViewController.swift */,
+				756278C31ECD0FAD007DBB52 /* PlaylistCollectionViewCell.swift */,
 				75AF13861EC8254C00F26E3F /* BilboardViewController.swift */,
 				7549D1781E6925FC00A6FCEF /* Assets.xcassets */,
 				7549D17A1E6925FC00A6FCEF /* LaunchScreen.storyboard */,
@@ -143,6 +148,7 @@
 				75F38CA11EC43D75001EC4B3 /* Notification.swift */,
 				75F18C8E1EBC5D0400358487 /* UIImageExtension.swift */,
 				750A078D1EC934C200559062 /* YouTube.swift */,
+				756278C11ECD068D007DBB52 /* Playlist.swift */,
 				75EE1CB31EBDCADF00C5CAA7 /* YouTubeSearcher.swift */,
 				75EA104F1EC6C95B00113C91 /* YouTubeLogIn.swift */,
 				750A078F1EC971CC00559062 /* YouTubeLogInCredentials.swift */,
@@ -319,6 +325,8 @@
 				75AF13851EC8244700F26E3F /* SwipeContainerViewController.swift in Sources */,
 				75AF13831EC8240100F26E3F /* MusicDetectionViewController.swift in Sources */,
 				753B24EA1E9C921C00102148 /* LoginViewController.swift in Sources */,
+				756278C41ECD0FAD007DBB52 /* PlaylistCollectionViewCell.swift in Sources */,
+				756278C21ECD068D007DBB52 /* Playlist.swift in Sources */,
 				75EE1CB41EBDCADF00C5CAA7 /* YouTubeSearcher.swift in Sources */,
 				750A078E1EC934C200559062 /* YouTube.swift in Sources */,
 				75AF13871EC8254C00F26E3F /* BilboardViewController.swift in Sources */,

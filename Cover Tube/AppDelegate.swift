@@ -74,11 +74,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         keychain.delete("OAuth2RefreshToken")
         keychain.delete("OAuth2AccessToken")
         */
-        getAuthState()
-        isAuthTokenActive()
+        // getAuthState()
+        // isAuthTokenActive()
         AppDelegate.setViewController()
         AppDelegate.setSnapchatSwipeContainerVC()
         logout()
+        updateRootViewController()
         window?.rootViewController = AppDelegate.getSnapchatSwipeContainerVC()
         // updateRootViewController()
         return true

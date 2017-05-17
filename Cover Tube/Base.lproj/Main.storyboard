@@ -67,7 +67,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="EYq-QQ-mWI">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="playlistCell" id="EYq-QQ-mWI" customClass="PlaylistCollectionViewCell" customModule="Cover_Tube" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -170,10 +170,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANa-Wx-QVZ" customClass="RepeatButton" customModule="Cover_Tube" customModuleProvider="target">
-                                <rect key="frame" x="173" y="8" width="28" height="28"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANa-Wx-QVZ" customClass="RepeatButton" customModule="Cover_Tube" customModuleProvider="target">
+                                <rect key="frame" x="170" y="8" width="28" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="Repeat_Grey"/>
                                 <connections>
                                     <action selector="repeatButtonTapped:" destination="hlX-dJ-DKt" eventType="touchUpInside" id="4AV-QC-x32"/>
                                 </connections>
@@ -182,9 +183,10 @@
                                 <rect key="frame" x="250" y="8" width="28" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="Button" image="Shuffle_White">
+                                <state key="normal" image="Shuffle_Grey">
                                     <color key="titleShadowColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <state key="selected" image="Shuffle_White"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uhy-ZL-Lzs">
                                 <rect key="frame" x="8" y="8" width="30" height="30"/>
@@ -301,6 +303,8 @@
     <resources>
         <image name="Pause" width="350" height="350"/>
         <image name="Play_Pre_White_Icon" width="352" height="250"/>
+        <image name="Repeat_Grey" width="128" height="128"/>
+        <image name="Shuffle_Grey" width="256" height="256"/>
         <image name="Shuffle_White" width="256" height="256"/>
         <image name="play_icon_white_half" width="250" height="250"/>
     </resources>

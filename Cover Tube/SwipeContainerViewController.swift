@@ -193,10 +193,12 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         playerView.clipsToBounds = true
         playerView.layer.cornerRadius = 0.0
         
-        /* set up player view's overlay view */
+        /* set up repeat button */
         repeatButton.center = CGPoint(x: screenWidth / 2.0,
                                       y: 8.0 + repeatButton.frame.size.height / 2.0)
         
+        /* set up shuffle button */
+        shuffleButton.center = CGPoint(x: screenWidth * 0.75, y: 8.0 + shuffleButton.frame.size.height / 2.0)
         
         
         /* set up youtube player's view that handles gestures settings */
@@ -817,8 +819,6 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     {
         sender.tapped()
     }
-    
-    
     
     /*
      If the youtube player view is ready, play it.

@@ -225,3 +225,5 @@ func resumeLayerAnimation ( layer : CALayer) {
     layer.beginTime = timeSincePause
 }
 
+// MARK: Playlist Collectionview constants
+let playlistCollectionViewCellID = "playlistCell"
