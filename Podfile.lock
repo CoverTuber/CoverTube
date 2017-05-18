@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - AppAuth (0.9.0)
   - CircularSpinner (1.2.0)
   - flareview (0.1)
@@ -16,6 +31,7 @@ PODS:
   - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
+  - AFNetworking
   - AppAuth
   - CircularSpinner
   - flareview
@@ -27,6 +43,7 @@ DEPENDENCIES:
   - YouTubePlayer
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AppAuth: 4fabb6b8068a2e61b914b41071bdbd95da2c9553
   CircularSpinner: 80b8ee3eda59b66d20631d4ca7c7c83720931739
   flareview: 38ad3068e6addce849774acd660ccfe148948bd1
@@ -40,6 +57,6 @@ SPEC CHECKSUMS:
   YoutubeEngine: ca07527596e92434605e0b5d88b881d3cf6b792e
   YouTubePlayer: '028451f6772f372d4759866db99824c676ac1473'
 
-PODFILE CHECKSUM: 8bbc3d1e8b899355e234313d5ff8c972b8f49658
+PODFILE CHECKSUM: 2e0416afcc0afb1a9847d503009905ac2595fb90
 
 COCOAPODS: 1.2.0

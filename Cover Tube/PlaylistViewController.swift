@@ -10,6 +10,7 @@
 //        They are handled by its delegate methods and other ui components.
 
 import UIKit
+import AFNetworking
 
 class PlaylistViewController: UIViewController,
     UICollectionViewDelegate, UICollectionViewDataSource
@@ -48,12 +49,17 @@ class PlaylistViewController: UIViewController,
         return playlists.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playlistCell", for: indexPath) as! PlaylistCollectionViewCell
         
         let playlist = playlists[indexPath.item]
         
         cell.titleLabel.text = playlist.title
+        if let imageURL = URL(string: playlist.thumbnailMediumURLString) {
+            cell.thumbnail.setImageWith(imageURL)
+        }
+        
         return cell
     }
     
@@ -78,7 +84,9 @@ class PlaylistViewController: UIViewController,
     }
 
     func fetchedNewPlaylists () {
-        playlistCollectionView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            self.playlistCollectionView.reloadData()
+        }
     }
     
     
