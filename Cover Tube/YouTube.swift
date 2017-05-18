@@ -18,7 +18,6 @@ let scope = "https://www.googleapis.com/auth/youtube.force-ssl"
 let scopeURL = URL(string: scope)!
 
 var currentAuthorizationFlow : OIDAuthorizationFlowSession? = nil
-var youTubeAuthState : OIDAuthState? = nil
 let oauthURL = URL(string: "\(iOSURL_scheme):/oauth/callback")!
 
 let authorizationEndpointURLString = "https://accounts.google.com/o/oauth2/v2/auth?"
@@ -48,14 +47,13 @@ let likeBaseURLString = "https://www.googleapis.com/youtube/v3/videos/rate"
  */
 func likeVideo (videoID : String)
 {
-    if keychain.get(OAuth2_Access_Token_Key) == nil {
+    if getAuth2AccessTokenString () == nil {
         print("OAuth2TokenKey is empty")
         // MARK: Go to login view
         updateRootViewController()
         return
     }
     
-    print("tok = \(keychain.get(OAuth2_Access_Token_Key))")
     let likeURLString = "\(likeBaseURLString)?id=\(videoID)&rating=like"
     let likeURL = URL(string: likeURLString)!
     var request = URLRequest(url: likeURL)
@@ -65,7 +63,7 @@ func likeVideo (videoID : String)
     // let paramString = "access_token=\(keychain.get(OAuth2_Access_Token_Key)!)"
     //    request.httpBody = paramString.data(using: .utf8)
     // request.addValue("Token token=884288bae150b9f2f68d8dc3a932071d", forHTTPHeaderField: "Authorization")
-    request.addValue("Bearer \(keychain.get(OAuth2_Access_Token_Key)!)",
+    request.addValue("Bearer \(getAuth2AccessTokenString ()!)",
         forHTTPHeaderField: "Authorization")
     
     let task = URLSession.shared.dataTask(with: request,
@@ -74,7 +72,6 @@ func likeVideo (videoID : String)
                                             if error == nil {
                                                 let dataStr = String(data : data!, encoding : String.Encoding.utf8)
                                                 print("dataString = \(dataStr)")
-                                                validateToken()
                                             }
                                             else {
                                                 print("likeVid error = \(error!.localizedDescription)")
@@ -85,18 +82,18 @@ func likeVideo (videoID : String)
     
 }
 
-/* get my playlists */
-func getPlaylists () -> [Playlist]
+/* sets my 'playlists' */
+func setPlaylists ()
 {
     let getPlaylistsURLString = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true"
     let getPlaylistURL = URL(string: getPlaylistsURLString)!
     var request = URLRequest(url: getPlaylistURL)
     request.httpMethod = "GET"
     
-    request.addValue("Bearer \(keychain.get(OAuth2_Access_Token_Key)!)",
-        forHTTPHeaderField: "Authorization")
+    if getAuth2AccessTokenString () == nil { return }
     
-    var playlists; : [Playlist] = []
+    request.addValue("Bearer \(getAuth2AccessTokenString ()!)",
+        forHTTPHeaderField: "Authorization")
     
     let task = URLSession.shared.dataTask(with: request,
                                           completionHandler: { (data : Data?,
@@ -118,6 +115,4 @@ func getPlaylists () -> [Playlist]
     })
     
     task.resume()
-    
-    return playlists
 }

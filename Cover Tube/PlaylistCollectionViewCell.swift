@@ -10,4 +10,7 @@ import UIKit
 
 class PlaylistCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var thumbnail: UIImageView!
+    
+    @IBOutlet weak var titleLabel: UILabel!
 }

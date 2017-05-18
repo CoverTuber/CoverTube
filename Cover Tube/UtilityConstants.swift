@@ -227,3 +227,7 @@ func resumeLayerAnimation ( layer : CALayer) {
 
 // MARK: Playlist Collectionview constants
 let playlistCollectionViewCellID = "playlistCell"
+
+// MARK: Notification constants
+let FetchedNewPlaylistNotificationStr = "FetchedNewPlaylistsNotification"
+let FetchedNewPlaylistNotificationName = NSNotification.Name(rawValue: FetchedNewPlaylistNotificationStr)

@@ -68,12 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        /*
-        keychain.delete("Oauth2AuthState")
-        keychain.delete("Oauth2Token")
-        keychain.delete("OAuth2RefreshToken")
-        keychain.delete("OAuth2AccessToken")
-        */
         // getAuthState()
         // isAuthTokenActive()
         AppDelegate.setViewController()

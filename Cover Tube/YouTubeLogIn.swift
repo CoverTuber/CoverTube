@@ -19,8 +19,6 @@ let reversedClientIDURL = URL(string: reversedClientID)
 let iOSURL = URL(string: iOSURL_scheme)
 
 let OAauth2_Auth_State_Key = "Oauth2AuthState"
-let OAuth2_Refresh_Token_Key = "OAuth2RefreshToken"
-let OAuth2_Access_Token_Key = "OAuth2AccessToken"
 
 /* Checks whether user is logged in or not */
 func isUserLoggedIn () -> Bool {
@@ -45,7 +43,7 @@ func isAuthTokenActive () -> Bool{
         let remainingTime = now.timeIntervalSince(accessTokenExpirationDate)
         print("remainingTime = \(remainingTime)")
         if remainingTime < -5 {
-            /* more than 1 minute remaining */
+            /* 5 seconds remaining */
             return true
         } else {
             return false
@@ -58,12 +56,11 @@ func isAuthTokenActive () -> Bool{
 
 /* returns oauth2 token string if exists */
 func getAuth2AccessTokenString () -> String? {
-    return keychain.get(OAuth2_Access_Token_Key)
-}
-
-/* saves parameter string as OAuth2 string */
-func saveAuth2Token (accessTokenString : String) {
-    keychain.set(accessTokenString, forKey: OAuth2_Access_Token_Key)
+    if let authState = getAuthState() {
+        return authState.lastTokenResponse?.accessToken
+    } else {
+        return nil
+    }
 }
 
 /* updates root view controller based on logged in or not.
@@ -132,7 +129,7 @@ func redirectToOAuth2Server ()
                                                         else
                                                         {
                                                             print("login error : \(error!.localizedDescription)")
-                                                            youTubeAuthState = nil
+                                                            keychain.delete(OAauth2_Auth_State_Key)
                                                         }
     })
 }
@@ -151,11 +148,7 @@ func handleRetrievedAuthState (authState : OIDAuthState)
     let data = NSKeyedArchiver.archivedData(withRootObject: authState)
     keychain.set( data, forKey: OAauth2_Auth_State_Key )
     
-    /* Store refresh token */
-    if let refreshToken = authState.refreshToken
-    {
-        keychain.set(refreshToken, forKey: OAuth2_Refresh_Token_Key)
-    }
+    let refreshToken = authState.refreshToken
     
     print("authState.lastTokenResponse = \(authState.lastTokenResponse)")
     
@@ -165,12 +158,8 @@ func handleRetrievedAuthState (authState : OIDAuthState)
     let timeInterval = now.timeIntervalSince(accessTokenExpirationDate!)
     print("see freshly retrieved token's time interval since now = \(timeInterval)")
     
-    let youtubeToken = authState.lastTokenResponse!.accessToken!
-    keychain.set(youtubeToken, forKey: OAuth2_Access_Token_Key)
-    updateRootViewController()
-    youTubeAuthState = authState
     
-    authState.lastTokenResponse?.accessTokenExpirationDate
+    updateRootViewController()
 }
 
 /* returns AuthState if previously retrieved successfully. */
@@ -188,7 +177,7 @@ func getAuthState() -> OIDAuthState? {
 
 /* logs user out */
 func logout() {
-    keychain.delete(OAuth2_Access_Token_Key)
+    keychain.delete(OAauth2_Auth_State_Key )
 }
 
 /*
@@ -198,8 +187,11 @@ func logout() {
  */
 func validateToken()
 {
+    let accessTokenKey = getAuth2AccessTokenString ()
+    if accessTokenKey == nil { return }
+    
     let validateRequestURLString
-        = "https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=\(keychain.get(OAuth2_Access_Token_Key)!)"
+        = "https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=\(accessTokenKey!)"
     
     let validateRequestURL = URL(string: validateRequestURLString)!
     
@@ -213,7 +205,7 @@ func validateToken()
                                  encoding : String.Encoding.utf8)
             
             print("val dataStr = \(String(describing: dataStr))")
-            getPlaylists()
+            setPlaylists()
         } else {
             print("validate : error = \(error?.localizedDescription)")
         }

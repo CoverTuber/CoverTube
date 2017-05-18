@@ -15,11 +15,25 @@ class PlaylistViewController: UIViewController,
     UICollectionViewDelegate, UICollectionViewDataSource
 {
     // MARK: UI Element properties
+    @IBOutlet weak var playlistCollectionView: UICollectionView!
     
     // MARK: ViewController life cycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(fetchedNewPlaylists),
+                                               name: FetchedNewPlaylistNotificationName,
+                                               object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -35,10 +49,11 @@ class PlaylistViewController: UIViewController,
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playlistCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playlistCell", for: indexPath) as! PlaylistCollectionViewCell
         
         let playlist = playlists[indexPath.item]
-        // cell.text
+        
+        cell.titleLabel.text = playlist.title
         return cell
     }
     
@@ -61,7 +76,10 @@ class PlaylistViewController: UIViewController,
     override var prefersStatusBarHidden : Bool {
         return true
     }
-    
+
+    func fetchedNewPlaylists () {
+        playlistCollectionView.reloadData()
+    }
     
     
 }

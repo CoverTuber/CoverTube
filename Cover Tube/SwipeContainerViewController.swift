@@ -129,6 +129,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             let viewControllers = [musicDetectionViewController, playlistViewController, bilboardViewController]
             setupScrollView(viewControllers: viewControllers)
         }
+        
+        scrollView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -289,6 +291,9 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         prevButton.isHidden = !isPlayerViewMinimized
         nextButton.isHidden = !isPlayerViewMinimized
         minimizePlayerViewButton.isHidden = isPlayerViewMinimized
+        repeatButton.isHidden = isPlayerViewMinimized
+        shuffleButton.isHidden = isPlayerViewMinimized
+        currentPlaylistTableview.isHidden = isPlayerViewMinimized
         
         // playerOverlayView.isHidden = isYouTubePlayerViewMinimized
         
@@ -552,7 +557,6 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         }) { (completed : Bool) in
             self.currentPlaylistTableview.isHidden = true
             self.linearTimeProgressBar.isHidden = true
-            self.currentPlaylistTableview.isHidden = true
         }
         
     }
@@ -1105,6 +1109,16 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     /* hide status bar */
     override var prefersStatusBarHidden : Bool {
         return true
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page = scrollView.contentOffset.x / screenWidth
+        if page == 1 {
+            if middleVC is PlaylistViewController {
+                let middlePlaylistVC = middleVC as! PlaylistViewController
+                middlePlaylistVC.playlistCollectionView.reloadData()
+            }
+        }
     }
     
     

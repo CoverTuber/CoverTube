@@ -8,7 +8,11 @@
 
 import UIKit
 
-var playlists : [Playlist] = []
+var playlists : [Playlist] = [] {
+    didSet {
+        NotificationCenter.default.post(name: FetchedNewPlaylistNotificationName, object: nil, userInfo: nil)
+    }
+}
 
 enum YouTubeKinds {
     case YouTube_Playlist
