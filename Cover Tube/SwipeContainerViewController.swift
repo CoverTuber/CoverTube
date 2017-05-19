@@ -685,16 +685,15 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         
         /* animate fullYouTubePlayerViewOverlayView and circularTimeProgressBar */
         
+        currentPlaylistTableview.isHidden = false
         UIView.animate(withDuration: changeSizeAnimationDuration, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.playerOverlayView.frame = rectangularFullYouTubePlayerOverlayViewFrame
             self.playerViewGestureHandlerView.frame = rectangularFullYouTubePlayerOverlayViewFrame
             self.playerOverlayView.alpha = 1.0
-            // self.currentPlaylistTableview.alpha = 1.0
-            self.currentPlaylistTableview.alpha = 0.0
+            self.currentPlaylistTableview.alpha = 1.0
             self.linearTimeProgressBar.alpha = 1.0
             self.circularTimeProgressBar.alpha = 0.0
         }) { (completed : Bool) in
-            self.currentPlaylistTableview.isHidden = false
             self.linearTimeProgressBar.isHidden = false
             self.circularTimeProgressBar.isHidden = true
         }
@@ -947,7 +946,6 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     @IBAction func handleSingleTapGestureRecognizerOnPlayerView(_ sender: UITapGestureRecognizer)
     {
         playerOverlayView.frame = rectangularFullYouTubePlayerViewFrame
-        print("playerOverlayView.frame > \(playerOverlayView.frame)")
         if playerView.playerState == YouTubePlayerState.Playing
         {
             /* video currently playing. user tapped to pause */
@@ -1115,8 +1113,14 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "videoTableViewCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "videoTableViewCell") as! VideoTableViewCell
         let video = currentPlaylist!.videos[indexPath.item]
+        
+        if let imageURL = URL(string: video.thumbnailMediumURLString ) {
+            cell.imageView?.setImageWith(imageURL)
+        }
+        cell.textLabel?.text = video.title
+        
         return cell
     }
     
@@ -1185,6 +1189,9 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             let firstVideo = currentPlaylist!.videos[0]
             
             /* play first video */
+            didAutoplayPreviously = false
+            playerView.clear()
+            // playerView.loadPlaylistID(currentPlaylist!.id)
             playerView.loadVideoID(firstVideo.videoId)
             
             maximizeYouTubePlayerViewAnimation()

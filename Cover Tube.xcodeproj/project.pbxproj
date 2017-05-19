@@ -10,6 +10,7 @@
 		750A078C1EC8402F00559062 /* MusicDetectionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A078B1EC8402F00559062 /* MusicDetectionConstants.swift */; };
 		750A078E1EC934C200559062 /* YouTube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A078D1EC934C200559062 /* YouTube.swift */; };
 		750A07901EC971CC00559062 /* YouTubeLogInCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A078F1EC971CC00559062 /* YouTubeLogInCredentials.swift */; };
+		75209E2E1ECE93E800D995D8 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75209E2D1ECE93E800D995D8 /* VideoTableViewCell.swift */; };
 		753B24EA1E9C921C00102148 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B24E91E9C921C00102148 /* LoginViewController.swift */; };
 		753B24F01E9C983900102148 /* MusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B24EF1E9C983900102148 /* MusicTableViewCell.swift */; };
 		75424B091ECC102900FB66F3 /* RepeatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75424B081ECC102900FB66F3 /* RepeatButton.swift */; };
@@ -46,6 +47,7 @@
 		750A078B1EC8402F00559062 /* MusicDetectionConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicDetectionConstants.swift; sourceTree = "<group>"; };
 		750A078D1EC934C200559062 /* YouTube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTube.swift; sourceTree = "<group>"; };
 		750A078F1EC971CC00559062 /* YouTubeLogInCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeLogInCredentials.swift; sourceTree = "<group>"; };
+		75209E2D1ECE93E800D995D8 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		753B24E91E9C921C00102148 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		753B24EF1E9C983900102148 /* MusicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTableViewCell.swift; sourceTree = "<group>"; };
 		75424B081ECC102900FB66F3 /* RepeatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatButton.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				7549D1711E6925FC00A6FCEF /* AppDelegate.swift */,
 				7549D1731E6925FC00A6FCEF /* ViewController.swift */,
 				7549D1751E6925FC00A6FCEF /* Main.storyboard */,
+				75209E2D1ECE93E800D995D8 /* VideoTableViewCell.swift */,
 				753B24E91E9C921C00102148 /* LoginViewController.swift */,
 				75AF13841EC8244700F26E3F /* SwipeContainerViewController.swift */,
 				753B24EF1E9C983900102148 /* MusicTableViewCell.swift */,
@@ -327,6 +330,7 @@
 				75F18C811EBC12D600358487 /* PlaylistViewController.swift in Sources */,
 				75AF13851EC8244700F26E3F /* SwipeContainerViewController.swift in Sources */,
 				75AF13831EC8240100F26E3F /* MusicDetectionViewController.swift in Sources */,
+				75209E2E1ECE93E800D995D8 /* VideoTableViewCell.swift in Sources */,
 				753B24EA1E9C921C00102148 /* LoginViewController.swift in Sources */,
 				756278C41ECD0FAD007DBB52 /* PlaylistCollectionViewCell.swift in Sources */,
 				756278C21ECD068D007DBB52 /* Playlist.swift in Sources */,

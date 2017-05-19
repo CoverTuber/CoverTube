@@ -34,6 +34,7 @@ class Playlist: NSObject {
     
     init(withDictionary dict : NSDictionary) {
         super.init()
+        print("playlist dictionary = \(dict)")
         etag = dict.object(forKey: "etag") as! String
         id = dict.object(forKey: "id") as! String
         kind = kinds[dict.object(forKey: "kind") as! String]!
@@ -76,10 +77,6 @@ class Playlist: NSObject {
             playlist1.publishedAtDate > playlist2.publishedAtDate
         })
         
-        print("sortedPlaylists : ")
-        for playlist in result {
-            print("playlist \(playlist.title), date : \(playlist.publishedAtDate)")
-        }
         return result
     }
     

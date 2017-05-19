@@ -31,6 +31,9 @@ class Video: NSObject
         thumbnailMediumURLString = mediumThumbnail.object(forKey: "url") as! String
         
         title = snippet.object(forKey: "title") as! String
+        
+        let resourceId = snippet.object(forKey: "resourceId") as! NSDictionary
+        videoId = resourceId.object(forKey: "videoId") as! String
     }
     
     class func getVideos (fromDictionary videosDict : [NSDictionary]) -> [Video]
