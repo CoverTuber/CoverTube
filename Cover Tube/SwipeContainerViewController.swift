@@ -1016,7 +1016,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         if  sender.view == playerViewGestureHandlerView
         {
             /*  */
-            likeVideo(videoID: "zu4GOlrFDh4")
+            YouTube.likeVideo(videoID: "zu4GOlrFDh4")
+            
             /* like animation */
             overlayImageView.isHidden = false
             overlayImageView.image = #imageLiteral(resourceName: "Heart_Red_Emoji")
@@ -1106,11 +1107,16 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     
     // MARK: UITableView Datasource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        if currentPlaylist == nil {
+            return 0
+        } else {
+            return currentPlaylist!.videos.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "songTableViewCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "videoTableViewCell")!
+        let video = currentPlaylist!.videos[indexPath.item]
         return cell
     }
     
@@ -1165,7 +1171,25 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             
             if let isShuffledPlay = userInfo["shuffledPlay"] {
                 isShuffleOn = isShuffledPlay as! Bool
+                updateUI()
             }
+            
+            if currentPlaylist == nil {
+                return
+            }
+            
+            if  currentPlaylist!.videos.count == 0 {
+                return
+            }
+            
+            let firstVideo = currentPlaylist!.videos[0]
+            
+            /* play first video */
+            playerView.loadVideoID(firstVideo.videoId)
+            
+            maximizeYouTubePlayerViewAnimation()
+            
+            currentPlaylistTableview.reloadData()
         }
     }
     

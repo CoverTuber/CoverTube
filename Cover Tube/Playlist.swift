@@ -46,13 +46,20 @@ class Playlist: NSObject {
         
         let mediumThumbnail : NSDictionary = thumbnails.object(forKey: "medium") as! NSDictionary
         thumbnailMediumURLString = mediumThumbnail.object(forKey: "url") as! String
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.zzzZ"
+        print("publishedAtDateStr - \(publishedAtDateStr)")
+        if let date = dateFormatter.date(from: publishedAtDateStr) {
+            publishedAtDate = date
+        }
             
         print("title = \(title) etag = \(etag), id = \(id), kind \(kind), medURL = \(thumbnailMediumURLString)")
     }
     
     /*
      Given dictionary of playlistDictionary, 
-     return it as an array of Playlist
+     return it as an array of Playlist sorted by date
      */
     class func getPlaylists(fromDictionary playlistDictionaries : [NSDictionary]) -> [Playlist]
     {
@@ -63,6 +70,15 @@ class Playlist: NSObject {
         {
             let newPlaylist = Playlist(withDictionary: playlistDict)
             result.append(newPlaylist)
+        }
+        
+        result = result.sorted(by: { (playlist1 : Playlist, playlist2 : Playlist) -> Bool in
+            playlist1.publishedAtDate > playlist2.publishedAtDate
+        })
+        
+        print("sortedPlaylists : ")
+        for playlist in result {
+            print("playlist \(playlist.title), date : \(playlist.publishedAtDate)")
         }
         return result
     }

@@ -5,6 +5,8 @@
 //  Created by June Suh on 5/14/17.
 //  Copyright © 2017 CoverTuber. All rights reserved.
 //
+//
+//  Description: This class
 
 import Foundation
 import AppAuth
@@ -41,55 +43,9 @@ let request = OIDAuthorizationRequest(configuration: configuration,
 
 let likeBaseURLString = "https://www.googleapis.com/youtube/v3/videos/rate"
 
-
 /*
- Likes the video using OAuth2 token
+ Description : Logs into Youtube, likes a video, loads playlists and songs.
  */
-func likeVideo (videoID : String)
-{
-    if getAuth2AccessTokenString () == nil {
-        print("OAuth2TokenKey is empty")
-        // MARK: Go to login view
-        updateRootViewController()
-        return
-    }
-    
-    let likeURLString = "\(likeBaseURLString)?id=\(videoID)&rating=like"
-    let likeURL = URL(string: likeURLString)!
-    var request = URLRequest(url: likeURL)
-    request.httpMethod = "POST"
-    
-    
-    // let paramString = "access_token=\(keychain.get(OAuth2_Access_Token_Key)!)"
-    //    request.httpBody = paramString.data(using: .utf8)
-    // request.addValue("Token token=884288bae150b9f2f68d8dc3a932071d", forHTTPHeaderField: "Authorization")
-    request.addValue("Bearer \(getAuth2AccessTokenString ()!)",
-        forHTTPHeaderField: "Authorization")
-    
-    let task = URLSession.shared.dataTask(with: request,
-                                          completionHandler: { (data : Data?,
-                                            response : URLResponse?, error : Error?) in
-                                            if error == nil {
-                                                let dataStr = String(data : data!, encoding : String.Encoding.utf8)
-                                                print("dataString = \(dataStr)")
-                                            }
-                                            else {
-                                                print("likeVid error = \(error!.localizedDescription)")
-                                            }
-    })
-    
-    task.resume()
-    
-}
-
-
-
-/*
- get songs
- */
-
-
-
 final class YouTube : NSObject
 {
     private override init() {
@@ -106,7 +62,7 @@ final class YouTube : NSObject
         }
     }
     
-    /* sets my global 'playlists' variabl*/
+    /* populate 'playlists' from YouTube */
     func populatePlaylists ()
     {
         let getPlaylistsURLString = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true"
@@ -147,4 +103,45 @@ final class YouTube : NSObject
             playlist.getItems()
         }
     }
+    
+    /*
+     Likes the video using OAuth2 token
+     */
+    class func likeVideo (videoID : String)
+    {
+        if getAuth2AccessTokenString () == nil {
+            print("OAuth2TokenKey is empty")
+            // MARK: Go to login view
+            updateRootViewController()
+            return
+        }
+        
+        let likeURLString = "\(likeBaseURLString)?id=\(videoID)&rating=like"
+        let likeURL = URL(string: likeURLString)!
+        var request = URLRequest(url: likeURL)
+        request.httpMethod = "POST"
+        
+        
+        // let paramString = "access_token=\(keychain.get(OAuth2_Access_Token_Key)!)"
+        //    request.httpBody = paramString.data(using: .utf8)
+        // request.addValue("Token token=884288bae150b9f2f68d8dc3a932071d", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(getAuth2AccessTokenString ()!)",
+            forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request,
+                                              completionHandler: { (data : Data?,
+                                                response : URLResponse?, error : Error?) in
+                                                if error == nil {
+                                                    let dataStr = String(data : data!, encoding : String.Encoding.utf8)
+                                                    print("dataString = \(dataStr)")
+                                                }
+                                                else {
+                                                    print("likeVid error = \(error!.localizedDescription)")
+                                                }
+        })
+        
+        task.resume()
+        
+    }
+
 }
