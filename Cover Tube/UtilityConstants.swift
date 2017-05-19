@@ -229,5 +229,10 @@ func resumeLayerAnimation ( layer : CALayer) {
 let playlistCollectionViewCellID = "playlistCell"
 
 // MARK: Notification constants
+/* Notification posted when playlists are fetched from youtube */
 let FetchedNewPlaylistNotificationStr = "FetchedNewPlaylistsNotification"
 let FetchedNewPlaylistNotificationName = NSNotification.Name(rawValue: FetchedNewPlaylistNotificationStr)
+
+/* Notification posted when user tapped a playlist */
+let TappedPlaylistNotificationStr = "TappedPlaylistNotification"
+let TappedPlaylistNotificationName = NSNotification.Name(rawValue: TappedPlaylistNotificationStr)

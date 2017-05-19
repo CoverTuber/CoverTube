@@ -205,7 +205,7 @@ func validateToken()
                                  encoding : String.Encoding.utf8)
             
             print("val dataStr = \(String(describing: dataStr))")
-            setPlaylists()
+            YouTube.shared.populatePlaylists()
         } else {
             print("validate : error = \(error?.localizedDescription)")
         }

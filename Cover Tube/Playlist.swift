@@ -8,16 +8,14 @@
 
 import UIKit
 
-var playlists : [Playlist] = [] {
-    didSet {
-        NotificationCenter.default.post(name: FetchedNewPlaylistNotificationName, object: nil, userInfo: nil)
-    }
-}
-
 enum YouTubeKinds {
     case YouTube_Playlist
+    case YouTube_Playlist_Item
+    case YouTube_Video
 }
-let kinds = ["youtube#playlist" : YouTubeKinds.YouTube_Playlist]
+let kinds = ["youtube#playlist" : YouTubeKinds.YouTube_Playlist,
+             "youtube#playlistItemListResponse" : YouTubeKinds.YouTube_Playlist_Item,
+             "youtube#video" : YouTubeKinds.YouTube_Video]
 
 class Playlist: NSObject {
     var etag = ""
@@ -27,8 +25,12 @@ class Playlist: NSObject {
     var title = ""
     var descriptionStr = ""
     var publishedAtDateStr = ""
+    var publishedAtDate = Date(timeIntervalSince1970: 0.0)
+    
     var thumbnails : NSDictionary = [:]
     var thumbnailMediumURLString = ""
+    
+    var videos : [Video] = []
     
     init(withDictionary dict : NSDictionary) {
         super.init()
@@ -55,12 +57,52 @@ class Playlist: NSObject {
     class func getPlaylists(fromDictionary playlistDictionaries : [NSDictionary]) -> [Playlist]
     {
         var result : [Playlist] = []
-        for playlistdict in playlistDictionaries
+        
+        /* iterate through each playlist dictionary and make it into a Playlist object */
+        for playlistDict in playlistDictionaries
         {
-            let newPlaylist = Playlist(withDictionary: playlistdict)
+            let newPlaylist = Playlist(withDictionary: playlistDict)
             result.append(newPlaylist)
         }
         return result
+    }
+    
+    /* fetch  */
+    func getItems () {
+        if id.isEmpty {
+            return
+        }
+        
+        let getPlaylistItemsURLString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(id)"
+        let getPlaylistItemsURL = URL(string: getPlaylistItemsURLString)!
+        var request = URLRequest(url: getPlaylistItemsURL)
+        request.httpMethod = "GET"
+        
+        if getAuth2AccessTokenString() == nil { return }
+        
+        
+        request.addValue("Bearer \(getAuth2AccessTokenString ()!)",
+            forHTTPHeaderField: "Authorization")
+    
+        let task = URLSession.shared.dataTask(with: request,
+                                              completionHandler: { (data : Data?,
+                                                response : URLResponse?, error : Error?) in
+                                                if error == nil {
+                                                    let dataStr = String(data : data!, encoding : String.Encoding.utf8)
+                                                    print("getplaylistItems: dataString = \(dataStr)")
+                                                    if let playlistItemsDictionary = try! JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
+                                                    {
+                                                        let playlistItems = playlistItemsDictionary.object(forKey: "items") as! [NSDictionary]
+                                                        self.videos = Video.getVideos(fromDictionary: playlistItems)
+                                                    }
+                                                }
+                                                else {
+                                                    print("getPlaylistItems error = \(error!.localizedDescription)")
+                                                }
+        })
+        
+        task.resume()
+        
     }
 
 }

@@ -46,14 +46,14 @@ class PlaylistViewController: UIViewController,
     
     // MARK: UICollectionView Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return playlists.count
+        return YouTube.shared.playlists.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playlistCell", for: indexPath) as! PlaylistCollectionViewCell
         
-        let playlist = playlists[indexPath.item]
+        let playlist = YouTube.shared.playlists[indexPath.item]
         
         cell.titleLabel.text = playlist.title
         if let imageURL = URL(string: playlist.thumbnailMediumURLString) {
@@ -63,10 +63,30 @@ class PlaylistViewController: UIViewController,
         return cell
     }
     
-    // MARK: UICOllectioView Delegate
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+    /* user tapped  */
+    @IBAction func playlistTapped(_ sender: UIButton)
+    {
+        let tappedPoint = playlistCollectionView.convert(sender.center, from: sender.superview)
+        if let tappedIndexPath = playlistCollectionView.indexPathForItem(at: tappedPoint)
+        {
+            print("tappedIndexPath = \(tappedIndexPath)")
+            let selectedPlaylist = YouTube.shared.playlists[tappedIndexPath.item]
+            
+            var userInfo : [String : Any] = [:]
+            userInfo["selectedPlaylist"] = selectedPlaylist
+            userInfo["shuffledPlay"] = false
+            
+            NotificationCenter.default.post(name: TappedPlaylistNotificationName,
+                                            object: nil, userInfo: userInfo)
+        }
+    }
+    
+    @IBAction func shufflePlayButtonTapped(_ sender: UIButton)
+    {
         
     }
+    
     
     /*
      // MARK: - Navigation

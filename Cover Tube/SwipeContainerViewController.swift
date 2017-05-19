@@ -102,6 +102,12 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     /* whether user is panning video player or not */
     private var isUserPanningPlayerOverlayView = false
     
+    /* whether shuffle is on or not */
+    private var isShuffleOn = false
+    
+    /* current playlist */
+    private var currentPlaylist : Playlist? = nil
+    
     // MARK: ViewController life cycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,6 +153,11 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         playerOverlayView.frame = rectangularFullYouTubePlayerOverlayViewFrame
         playerViewGestureHandlerView.frame = rectangularFullYouTubePlayerOverlayViewFrame
         playerViewSizeState = YouTubePlayerViewSizeState.fullScreen
+        
+        /* notifications */
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.playlistSelected(notification:)),
+                                               name: TappedPlaylistNotificationName, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -173,6 +184,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             updateVideoTimeInfoTimer!.invalidate()
             updateVideoTimeInfoTimer = nil
         }
+        
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -200,6 +213,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
                                       y: 8.0 + repeatButton.frame.size.height / 2.0)
         
         /* set up shuffle button */
+        shuffleButton.frame.size = CGSize(width: 28.0, height: 28.0)
         shuffleButton.center = CGPoint(x: screenWidth * 0.75, y: 8.0 + shuffleButton.frame.size.height / 2.0)
         
         
@@ -320,6 +334,9 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         view.bringSubview(toFront: linearTimeProgressBar)
         
         playerOverlayView.frame = rectangularFullYouTubePlayerViewFrame
+        
+        /* update shuffle */
+        shuffleButton.isSelected = isShuffleOn
     }
     
     /* update UI with scale factor */
@@ -824,6 +841,13 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         sender.tapped()
     }
     
+    @IBAction func shuffledButtonTapped(_ sender: UIButton)
+    {
+        isShuffleOn = !isShuffleOn
+        shuffleButton.isSelected = isShuffleOn
+    }
+    
+    
     /*
      If the youtube player view is ready, play it.
      Else, pause it.
@@ -1122,5 +1146,27 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     }
     
     
+    func switchShuffle () {
+        
+    }
+    
+    func playlistSelected ( notification : Notification ) {
+        if !(notification.userInfo is [String : Any] ) {
+            print("SwipeContainerVC playlistSelected. notificationUserInfo is wrong type")
+            return
+        }
+        
+        if let userInfo = notification.userInfo as? [String : Any]
+        {
+            if let playlist = userInfo["selectedPlaylist"] as? Playlist
+            {
+                currentPlaylist = playlist
+            }
+            
+            if let isShuffledPlay = userInfo["shuffledPlay"] {
+                isShuffleOn = isShuffledPlay as! Bool
+            }
+        }
+    }
     
 }

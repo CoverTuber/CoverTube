@@ -82,37 +82,69 @@ func likeVideo (videoID : String)
     
 }
 
-/* sets my 'playlists' */
-func setPlaylists ()
+
+
+/*
+ get songs
+ */
+
+
+
+final class YouTube : NSObject
 {
-    let getPlaylistsURLString = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true"
-    let getPlaylistURL = URL(string: getPlaylistsURLString)!
-    var request = URLRequest(url: getPlaylistURL)
-    request.httpMethod = "GET"
+    private override init() {
+        
+    }
     
-    if getAuth2AccessTokenString () == nil { return }
+    static let shared = YouTube()
     
-    request.addValue("Bearer \(getAuth2AccessTokenString ()!)",
-        forHTTPHeaderField: "Authorization")
+    // MARK:  Local ariables
+    var playlists : [Playlist] = [] {
+        didSet {
+            NotificationCenter.default.post(name: FetchedNewPlaylistNotificationName, object: nil, userInfo: nil)
+            populateItemsForPlaylists ()
+        }
+    }
     
-    let task = URLSession.shared.dataTask(with: request,
-                                          completionHandler: { (data : Data?,
-                                            response : URLResponse?, error : Error?) in
-                                            if error == nil {
-                                                let dataStr = String(data : data!, encoding : String.Encoding.utf8)
-                                                print("getplaylists: dataString = \(dataStr)")
-                                                
-                                                if let playlistsDictionary = try! JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
-                                                    print("playlists[items] = \(playlistsDictionary.object(forKey: "items"))")
-                                                    let items = playlistsDictionary.object(forKey: "items") as! [NSDictionary]
-                                                    playlists = Playlist.getPlaylists(fromDictionary: items)
+    /* sets my global 'playlists' variabl*/
+    func populatePlaylists ()
+    {
+        let getPlaylistsURLString = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true"
+        let getPlaylistURL = URL(string: getPlaylistsURLString)!
+        var request = URLRequest(url: getPlaylistURL)
+        request.httpMethod = "GET"
+        
+        if getAuth2AccessTokenString () == nil { return }
+        
+        request.addValue("Bearer \(getAuth2AccessTokenString ()!)",
+            forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request,
+                                              completionHandler: { (data : Data?,
+                                                response : URLResponse?, error : Error?) in
+                                                if error == nil {
+                                                    let dataStr = String(data : data!, encoding : String.Encoding.utf8)
+                                                    print("getplaylists: dataString = \(dataStr)")
                                                     
+                                                    if let playlistsDictionary = try! JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
+                                                        print("playlists[items] = \(playlistsDictionary.object(forKey: "items"))")
+                                                        let items = playlistsDictionary.object(forKey: "items") as! [NSDictionary]
+                                                        self.playlists = Playlist.getPlaylists(fromDictionary: items)
+                                                        
+                                                    }
                                                 }
-                                            }
-                                            else {
-                                                print("likeVid error = \(error!.localizedDescription)")
-                                            }
-    })
+                                                else {
+                                                    print("likeVid error = \(error!.localizedDescription)")
+                                                }
+        })
+        
+        task.resume()
+    }
     
-    task.resume()
+    /* for each playlist, items are populated */
+    func populateItemsForPlaylists () {
+        for playlist in playlists {
+            playlist.getItems()
+        }
+    }
 }
