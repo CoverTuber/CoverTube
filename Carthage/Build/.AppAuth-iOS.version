@@ -1,26 +1,26 @@
 {
   "iOS" : [
     {
-      "hash" : "918432e30b7add263d5efe7fe96b9ac633710f8097a0214c2ceb8b42c94ce018",
+      "hash" : "091e7d42f3d0f00531077b8edd482e46cb70e9f0706e88eaf6df8d4d86a4bb07",
       "name" : "AppAuth"
     }
   ],
-  "commitish" : "f7b6bafd7593950e16819806f5d060a131a17228",
+  "commitish" : "9232b82268d79360750728bddabdaec6657ff1a2",
   "watchOS" : [
     {
-      "hash" : "2c78f50e1b28e1e1e87ebb9692c8c99a8183c8264d48544b8e2afa51841b881a",
+      "hash" : "622c7d6801b3ee2960990a1db5cd7a2df2c24e6bfb3849bb19b0b22fbfb75083",
       "name" : "AppAuth"
     }
   ],
   "tvOS" : [
     {
-      "hash" : "7816645345ad909814bdc49492162368a7c5cec05dcd9f702d100bb81c9a0c96",
+      "hash" : "66de3fb49d9bcc3625a30a80e9551442661615bd94e8b68d6a9f5e345da51041",
       "name" : "AppAUth"
     }
   ],
   "Mac" : [
     {
-      "hash" : "a5ef13b299e627e9584dccb02eeddb2b91775a752f537c48b68291c0df7df562",
+      "hash" : "c9a108f86eedc75d895a018d89aa8de3dd9fe9ae0350d04946807c71072a1e43",
       "name" : "AppAuth"
     }
   ]

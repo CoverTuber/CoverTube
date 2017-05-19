@@ -36,7 +36,7 @@ func isAuthTokenActive () -> Bool{
     if let authState = getAuthState() {
         if authState.lastTokenResponse == nil { return false }
         if authState.lastTokenResponse!.accessTokenExpirationDate == nil { return false }
-        print("tokkk = \(authState.lastAuthorizationResponse.accessToken)")
+        print("tokkk = \(String(describing: authState.lastAuthorizationResponse.accessToken))")
         let accessTokenExpirationDate = authState.lastTokenResponse!.accessTokenExpirationDate!
         
         let now = Date()
@@ -150,7 +150,7 @@ func handleRetrievedAuthState (authState : OIDAuthState)
     
     let refreshToken = authState.refreshToken
     
-    print("authState.lastTokenResponse = \(authState.lastTokenResponse)")
+    print("authState.lastTokenResponse = \(String(describing: authState.lastTokenResponse))")
     
     print("got authroization. token = \(authState.lastTokenResponse?.accessToken)")
     let now = Date()

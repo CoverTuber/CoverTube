@@ -80,10 +80,10 @@ final class YouTube : NSObject
                                                 response : URLResponse?, error : Error?) in
                                                 if error == nil {
                                                     let dataStr = String(data : data!, encoding : String.Encoding.utf8)
-                                                    print("getplaylists: dataString = \(dataStr)")
+                                                    print("getplaylists: dataString = \(String(describing: dataStr))")
                                                     
                                                     if let playlistsDictionary = try! JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
-                                                        print("playlists[items] = \(playlistsDictionary.object(forKey: "items"))")
+                                                        print("playlists[items] = \(String(describing: playlistsDictionary.object(forKey: "items")))")
                                                         let items = playlistsDictionary.object(forKey: "items") as! [NSDictionary]
                                                         self.playlists = Playlist.getPlaylists(fromDictionary: items)
                                                         
@@ -133,7 +133,7 @@ final class YouTube : NSObject
                                                 response : URLResponse?, error : Error?) in
                                                 if error == nil {
                                                     let dataStr = String(data : data!, encoding : String.Encoding.utf8)
-                                                    print("dataString = \(dataStr)")
+                                                    print("dataString = \(String(describing: dataStr))")
                                                 }
                                                 else {
                                                     print("likeVid error = \(error!.localizedDescription)")

@@ -102,7 +102,7 @@ class Playlist: NSObject {
                                                 response : URLResponse?, error : Error?) in
                                                 if error == nil {
                                                     let dataStr = String(data : data!, encoding : String.Encoding.utf8)
-                                                    print("getplaylistItems: dataString = \(dataStr)")
+                                                    print("getplaylistItems: dataString = \(String(describing: dataStr))")
                                                     if let playlistItemsDictionary = try! JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
                                                     {
                                                         let playlistItems = playlistItemsDictionary.object(forKey: "items") as! [NSDictionary]

@@ -11,6 +11,7 @@
 		750A078E1EC934C200559062 /* YouTube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A078D1EC934C200559062 /* YouTube.swift */; };
 		750A07901EC971CC00559062 /* YouTubeLogInCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A078F1EC971CC00559062 /* YouTubeLogInCredentials.swift */; };
 		75209E2E1ECE93E800D995D8 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75209E2D1ECE93E800D995D8 /* VideoTableViewCell.swift */; };
+		75209E301ECEDC6E00D995D8 /* CircleLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75209E2F1ECEDC6E00D995D8 /* CircleLoading.swift */; };
 		753B24EA1E9C921C00102148 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B24E91E9C921C00102148 /* LoginViewController.swift */; };
 		753B24F01E9C983900102148 /* MusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B24EF1E9C983900102148 /* MusicTableViewCell.swift */; };
 		75424B091ECC102900FB66F3 /* RepeatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75424B081ECC102900FB66F3 /* RepeatButton.swift */; };
@@ -48,6 +49,7 @@
 		750A078D1EC934C200559062 /* YouTube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTube.swift; sourceTree = "<group>"; };
 		750A078F1EC971CC00559062 /* YouTubeLogInCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeLogInCredentials.swift; sourceTree = "<group>"; };
 		75209E2D1ECE93E800D995D8 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
+		75209E2F1ECEDC6E00D995D8 /* CircleLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleLoading.swift; sourceTree = "<group>"; };
 		753B24E91E9C921C00102148 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		753B24EF1E9C983900102148 /* MusicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTableViewCell.swift; sourceTree = "<group>"; };
 		75424B081ECC102900FB66F3 /* RepeatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatButton.swift; sourceTree = "<group>"; };
@@ -114,6 +116,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		75209E311ECF803200D995D8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				75424B081ECC102900FB66F3 /* RepeatButton.swift */,
+				75209E2F1ECEDC6E00D995D8 /* CircleLoading.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		7549D1651E6925FC00A6FCEF = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +153,6 @@
 				753B24E91E9C921C00102148 /* LoginViewController.swift */,
 				75AF13841EC8244700F26E3F /* SwipeContainerViewController.swift */,
 				753B24EF1E9C983900102148 /* MusicTableViewCell.swift */,
-				75AF13821EC8240100F26E3F /* MusicDetectionViewController.swift */,
 				75F18C801EBC12D600358487 /* PlaylistViewController.swift */,
 				756278C31ECD0FAD007DBB52 /* PlaylistCollectionViewCell.swift */,
 				75AF13861EC8254C00F26E3F /* BilboardViewController.swift */,
@@ -159,7 +169,7 @@
 				75EA104F1EC6C95B00113C91 /* YouTubeLogIn.swift */,
 				750A078F1EC971CC00559062 /* YouTubeLogInCredentials.swift */,
 				75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */,
-				75424B081ECC102900FB66F3 /* RepeatButton.swift */,
+				75209E311ECF803200D995D8 /* UI */,
 				756278C01ECCF5C9007DBB52 /* Music Detection */,
 				75F18C8D1EBC5C5300358487 /* YouTube Player View */,
 				75C07B791EA09AE600045740 /* Assets */,
@@ -170,6 +180,7 @@
 		756278C01ECCF5C9007DBB52 /* Music Detection */ = {
 			isa = PBXGroup;
 			children = (
+				75AF13821EC8240100F26E3F /* MusicDetectionViewController.swift */,
 				75AF139F1EC83A2100F26E3F /* libACRCloud_IOS_SDK.a */,
 				75AF13A11EC83A2B00F26E3F /* ACRCloudConfig.h */,
 				75AF13A21EC83A2B00F26E3F /* ACRCloudRecognition.h */,
@@ -331,6 +342,7 @@
 				75AF13851EC8244700F26E3F /* SwipeContainerViewController.swift in Sources */,
 				75AF13831EC8240100F26E3F /* MusicDetectionViewController.swift in Sources */,
 				75209E2E1ECE93E800D995D8 /* VideoTableViewCell.swift in Sources */,
+				75209E301ECEDC6E00D995D8 /* CircleLoading.swift in Sources */,
 				753B24EA1E9C921C00102148 /* LoginViewController.swift in Sources */,
 				756278C41ECD0FAD007DBB52 /* PlaylistCollectionViewCell.swift in Sources */,
 				756278C21ECD068D007DBB52 /* Playlist.swift in Sources */,

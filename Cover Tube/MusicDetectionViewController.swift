@@ -8,16 +8,20 @@
 
 import UIKit
 
-class MusicDetectionViewController: UIViewController {
+class MusicDetectionViewController: UIViewController
+{
+    @IBOutlet weak var circleLoading: CircleLoading!
     
-    private var start = false
+    @IBOutlet weak var songDetectionButton: UIButton!
+    
+    private var startRecognition = false
     private var client: ACRCloudRecognition?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        start = false;
+        startRecognition = false;
         
         let config = ACRCloudConfig();
         
@@ -44,21 +48,38 @@ class MusicDetectionViewController: UIViewController {
         }
         client = ACRCloudRecognition(config: config)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        songDetectionButton.layer.cornerRadius = songDetectionButton.frame.size.width / 2.0
+        songDetectionButton.clipsToBounds = true
+        songDetectionButton.frame.size = CGSize(width: screenWidth * 0.45, height: screenWidth * 0.45)
+        songDetectionButton.center = CGPoint(x: screenWidth / 2.0, y: screenHeight / 2.0 + 20.0)
+        
+        circleLoading.isHidden = true
+        circleLoading.center = CGPoint(x: screenWidth / 2.0, y: screenHeight / 2.0)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func setupUI() {
+        songDetectionButton.clipsToBounds = true
+        songDetectionButton.layer.cornerRadius = 15.0
+    }
+    
 
     func handleResult(_ result: String, resType: ACRCloudResultType) -> Void
     {
-        
         DispatchQueue.main.async {
             // resultView.text = result;
-            print(result)
+            print("handleResult -> result = \(result)")
             self.client?.stopRecordRec()
-            self.start = false
+            self.startRecognition = false
+            self.songDetectionButton.setTitle("😃", for: UIControlState.normal)
+            
         }
     }
     
@@ -73,6 +94,25 @@ class MusicDetectionViewController: UIViewController {
         DispatchQueue.main.async {
             // stateLabel.text = String(format:"State : %@",state)
         }
+    }
+    
+    
+    @IBAction func detectionButtonTapped(_ sender: UIButton)
+    {
+        circleLoading.isHidden = startRecognition
+        if startRecognition {
+            /* stop recognition */
+            client?.stopRecordRec()
+            circleLoading.stop()
+        } else {
+            /* start recognition */
+            client?.startRecordRec()
+            circleLoading.start()
+            songDetectionButton.setTitle("?", for: UIControlState.normal)
+            showStatusLineNotification(title: "", bodyText: "Listening... 👂🎶", duration: 2.0, backgroundColor: UIColor.purple, foregroundColor: UIColor.white)
+        }
+        
+        startRecognition = !startRecognition
     }
 
 }
