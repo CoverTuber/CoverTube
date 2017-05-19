@@ -1191,9 +1191,9 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             /* play first video */
             didAutoplayPreviously = false
             playerView.clear()
+            playerView.stop()
             // playerView.loadPlaylistID(currentPlaylist!.id)
             playerView.loadVideoID(firstVideo.videoId)
-            
             maximizeYouTubePlayerViewAnimation()
             
             currentPlaylistTableview.reloadData()
