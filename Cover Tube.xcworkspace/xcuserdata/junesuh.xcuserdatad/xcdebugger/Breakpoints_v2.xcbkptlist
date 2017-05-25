@@ -150,47 +150,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393746.060702"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1201"
-            endingLineNumber = "1201"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393746.060702"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1199"
-            endingLineNumber = "1199"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393746.060702"
+            timestampString = "517394647.177195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "907"
-            endingLineNumber = "907"
+            startingLineNumber = "912"
+            endingLineNumber = "912"
             landmarkName = "playYouTubePlayerView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393746.060702"
+            timestampString = "517394647.177195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
             landmarkName = "updateUI()"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393746.060702"
+            timestampString = "517394647.177195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "454"
-            endingLineNumber = "454"
+            startingLineNumber = "455"
+            endingLineNumber = "455"
             landmarkName = "updateUI(withScale:toState:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -230,23 +198,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393746.060702"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1230"
-            endingLineNumber = "1230"
-            landmarkName = "scrollViewDidScroll(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/YouTubePlayer.swift"
@@ -282,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393746.060702"
+            timestampString = "517394647.177195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1011"
-            endingLineNumber = "1011"
+            startingLineNumber = "1016"
+            endingLineNumber = "1016"
             landmarkName = "handleSingleTapGestureRecognizerOnPlayerView(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393746.060702"
+            timestampString = "517394647.177195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1015"
-            endingLineNumber = "1015"
+            startingLineNumber = "1020"
+            endingLineNumber = "1020"
             landmarkName = "handleSingleTapGestureRecognizerOnPlayerView(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393746.060702"
+            timestampString = "517394647.177195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1048"
-            endingLineNumber = "1048"
+            startingLineNumber = "1053"
+            endingLineNumber = "1053"
             landmarkName = "handleSingleTapGestureRecognizerOnPlayerView(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393746.060702"
+            timestampString = "517394647.177195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1059"
-            endingLineNumber = "1059"
+            startingLineNumber = "1064"
+            endingLineNumber = "1064"
             landmarkName = "handleSingleTapGestureRecognizerOnPlayerView(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393746.060702"
+            timestampString = "517394647.177195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "635"
-            endingLineNumber = "635"
+            startingLineNumber = "640"
+            endingLineNumber = "640"
             landmarkName = "maximizeYouTubePlayerViewAnimation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,27 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393507.087548"
+            timestampString = "517394647.177195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
-            landmarkName = "setupUI()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393746.060702"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "504"
-            endingLineNumber = "504"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
             landmarkName = "minimizeYouTubePlayerViewAnimation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393746.060702"
+            timestampString = "517395184.904913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1367"
-            endingLineNumber = "1367"
+            startingLineNumber = "1395"
+            endingLineNumber = "1395"
             landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,12 +346,172 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517393746.060702"
+            timestampString = "517395184.904913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1371"
-            endingLineNumber = "1371"
+            startingLineNumber = "1400"
+            endingLineNumber = "1400"
             landmarkName = "searchBarSearchButtonClicked(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cover Tube/SwipeContainerViewController.swift"
+            timestampString = "517395184.904913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1313"
+            endingLineNumber = "1313"
+            landmarkName = "setupSearch()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cover_Tube.SwipeContainerViewController.(setupSearch () -&gt; ()).(closure #1)"
+                  moduleName = "Cover Tube"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junesuh/Pictures/CoverTube/Cover%20Tube/SwipeContainerViewController.swift"
+                  timestampString = "517395185.363295"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1313"
+                  endingLineNumber = "1313"
+                  offsetFromSymbolStart = "61">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cover_Tube.SwipeContainerViewController.(setupSearch () -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "Cover Tube"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junesuh/Pictures/CoverTube/Cover%20Tube/SwipeContainerViewController.swift"
+                  timestampString = "517395185.364393"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1316"
+                  endingLineNumber = "1316"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cover Tube/SwipeContainerViewController.swift"
+            timestampString = "517394647.177195"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1176"
+            endingLineNumber = "1176"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cover Tube/SwipeContainerViewController.swift"
+            timestampString = "517395184.904913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1330"
+            endingLineNumber = "1330"
+            landmarkName = "setupSearch()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cover Tube/SwipeContainerViewController.swift"
+            timestampString = "517395184.904913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1331"
+            endingLineNumber = "1331"
+            landmarkName = "setupSearch()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cover Tube/SwipeContainerViewController.swift"
+            timestampString = "517395184.904913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1343"
+            endingLineNumber = "1343"
+            landmarkName = "setupSearch()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cover_Tube.SwipeContainerViewController.setupSearch () -&gt; ()"
+                  moduleName = "Cover Tube"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junesuh/Pictures/CoverTube/Cover%20Tube/SwipeContainerViewController.swift"
+                  timestampString = "517395185.37394"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1343"
+                  endingLineNumber = "1343"
+                  offsetFromSymbolStart = "940">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cover_Tube.SwipeContainerViewController.(setupSearch () -&gt; ()).(closure #3)"
+                  moduleName = "Cover Tube"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junesuh/Pictures/CoverTube/Cover%20Tube/SwipeContainerViewController.swift"
+                  timestampString = "517395185.375114"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1343"
+                  endingLineNumber = "1343"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cover Tube/SwipeContainerViewController.swift"
+            timestampString = "517395184.904913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1358"
+            endingLineNumber = "1358"
+            landmarkName = "setupSearch()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

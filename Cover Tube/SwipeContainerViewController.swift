@@ -316,6 +316,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         
         /* set up search results tableView */
         searchResultTableView.keyboardDismissMode = .onDrag
+        searchResultTableView.frame = CGRect(x: 0.0, y: 44.0, width: screenWidth, height: screenHeight - 44.0)
         
     }
     
@@ -522,7 +523,11 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             print("expected = \(minimizedSizeBottomCenterYouTubePlayerFrame)")
             
             self.searchBar.isHidden = false
-            self.searchResultTableView.isHidden = false
+            if self.searchBar.text == nil {
+                self.searchResultTableView.isHidden = true
+            } else {
+                self.searchResultTableView.isHidden = self.searchBar.text!.isEmpty
+            }
         }
         
         // playerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_TransformScale)
@@ -1223,11 +1228,31 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = scrollView.contentOffset.x / screenWidth
-        if page == 1 {
-            if middleVC is PlaylistViewController {
-                let middlePlaylistVC = middleVC as! PlaylistViewController
-                middlePlaylistVC.playlistCollectionView.reloadData()
+        if (scrollView == searchResultTableView)
+        {
+            guard let provider = self.searchModel2.provider.value, !provider.items.value.isEmpty && !provider.isLoadingPage else {
+                return
+            }
+            
+            let lastCellIndexPath = IndexPath(row: provider.items.value.count - 1, section: 0)
+            if searchResultTableView.cellForRow(at: lastCellIndexPath) == nil {
+                return
+            }
+            
+            provider.pageLoader?.startWithFailed {
+                [weak self] error in
+                showStatusLineErrorNotification(title: error.localizedDescription,
+                                                bodyText: "",
+                                                duration: 2)
+            }
+        }
+        else {
+            let page = scrollView.contentOffset.x / screenWidth
+            if page == 1 {
+                if middleVC is PlaylistViewController {
+                    let middlePlaylistVC = middleVC as! PlaylistViewController
+                    middlePlaylistVC.playlistCollectionView.reloadData()
+                }
             }
         }
     }
@@ -1307,8 +1332,6 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
                     return pageLoader
                         .on(failed: {
                             [weak self] error in
-                            
-                            
                             showStatusLineErrorNotification(title: error.localizedDescription,
                                                             bodyText: "",
                                                             duration: 2)
@@ -1331,6 +1354,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             }
             .startWithValues {
                 [weak self] _ in
+                self?.searchResultTableView.isHidden = false
                 self?.searchResultTableView.reloadData()
         }
     }
@@ -1364,7 +1388,12 @@ extension SwipeContainerViewController : UISearchResultsUpdating {
 extension SwipeContainerViewController : UISearchBarDelegate
 {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchModel1.keyword.value = "\(searchText) cover music"
+        if searchText.isEmpty {
+            self.searchResultTableView.isHidden = true
+        }
+        else {
+            self.searchModel1.keyword.value = "\(searchText) cover music"
+        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
