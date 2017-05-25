@@ -96,6 +96,38 @@ final class YouTube : NSObject
         
         task.resume()
     }
+    func popularVideos ()
+    {
+        let getVideosURLString = "https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=US&videoCategoryId=10"
+        let getVideosURL = URL(string: getVideosURLString)!
+        var request  = URLRequest(url: getVideosURL)
+        request.httpMethod = "GET"
+        request.addValue("Bearer \(getAuth2AccessTokenString ()!)",
+            forHTTPHeaderField: "Authorization")
+        
+        var playlists : [Playlist] = []
+        let task = URLSession.shared.dataTask(with: request,
+                                              completionHandler: { (data : Data?,
+                                                response : URLResponse?, error : Error?) in
+                                                if error == nil {
+                                                    let dataStr = String(data : data!, encoding : String.Encoding.utf8)
+                                                    print("getPopularVideo: dataString =  (dataStr)")
+                                                    
+                                                    if let playlistsDictionary = try! JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
+                                                        print("PopularVideos[items] =  \(String(describing: playlistsDictionary.object(forKey: "items")))")
+                                                        let items = playlistsDictionary.object(forKey: "items") as! [NSDictionary]
+                                                        playlists = Playlist.getPlaylists(fromDictionary: items)
+                                                        
+                                                    }
+                                                }
+                                                else {
+                                                    print("likeVid error = \(error!.localizedDescription)")
+                                                }
+        })
+        
+        task.resume()
+    }
+
     
     /* for each playlist, items are populated */
     func populateItemsForPlaylists () {
