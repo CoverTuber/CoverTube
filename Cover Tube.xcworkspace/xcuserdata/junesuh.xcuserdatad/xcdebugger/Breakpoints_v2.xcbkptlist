@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517394647.177195"
+            timestampString = "517395691.404735"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "912"
-            endingLineNumber = "912"
+            startingLineNumber = "936"
+            endingLineNumber = "936"
             landmarkName = "playYouTubePlayerView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517394647.177195"
+            timestampString = "517395691.404735"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1016"
-            endingLineNumber = "1016"
+            startingLineNumber = "1040"
+            endingLineNumber = "1040"
             landmarkName = "handleSingleTapGestureRecognizerOnPlayerView(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517394647.177195"
+            timestampString = "517395691.404735"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1020"
-            endingLineNumber = "1020"
+            startingLineNumber = "1044"
+            endingLineNumber = "1044"
             landmarkName = "handleSingleTapGestureRecognizerOnPlayerView(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517394647.177195"
+            timestampString = "517395691.404735"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1053"
-            endingLineNumber = "1053"
+            startingLineNumber = "1077"
+            endingLineNumber = "1077"
             landmarkName = "handleSingleTapGestureRecognizerOnPlayerView(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517394647.177195"
+            timestampString = "517395691.404735"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1064"
-            endingLineNumber = "1064"
+            startingLineNumber = "1088"
+            endingLineNumber = "1088"
             landmarkName = "handleSingleTapGestureRecognizerOnPlayerView(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517394647.177195"
+            timestampString = "517395691.404735"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "640"
-            endingLineNumber = "640"
+            startingLineNumber = "653"
+            endingLineNumber = "653"
             landmarkName = "maximizeYouTubePlayerViewAnimation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517395184.904913"
+            timestampString = "517395997.129378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1395"
-            endingLineNumber = "1395"
+            startingLineNumber = "1433"
+            endingLineNumber = "1433"
             landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517395184.904913"
+            timestampString = "517395997.129378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1400"
-            endingLineNumber = "1400"
+            startingLineNumber = "1438"
+            endingLineNumber = "1438"
             landmarkName = "searchBarSearchButtonClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517395184.904913"
+            timestampString = "517395997.129378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1313"
-            endingLineNumber = "1313"
+            startingLineNumber = "1350"
+            endingLineNumber = "1350"
             landmarkName = "setupSearch()"
             landmarkType = "7">
             <Locations>
@@ -378,11 +378,11 @@
                   moduleName = "Cover Tube"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/junesuh/Pictures/CoverTube/Cover%20Tube/SwipeContainerViewController.swift"
-                  timestampString = "517395185.363295"
+                  timestampString = "517396024.126865"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1313"
-                  endingLineNumber = "1313"
+                  startingLineNumber = "1350"
+                  endingLineNumber = "1350"
                   offsetFromSymbolStart = "61">
                </Location>
                <Location
@@ -393,11 +393,11 @@
                   moduleName = "Cover Tube"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/junesuh/Pictures/CoverTube/Cover%20Tube/SwipeContainerViewController.swift"
-                  timestampString = "517395185.364393"
+                  timestampString = "517396024.127961"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1316"
-                  endingLineNumber = "1316"
+                  startingLineNumber = "1353"
+                  endingLineNumber = "1353"
                   offsetFromSymbolStart = "31">
                </Location>
             </Locations>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517394647.177195"
+            timestampString = "517395691.404735"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1176"
-            endingLineNumber = "1176"
+            startingLineNumber = "1200"
+            endingLineNumber = "1200"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517395184.904913"
+            timestampString = "517395997.129378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1330"
-            endingLineNumber = "1330"
+            startingLineNumber = "1367"
+            endingLineNumber = "1367"
             landmarkName = "setupSearch()"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517395184.904913"
+            timestampString = "517395997.129378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1331"
-            endingLineNumber = "1331"
+            startingLineNumber = "1368"
+            endingLineNumber = "1368"
             landmarkName = "setupSearch()"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517395184.904913"
+            timestampString = "517395997.129378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1343"
-            endingLineNumber = "1343"
+            startingLineNumber = "1380"
+            endingLineNumber = "1380"
             landmarkName = "setupSearch()"
             landmarkType = "7">
             <Locations>
@@ -474,11 +474,11 @@
                   moduleName = "Cover Tube"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/junesuh/Pictures/CoverTube/Cover%20Tube/SwipeContainerViewController.swift"
-                  timestampString = "517395185.37394"
+                  timestampString = "517396024.165365"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1343"
-                  endingLineNumber = "1343"
+                  startingLineNumber = "1380"
+                  endingLineNumber = "1380"
                   offsetFromSymbolStart = "940">
                </Location>
                <Location
@@ -489,11 +489,11 @@
                   moduleName = "Cover Tube"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/junesuh/Pictures/CoverTube/Cover%20Tube/SwipeContainerViewController.swift"
-                  timestampString = "517395185.375114"
+                  timestampString = "517396024.166862"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1343"
-                  endingLineNumber = "1343"
+                  startingLineNumber = "1380"
+                  endingLineNumber = "1380"
                   offsetFromSymbolStart = "4">
                </Location>
             </Locations>
@@ -506,12 +506,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517395184.904913"
+            timestampString = "517395997.129378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1358"
-            endingLineNumber = "1358"
+            startingLineNumber = "1395"
+            endingLineNumber = "1395"
             landmarkName = "setupSearch()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cover Tube/SwipeContainerViewController.swift"
+            timestampString = "517395997.129378"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1401"
+            endingLineNumber = "1401"
+            landmarkName = "searchButtonTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cover Tube/SwipeContainerViewController.swift"
+            timestampString = "517396020.523087"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1243"
+            endingLineNumber = "1243"
+            landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

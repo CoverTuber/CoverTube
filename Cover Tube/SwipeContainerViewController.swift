@@ -615,6 +615,13 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         
         CATransaction.commit()
         
+        /* prepare for UIView.animate */
+        /*
+        shuffleButton.isHidden = false
+        shuffleButton.alpha = 1.0
+        shuffleButton.isHidden = false
+        shuffleButton.alpha = 1.0
+        */
         
         /* animate fullYouTubePlayerViewOverlayView */
         UIView.animate(withDuration: changeSizeAnimationDuration,
@@ -626,9 +633,15 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
                         self.currentPlaylistTableview.alpha = 0.0
                         self.linearTimeProgressBar.alpha = 0.0
                         self.circularTimeProgressBar.alpha = 1.0
+                        self.repeatButton.alpha = 0.0
+                        self.shuffleButton.alpha = 0.0
+                        self.searchButton.alpha = 0.0
         }) { (completed : Bool) in
             self.currentPlaylistTableview.isHidden = true
             self.linearTimeProgressBar.isHidden = true
+            self.repeatButton.isHidden = true
+            self.shuffleButton.isHidden = true
+            self.searchButton.isHidden = true
         }
         
     }
@@ -742,7 +755,15 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         
         /* animate fullYouTubePlayerViewOverlayView and circularTimeProgressBar */
         
+        /* prepare for UIView.animate */
         currentPlaylistTableview.isHidden = false
+        repeatButton.isHidden = false
+        repeatButton.alpha = 0.0
+        shuffleButton.isHidden = false
+        shuffleButton.alpha = 0.0
+        searchButton.isHidden = false
+        searchButton.alpha = 0.0
+        
         UIView.animate(withDuration: changeSizeAnimationDuration, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.playerOverlayView.frame = rectangularFullYouTubePlayerOverlayViewFrame
             self.playerViewGestureHandlerView.frame = rectangularFullYouTubePlayerOverlayViewFrame
@@ -750,6 +771,9 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             self.currentPlaylistTableview.alpha = 1.0
             self.linearTimeProgressBar.alpha = 1.0
             self.circularTimeProgressBar.alpha = 0.0
+            self.repeatButton.alpha = 1.0
+            self.shuffleButton.alpha = 1.0
+            self.searchButton.alpha = 1.0
         }) { (completed : Bool) in
             self.linearTimeProgressBar.isHidden = false
             self.circularTimeProgressBar.isHidden = true
@@ -1209,6 +1233,19 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     // MARK: UITableView Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         /* load new video */
+        if tableView == searchResultTableView
+        {
+            let item = self.searchModel2.items[indexPath.row]
+            switch item {
+            case .channelItem(let channel):
+                break
+            case .videoItem(let video):
+                searchBar.resignFirstResponder()
+                maximizeYouTubePlayerViewAnimation()
+                playerView.loadVideoID(video.id)
+                break
+            }
+        }
     }
     
     
@@ -1361,6 +1398,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     
     @IBAction func searchButtonTapped(_ sender: UIButton)
     {
+        minimizeYouTubePlayerViewAnimation()
         searchBar.becomeFirstResponder()
     }
     
