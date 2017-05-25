@@ -10,5 +10,6 @@ target 'Cover Tube' do
 	pod 'flareview'
 	pod 'KeychainSwift', '~> 8.0'
 	pod 'AFNetworking'
+	pod 'Kingfisher'
 end
 

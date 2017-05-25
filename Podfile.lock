@@ -18,6 +18,7 @@ PODS:
   - CircularSpinner (1.2.0)
   - flareview (0.1)
   - KeychainSwift (8.0.2)
+  - Kingfisher (3.9.1)
   - ReactiveSwift (1.1.2):
     - Result (~> 3.2)
   - Result (3.2.1)
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - CircularSpinner
   - flareview
   - KeychainSwift (~> 8.0)
+  - Kingfisher
   - SnapchatSwipeContainer
   - SwiftMessages
   - UXMVolumeOverlay
@@ -48,6 +50,7 @@ SPEC CHECKSUMS:
   CircularSpinner: 80b8ee3eda59b66d20631d4ca7c7c83720931739
   flareview: 38ad3068e6addce849774acd660ccfe148948bd1
   KeychainSwift: 213db04dfe7244988e61f77c72a2afb2f775954a
+  Kingfisher: 6729a0baaa458245bfb8cd5a1296c71c10d6eb6c
   ReactiveSwift: 507089cf806c42e09db96f9e48477b777f0e02ba
   Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
   SnapchatSwipeContainer: e456f161ada5b50747a0f362b5f83d55dfcadff8
@@ -57,6 +60,6 @@ SPEC CHECKSUMS:
   YoutubeEngine: ca07527596e92434605e0b5d88b881d3cf6b792e
   YouTubePlayer: '028451f6772f372d4759866db99824c676ac1473'
 
-PODFILE CHECKSUM: 2e0416afcc0afb1a9847d503009905ac2595fb90
+PODFILE CHECKSUM: 7749cff30874f4c63cb0a02577c5a2df895579f5
 
 COCOAPODS: 1.2.0

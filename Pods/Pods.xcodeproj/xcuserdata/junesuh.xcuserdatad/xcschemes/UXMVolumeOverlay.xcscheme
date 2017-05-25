@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '195B1F99DD82AD7777E561AABC3478C4'
+               BlueprintIdentifier = '8F6C06DCB061509AF3AB60A1EC24E06C'
                BlueprintName = 'UXMVolumeOverlay'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'UXMVolumeOverlay.framework'>

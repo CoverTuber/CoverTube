@@ -1,5 +1,5 @@
 //
-//  Video.swift
+//  YouTubeVideo.swift
 //  Cover Tube
 //
 //  Created by June Suh on 5/18/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Video: NSObject
+class YouTubeVideo: NSObject
 {
     var etag = ""
     var id = ""
@@ -36,13 +36,13 @@ class Video: NSObject
         videoId = resourceId.object(forKey: "videoId") as! String
     }
     
-    class func getVideos (fromDictionary videosDict : [NSDictionary]) -> [Video]
+    class func getVideos (fromDictionary videosDict : [NSDictionary]) -> [YouTubeVideo]
     {
-        var result : [Video] = []
+        var result : [YouTubeVideo] = []
         
         /* iterate through each dictionary and make it into video */
         for videoDict in videosDict {
-            let video = Video(withDictionary: videoDict)
+            let video = YouTubeVideo(withDictionary: videoDict)
             result.append(video)
         }
         
