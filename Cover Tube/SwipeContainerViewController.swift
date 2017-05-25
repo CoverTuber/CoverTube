@@ -236,14 +236,16 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         /* set up play,pause button */
         
         /* set up previous button */
+        prevButton.frame.size = previousButtonSize
+        prevButton.center = previousButtonCenter
         prevButton.clipsToBounds = true
         prevButton.layer.cornerRadius = previousButtonCornerRadius
-        prevButton.center = previousButtonCenter
         
         /* set up next button */
+        nextButton.frame.size = nextButtonSize
+        nextButton.center = nextButtonCenter
         nextButton.clipsToBounds = true
         nextButton.layer.cornerRadius = nextButtonCornerRadius
-        nextButton.center = nextButtonCenter
         
         /* set up linear time progress bar */
         // linearTimeProgressBar.currentThumbImage =
@@ -321,12 +323,14 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         prevButton.center = previousButtonCenter
         nextButton.center = nextButtonCenter
         
+        
         /* set hiearchy */
         view.bringSubview(toFront: currentPlaylistTableview)
         view.bringSubview(toFront: playerView)
         view.bringSubview(toFront: playerViewGestureHandlerView)
         view.bringSubview(toFront: playerOverlayView)
         view.bringSubview(toFront: repeatButton)
+        view.bringSubview(toFront: shuffleButton)
         view.bringSubview(toFront: minimizePlayerViewButton)
         view.bringSubview(toFront: prevButton)
         view.bringSubview(toFront: nextButton)
@@ -772,9 +776,9 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         
         /* load video with youtube video's id. */
         // youtubePlayerView.loadVideoID("PT2_F-1esPk") // chainsmokers closer original video
-        playerView.loadVideoID("zu4GOlrFDh4")
+        // playerView.loadVideoID("zu4GOlrFDh4")
         // playerView.loadVideoID("OcPRNIycl7U") // minions
-        // playerView.loadVideoID("WsptdUFthWI") // chainsmokers cover
+        playerView.loadVideoID("WsptdUFthWI") // chainsmokers cover
         // test rectangle - wM0HvuP5Aps
     }
     
