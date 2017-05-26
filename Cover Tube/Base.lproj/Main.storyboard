@@ -148,39 +148,60 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cp2-Fr-VGG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="549"/>
+                                <rect key="frame" x="0.0" y="14" width="375" height="639"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wbe-0x-jLx">
-                                    <size key="itemSize" width="120" height="120"/>
+                                    <size key="itemSize" width="180" height="180"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BillboardCell" id="agX-O6-Dv5" customClass="BillboardViewControllerCell" customModule="Cover_Tube" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08l-fO-rUw">
-                                                    <rect key="frame" x="0.0" y="-4" width="120" height="104"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuV-Cd-BHZ" userLabel="Title">
+                                                    <rect key="frame" x="12" y="119" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08l-fO-rUw">
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="104"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWC-si-vxe">
-                                                    <rect key="frame" x="8" y="99" width="112" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPS-Q3-B8h" userLabel="views">
+                                                    <rect key="frame" x="130" y="159" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWC-si-vxe" userLabel="uploader">
+                                                    <rect key="frame" x="12" y="139" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="JuV-Cd-BHZ" firstAttribute="leading" secondItem="agX-O6-Dv5" secondAttribute="leadingMargin" constant="4" id="6g8-b0-4km"/>
+                                            <constraint firstAttribute="trailing" secondItem="iPS-Q3-B8h" secondAttribute="trailing" constant="8" id="SHQ-v2-sy2"/>
+                                            <constraint firstItem="aWC-si-vxe" firstAttribute="top" secondItem="08l-fO-rUw" secondAttribute="bottom" constant="35" id="b3d-6C-Y53"/>
+                                            <constraint firstItem="aWC-si-vxe" firstAttribute="leading" secondItem="agX-O6-Dv5" secondAttribute="leadingMargin" constant="4" id="eAb-C3-pcv"/>
+                                            <constraint firstAttribute="bottom" secondItem="iPS-Q3-B8h" secondAttribute="bottom" id="gkm-6A-6Zn"/>
+                                            <constraint firstItem="JuV-Cd-BHZ" firstAttribute="top" secondItem="08l-fO-rUw" secondAttribute="bottom" constant="15" id="m9u-FI-ixV"/>
+                                            <constraint firstItem="iPS-Q3-B8h" firstAttribute="top" secondItem="JuV-Cd-BHZ" secondAttribute="bottom" constant="19" id="zby-I8-031"/>
+                                        </constraints>
                                         <connections>
-                                            <outlet property="name" destination="aWC-si-vxe" id="eNh-AG-Tac"/>
+                                            <outlet property="title" destination="JuV-Cd-BHZ" id="ynN-OB-Jg6"/>
+                                            <outlet property="uploader" destination="aWC-si-vxe" id="SCs-mR-41T"/>
                                             <outlet property="videoPic" destination="08l-fO-rUw" id="ziz-1x-gqK"/>
+                                            <outlet property="views" destination="iPS-Q3-B8h" id="r6W-Vc-WpY"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

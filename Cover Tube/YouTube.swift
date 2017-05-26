@@ -61,7 +61,7 @@ final class YouTube : NSObject
             populateItemsForPlaylists ()
         }
     }
-    
+
     /* populate 'playlists' from YouTube */
     func populatePlaylists ()
     {
@@ -102,21 +102,23 @@ final class YouTube : NSObject
         let getVideosURL = URL(string: getVideosURLString)!
         var request  = URLRequest(url: getVideosURL)
         request.httpMethod = "GET"
+        
+        if getAuth2AccessTokenString () == nil { return }
+        
         request.addValue("Bearer \(getAuth2AccessTokenString ()!)",
             forHTTPHeaderField: "Authorization")
         
-        var playlists : [Playlist] = []
         let task = URLSession.shared.dataTask(with: request,
                                               completionHandler: { (data : Data?,
                                                 response : URLResponse?, error : Error?) in
                                                 if error == nil {
                                                     let dataStr = String(data : data!, encoding : String.Encoding.utf8)
-                                                    print("getPopularVideo: dataString =  (dataStr)")
+                                                    print("getPopularVideo: dataString = \(String(describing: dataStr))")
                                                     
                                                     if let playlistsDictionary = try! JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
                                                         print("PopularVideos[items] =  \(String(describing: playlistsDictionary.object(forKey: "items")))")
                                                         let items = playlistsDictionary.object(forKey: "items") as! [NSDictionary]
-                                                        playlists = Playlist.getPlaylists(fromDictionary: items)
+                                                        self.playlists = Playlist.getPlaylists(fromDictionary: items)
                                                         
                                                     }
                                                 }
