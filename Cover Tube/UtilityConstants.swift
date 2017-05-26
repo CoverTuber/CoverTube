@@ -56,7 +56,7 @@ let minimizedSizeBottomCenterYouTubePlayerFrame
     = CGRect(origin: minimizedSizeBottomCenterYouTubePlayerFrameOriginPoint,
              size: squareMinimizedYouTubePlayerSize)
 
-
+let disappearYouTubePlayerViewTransformScale = CATransform3DScale(CATransform3DIdentity, 0.01, 0.01, 1.0)
 let minimizedYouTubePlayerViewTransformScale = CATransform3DScale(CATransform3DIdentity, 0.5, 0.5, 1.0)
 let maximizedYouTubePlayerViewTransformScale = CATransform3DScale(CATransform3DIdentity, 1.0, 1.0, 1.0)
 
@@ -240,3 +240,10 @@ let FetchedNewPlaylistNotificationName = NSNotification.Name(rawValue: FetchedNe
 /* Notification posted when user tapped a playlist */
 let TappedPlaylistNotificationStr = "TappedPlaylistNotification"
 let TappedPlaylistNotificationName = NSNotification.Name(rawValue: TappedPlaylistNotificationStr)
+let ResignSearchBarFirstResponderNotificationStr = "ResignSearchBarFirstResponderNotification"
+let ResignSearchBarFirstResponderNotificationName = NSNotification.Name(rawValue: ResignSearchBarFirstResponderNotificationStr)
+let HideMinimizedPlayerViewNotificationStr = "HideMinimizedPlayerViewNotification"
+let HideMinimizedPlayerViewNotificationName = NSNotification.Name(rawValue: HideMinimizedPlayerViewNotificationStr)
+
+let ShowMinimizedPlayerViewNotificationStr = "ShowMinimizedPlayerViewNotification"
+let ShowMinimizedPlayerViewNotificationName = NSNotification.Name(rawValue: ShowMinimizedPlayerViewNotificationStr)

@@ -18,6 +18,8 @@ import flareview
 import ReactiveSwift
 import enum Result.NoError
 
+import Lottie
+
 class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     YouTubePlayerDelegate, UIGestureRecognizerDelegate,
     UITableViewDelegate, UITableViewDataSource
@@ -183,10 +185,26 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.playlistSelected(notification:)),
                                                name: TappedPlaylistNotificationName, object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.searchBarResignFirstResponder),
+                                               name: ResignSearchBarFirstResponderNotificationName,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.hideMinimizedPlayerViewAnimation),
+                                               name: HideMinimizedPlayerViewNotificationName,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.showMinimizedPlayerViewAnimation),
+                                               name: ShowMinimizedPlayerViewNotificationName,
+                                               object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setupUI()
         playerView.frame = rectangularFullYouTubePlayerViewFrame
         playerOverlayView.frame = rectangularFullYouTubePlayerOverlayViewFrame
         playerViewGestureHandlerView.frame = rectangularFullYouTubePlayerOverlayViewFrame
@@ -198,6 +216,16 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
                                                             selector: #selector(updateVideoTimeInfo) ,
                                                             userInfo: nil, repeats: true)
         }
+        
+        
+        /* Testing Lottie */
+        let lottieAnimationView = LOTAnimationView(name: "data")
+        lottieAnimationView?.frame = CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)
+        lottieAnimationView?.contentMode = .scaleAspectFit
+        view.addSubview(lottieAnimationView!)
+        view.bringSubview(toFront: lottieAnimationView!)
+        lottieAnimationView?.loopAnimation = true
+        lottieAnimationView?.play()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -232,6 +260,10 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         playerView.delegate = self
         playerView.clipsToBounds = true
         playerView.layer.cornerRadius = 0.0
+        
+        /* set up minimized  */
+        minimizePlayerViewButton.setTitleColor(lightBlueColor,
+                                               for: UIControlState.normal)
         
         /* set up repeat button */
         repeatButton.center = CGPoint(x: screenWidth / 2.0,
@@ -317,6 +349,12 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         /* set up search results tableView */
         searchResultTableView.keyboardDismissMode = .onDrag
         searchResultTableView.frame = CGRect(x: 0.0, y: 44.0, width: screenWidth, height: screenHeight - 44.0)
+        searchResultTableView.backgroundColor = UIColor.clear
+        
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "Blue_Gradient_Background"))
+        imageView.frame = searchResultTableView.frame
+        // searchResultTableView.backgroundView = imageView
+        
         
     }
     
@@ -781,6 +819,49 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         
     }
     
+    /*
+     Call this function when hiding minimized palyer view.
+     Will pause video, pause spinning animation, hide pre, next, etc buttons at bottom.
+     */
+    func hideMinimizedPlayerViewAnimation ()
+    {
+        if playerView.playerState == YouTubePlayerState.Playing {
+            playerView.pause()
+            pausePlayerViewSpinningAnimation()
+        }
+        
+        searchBar.resignFirstResponder()
+        searchBar.isHidden = true
+        playerView.isHidden = true
+        minimizedPlayerViewOverlayButton.isHidden = true
+        prevButton.isHidden = true
+        nextButton.isHidden = true
+        playerViewGestureHandlerView.isHidden = true
+        return
+    }
+    
+    /*
+     Call this function when showing minimized player view.
+     will play video, resume spinning animation, show pre, next, etc buttons at bottom
+     */
+    func showMinimizedPlayerViewAnimation ()
+    {
+        /* If currently playing, pause and stop spinning animation */
+        if playerView.playerState == YouTubePlayerState.Paused {
+            playerView.play()
+            resumePlayerViewSpinningAnimation()
+        }
+        
+        searchBar.resignFirstResponder()
+        searchBar.isHidden = false
+        playerView.isHidden = false
+        prevButton.isHidden = false
+        nextButton.isHidden = false
+        minimizedPlayerViewOverlayButton.isHidden = false
+        playerViewGestureHandlerView.isHidden = false
+        return
+    }
+    
     /* spins player view is currently playing. */
     func startPlayerViewSpinningAnimation () {
         /* if youtube video is not playing, don't spin */
@@ -1220,11 +1301,13 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             switch item {
             case .channelItem(let channel):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ChannelCell", for: indexPath) as! ChannelCell
+                cell.backgroundColor = UIColor(red: 77.0 / 255.0 , green: 77.0 / 255.0, blue: 77.0 / 255.0, alpha: 0.5)
                 cell.channel = channel
                 return cell
             case .videoItem(let video):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell", for: indexPath) as! VideoCell
                 cell.video = video
+                cell.backgroundColor = UIColor(red: 77.0 / 255.0 , green: 77.0 / 255.0, blue: 77.0 / 255.0, alpha: 0.5)
                 return cell
             }
         }
@@ -1284,6 +1367,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             }
         }
         else {
+            resignSearchBarFirstResponse()
             let page = scrollView.contentOffset.x / screenWidth
             if page == 1 {
                 if middleVC is PlaylistViewController {
@@ -1402,7 +1486,15 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         searchBar.becomeFirstResponder()
     }
     
+    func searchBarResignFirstResponder ()
+    {
+        searchBar.resignFirstResponder()
+    }
     
+    public func setSearchBarText (withText text : String)
+    {
+        searchBar.text = text
+    }
 }
 
 /*
@@ -1410,7 +1502,6 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
  https://www.raywenderlich.com/113772/uisearchcontroller-tutorial
  */
 extension SwipeContainerViewController : UISearchResultsUpdating {
-    
     /*
      Whenever user adds or removes text in search bar.
      UISearchController will inform SwipeContainerVC class of the change via this method.
@@ -1435,6 +1526,10 @@ extension SwipeContainerViewController : UISearchBarDelegate
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
 }

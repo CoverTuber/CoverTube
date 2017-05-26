@@ -89,15 +89,35 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>lottie-ios.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>03302D338C1984526D69D6D33ED9FFCF</key>
+		<key>0200766785253F10EB59E25CF18F0D93</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1A1712CCE2502F01A3034A813FD27D12</key>
+		<key>05FF916DA0EFA3AE5288CE338C3CAE60</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>242D5BDB812E5DA59A18EC43F18F6866</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>281C4756CEFAF14388B44E94E1673D94</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2B72716CFE7CD24F8D4E7969707C9A66</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,12 +132,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>488C35F38D375EE31726343DD0CEDD57</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7831574404234D32BB453F96730E99D4</key>
+		<key>7CCB2F28E3F14881DAB943E9C01E55BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,17 +142,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8C494E2FE559BC730261E093E263CBF3</key>
+		<key>B5C29066B32BC3DBA7CD2538B4ED3A47</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8F6C06DCB061509AF3AB60A1EC24E06C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9B13335BA67233A5FDFC23F2B6C5AF0D</key>
+		<key>BFFB5C2762CFB4E3AE6E4760AE45DEB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,22 +167,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>D7020392072EB8D547E9BFFF8BEAF4BE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D780F80A5793F3EFDAC1606AAA75B388</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E819B44258A90D9EF42D72EA8A82687C</key>
+		<key>EA9554B6359946354549D384B377B4FD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ED36CC49C2D59C043117A160CD05D20E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FE8E89F4AB67B6E695B4363B32DF1E95</key>
+		<key>FC480FB2BA32B52229E91FE40DB7982D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

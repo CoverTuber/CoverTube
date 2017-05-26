@@ -11,5 +11,6 @@ target 'Cover Tube' do
 	pod 'KeychainSwift', '~> 8.0'
 	pod 'AFNetworking'
 	pod 'Kingfisher'
+	pod 'lottie-ios'
 end
 

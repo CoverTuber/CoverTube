@@ -249,7 +249,7 @@ open class CircularSpinner: UIView {
     fileprivate func generateRotationAnimation() -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: "transform.rotation")
         animation.fromValue = 0
-        animation.toValue = 2 * M_PI
+        animation.toValue = 2 * Double.pi
         animation.duration = indeterminateDuration
         animation.repeatCount = Float.infinity
         return animation

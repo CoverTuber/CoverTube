@@ -51,13 +51,7 @@ class MusicDetectionViewController: UIViewController
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        songDetectionButton.layer.cornerRadius = songDetectionButton.frame.size.width / 2.0
-        songDetectionButton.clipsToBounds = true
-        songDetectionButton.frame.size = CGSize(width: screenWidth * 0.45, height: screenWidth * 0.45)
-        songDetectionButton.center = CGPoint(x: screenWidth / 2.0, y: screenHeight / 2.0 + 20.0)
-        
-        circleLoading.isHidden = true
-        circleLoading.center = CGPoint(x: screenWidth / 2.0, y: screenHeight / 2.0)
+        setupUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,7 +61,13 @@ class MusicDetectionViewController: UIViewController
     
     func setupUI() {
         songDetectionButton.clipsToBounds = true
-        songDetectionButton.layer.cornerRadius = 15.0
+        songDetectionButton.layer.cornerRadius = songDetectionButton.frame.size.width / 2.0
+        songDetectionButton.frame.size = CGSize(width: screenWidth * 0.45, height: screenWidth * 0.45)
+        songDetectionButton.center = CGPoint(x: screenWidth / 2.0, y: screenHeight / 2.0 + 20.0)
+        
+        circleLoading.frame.size = CGSize(width: 280.0, height: 280.0)
+        circleLoading.isHidden = true
+        circleLoading.center = CGPoint(x: screenWidth / 2.0, y: screenHeight / 2.0)
     }
     
 
@@ -79,7 +79,46 @@ class MusicDetectionViewController: UIViewController
             self.client?.stopRecordRec()
             self.startRecognition = false
             self.songDetectionButton.setTitle("😃", for: UIControlState.normal)
+            showMinimizedPlayerView ()
+            self.circleLoading.stop()
             
+            let resultDictionary = convertToDictionary(text: result)
+            if resultDictionary == nil {
+                showStatusLineNotification(title: "Oops, it's not working", bodyText: "", duration: 2.0, backgroundColor: UIColor.blue, foregroundColor: UIColor.white)
+                return
+            }
+            
+            if resultDictionary!["status"] == nil {
+                showStatusLineNotification(title: "Oops, it's not working", bodyText: "", duration: 2.0, backgroundColor: UIColor.blue, foregroundColor: UIColor.white)
+                return
+            }
+            
+            let statusDictionary = resultDictionary!["status"] as! [String: Any]
+            if statusDictionary["msg"] == nil {
+                showStatusLineNotification(title: "Oops, it's not working", bodyText: "", duration: 2.0, backgroundColor: UIColor.blue, foregroundColor: UIColor.white)
+                return
+            }
+            
+            let statusMessage = statusDictionary["msg"] as! String
+            
+            if statusMessage == "No result" {
+                showStatusLineNotification(title: "Sorry, we can't find it",
+                                           bodyText: "",
+                                           duration: 2.0,
+                                           backgroundColor: UIColor.blue,
+                                           foregroundColor: UIColor.white)
+                return
+            }
+            else if statusMessage == "Success" {
+                let metadata = resultDictionary!["metadata"] as! [String: Any]
+                let music = ((metadata["music"] as! [[String: Any]])[0]) as! [String: Any]
+                
+                let title = music["title"] as! String
+                let artists = music["artists"]
+                print("music = \(music)")
+                
+                // AppDelegate.getSnapchatSwipeContainerVC().setSearchBarText (withText )
+            }
         }
     }
     
@@ -99,20 +138,25 @@ class MusicDetectionViewController: UIViewController
     
     @IBAction func detectionButtonTapped(_ sender: UIButton)
     {
+        resignSearchBarFirstResponse()
+        
         circleLoading.isHidden = startRecognition
+        
         if startRecognition {
             /* stop recognition */
             client?.stopRecordRec()
             circleLoading.stop()
+            showMinimizedPlayerView ()
+            startRecognition = false
         } else {
             /* start recognition */
             client?.startRecordRec()
+            startRecognition = true
             circleLoading.start()
             songDetectionButton.setTitle("?", for: UIControlState.normal)
             showStatusLineNotification(title: "", bodyText: "Listening... 👂🎶", duration: 2.0, backgroundColor: UIColor.purple, foregroundColor: UIColor.white)
+            hideMinimizedPlayerView()
         }
-        
-        startRecognition = !startRecognition
     }
 
 }
