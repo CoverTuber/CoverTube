@@ -9,7 +9,8 @@
 import UIKit
 
 class BillboardViewControllerCell: UICollectionViewCell {
-    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var title: UILabel!
     @IBOutlet weak var videoPic: UIImageView!
-
+    @IBOutlet weak var uploader: UILabel!
+    @IBOutlet weak var views: UILabel!
 }

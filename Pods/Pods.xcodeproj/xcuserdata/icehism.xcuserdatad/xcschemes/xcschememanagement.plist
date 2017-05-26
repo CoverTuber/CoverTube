@@ -37,6 +37,11 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>Kingfisher.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
 		<key>Pods-Cover Tube.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -117,6 +122,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>03302D338C1984526D69D6D33ED9FFCF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0DC43CEDFDA815471CF5D4FCDE7F5C07</key>
 		<dict>
 			<key>primary</key>
@@ -138,6 +148,11 @@
 			<true/>
 		</dict>
 		<key>195B1F99DD82AD7777E561AABC3478C4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1A1712CCE2502F01A3034A813FD27D12</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,6 +187,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>488C35F38D375EE31726343DD0CEDD57</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>56E91319B468A4BAB2BB0499D5F41F6B</key>
 		<dict>
 			<key>primary</key>
@@ -197,6 +217,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>7831574404234D32BB453F96730E99D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>842F72DCDC6161BB37D6B901E9301ED8</key>
 		<dict>
 			<key>primary</key>
@@ -207,7 +232,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8C494E2FE559BC730261E093E263CBF3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8F6C06DCB061509AF3AB60A1EC24E06C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9A0C432AEA366957DBE3B3ECBDB1DDD2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9B13335BA67233A5FDFC23F2B6C5AF0D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -218,6 +258,11 @@
 			<true/>
 		</dict>
 		<key>B5BD5C790B98E3905ECF2188B63AB227</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C4944FEC314D1A66588651D006273ADE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -242,7 +287,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>E819B44258A90D9EF42D72EA8A82687C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ED36CC49C2D59C043117A160CD05D20E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>FBB1787955B3F4E968D61CF46FAE4D02</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE8E89F4AB67B6E695B4363B32DF1E95</key>
 		<dict>
 			<key>primary</key>
 			<true/>

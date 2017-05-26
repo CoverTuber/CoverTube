@@ -8,9 +8,11 @@
 
 import UIKit
 
-class BilboardViewController:  UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
+class BilboardViewController:  UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    var playlist : [Playlist]?
+    var isMoreDataLoading: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -25,6 +27,9 @@ class BilboardViewController:  UIViewController, UICollectionViewDelegateFlowLay
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Access
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BillboardCell", for: indexPath) as! BillboardViewControllerCell
+        cell.title.text = "hello"
+        cell.uploader.text = "uploader"
+        cell.views.text = String(5)
         // Do any custom modifications you your cell, referencing the outlets you defined in the Custom cell file.
         //cell.backgroundColor = UIColor.whiteColor()
         //cell.label.text = "item \(indexPath.item)"
@@ -41,6 +46,20 @@ class BilboardViewController:  UIViewController, UICollectionViewDelegateFlowLay
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         
         return 1
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // Handle scroll behavior here
+        if (!isMoreDataLoading) {
+            let scrollViewContentHeight = collectionView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - collectionView.bounds.size.height
+            
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && collectionView.isDragging) {
+                isMoreDataLoading = true
+                
+                // ... Code to load more results ...
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
