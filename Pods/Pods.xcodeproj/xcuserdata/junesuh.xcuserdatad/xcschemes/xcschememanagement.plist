@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Kingfisher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Cover Tube.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -87,27 +92,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>11C59BEC4369AF8D2DF7018F93D0BE08</key>
+		<key>03302D338C1984526D69D6D33ED9FFCF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>160E35429CE2C12C53EC9D46C999AB9D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>195B1F99DD82AD7777E561AABC3478C4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>202AAB2EA80CCD274519D0EF47B1BA3F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2C423D11D67045F7E5E22D1B1FA31284</key>
+		<key>1A1712CCE2502F01A3034A813FD27D12</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,12 +112,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5C58FF26BD7729DA8C2FD4FE55B93C3C</key>
+		<key>488C35F38D375EE31726343DD0CEDD57</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>735D3B19AF398B24C2413ADB9A220465</key>
+		<key>7831574404234D32BB453F96730E99D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,22 +127,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>849CD751483529CC670B9B08DB90CCEA</key>
+		<key>8C494E2FE559BC730261E093E263CBF3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B5BD5C790B98E3905ECF2188B63AB227</key>
+		<key>8F6C06DCB061509AF3AB60A1EC24E06C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9B13335BA67233A5FDFC23F2B6C5AF0D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C4944FEC314D1A66588651D006273ADE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C63CB4AE559E609E163642ED2A914D4D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CB071E9136CA03CEC6E827F72E19F686</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -163,6 +158,21 @@
 			<true/>
 		</dict>
 		<key>D780F80A5793F3EFDAC1606AAA75B388</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E819B44258A90D9EF42D72EA8A82687C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ED36CC49C2D59C043117A160CD05D20E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE8E89F4AB67B6E695B4363B32DF1E95</key>
 		<dict>
 			<key>primary</key>
 			<true/>

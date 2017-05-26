@@ -22,29 +22,40 @@ func showStatusLineNotification (title : String,
     showNotification(layout: MessageView.Layout.StatusLine, title: title, bodyText: bodyText, iconStyle: IconStyle.default, theme: Theme.info, dropShadow: false, showButton: false, showIcon: false, showTitle: false, showBody: true, presentationStyle: SwiftMessages.PresentationStyle.top , presentationContext: .window(windowLevel: UIWindowLevelStatusBar), duration: .seconds(seconds: duration) , dimMode: SwiftMessages.DimMode.none, shouldAutoRotate: true, interactiveHide: false, backgroundColor: backgroundColor, foregroundColor: foregroundColor)
 }
 
+/* show error */
+func showStatusLineErrorNotification (title : String,
+                                 bodyText : String,
+                                 duration : TimeInterval)
+{
+    showStatusLineNotification (title : title,
+                                bodyText : bodyText,
+                                duration : duration,
+                                backgroundColor : UIColor.red,
+                                foregroundColor : UIColor.white)
+}
 
 
 /*
  Designated method for showing a notification
  */
 private func showNotification(layout : MessageView.Layout,
-                      title : String,
-                      bodyText : String,
-                      iconStyle : IconStyle,
-                      theme : Theme,
-                      dropShadow : Bool,
-                      showButton : Bool,
-                      showIcon : Bool,
-                      showTitle : Bool,
-                      showBody : Bool,
-                      presentationStyle : SwiftMessages.PresentationStyle ,
-                      presentationContext : SwiftMessages.PresentationContext,
-                      duration : SwiftMessages.Duration,
-                      dimMode : SwiftMessages.DimMode,
-                      shouldAutoRotate : Bool,
-                      interactiveHide : Bool,
-                      backgroundColor : UIColor,
-                      foregroundColor : UIColor)
+                              title : String,
+                              bodyText : String,
+                              iconStyle : IconStyle,
+                              theme : Theme,
+                              dropShadow : Bool,
+                              showButton : Bool,
+                              showIcon : Bool,
+                              showTitle : Bool,
+                              showBody : Bool,
+                              presentationStyle : SwiftMessages.PresentationStyle ,
+                              presentationContext : SwiftMessages.PresentationContext,
+                              duration : SwiftMessages.Duration,
+                              dimMode : SwiftMessages.DimMode,
+                              shouldAutoRotate : Bool,
+                              interactiveHide : Bool,
+                              backgroundColor : UIColor,
+                              foregroundColor : UIColor)
 {
     // View setup
     let view = MessageView.viewFromNib(layout: layout)

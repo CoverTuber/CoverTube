@@ -30,7 +30,7 @@ class Playlist: NSObject {
     var thumbnails : NSDictionary = [:]
     var thumbnailMediumURLString = ""
     
-    var videos : [Video] = []
+    var videos : [YouTubeVideo] = []
     
     init(withDictionary dict : NSDictionary) {
         super.init()
@@ -106,7 +106,7 @@ class Playlist: NSObject {
                                                     if let playlistItemsDictionary = try! JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
                                                     {
                                                         let playlistItems = playlistItemsDictionary.object(forKey: "items") as! [NSDictionary]
-                                                        self.videos = Video.getVideos(fromDictionary: playlistItems)
+                                                        self.videos = YouTubeVideo.getVideos(fromDictionary: playlistItems)
                                                     }
                                                 }
                                                 else {

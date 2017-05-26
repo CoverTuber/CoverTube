@@ -15,6 +15,8 @@ import CircularSpinner
 import UXMVolumeOverlay
 import SnapchatSwipeContainer
 import flareview
+import ReactiveSwift
+import enum Result.NoError
 
 class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     YouTubePlayerDelegate, UIGestureRecognizerDelegate,
@@ -30,6 +32,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     @IBOutlet weak var repeatButton: RepeatButton!
     
     @IBOutlet weak var shuffleButton: UIButton!
+    
+    @IBOutlet weak var searchButton: UIButton!
     
     /* image used to animate like, play, pause, next, previous on top of player view */
     @IBOutlet weak var overlayImageView: UIImageView!
@@ -63,6 +67,16 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     
     /* circular progress bar when youtube player view is minimized. Shows how much time passed in video */
     let circularTimeProgressBar = CircularSpinner(frame: CGRect.zero)
+    
+    /* search bar to search music */
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBOutlet weak var searchResultTableView: UITableView!
+    
+    /* search model */
+    fileprivate let searchModel1 = YoutubeViewModel()
+    fileprivate let searchModel2 = MutableItemsViewModel<SearchItem>()
+    
     
     // MARK: gesture recognizers
     @IBOutlet var overlayViewSingleTapGestureRecognizer: UITapGestureRecognizer!
@@ -108,6 +122,9 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     /* current playlist */
     private var currentPlaylist : Playlist? = nil
     
+    /* UISearchController used when user searched on search bar */
+    private let searchResultController = UISearchController(searchResultsController: nil)
+    
     // MARK: ViewController life cycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,12 +154,20 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         }
         
         scrollView.delegate = self
+        
+        /* setup search result controller */
+        setupSearch()
+        searchResultController.searchResultsUpdater = self as! UISearchResultsUpdating
+        searchResultController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         didAutoplayPreviously = false
+        
+        setupBeginningUI()
         
         updateUI()
         
@@ -283,6 +308,21 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         /* setup currentPlaylistTableView */
         currentPlaylistTableview.frame = currentPlaylistTableviewFrame
         
+        /* setup search button */
+        searchButton.frame = CGRect(x: screenWidth - 22.0 - 12.0, y: 12.0, width: 22.0, height: 22.0)
+        
+        /* setup search bar */
+        searchBar.frame = CGRect(x: 0.0, y: 0.0, width: screenWidth, height: 44.0)
+        
+        /* set up search results tableView */
+        searchResultTableView.keyboardDismissMode = .onDrag
+        searchResultTableView.frame = CGRect(x: 0.0, y: 44.0, width: screenWidth, height: screenHeight - 44.0)
+        
+    }
+    
+    func setupBeginningUI () {
+        searchBar.isHidden = true
+        searchResultTableView.isHidden = true
     }
     
     /*
@@ -309,6 +349,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         minimizePlayerViewButton.isHidden = isPlayerViewMinimized
         repeatButton.isHidden = isPlayerViewMinimized
         shuffleButton.isHidden = isPlayerViewMinimized
+        searchButton.isHidden = isPlayerViewMinimized
         currentPlaylistTableview.isHidden = isPlayerViewMinimized
         
         // playerOverlayView.isHidden = isYouTubePlayerViewMinimized
@@ -325,12 +366,15 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         
         
         /* set hiearchy */
+        view.bringSubview(toFront: searchResultTableView)
+        view.bringSubview(toFront: searchBar)
         view.bringSubview(toFront: currentPlaylistTableview)
         view.bringSubview(toFront: playerView)
         view.bringSubview(toFront: playerViewGestureHandlerView)
         view.bringSubview(toFront: playerOverlayView)
         view.bringSubview(toFront: repeatButton)
         view.bringSubview(toFront: shuffleButton)
+        view.bringSubview(toFront: searchButton)
         view.bringSubview(toFront: minimizePlayerViewButton)
         view.bringSubview(toFront: prevButton)
         view.bringSubview(toFront: nextButton)
@@ -477,6 +521,13 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             self.playerViewGestureHandlerView.frame = minimizedSizeBottomCenterYouTubePlayerFrame
             print("overlayView.frame = \(self.playerViewGestureHandlerView.frame)")
             print("expected = \(minimizedSizeBottomCenterYouTubePlayerFrame)")
+            
+            self.searchBar.isHidden = false
+            if self.searchBar.text == nil {
+                self.searchResultTableView.isHidden = true
+            } else {
+                self.searchResultTableView.isHidden = self.searchBar.text!.isEmpty
+            }
         }
         
         // playerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_TransformScale)
@@ -564,6 +615,13 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         
         CATransaction.commit()
         
+        /* prepare for UIView.animate */
+        /*
+        shuffleButton.isHidden = false
+        shuffleButton.alpha = 1.0
+        shuffleButton.isHidden = false
+        shuffleButton.alpha = 1.0
+        */
         
         /* animate fullYouTubePlayerViewOverlayView */
         UIView.animate(withDuration: changeSizeAnimationDuration,
@@ -575,9 +633,15 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
                         self.currentPlaylistTableview.alpha = 0.0
                         self.linearTimeProgressBar.alpha = 0.0
                         self.circularTimeProgressBar.alpha = 1.0
+                        self.repeatButton.alpha = 0.0
+                        self.shuffleButton.alpha = 0.0
+                        self.searchButton.alpha = 0.0
         }) { (completed : Bool) in
             self.currentPlaylistTableview.isHidden = true
             self.linearTimeProgressBar.isHidden = true
+            self.repeatButton.isHidden = true
+            self.shuffleButton.isHidden = true
+            self.searchButton.isHidden = true
         }
         
     }
@@ -607,6 +671,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             self.playerViewCurrentTransformScale = maximizedYouTubePlayerViewTransformScale
             self.playerView.layer.transform = maximizedYouTubePlayerViewTransformScale
             self.stopPlayerViewSpinningAnimation()
+            self.searchBar.isHidden = true
+            self.searchResultTableView.isHidden = true
         }
         
         // playerView.layer.removeAnimation(forKey: YouTubePlayerViewAnimation_TransformScale)
@@ -689,7 +755,15 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         
         /* animate fullYouTubePlayerViewOverlayView and circularTimeProgressBar */
         
+        /* prepare for UIView.animate */
         currentPlaylistTableview.isHidden = false
+        repeatButton.isHidden = false
+        repeatButton.alpha = 0.0
+        shuffleButton.isHidden = false
+        shuffleButton.alpha = 0.0
+        searchButton.isHidden = false
+        searchButton.alpha = 0.0
+        
         UIView.animate(withDuration: changeSizeAnimationDuration, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.playerOverlayView.frame = rectangularFullYouTubePlayerOverlayViewFrame
             self.playerViewGestureHandlerView.frame = rectangularFullYouTubePlayerOverlayViewFrame
@@ -697,6 +771,9 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             self.currentPlaylistTableview.alpha = 1.0
             self.linearTimeProgressBar.alpha = 1.0
             self.circularTimeProgressBar.alpha = 0.0
+            self.repeatButton.alpha = 1.0
+            self.shuffleButton.alpha = 1.0
+            self.searchButton.alpha = 1.0
         }) { (completed : Bool) in
             self.linearTimeProgressBar.isHidden = false
             self.circularTimeProgressBar.isHidden = true
@@ -1012,13 +1089,14 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     }
     
     
-    /* Whenever a user likes a video, hear animation will appear */
+    /* Whenever a user likes a video, animation will appear */
     @IBAction func handleDoubleTapGestureRecognizerOnYouTubePlayerView(_ sender: UITapGestureRecognizer)
     {
-        if  sender.view == playerViewGestureHandlerView
+        /* if user double tapped full youtube screen */
+        if  sender.view == playerViewGestureHandlerView && !isPlayerViewMinimized
         {
-            /*  */
-            YouTube.likeVideo(videoID: "zu4GOlrFDh4")
+            /* like video - user needs to be logged in. */
+            YouTube.likeVideo(videoID: playerView.currentVideoID)
             
             /* like animation */
             overlayImageView.isHidden = false
@@ -1051,86 +1129,123 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     
     // MARK: Gesture Recognizer delegate
     /*
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if gestureRecognizer is UIPanGestureRecognizer {
-            let panGestureRecognizer = gestureRecognizer as! UIPanGestureRecognizer
-            let velocity = panGestureRecognizer.velocity(in: view)
-            return abs(velocity.y) > abs(velocity.x)
-        }
-        return true
-    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                           shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer)
-        -> Bool
-    {
-        if gestureRecognizer is UIPanGestureRecognizer
-            && otherGestureRecognizer is UITapGestureRecognizer
-        {
-            return true
-        }
-        return false
-    }
-    */
+     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+     if gestureRecognizer is UIPanGestureRecognizer {
+     let panGestureRecognizer = gestureRecognizer as! UIPanGestureRecognizer
+     let velocity = panGestureRecognizer.velocity(in: view)
+     return abs(velocity.y) > abs(velocity.x)
+     }
+     return true
+     }
+     
+     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+     shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer)
+     -> Bool
+     {
+     if gestureRecognizer is UIPanGestureRecognizer
+     && otherGestureRecognizer is UITapGestureRecognizer
+     {
+     return true
+     }
+     return false
+     }
+     */
     
     /*
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        print("gestureRecogznier = \( type(of: gestureRecognizer))")
-        
-        if touch.view == repeatButton {
-            return false
-        }
-        
-        if gestureRecognizer == overlayViewPanGestureRecognizer && touch.view != repeatButton
-        {
-            let velocity = overlayViewPanGestureRecognizer.velocity(in: nil)
-            print("yyyy = \(velocity.y)")
-            if ( velocity.y > 0
-                // && overlayViewPanGestureRecognizer.state == .began
-                && isPlayerViewMinimized )
-            {
-                return false
-            }
-        }
-        else if gestureRecognizer == overlayViewSingleTapGestureRecognizer { // check if it's on screen
-            if (touch.view! != playerViewGestureHandlerView) {
-                return false
-            } else if touch.view == repeatButton {
-                repeatButton.tapped()
-                return false
-            } else if touch.view is UIButton {
-                return false
-            }
-        }
-        
-        return true
-    }
-    */
+     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+     print("gestureRecogznier = \( type(of: gestureRecognizer))")
+     
+     if touch.view == repeatButton {
+     return false
+     }
+     
+     if gestureRecognizer == overlayViewPanGestureRecognizer && touch.view != repeatButton
+     {
+     let velocity = overlayViewPanGestureRecognizer.velocity(in: nil)
+     print("yyyy = \(velocity.y)")
+     if ( velocity.y > 0
+     // && overlayViewPanGestureRecognizer.state == .began
+     && isPlayerViewMinimized )
+     {
+     return false
+     }
+     }
+     else if gestureRecognizer == overlayViewSingleTapGestureRecognizer { // check if it's on screen
+     if (touch.view! != playerViewGestureHandlerView) {
+     return false
+     } else if touch.view == repeatButton {
+     repeatButton.tapped()
+     return false
+     } else if touch.view is UIButton {
+     return false
+     }
+     }
+     
+     return true
+     }
+     */
     
     // MARK: UITableView Datasource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if currentPlaylist == nil {
-            return 0
-        } else {
-            return currentPlaylist!.videos.count
+        if tableView == currentPlaylistTableview
+        {
+            if currentPlaylist == nil {
+                return 0
+            } else {
+                return currentPlaylist!.videos.count
+            }
+        }
+        else // if tableView == searchResultTableView
+        {
+            return searchModel2.items.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "videoTableViewCell") as! VideoTableViewCell
-        let video = currentPlaylist!.videos[indexPath.item]
-        
-        if let imageURL = URL(string: video.thumbnailMediumURLString ) {
-            cell.imageView?.setImageWith(imageURL)
+        if tableView == currentPlaylistTableview
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "videoTableViewCell") as! VideoTableViewCell
+            let video = currentPlaylist!.videos[indexPath.item]
+            
+            if let imageURL = URL(string: video.thumbnailMediumURLString ) {
+                cell.imageView?.setImageWith(imageURL)
+            }
+            cell.textLabel?.text = video.title
+            
+            return cell
         }
-        cell.textLabel?.text = video.title
-        
-        return cell
+        else // if tableView == searchResultTableView
+        {
+            let item = searchModel2.items[indexPath.row]
+            switch item {
+            case .channelItem(let channel):
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ChannelCell", for: indexPath) as! ChannelCell
+                cell.channel = channel
+                return cell
+            case .videoItem(let video):
+                let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell", for: indexPath) as! VideoCell
+                cell.video = video
+                return cell
+            }
+        }
     }
     
     // MARK: UITableView Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         /* load new video */
+        if tableView == searchResultTableView
+        {
+            let item = self.searchModel2.items[indexPath.row]
+            switch item {
+            case .channelItem(let channel):
+                break
+            case .videoItem(let video):
+                searchBar.resignFirstResponder()
+                maximizeYouTubePlayerViewAnimation()
+                playerView.loadVideoID(video.id)
+                break
+            }
+        }
     }
     
     
@@ -1150,11 +1265,31 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = scrollView.contentOffset.x / screenWidth
-        if page == 1 {
-            if middleVC is PlaylistViewController {
-                let middlePlaylistVC = middleVC as! PlaylistViewController
-                middlePlaylistVC.playlistCollectionView.reloadData()
+        if (scrollView == searchResultTableView)
+        {
+            guard let provider = self.searchModel2.provider.value, !provider.items.value.isEmpty && !provider.isLoadingPage else {
+                return
+            }
+            
+            let lastCellIndexPath = IndexPath(row: provider.items.value.count - 1, section: 0)
+            if searchResultTableView.cellForRow(at: lastCellIndexPath) == nil {
+                return
+            }
+            
+            provider.pageLoader?.startWithFailed {
+                [weak self] error in
+                showStatusLineErrorNotification(title: error.localizedDescription,
+                                                bodyText: "",
+                                                duration: 2)
+            }
+        }
+        else {
+            let page = scrollView.contentOffset.x / screenWidth
+            if page == 1 {
+                if middleVC is PlaylistViewController {
+                    let middlePlaylistVC = middleVC as! PlaylistViewController
+                    middlePlaylistVC.playlistCollectionView.reloadData()
+                }
             }
         }
     }
@@ -1204,4 +1339,102 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         }
     }
     
+    // MARK: Search functionality
+    func setupSearch() {
+        searchModel2.mutableProvider <~ self.searchModel1.keyword.signal
+            .debounce(0.5, on: QueueScheduler.main)
+            .map { keyword -> AnyItemsProvider<SearchItem>? in
+                if keyword.isEmpty {
+                    return nil
+                }
+                return AnyItemsProvider { token, limit in
+                    let request = Search(.term(keyword, [.video: [.statistics, .contentDetails], .channel: [.statistics]]),
+                                         limit: limit,
+                                         pageToken: token)
+                    return Engine.defaultEngine
+                        .search(request)
+                        .map { page in (page.items, page.nextPageToken) }
+                }
+        }
+        
+        
+        
+        
+        self.searchModel2
+            .provider
+            .producer
+            .flatMap(.latest) {
+                provider -> SignalProducer<Void, NoError> in
+                if let pageLoader = provider?.pageLoader {
+                    return pageLoader
+                        .on(failed: {
+                            [weak self] error in
+                            showStatusLineErrorNotification(title: error.localizedDescription,
+                                                            bodyText: "",
+                                                            duration: 2)
+                        })
+                        .flatMapError { _ in .empty }
+                }
+                return .empty
+            }
+            .startWithCompleted {}
+        
+        self.searchModel2
+            .provider
+            .producer.flatMap(.latest) {
+                provider -> SignalProducer<[SearchItem], NoError> in
+                guard let provider = provider else {
+                    return SignalProducer(value: [])
+                }
+                
+                return provider.items.producer
+            }
+            .startWithValues {
+                [weak self] _ in
+                self?.searchResultTableView.isHidden = false
+                self?.searchResultTableView.reloadData()
+        }
+    }
+    
+    @IBAction func searchButtonTapped(_ sender: UIButton)
+    {
+        minimizeYouTubePlayerViewAnimation()
+        searchBar.becomeFirstResponder()
+    }
+    
+    
+}
+
+/*
+ Learned about search results updating from
+ https://www.raywenderlich.com/113772/uisearchcontroller-tutorial
+ */
+extension SwipeContainerViewController : UISearchResultsUpdating {
+    
+    /*
+     Whenever user adds or removes text in search bar.
+     UISearchController will inform SwipeContainerVC class of the change via this method.
+     */
+    func updateSearchResults(for searchController: UISearchController) {
+        /*
+         Call filter function
+         */
+    }
+}
+
+
+extension SwipeContainerViewController : UISearchBarDelegate
+{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            self.searchResultTableView.isHidden = true
+        }
+        else {
+            self.searchModel1.keyword.value = "\(searchText) cover music"
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

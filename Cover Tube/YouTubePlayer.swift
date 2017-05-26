@@ -101,6 +101,9 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
     /** Used to respond to player events */
     open weak var delegate: YouTubePlayerDelegate?
     
+    /** current video's id **/
+    private(set) var currentVideoID = ""
+    
     
     // MARK: Various methods for initialization
     
@@ -146,6 +149,7 @@ open class YouTubePlayerView: UIView, UIWebViewDelegate {
     }
     
     open func loadVideoID(_ videoID: String) {
+        currentVideoID = videoID
         var playerParams = playerParameters()
         playerParams["videoId"] = videoID as AnyObject?
         
