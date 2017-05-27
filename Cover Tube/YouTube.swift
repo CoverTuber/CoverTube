@@ -54,11 +54,20 @@ final class YouTube : NSObject
     
     static let shared = YouTube()
     
-    // MARK:  Local ariables
+    // MARK:  Local variables
+    /*
+     User's playlists. After fetching playlists, call populateItemsForPlaylists so each playlist has its
+     */
     var playlists : [Playlist] = [] {
         didSet {
             NotificationCenter.default.post(name: FetchedNewPlaylistNotificationName, object: nil, userInfo: nil)
             populateItemsForPlaylists ()
+        }
+    }
+    
+    var bilboardVideos : [YouTubeVideo] = [] {
+        didSet {
+            NotificationCenter.default.post(name: FetchedPopularVideoNotificationName, object: nil)
         }
     }
 
@@ -117,11 +126,12 @@ final class YouTube : NSObject
                                                     let dataStr = String(data : data!, encoding : String.Encoding.utf8)
                                                     print("getPopularVideo: dataString = \(String(describing: dataStr))")
                                                     
-                                                    if let playlistsDictionary = try! JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
-                                                        print("PopularVideos[items] =  \(String(describing: playlistsDictionary.object(forKey: "items")))")
-                                                        let items = playlistsDictionary.object(forKey: "items") as! [NSDictionary]
-                                                        self.playlists = Playlist.getPlaylists(fromDictionary: items)
-                                                        
+                                                    if let popularVideosDictionary = try! JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
+                                                    {
+                                                        print("popularVideos = \(popularVideosDictionary)")
+                                                        print("PopularVideos[items] =  \(String(describing: popularVideosDictionary.object(forKey: "items")))")
+                                                        let items = popularVideosDictionary.object(forKey: "items") as! [NSDictionary]
+                                                        self.bilboardVideos = YouTubeVideo.getVideos(fromDictionary: items)
                                                     }
                                                 }
                                                 else {

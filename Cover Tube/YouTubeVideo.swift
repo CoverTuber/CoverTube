@@ -32,8 +32,11 @@ class YouTubeVideo: NSObject
         
         title = snippet.object(forKey: "title") as! String
         
-        let resourceId = snippet.object(forKey: "resourceId") as! NSDictionary
-        videoId = resourceId.object(forKey: "videoId") as! String
+        if snippet.object(forKey: "resourceId") != nil
+        {
+            let resourceId = snippet.object(forKey: "resourceId") as! NSDictionary
+            videoId = resourceId.object(forKey: "videoId") as! String
+        }
     }
     
     class func getVideos (fromDictionary videosDict : [NSDictionary]) -> [YouTubeVideo]

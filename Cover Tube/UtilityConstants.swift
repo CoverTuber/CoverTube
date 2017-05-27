@@ -62,7 +62,7 @@ let maximizedYouTubePlayerViewTransformScale = CATransform3DScale(CATransform3DI
 
 
 /* previous button size */
-let previousButtonWidth = squareMinimizedYouTubePlayerSize.width * 0.8
+let previousButtonWidth = squareMinimizedYouTubePlayerSize.width * 0.4
 let previousButtonHeight = previousButtonWidth
 let previousButtonSize = CGSize(width: previousButtonWidth,
                                 height: previousButtonHeight)
@@ -240,10 +240,19 @@ let FetchedNewPlaylistNotificationName = NSNotification.Name(rawValue: FetchedNe
 /* Notification posted when user tapped a playlist */
 let TappedPlaylistNotificationStr = "TappedPlaylistNotification"
 let TappedPlaylistNotificationName = NSNotification.Name(rawValue: TappedPlaylistNotificationStr)
+
+/* Notification posted when popular videos for bilboard is fetched */
+let FetchedPopularVideoNotificationStr = "FetchedPopularVideoNotification"
+let FetchedPopularVideoNotificationName = NSNotification.Name(rawValue: FetchedNewPlaylistNotificationStr)
+
+/* Notification posted when user resigns first responder from the search bar */
 let ResignSearchBarFirstResponderNotificationStr = "ResignSearchBarFirstResponderNotification"
 let ResignSearchBarFirstResponderNotificationName = NSNotification.Name(rawValue: ResignSearchBarFirstResponderNotificationStr)
+
+/* Notification posted when the minimized circular playerView is hidden */
 let HideMinimizedPlayerViewNotificationStr = "HideMinimizedPlayerViewNotification"
 let HideMinimizedPlayerViewNotificationName = NSNotification.Name(rawValue: HideMinimizedPlayerViewNotificationStr)
 
+/* Notification posted when the hidden playerView become visible minimized circular */
 let ShowMinimizedPlayerViewNotificationStr = "ShowMinimizedPlayerViewNotification"
 let ShowMinimizedPlayerViewNotificationName = NSNotification.Name(rawValue: ShowMinimizedPlayerViewNotificationStr)
