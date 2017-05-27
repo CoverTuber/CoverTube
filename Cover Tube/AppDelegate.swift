@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /* Two main view controllers for this app
      NOTE: swipeContainerVC contains three view controllers. */
-    private var swipeContainerVC : SnapchatSwipeContainerViewController? = nil
+    private var swipeContainerVC : SwipeContainerViewController? = nil
     
     /* return app delegate */
     class func getAppDelegate () -> AppDelegate?
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /* return Snapchat swipe container view controller */
-    class func getSnapchatSwipeContainerVC () -> SnapchatSwipeContainerViewController? {
+    class func getSnapchatSwipeContainerVC () -> SwipeContainerViewController? {
         if let appDelegate = getAppDelegate() {
             return appDelegate.swipeContainerVC
         } else {
@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /* set Snapchat swipe container view controller */
     class func setSnapchatSwipeContainerVC () {
         if let appDelegate = getAppDelegate() {
-            appDelegate.swipeContainerVC = storyboard.instantiateViewController(withIdentifier: "SwipeContainerVC") as? SnapchatSwipeContainerViewController
+            appDelegate.swipeContainerVC = storyboard.instantiateViewController(withIdentifier: "SwipeContainerVC") as? SwipeContainerViewController
         }
     }
 

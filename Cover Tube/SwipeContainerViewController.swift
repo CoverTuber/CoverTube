@@ -239,6 +239,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             redirectToOAuth2Server()
         }
         
+        minimizePlayerViewButtonTapped(minimizePlayerViewButton)
+        
         if isUserLoggedIn() == false
         {
             /* Just display playlists and hide player view etc */
@@ -864,7 +866,6 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         nextButton.isHidden = true
         playerViewGestureHandlerView.isHidden = true
         circularTimeProgressBar.isHidden = true
-        return
     }
     
     /*
@@ -879,6 +880,9 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             resumePlayerViewSpinningAnimation()
         }
         
+        view.bringSubview(toFront: playerView)
+        
+        
         searchBar.resignFirstResponder()
         searchBar.isHidden = false
         playerView.isHidden = false
@@ -887,7 +891,6 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         minimizedPlayerViewOverlayButton.isHidden = false
         playerViewGestureHandlerView.isHidden = false
         circularTimeProgressBar.isHidden = false
-        return
     }
     
     /* spins player view is currently playing. */

@@ -8,10 +8,8 @@
 
 import UIKit
 
-class MusicDetectionViewController: UIViewController
+class MusicDetectionViewController: VideoSplashViewController
 {
-    @IBOutlet weak var circleLoading: CircleLoading!
-    
     @IBOutlet weak var songDetectionButton: UIButton!
     
     private var startRecognition = false
@@ -47,6 +45,24 @@ class MusicDetectionViewController: UIViewController
             self?.handleResult(result!, resType:resType)
         }
         client = ACRCloudRecognition(config: config)
+        
+        setupBackgroundVideo()
+    }
+    
+    func setupBackgroundVideo ()
+    {
+        let nsURL = NSURL.init(fileURLWithPath: Bundle.main.path(forResource: "DetectionBackground", ofType: "mp4")! )
+        let url = nsURL as URL
+        // let url = URL(fileURLWithPath: Bundle.main.path(forResource: "DetectionBackground", ofType: "mp4")!)
+        self.videoFrame = view.frame
+        self.fillMode = .resizeAspectFill
+        self.alwaysRepeat = false
+        self.sound = false
+        self.startTime = 12.0
+        self.duration = 0.0
+        self.alpha = 0.0
+        self.backgroundColor = UIColor.clear
+        self.contentURL = url
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,12 +81,11 @@ class MusicDetectionViewController: UIViewController
         songDetectionButton.center = CGPoint(x: screenWidth / 2.0, y: screenHeight / 2.0 + 20.0)
         songDetectionButton.layer.cornerRadius = songDetectionButton.frame.size.width / 2.0
         
-        circleLoading.frame = CGRect(x: 0.0, y: 0.0, width: 280.0, height: 280.0)
-        circleLoading.isHidden = true
-        circleLoading.center = songDetectionButton.center
-        circleLoading.stop()
-        
+        view.bringSubview(toFront: moviePlayer.view)
         view.bringSubview(toFront: songDetectionButton)
+        
+        pauseVideo()
+        moviePlayer.view.isHidden = true
     }
     
 
@@ -80,10 +95,17 @@ class MusicDetectionViewController: UIViewController
             // resultView.text = result;
             print("handleResult -> result = \(result)")
             self.client?.stopRecordRec()
+            self.pauseVideo()
+            self.alpha = 0.0
+            self.moviePlayer.view.isHidden = true
             self.startRecognition = false
             self.songDetectionButton.setTitle("😃", for: UIControlState.normal)
             showMinimizedPlayerView ()
-            self.circleLoading.stop()
+            
+            if result.contains("No result") {
+                showStatusLineNotification(title: "", bodyText: "No result", duration: 2, backgroundColor: UIColor.purple, foregroundColor: UIColor.white)
+                return
+            }
             
             let resultDictionary = convertToDictionary(text: result)
             if resultDictionary == nil {
@@ -113,12 +135,45 @@ class MusicDetectionViewController: UIViewController
                 return
             }
             else if statusMessage == "Success" {
+                if resultDictionary!["metadata"] == nil {
+                    showStatusLineNotification(title: "",
+                                               bodyText: "Sorry, we can't find it",
+                                               duration: 2.0,
+                                               backgroundColor: UIColor.blue,
+                                               foregroundColor: UIColor.white)
+                }
+                
                 let metadata = resultDictionary!["metadata"] as! [String: Any]
+                
+                if ((metadata["music"] as! [[String: Any]]).count == 0) {
+                    showStatusLineNotification(title: "",
+                                               bodyText: "Sorry, we can't find it",
+                                               duration: 2.0,
+                                               backgroundColor: UIColor.blue,
+                                               foregroundColor: UIColor.white)
+                }
+                
                 let music = ((metadata["music"] as! [[String: Any]])[0]) as! [String: Any]
                 
                 let title = music["title"] as! String
                 let artists = music["artists"]
+                
+                var artistStr = ""
+                if (artists is Array<Dictionary<String, String>>)
+                {
+                    let artistsArray = artists as! Array<Dictionary<String, String>>
+                    if artistsArray.count > 0
+                    {
+                        if ((artists as! Array<Dictionary<String, String>>)[0])["name"] != nil
+                        {
+                            artistStr = ((artists as! Array<Dictionary<String, String>>)[0])["name"]!
+                        }
+                    }
+                }
+                
                 print("music = \(music)")
+                
+                AppDelegate.getSnapchatSwipeContainerVC()!.setSearchBarText (withText : "\(title) \(artistStr)")
                 
                 // AppDelegate.getSnapchatSwipeContainerVC().setSearchBarText (withText )
             }
@@ -143,19 +198,23 @@ class MusicDetectionViewController: UIViewController
     {
         resignSearchBarFirstResponse()
         
-        circleLoading.isHidden = startRecognition
-        
         if startRecognition {
             /* stop recognition */
+            pauseVideo()
+            self.alpha = 0.0
+            moviePlayer.view.isHidden = true
             client?.stopRecordRec()
-            circleLoading.stop()
+            // circleLoading.stop()
             showMinimizedPlayerView ()
             startRecognition = false
         } else {
             /* start recognition */
+            playVideo()
+            moviePlayer.view.isHidden = false
+            self.alpha = 1.0
             client?.startRecordRec()
             startRecognition = true
-            circleLoading.start()
+            // circleLoading.start()
             songDetectionButton.setTitle("?", for: UIControlState.normal)
             showStatusLineNotification(title: "", bodyText: "Listening... 👂🎶", duration: 2.0, backgroundColor: UIColor.purple, foregroundColor: UIColor.white)
             hideMinimizedPlayerView()

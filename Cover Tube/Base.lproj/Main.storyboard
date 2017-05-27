@@ -671,16 +671,10 @@
                                     <action selector="detectionButtonTapped:" destination="JUm-T7-7GY" eventType="touchUpInside" id="mWS-J0-8tj"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sa3-UI-dg2" customClass="CircleLoading" customModule="Cover_Tube" customModuleProvider="target">
-                                <rect key="frame" x="37" y="183" width="300" height="300"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="circleLoading" destination="Sa3-UI-dg2" id="UZu-hW-UMq"/>
                         <outlet property="songDetectionButton" destination="6PW-aS-F5F" id="jTm-9y-M0E"/>
                     </connections>
                 </viewController>
