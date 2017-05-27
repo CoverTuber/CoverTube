@@ -246,6 +246,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             /* Just display playlists and hide player view etc */
             hidePlayerViewAndControlButtons()
         }
+        hidePlayerViewAndControlButtons()
         
     }
     
@@ -1368,7 +1369,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
                 cell.imageView?.setImageWith(imageURL)
             }
             cell.textLabel?.textColor = UIColor.white
-            cell.textLabel?.font = UIFont(name: "GothamPro", size: 20)!
+            // cell.textLabel?.font = UIFont(name: "GothamPro", size: 20)!
             cell.textLabel?.text = video.title
             
             return cell
@@ -1453,6 +1454,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         }
         else // if currentScrollView == self.scrollView
         {
+            hidePlayerViewAndControlButtons()
             resignSearchBarFirstResponse()
             let page = currentScrollView.contentOffset.x / screenWidth
             if page == 0 {

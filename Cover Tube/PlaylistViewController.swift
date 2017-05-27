@@ -46,6 +46,7 @@ class PlaylistViewController: UIViewController,
     
     // MARK: UICollectionView Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        hideMinimizedPlayerView()
         return YouTube.shared.playlists.count
     }
     
@@ -118,6 +119,7 @@ class PlaylistViewController: UIViewController,
     func fetchedNewPlaylists () {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
             self.playlistCollectionView.reloadData()
+            hideMinimizedPlayerView()
         }
     }
     
