@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cover Tube/YouTubeLogIn.swift"
-            timestampString = "516760589.335289"
+            timestampString = "517537801.803977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
@@ -349,86 +349,6 @@
             timestampString = "517498819.610746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1434"
-            endingLineNumber = "1434"
-            landmarkName = "setupSearch()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Cover_Tube.SwipeContainerViewController.(setupSearch () -&gt; ()).(closure #1)"
-                  moduleName = "Cover Tube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/junesuh/Pictures/CoverTube/Cover%20Tube/SwipeContainerViewController.swift"
-                  timestampString = "517465097.666497"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1423"
-                  endingLineNumber = "1423"
-                  offsetFromSymbolStart = "61">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Cover_Tube.SwipeContainerViewController.(setupSearch () -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "Cover Tube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/junesuh/Pictures/CoverTube/Cover%20Tube/SwipeContainerViewController.swift"
-                  timestampString = "517465097.66785"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1426"
-                  endingLineNumber = "1426"
-                  offsetFromSymbolStart = "31">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517498819.610746"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1451"
-            endingLineNumber = "1451"
-            landmarkName = "setupSearch()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517498819.610746"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1452"
-            endingLineNumber = "1452"
-            landmarkName = "setupSearch()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517498819.610746"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1479"
             endingLineNumber = "1479"
             landmarkName = "setupSearch()"
@@ -464,38 +384,6 @@
             startingLineNumber = "1326"
             endingLineNumber = "1326"
             landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517498819.610746"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cover Tube/SwipeContainerViewController.swift"
-            timestampString = "517498819.610746"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "543"
-            endingLineNumber = "543"
-            landmarkName = "minimizeYouTubePlayerViewAnimation()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -576,6 +464,54 @@
             startingLineNumber = "118"
             endingLineNumber = "118"
             landmarkName = "handleResult(_:resType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cover Tube/YouTube.swift"
+            timestampString = "517537027.457558"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "popularVideos()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cover Tube/YouTube.swift"
+            timestampString = "517537117.666581"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "popularVideos()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cover Tube/YouTube.swift"
+            timestampString = "517537829.258069"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "popularVideos()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -1,0 +1,655 @@
+BCSymbolMap Version: 2.0
+-[OIDFieldMapping init]
+-[OIDFieldMapping initWithName:type:]
+-[OIDFieldMapping initWithName:type:conversion:]
++[OIDFieldMapping remainingParametersWithMap:parameters:instance:]
++[OIDFieldMapping encodeWithCoder:map:instance:]
++[OIDFieldMapping decodeWithCoder:map:instance:]
++[OIDFieldMapping JSONTypes]
++[OIDFieldMapping URLConversion]
+___32+[OIDFieldMapping URLConversion]_block_invoke
++[OIDFieldMapping dateSinceNowConversion]
+___41+[OIDFieldMapping dateSinceNowConversion]_block_invoke
++[OIDFieldMapping dateEpochConversion]
+___38+[OIDFieldMapping dateEpochConversion]_block_invoke
+-[OIDFieldMapping name]
+-[OIDFieldMapping expectedType]
+-[OIDFieldMapping conversion]
+-[OIDFieldMapping .cxx_destruct]
+___block_descriptor_tmp
+___block_literal_global
+___block_descriptor_tmp.56
+___block_literal_global.57
+___block_descriptor_tmp.60
+___block_literal_global.61
+Apple LLVM version 8.1.0 (clang-802.0.42)
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDFieldMapping.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDFieldMapping.h
+__38+[OIDFieldMapping dateEpochConversion]_block_invoke
+__41+[OIDFieldMapping dateSinceNowConversion]_block_invoke
+__32+[OIDFieldMapping URLConversion]_block_invoke
++[OIDAuthState authStateByPresentingAuthorizationRequest:UICoordinator:callback:]
+___81+[OIDAuthState authStateByPresentingAuthorizationRequest:UICoordinator:callback:]_block_invoke
+___81+[OIDAuthState authStateByPresentingAuthorizationRequest:UICoordinator:callback:]_block_invoke_2
+___copy_helper_block_
+___destroy_helper_block_
+___copy_helper_block_.25
+___destroy_helper_block_.26
+-[OIDAuthState init]
+-[OIDAuthState initWithAuthorizationResponse:]
+-[OIDAuthState initWithAuthorizationResponse:tokenResponse:]
+-[OIDAuthState initWithRegistrationResponse:]
+-[OIDAuthState initWithAuthorizationResponse:tokenResponse:registrationResponse:]
+-[OIDAuthState description]
++[OIDAuthState supportsSecureCoding]
+-[OIDAuthState initWithCoder:]
+-[OIDAuthState encodeWithCoder:]
+-[OIDAuthState accessToken]
+-[OIDAuthState tokenType]
+-[OIDAuthState accessTokenExpirationDate]
+-[OIDAuthState idToken]
+-[OIDAuthState isAuthorized]
+-[OIDAuthState updateWithRegistrationResponse:]
+-[OIDAuthState updateWithAuthorizationResponse:error:]
+-[OIDAuthState updateWithTokenResponse:error:]
+-[OIDAuthState updateWithAuthorizationError:]
+-[OIDAuthState tokenRefreshRequest]
+-[OIDAuthState tokenRefreshRequestWithAdditionalParameters:]
+-[OIDAuthState didChangeState]
+-[OIDAuthState setNeedsTokenRefresh]
+-[OIDAuthState performActionWithFreshTokens:]
+-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]
+___73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke
+___copy_helper_block_.121
+___destroy_helper_block_.122
+___73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke.129
+___copy_helper_block_.130
+___destroy_helper_block_.131
+___73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke.138
+___73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke_2
+___copy_helper_block_.145
+___destroy_helper_block_.146
+___copy_helper_block_.148
+___destroy_helper_block_.149
+-[OIDAuthState withFreshTokensPerformAction:]
+-[OIDAuthState isTokenFresh]
+-[OIDAuthState refreshToken]
+-[OIDAuthState scope]
+-[OIDAuthState lastAuthorizationResponse]
+-[OIDAuthState lastTokenResponse]
+-[OIDAuthState lastRegistrationResponse]
+-[OIDAuthState authorizationError]
+-[OIDAuthState stateChangeDelegate]
+-[OIDAuthState setStateChangeDelegate:]
+-[OIDAuthState errorDelegate]
+-[OIDAuthState setErrorDelegate:]
+-[OIDAuthState .cxx_destruct]
+___block_descriptor_tmp.28
+___block_descriptor_tmp.124
+___block_descriptor_tmp.132
+___block_descriptor_tmp.147
+___block_descriptor_tmp.150
+l_OBJC_PROTOCOL_$_NSCoding
+l_OBJC_LABEL_PROTOCOL_$_NSCoding
+l_OBJC_PROTOCOL_$_NSSecureCoding
+l_OBJC_LABEL_PROTOCOL_$_NSSecureCoding
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthState.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthState.h
+__destroy_helper_block_
+__copy_helper_block_
+__73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke_2
+__73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke.138
+__73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke.129
+__73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke
+__81+[OIDAuthState authStateByPresentingAuthorizationRequest:UICoordinator:callback:]_block_invoke_2
+__81+[OIDAuthState authStateByPresentingAuthorizationRequest:UICoordinator:callback:]_block_invoke
++[OIDAuthState(IOS) authStateByPresentingAuthorizationRequest:presentingViewController:callback:]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/iOS/OIDAuthState+IOS.m
++[OIDTokenResponse fieldMap]
+___28+[OIDTokenResponse fieldMap]_block_invoke
+-[OIDTokenResponse init]
+-[OIDTokenResponse initWithRequest:parameters:]
+-[OIDTokenResponse copyWithZone:]
++[OIDTokenResponse supportsSecureCoding]
+-[OIDTokenResponse initWithCoder:]
+-[OIDTokenResponse encodeWithCoder:]
+-[OIDTokenResponse description]
+-[OIDTokenResponse request]
+-[OIDTokenResponse accessToken]
+-[OIDTokenResponse accessTokenExpirationDate]
+-[OIDTokenResponse tokenType]
+-[OIDTokenResponse idToken]
+-[OIDTokenResponse refreshToken]
+-[OIDTokenResponse scope]
+-[OIDTokenResponse additionalParameters]
+-[OIDTokenResponse .cxx_destruct]
+_fieldMap.fieldMap
+_fieldMap.onceToken
+l_OBJC_PROTOCOL_$_NSCopying
+l_OBJC_LABEL_PROTOCOL_$_NSCopying
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDTokenResponse.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDTokenResponse.h
+__28+[OIDTokenResponse fieldMap]_block_invoke
+_dispatch_once
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/usr/include/dispatch/once.h
++[OIDErrorUtilities errorWithCode:underlyingError:description:]
++[OIDErrorUtilities isOAuthErrorDomain:]
++[OIDErrorUtilities resourceServerAuthorizationErrorWithCode:errorResponse:underlyingError:]
++[OIDErrorUtilities OAuthErrorWithDomain:OAuthResponse:underlyingError:]
++[OIDErrorUtilities HTTPErrorWithHTTPResponse:data:]
++[OIDErrorUtilities OAuthErrorCodeFromString:]
++[OIDErrorUtilities raiseException:]
++[OIDErrorUtilities raiseException:message:]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDErrorUtilities.m
++[OIDAuthorizationUICoordinatorIOS safariViewControllerFactory]
++[OIDAuthorizationUICoordinatorIOS setSafariViewControllerFactory:]
+-[OIDAuthorizationUICoordinatorIOS initWithPresentingViewController:]
+-[OIDAuthorizationUICoordinatorIOS presentAuthorizationWithURL:session:]
+-[OIDAuthorizationUICoordinatorIOS dismissAuthorizationAnimated:completion:]
+-[OIDAuthorizationUICoordinatorIOS cleanUp]
+-[OIDAuthorizationUICoordinatorIOS safariViewControllerDidFinish:]
+-[OIDAuthorizationUICoordinatorIOS .cxx_destruct]
+-[OIDDefaultSafariViewControllerFactory safariViewControllerWithURL:]
+_gSafariViewControllerFactory
+_OBJC_IVAR_$_OIDAuthorizationUICoordinatorIOS._presentingViewController
+_OBJC_IVAR_$_OIDAuthorizationUICoordinatorIOS._authorizationFlowInProgress
+_OBJC_IVAR_$_OIDAuthorizationUICoordinatorIOS._session
+_OBJC_IVAR_$_OIDAuthorizationUICoordinatorIOS._safariVC
+l_OBJC_PROTOCOL_$_NSObject
+l_OBJC_LABEL_PROTOCOL_$_NSObject
+l_OBJC_PROTOCOL_$_SFSafariViewControllerDelegate
+l_OBJC_LABEL_PROTOCOL_$_SFSafariViewControllerDelegate
+l_OBJC_PROTOCOL_$_OIDAuthorizationUICoordinator
+l_OBJC_LABEL_PROTOCOL_$_OIDAuthorizationUICoordinator
+l_OBJC_PROTOCOL_$_OIDSafariViewControllerFactory
+l_OBJC_LABEL_PROTOCOL_$_OIDSafariViewControllerFactory
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/iOS/OIDAuthorizationUICoordinatorIOS.m
+-[OIDURLQueryComponent init]
+-[OIDURLQueryComponent initWithURL:]
+-[OIDURLQueryComponent parameters]
+-[OIDURLQueryComponent dictionaryValue]
+-[OIDURLQueryComponent valuesForParameter:]
+-[OIDURLQueryComponent addParameter:value:]
+-[OIDURLQueryComponent addParameters:]
+-[OIDURLQueryComponent queryItems]
+-[OIDURLQueryComponent percentEncodedQueryString]
+-[OIDURLQueryComponent URLEncodedParameters]
+-[OIDURLQueryComponent URLByReplacingQueryInURL:]
+-[OIDURLQueryComponent description]
+-[OIDURLQueryComponent .cxx_destruct]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDURLQueryComponent.m
+-[OIDAuthorizationRequest init]
+-[OIDAuthorizationRequest initWithConfiguration:clientId:clientSecret:scope:redirectURL:responseType:state:codeVerifier:codeChallenge:codeChallengeMethod:additionalParameters:]
+-[OIDAuthorizationRequest initWithConfiguration:clientId:clientSecret:scopes:redirectURL:responseType:additionalParameters:]
+-[OIDAuthorizationRequest initWithConfiguration:clientId:scopes:redirectURL:responseType:additionalParameters:]
+-[OIDAuthorizationRequest copyWithZone:]
++[OIDAuthorizationRequest supportsSecureCoding]
+-[OIDAuthorizationRequest initWithCoder:]
+-[OIDAuthorizationRequest encodeWithCoder:]
+-[OIDAuthorizationRequest description]
++[OIDAuthorizationRequest generateCodeVerifier]
++[OIDAuthorizationRequest generateState]
++[OIDAuthorizationRequest codeChallengeS256ForVerifier:]
+-[OIDAuthorizationRequest authorizationRequestURL]
+-[OIDAuthorizationRequest configuration]
+-[OIDAuthorizationRequest responseType]
+-[OIDAuthorizationRequest clientID]
+-[OIDAuthorizationRequest clientSecret]
+-[OIDAuthorizationRequest scope]
+-[OIDAuthorizationRequest redirectURL]
+-[OIDAuthorizationRequest state]
+-[OIDAuthorizationRequest codeVerifier]
+-[OIDAuthorizationRequest codeChallenge]
+-[OIDAuthorizationRequest codeChallengeMethod]
+-[OIDAuthorizationRequest additionalParameters]
+-[OIDAuthorizationRequest .cxx_destruct]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthorizationRequest.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthorizationRequest.h
+-[OIDAuthorizationFlowSessionImplementation initWithRequest:]
+-[OIDAuthorizationFlowSessionImplementation presentAuthorizationWithCoordinator:callback:]
+-[OIDAuthorizationFlowSessionImplementation cancel]
+___51-[OIDAuthorizationFlowSessionImplementation cancel]_block_invoke
+-[OIDAuthorizationFlowSessionImplementation shouldHandleURL:]
+-[OIDAuthorizationFlowSessionImplementation resumeAuthorizationFlowWithURL:]
+___76-[OIDAuthorizationFlowSessionImplementation resumeAuthorizationFlowWithURL:]_block_invoke
+___copy_helper_block_.71
+___destroy_helper_block_.72
+-[OIDAuthorizationFlowSessionImplementation failAuthorizationFlowWithError:]
+-[OIDAuthorizationFlowSessionImplementation didFinishWithResponse:error:]
+-[OIDAuthorizationFlowSessionImplementation .cxx_destruct]
++[OIDAuthorizationService discoverServiceConfigurationForIssuer:completion:]
++[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]
+___82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke
+___82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke_2
+___copy_helper_block_.144
+___destroy_helper_block_.145
+___82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke.151
+___copy_helper_block_.152
+___destroy_helper_block_.153
+___82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke.158
+___copy_helper_block_.159
+___destroy_helper_block_.160
+___82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke.165
+___copy_helper_block_.166
+___destroy_helper_block_.167
+___copy_helper_block_.169
+___destroy_helper_block_.170
++[OIDAuthorizationService presentAuthorizationRequest:UICoordinator:callback:]
++[OIDAuthorizationService performTokenRequest:callback:]
+___56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke
+___56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke_2
+___copy_helper_block_.182
+___destroy_helper_block_.183
+___56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.188
+___copy_helper_block_.189
+___destroy_helper_block_.190
+___56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.192
+___copy_helper_block_.193
+___destroy_helper_block_.194
+___56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.196
+___copy_helper_block_.197
+___destroy_helper_block_.198
+___56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.201
+___copy_helper_block_.202
+___destroy_helper_block_.203
+___56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.205
+___copy_helper_block_.206
+___destroy_helper_block_.207
+___copy_helper_block_.209
+___destroy_helper_block_.210
++[OIDAuthorizationService performRegistrationRequest:completion:]
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke
+___copy_helper_block_.216
+___destroy_helper_block_.217
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.219
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke_2
+___copy_helper_block_.220
+___destroy_helper_block_.221
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.223
+___copy_helper_block_.224
+___destroy_helper_block_.225
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.227
+___copy_helper_block_.228
+___destroy_helper_block_.229
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.231
+___copy_helper_block_.232
+___destroy_helper_block_.233
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.236
+___copy_helper_block_.237
+___destroy_helper_block_.238
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.240
+___copy_helper_block_.241
+___destroy_helper_block_.242
+___copy_helper_block_.244
+___destroy_helper_block_.245
+-[OIDAuthorizationService configuration]
+-[OIDAuthorizationService .cxx_destruct]
+___block_descriptor_tmp.73
+l_OBJC_PROTOCOL_$_OIDAuthorizationFlowSession
+l_OBJC_LABEL_PROTOCOL_$_OIDAuthorizationFlowSession
+___block_descriptor_tmp.146
+___block_descriptor_tmp.154
+___block_descriptor_tmp.161
+___block_descriptor_tmp.168
+___block_descriptor_tmp.172
+___block_descriptor_tmp.184
+___block_descriptor_tmp.191
+___block_descriptor_tmp.195
+___block_descriptor_tmp.199
+___block_descriptor_tmp.204
+___block_descriptor_tmp.208
+___block_descriptor_tmp.211
+___block_descriptor_tmp.218
+___block_descriptor_tmp.222
+___block_descriptor_tmp.226
+___block_descriptor_tmp.230
+___block_descriptor_tmp.234
+___block_descriptor_tmp.239
+___block_descriptor_tmp.243
+___block_descriptor_tmp.246
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthorizationService.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthorizationService.h
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.240
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.236
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.231
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.227
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.223
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke_2
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.219
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke
+__56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.205
+__56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.201
+__56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.196
+__56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.192
+__56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.188
+__56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke_2
+__56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke
+__82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke.165
+__82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke.158
+__82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke.151
+__82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke_2
+__82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke
+__76-[OIDAuthorizationFlowSessionImplementation resumeAuthorizationFlowWithURL:]_block_invoke
+__51-[OIDAuthorizationFlowSessionImplementation cancel]_block_invoke
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDClientMetadataParameters.m
++[OIDTokenUtilities encodeBase64urlNoPadding:]
++[OIDTokenUtilities randomURLSafeStringWithSize:]
++[OIDTokenUtilities sha265:]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDTokenUtilities.m
+-[OIDServiceDiscovery init]
+-[OIDServiceDiscovery initWithJSON:error:]
+-[OIDServiceDiscovery initWithJSONData:error:]
+-[OIDServiceDiscovery initWithDictionary:error:]
++[OIDServiceDiscovery dictionaryHasRequiredFields:error:]
+-[OIDServiceDiscovery copyWithZone:]
++[OIDServiceDiscovery supportsSecureCoding]
+-[OIDServiceDiscovery initWithCoder:]
+-[OIDServiceDiscovery encodeWithCoder:]
+-[OIDServiceDiscovery discoveryDictionary]
+-[OIDServiceDiscovery issuer]
+-[OIDServiceDiscovery authorizationEndpoint]
+-[OIDServiceDiscovery tokenEndpoint]
+-[OIDServiceDiscovery userinfoEndpoint]
+-[OIDServiceDiscovery jwksURL]
+-[OIDServiceDiscovery registrationEndpoint]
+-[OIDServiceDiscovery scopesSupported]
+-[OIDServiceDiscovery responseTypesSupported]
+-[OIDServiceDiscovery responseModesSupported]
+-[OIDServiceDiscovery grantTypesSupported]
+-[OIDServiceDiscovery acrValuesSupported]
+-[OIDServiceDiscovery subjectTypesSupported]
+-[OIDServiceDiscovery IDTokenSigningAlgorithmValuesSupported]
+-[OIDServiceDiscovery IDTokenEncryptionAlgorithmValuesSupported]
+-[OIDServiceDiscovery IDTokenEncryptionEncodingValuesSupported]
+-[OIDServiceDiscovery userinfoSigningAlgorithmValuesSupported]
+-[OIDServiceDiscovery userinfoEncryptionAlgorithmValuesSupported]
+-[OIDServiceDiscovery userinfoEncryptionEncodingValuesSupported]
+-[OIDServiceDiscovery requestObjectSigningAlgorithmValuesSupported]
+-[OIDServiceDiscovery requestObjectEncryptionAlgorithmValuesSupported]
+-[OIDServiceDiscovery requestObjectEncryptionEncodingValuesSupported]
+-[OIDServiceDiscovery tokenEndpointAuthMethodsSupported]
+-[OIDServiceDiscovery tokenEndpointAuthSigningAlgorithmValuesSupported]
+-[OIDServiceDiscovery displayValuesSupported]
+-[OIDServiceDiscovery claimTypesSupported]
+-[OIDServiceDiscovery claimsSupported]
+-[OIDServiceDiscovery serviceDocumentation]
+-[OIDServiceDiscovery claimsLocalesSupported]
+-[OIDServiceDiscovery UILocalesSupported]
+-[OIDServiceDiscovery claimsParameterSupported]
+-[OIDServiceDiscovery requestParameterSupported]
+-[OIDServiceDiscovery requestURIParameterSupported]
+-[OIDServiceDiscovery requireRequestURIRegistration]
+-[OIDServiceDiscovery OPPolicyURI]
+-[OIDServiceDiscovery OPTosURI]
+-[OIDServiceDiscovery .cxx_destruct]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDServiceDiscovery.m
+-[OIDTokenRequest init]
+-[OIDTokenRequest initWithConfiguration:grantType:authorizationCode:redirectURL:clientID:clientSecret:scopes:refreshToken:codeVerifier:additionalParameters:]
+-[OIDTokenRequest initWithConfiguration:grantType:authorizationCode:redirectURL:clientID:clientSecret:scope:refreshToken:codeVerifier:additionalParameters:]
+-[OIDTokenRequest copyWithZone:]
++[OIDTokenRequest supportsSecureCoding]
+-[OIDTokenRequest initWithCoder:]
+-[OIDTokenRequest encodeWithCoder:]
+-[OIDTokenRequest description]
+-[OIDTokenRequest tokenRequestURL]
+-[OIDTokenRequest tokenRequestBody]
+-[OIDTokenRequest URLRequest]
+-[OIDTokenRequest configuration]
+-[OIDTokenRequest grantType]
+-[OIDTokenRequest authorizationCode]
+-[OIDTokenRequest redirectURL]
+-[OIDTokenRequest clientID]
+-[OIDTokenRequest clientSecret]
+-[OIDTokenRequest scope]
+-[OIDTokenRequest refreshToken]
+-[OIDTokenRequest codeVerifier]
+-[OIDTokenRequest additionalParameters]
+-[OIDTokenRequest .cxx_destruct]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDTokenRequest.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDTokenRequest.h
++[OIDAuthorizationService(IOS) presentAuthorizationRequest:presentingViewController:callback:]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/iOS/OIDAuthorizationService+IOS.m
+-[OIDServiceConfiguration init]
+-[OIDServiceConfiguration initWithAuthorizationEndpoint:tokenEndpoint:registrationEndpoint:discoveryDocument:]
+-[OIDServiceConfiguration initWithAuthorizationEndpoint:tokenEndpoint:]
+-[OIDServiceConfiguration initWithAuthorizationEndpoint:tokenEndpoint:registrationEndpoint:]
+-[OIDServiceConfiguration initWithDiscoveryDocument:]
+-[OIDServiceConfiguration copyWithZone:]
++[OIDServiceConfiguration supportsSecureCoding]
+-[OIDServiceConfiguration initWithCoder:]
+-[OIDServiceConfiguration encodeWithCoder:]
+-[OIDServiceConfiguration description]
+-[OIDServiceConfiguration authorizationEndpoint]
+-[OIDServiceConfiguration tokenEndpoint]
+-[OIDServiceConfiguration registrationEndpoint]
+-[OIDServiceConfiguration discoveryDocument]
+-[OIDServiceConfiguration .cxx_destruct]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDServiceConfiguration.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDServiceConfiguration.h
++[OIDRegistrationResponse fieldMap]
+___35+[OIDRegistrationResponse fieldMap]_block_invoke
+-[OIDRegistrationResponse init]
+-[OIDRegistrationResponse initWithRequest:parameters:]
+-[OIDRegistrationResponse copyWithZone:]
++[OIDRegistrationResponse supportsSecureCoding]
+-[OIDRegistrationResponse initWithCoder:]
+-[OIDRegistrationResponse encodeWithCoder:]
+-[OIDRegistrationResponse description]
+-[OIDRegistrationResponse request]
+-[OIDRegistrationResponse clientID]
+-[OIDRegistrationResponse clientIDIssuedAt]
+-[OIDRegistrationResponse clientSecret]
+-[OIDRegistrationResponse clientSecretExpiresAt]
+-[OIDRegistrationResponse registrationAccessToken]
+-[OIDRegistrationResponse registrationClientURI]
+-[OIDRegistrationResponse tokenEndpointAuthenticationMethod]
+-[OIDRegistrationResponse additionalParameters]
+-[OIDRegistrationResponse .cxx_destruct]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDRegistrationResponse.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDRegistrationResponse.h
+__35+[OIDRegistrationResponse fieldMap]_block_invoke
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDScopes.m
++[OIDScopeUtilities disallowedScopeCharacters]
+___46+[OIDScopeUtilities disallowedScopeCharacters]_block_invoke
++[OIDScopeUtilities scopesWithArray:]
++[OIDScopeUtilities scopesArrayWithString:]
+_disallowedScopeCharacters.disallowedCharacters
+_disallowedScopeCharacters.onceToken
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDScopeUtilities.m
+__46+[OIDScopeUtilities disallowedScopeCharacters]_block_invoke
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDGrantTypes.m
+-[OIDRegistrationRequest init]
+-[OIDRegistrationRequest initWithConfiguration:redirectURIs:responseTypes:grantTypes:subjectType:tokenEndpointAuthMethod:additionalParameters:]
+-[OIDRegistrationRequest copyWithZone:]
++[OIDRegistrationRequest supportsSecureCoding]
+-[OIDRegistrationRequest initWithCoder:]
+-[OIDRegistrationRequest encodeWithCoder:]
+-[OIDRegistrationRequest description]
+-[OIDRegistrationRequest URLRequest]
+-[OIDRegistrationRequest JSONString]
+-[OIDRegistrationRequest configuration]
+-[OIDRegistrationRequest applicationType]
+-[OIDRegistrationRequest redirectURIs]
+-[OIDRegistrationRequest responseTypes]
+-[OIDRegistrationRequest grantTypes]
+-[OIDRegistrationRequest subjectType]
+-[OIDRegistrationRequest tokenEndpointAuthenticationMethod]
+-[OIDRegistrationRequest additionalParameters]
+-[OIDRegistrationRequest .cxx_destruct]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDRegistrationRequest.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDRegistrationRequest.h
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDResponseTypes.m
++[OIDAuthorizationResponse fieldMap]
+___36+[OIDAuthorizationResponse fieldMap]_block_invoke
+___36+[OIDAuthorizationResponse fieldMap]_block_invoke_2
+-[OIDAuthorizationResponse init]
+-[OIDAuthorizationResponse initWithRequest:parameters:]
+-[OIDAuthorizationResponse copyWithZone:]
++[OIDAuthorizationResponse supportsSecureCoding]
+-[OIDAuthorizationResponse initWithCoder:]
+-[OIDAuthorizationResponse encodeWithCoder:]
+-[OIDAuthorizationResponse description]
+-[OIDAuthorizationResponse tokenExchangeRequest]
+-[OIDAuthorizationResponse tokenExchangeRequestWithAdditionalParameters:]
+-[OIDAuthorizationResponse request]
+-[OIDAuthorizationResponse authorizationCode]
+-[OIDAuthorizationResponse state]
+-[OIDAuthorizationResponse accessToken]
+-[OIDAuthorizationResponse accessTokenExpirationDate]
+-[OIDAuthorizationResponse tokenType]
+-[OIDAuthorizationResponse idToken]
+-[OIDAuthorizationResponse scope]
+-[OIDAuthorizationResponse additionalParameters]
+-[OIDAuthorizationResponse .cxx_destruct]
+___block_descriptor_tmp.55
+___block_literal_global.56
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthorizationResponse.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthorizationResponse.h
+__36+[OIDAuthorizationResponse fieldMap]_block_invoke_2
+__36+[OIDAuthorizationResponse fieldMap]_block_invoke
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDError.m
+/Users/junesuh/Library/Caches/org.carthage.CarthageKit/DerivedData/AppAuth-iOS/0acdc7bfc3377ac7bab21eeacfdfbd8815226377/Build/Intermediates/AppAuth.build/Release-iphoneos/AppAuth_iOS.build/DerivedSources/AppAuth_vers.c
+__ZL15__ARCLite__loadv
+__ZL58__arclite_NSMutableDictionary__setObject_forKeyedSubscriptP19NSMutableDictionaryP13objc_selectorP11objc_objectS4_
+__ZL22add_image_hook_swiftV1PK11mach_headerl
+__ZL42__arclite_NSUndoManagerProxy_isKindOfClassP11objc_objectP13objc_selectorP10objc_class
+__ZL13replaceMethodP10objc_classP13objc_selectorPFP11objc_objectS4_S2_zEPS6_
+__ZL30__arclite_NSManagedObject_initP11objc_objectP13objc_selector
+__ZL41__arclite_NSManagedObject_allocWithEntityP11objc_objectP13objc_selectorS0_
+__ZL36__arclite_NSManagedObject_allocBatchP11objc_objectP13objc_selectorPS0_S0_j
+__ZL37__arclite_NSKKMS_fastIndexForKnownKeyP11objc_objectP13objc_selectorS0_
+__ZL28__arclite_NSKKMS_indexForKeyP11objc_objectP13objc_selectorS0_
+__ZL29__arclite_NSKKsD_objectForKeyP11objc_objectP13objc_selectorS0_
+__ZL35__arclite_NSKKsD_removeObjectForKeyP11objc_objectP13objc_selectorS0_
+__ZL33__arclite_NSKKsD_setObject_forKeyP11objc_objectP13objc_selectorS0_S0_
+__ZL41__arclite_NSKKsD_addEntriesFromDictionaryP11objc_objectP13objc_selectorP12NSDictionary
+__ZL28__arclite_objc_readClassPairP10objc_classPK15objc_image_info
+__ZL32__arclite_objc_allocateClassPairP10objc_classPKcm
+__ZL32__arclite_object_getIndexedIvarsP11objc_object
+__ZL23__arclite_objc_getClassPKc
+__ZL27__arclite_objc_getMetaClassPKc
+__ZL31__arclite_objc_getRequiredClassPKc
+__ZL26__arclite_objc_lookUpClassPKc
+__ZL26__arclite_objc_getProtocolPKc
+__ZL23__arclite_class_getNameP10objc_class
+__ZL26__arclite_protocol_getNameP8Protocol
+__ZL37__arclite_objc_copyClassNamesForImagePKcPj
+__ZL17transcribeMethodsP10objc_classP15glue_class_ro_t
+__ZL19transcribeProtocolsP10objc_classP15glue_class_ro_t
+__ZL20transcribePropertiesP10objc_classP15glue_class_ro_t
+__ZL14initialize_impP11objc_objectP13objc_selector
+__ZL18allocateMaybeSwiftP18glue_swift_class_tm
+__ZL22copySwiftV1MangledNamePKcb
+__ZL13demangledNamePKcb
+__ZL16scanMangledFieldRPKcS0_S1_Ri
+__ZL30arclite_uninitialized_functionv
+__ZL12cxxConstructP11objc_object
+__ZL20fixStringForCoreDataP11objc_object
+_OBJC_METACLASS_$___ARCLite__
+__ZL24OBJC_CLASS_$___ARCLite__
+__ZL31OBJC_METACLASS_RO_$___ARCLite__
+__non_lazy_classes
+__ZL27OBJC_CLASS_RO_$___ARCLite__
+__ZL11_class_name
+__ZL32OBJC_$_CLASS_METHODS___ARCLite__
+__ZL17_load_method_name
+__ZL17_load_method_type
+l_OBJC_PROTOCOL_$___ARCLiteKeyedSubscripting__
+l_OBJC_LABEL_PROTOCOL_$___ARCLiteKeyedSubscripting__
+l_OBJC_PROTOCOL_REFERENCE_$___ARCLiteKeyedSubscripting__
+__ZL30NSUndoManagerProxy_targetClass
+__ZL29original_NSManagedObject_init
+__ZL40original_NSManagedObject_allocWithEntity
+__ZL35original_NSManagedObject_allocBatch
+__ZL25NSMutableDictionary_class
+__ZL22NSConstantString_class
+__ZL14NSString_class
+__ZL36original_NSKKMS_fastIndexForKnownKey
+__ZL27original_NSKKMS_indexForKey
+__ZL28original_NSKKsD_objectForKey
+__ZL34original_NSKKsD_removeObjectForKey
+__ZL32original_NSKKsD_setObject_forKey
+__ZL40original_NSKKsD_addEntriesFromDictionary
+__ZZL22add_image_hook_swiftV1PK11mach_headerlE7patches
+__ZGVZL22add_image_hook_swiftV1PK11mach_headerlE7patches
+__ZL31original_objc_allocateClassPair
+__ZL31original_object_getIndexedIvars
+__ZL22original_objc_getClass
+__ZL26original_objc_getMetaClass
+__ZL30original_objc_getRequiredClass
+__ZL25original_objc_lookUpClass
+__ZL25original_objc_getProtocol
+__ZL22original_class_getName
+__ZL25original_protocol_getName
+__ZL36original_objc_copyClassNamesForImage
+__ZL12demangleLock
+__ZL9Demangled
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c++ -arch arm64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=c++11 -Wno-trigraphs -fno-exceptions -fno-rtti -mpascal-strings -Os -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-arc-repeated-use-of-weak -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -Wno-c++11-extensions -D NDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.Internal.sdk -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -Winvalid-offsetof -miphoneos-version-min=4.3 -g -fno-threadsafe-statics -Wno-sign-conversion -Wno-infinite-recursion -Wno-move -fembed-bitcode=all -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-66~534/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-generated-files.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-66~534/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-own-target-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-66~534/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-all-target-headers.hmap -iquote /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-66~534/TempContent/Objects/arclite.build/arclite_iOS.build/arclite_iphoneos-project-headers.hmap -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-66~534/Symbols/BuiltProducts/include -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-66~534/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources/arm64 -I /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-66~534/TempContent/Objects/arclite.build/arclite_iOS.build/DerivedSources -F/Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-66~534/Symbols/BuiltProducts -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.Internal.sdk/System/Library/PrivateFrameworks -Wall -Wextra -Wno-gcc-compat -Wno-error=incomplete-umbrella -Wno-error=incomplete-umbrella -MMD -MT dependencies -MF /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-66~534/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/arm64/arclite.d --serialize-diagnostics /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-66~534/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/arm64/arclite.dia -c /Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-66/source/arclite.mm -o /Library/Caches/com.apple.xbs/Binaries/arclite_iOS/arclite_iOS-66~534/TempContent/Objects/arclite.build/arclite_iOS.build/Objects-normal/arm64/arclite.o -mlinker-version=278.4
+/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-66/source/arclite.mm
+/Library/Caches/com.apple.xbs/Sources/arclite_iOS/arclite-66
+fixStringForCoreData
+cxxConstruct
+arclite_uninitialized_function
+scanMangledField
+isdigit
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.Internal.sdk/usr/include/ctype.h
+__isctype
+demangledName
+copySwiftV1DemangledName
+copySwiftV1MangledName
+allocateMaybeSwift
+word_align
+isSwift
+initialize_imp
+transcribeProperties
+property_list_nth
+transcribeProtocols
+transcribeMethods
+data
+method_list_nth
+__arclite_objc_copyClassNamesForImage
+__arclite_protocol_getName
+__arclite_class_getName
+__arclite_objc_getProtocol
+__arclite_objc_lookUpClass
+__arclite_objc_getRequiredClass
+__arclite_objc_getMetaClass
+__arclite_objc_getClass
+__arclite_object_getIndexedIvars
+__arclite_objc_allocateClassPair
+metaclass
+__arclite_objc_readClassPair
+transcribeIvars
+ivar_list_nth
+max
+alignment
+ro
+fastFlags
+__arclite_NSKKsD_addEntriesFromDictionary
+__arclite_NSKKsD_setObject_forKey
+__arclite_NSKKsD_removeObjectForKey
+__arclite_NSKKsD_objectForKey
+__arclite_NSKKMS_indexForKey
+__arclite_NSKKMS_fastIndexForKnownKey
+__arclite_NSManagedObject_allocBatch
+__arclite_NSManagedObject_allocWithEntity
+__arclite_NSManagedObject_init
+replaceMethod
+__arclite_NSUndoManagerProxy_isKindOfClass
+add_image_hook_swiftV1
+patch_lazy_pointers
+patch_t<const char **(const char *, unsigned int *)>
+patch_t<const char *(Protocol *)>
+patch_t<const char *(Class)>
+patch_t<Protocol *(const char *)>
+patch_t<Class (const char *)>
+patch_t<void *(id)>
+patch_t<Class (Class, const char *, unsigned long)>
+patch_t<Class (Class, const objc_image_info *)>
+__arclite_NSMutableDictionary__setObject_forKeyedSubscript
+__ARCLite__load
+install_swiftV1
+install_dict_nil_value
+addOrReplaceMethod
+keyedGetter

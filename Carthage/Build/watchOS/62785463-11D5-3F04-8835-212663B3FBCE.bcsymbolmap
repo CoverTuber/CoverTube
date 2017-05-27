@@ -1,0 +1,487 @@
+BCSymbolMap Version: 2.0
+Apple LLVM version 8.1.0 (clang-802.0.42)
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDScopes.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS
+-[OIDFieldMapping init]
+-[OIDFieldMapping initWithName:type:]
+-[OIDFieldMapping initWithName:type:conversion:]
++[OIDFieldMapping remainingParametersWithMap:parameters:instance:]
++[OIDFieldMapping encodeWithCoder:map:instance:]
++[OIDFieldMapping decodeWithCoder:map:instance:]
++[OIDFieldMapping JSONTypes]
++[OIDFieldMapping URLConversion]
+___32+[OIDFieldMapping URLConversion]_block_invoke
++[OIDFieldMapping dateSinceNowConversion]
+___41+[OIDFieldMapping dateSinceNowConversion]_block_invoke
++[OIDFieldMapping dateEpochConversion]
+___38+[OIDFieldMapping dateEpochConversion]_block_invoke
+-[OIDFieldMapping name]
+-[OIDFieldMapping expectedType]
+-[OIDFieldMapping conversion]
+-[OIDFieldMapping .cxx_destruct]
+___block_descriptor_tmp
+___block_literal_global
+___block_descriptor_tmp.56
+___block_literal_global.57
+___block_descriptor_tmp.60
+___block_literal_global.61
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDFieldMapping.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDFieldMapping.h
+__38+[OIDFieldMapping dateEpochConversion]_block_invoke
+__41+[OIDFieldMapping dateSinceNowConversion]_block_invoke
+__32+[OIDFieldMapping URLConversion]_block_invoke
++[OIDAuthState authStateByPresentingAuthorizationRequest:UICoordinator:callback:]
+___81+[OIDAuthState authStateByPresentingAuthorizationRequest:UICoordinator:callback:]_block_invoke
+___81+[OIDAuthState authStateByPresentingAuthorizationRequest:UICoordinator:callback:]_block_invoke_2
+___copy_helper_block_
+___destroy_helper_block_
+___copy_helper_block_.25
+___destroy_helper_block_.26
+-[OIDAuthState init]
+-[OIDAuthState initWithAuthorizationResponse:]
+-[OIDAuthState initWithAuthorizationResponse:tokenResponse:]
+-[OIDAuthState initWithRegistrationResponse:]
+-[OIDAuthState initWithAuthorizationResponse:tokenResponse:registrationResponse:]
+-[OIDAuthState description]
++[OIDAuthState supportsSecureCoding]
+-[OIDAuthState initWithCoder:]
+-[OIDAuthState encodeWithCoder:]
+-[OIDAuthState accessToken]
+-[OIDAuthState tokenType]
+-[OIDAuthState accessTokenExpirationDate]
+-[OIDAuthState idToken]
+-[OIDAuthState isAuthorized]
+-[OIDAuthState updateWithRegistrationResponse:]
+-[OIDAuthState updateWithAuthorizationResponse:error:]
+-[OIDAuthState updateWithTokenResponse:error:]
+-[OIDAuthState updateWithAuthorizationError:]
+-[OIDAuthState tokenRefreshRequest]
+-[OIDAuthState tokenRefreshRequestWithAdditionalParameters:]
+-[OIDAuthState didChangeState]
+-[OIDAuthState setNeedsTokenRefresh]
+-[OIDAuthState performActionWithFreshTokens:]
+-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]
+___73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke
+___copy_helper_block_.121
+___destroy_helper_block_.122
+___73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke.129
+___copy_helper_block_.130
+___destroy_helper_block_.131
+___73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke.138
+___73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke_2
+___copy_helper_block_.145
+___destroy_helper_block_.146
+___copy_helper_block_.148
+___destroy_helper_block_.149
+-[OIDAuthState withFreshTokensPerformAction:]
+-[OIDAuthState isTokenFresh]
+-[OIDAuthState refreshToken]
+-[OIDAuthState scope]
+-[OIDAuthState lastAuthorizationResponse]
+-[OIDAuthState lastTokenResponse]
+-[OIDAuthState lastRegistrationResponse]
+-[OIDAuthState authorizationError]
+-[OIDAuthState stateChangeDelegate]
+-[OIDAuthState setStateChangeDelegate:]
+-[OIDAuthState errorDelegate]
+-[OIDAuthState setErrorDelegate:]
+-[OIDAuthState .cxx_destruct]
+___block_descriptor_tmp.28
+___block_descriptor_tmp.124
+___block_descriptor_tmp.132
+___block_descriptor_tmp.147
+___block_descriptor_tmp.150
+l_OBJC_PROTOCOL_$_NSCoding
+l_OBJC_LABEL_PROTOCOL_$_NSCoding
+l_OBJC_PROTOCOL_$_NSSecureCoding
+l_OBJC_LABEL_PROTOCOL_$_NSSecureCoding
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthState.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthState.h
+__destroy_helper_block_
+__copy_helper_block_
+__73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke_2
+__73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke.138
+__73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke.129
+__73-[OIDAuthState performActionWithFreshTokens:additionalRefreshParameters:]_block_invoke
+__81+[OIDAuthState authStateByPresentingAuthorizationRequest:UICoordinator:callback:]_block_invoke_2
+__81+[OIDAuthState authStateByPresentingAuthorizationRequest:UICoordinator:callback:]_block_invoke
+-[OIDAuthorizationRequest init]
+-[OIDAuthorizationRequest initWithConfiguration:clientId:clientSecret:scope:redirectURL:responseType:state:codeVerifier:codeChallenge:codeChallengeMethod:additionalParameters:]
+-[OIDAuthorizationRequest initWithConfiguration:clientId:clientSecret:scopes:redirectURL:responseType:additionalParameters:]
+-[OIDAuthorizationRequest initWithConfiguration:clientId:scopes:redirectURL:responseType:additionalParameters:]
+-[OIDAuthorizationRequest copyWithZone:]
++[OIDAuthorizationRequest supportsSecureCoding]
+-[OIDAuthorizationRequest initWithCoder:]
+-[OIDAuthorizationRequest encodeWithCoder:]
+-[OIDAuthorizationRequest description]
++[OIDAuthorizationRequest generateCodeVerifier]
++[OIDAuthorizationRequest generateState]
++[OIDAuthorizationRequest codeChallengeS256ForVerifier:]
+-[OIDAuthorizationRequest authorizationRequestURL]
+-[OIDAuthorizationRequest configuration]
+-[OIDAuthorizationRequest responseType]
+-[OIDAuthorizationRequest clientID]
+-[OIDAuthorizationRequest clientSecret]
+-[OIDAuthorizationRequest scope]
+-[OIDAuthorizationRequest redirectURL]
+-[OIDAuthorizationRequest state]
+-[OIDAuthorizationRequest codeVerifier]
+-[OIDAuthorizationRequest codeChallenge]
+-[OIDAuthorizationRequest codeChallengeMethod]
+-[OIDAuthorizationRequest additionalParameters]
+-[OIDAuthorizationRequest .cxx_destruct]
+l_OBJC_PROTOCOL_$_NSCopying
+l_OBJC_LABEL_PROTOCOL_$_NSCopying
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthorizationRequest.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthorizationRequest.h
+-[OIDRegistrationRequest init]
+-[OIDRegistrationRequest initWithConfiguration:redirectURIs:responseTypes:grantTypes:subjectType:tokenEndpointAuthMethod:additionalParameters:]
+-[OIDRegistrationRequest copyWithZone:]
++[OIDRegistrationRequest supportsSecureCoding]
+-[OIDRegistrationRequest initWithCoder:]
+-[OIDRegistrationRequest encodeWithCoder:]
+-[OIDRegistrationRequest description]
+-[OIDRegistrationRequest URLRequest]
+-[OIDRegistrationRequest JSONString]
+-[OIDRegistrationRequest configuration]
+-[OIDRegistrationRequest applicationType]
+-[OIDRegistrationRequest redirectURIs]
+-[OIDRegistrationRequest responseTypes]
+-[OIDRegistrationRequest grantTypes]
+-[OIDRegistrationRequest subjectType]
+-[OIDRegistrationRequest tokenEndpointAuthenticationMethod]
+-[OIDRegistrationRequest additionalParameters]
+-[OIDRegistrationRequest .cxx_destruct]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDRegistrationRequest.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDRegistrationRequest.h
+-[OIDServiceDiscovery init]
+-[OIDServiceDiscovery initWithJSON:error:]
+-[OIDServiceDiscovery initWithJSONData:error:]
+-[OIDServiceDiscovery initWithDictionary:error:]
++[OIDServiceDiscovery dictionaryHasRequiredFields:error:]
+-[OIDServiceDiscovery copyWithZone:]
++[OIDServiceDiscovery supportsSecureCoding]
+-[OIDServiceDiscovery initWithCoder:]
+-[OIDServiceDiscovery encodeWithCoder:]
+-[OIDServiceDiscovery discoveryDictionary]
+-[OIDServiceDiscovery issuer]
+-[OIDServiceDiscovery authorizationEndpoint]
+-[OIDServiceDiscovery tokenEndpoint]
+-[OIDServiceDiscovery userinfoEndpoint]
+-[OIDServiceDiscovery jwksURL]
+-[OIDServiceDiscovery registrationEndpoint]
+-[OIDServiceDiscovery scopesSupported]
+-[OIDServiceDiscovery responseTypesSupported]
+-[OIDServiceDiscovery responseModesSupported]
+-[OIDServiceDiscovery grantTypesSupported]
+-[OIDServiceDiscovery acrValuesSupported]
+-[OIDServiceDiscovery subjectTypesSupported]
+-[OIDServiceDiscovery IDTokenSigningAlgorithmValuesSupported]
+-[OIDServiceDiscovery IDTokenEncryptionAlgorithmValuesSupported]
+-[OIDServiceDiscovery IDTokenEncryptionEncodingValuesSupported]
+-[OIDServiceDiscovery userinfoSigningAlgorithmValuesSupported]
+-[OIDServiceDiscovery userinfoEncryptionAlgorithmValuesSupported]
+-[OIDServiceDiscovery userinfoEncryptionEncodingValuesSupported]
+-[OIDServiceDiscovery requestObjectSigningAlgorithmValuesSupported]
+-[OIDServiceDiscovery requestObjectEncryptionAlgorithmValuesSupported]
+-[OIDServiceDiscovery requestObjectEncryptionEncodingValuesSupported]
+-[OIDServiceDiscovery tokenEndpointAuthMethodsSupported]
+-[OIDServiceDiscovery tokenEndpointAuthSigningAlgorithmValuesSupported]
+-[OIDServiceDiscovery displayValuesSupported]
+-[OIDServiceDiscovery claimTypesSupported]
+-[OIDServiceDiscovery claimsSupported]
+-[OIDServiceDiscovery serviceDocumentation]
+-[OIDServiceDiscovery claimsLocalesSupported]
+-[OIDServiceDiscovery UILocalesSupported]
+-[OIDServiceDiscovery claimsParameterSupported]
+-[OIDServiceDiscovery requestParameterSupported]
+-[OIDServiceDiscovery requestURIParameterSupported]
+-[OIDServiceDiscovery requireRequestURIRegistration]
+-[OIDServiceDiscovery OPPolicyURI]
+-[OIDServiceDiscovery OPTosURI]
+-[OIDServiceDiscovery .cxx_destruct]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDServiceDiscovery.m
++[OIDAuthorizationResponse fieldMap]
+___36+[OIDAuthorizationResponse fieldMap]_block_invoke
+___36+[OIDAuthorizationResponse fieldMap]_block_invoke_2
+-[OIDAuthorizationResponse init]
+-[OIDAuthorizationResponse initWithRequest:parameters:]
+-[OIDAuthorizationResponse copyWithZone:]
++[OIDAuthorizationResponse supportsSecureCoding]
+-[OIDAuthorizationResponse initWithCoder:]
+-[OIDAuthorizationResponse encodeWithCoder:]
+-[OIDAuthorizationResponse description]
+-[OIDAuthorizationResponse tokenExchangeRequest]
+-[OIDAuthorizationResponse tokenExchangeRequestWithAdditionalParameters:]
+-[OIDAuthorizationResponse request]
+-[OIDAuthorizationResponse authorizationCode]
+-[OIDAuthorizationResponse state]
+-[OIDAuthorizationResponse accessToken]
+-[OIDAuthorizationResponse accessTokenExpirationDate]
+-[OIDAuthorizationResponse tokenType]
+-[OIDAuthorizationResponse idToken]
+-[OIDAuthorizationResponse scope]
+-[OIDAuthorizationResponse additionalParameters]
+-[OIDAuthorizationResponse .cxx_destruct]
+_fieldMap.fieldMap
+_fieldMap.onceToken
+___block_descriptor_tmp.55
+___block_literal_global.56
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthorizationResponse.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthorizationResponse.h
+__36+[OIDAuthorizationResponse fieldMap]_block_invoke_2
+__36+[OIDAuthorizationResponse fieldMap]_block_invoke
+_dispatch_once
+/Applications/Xcode.app/Contents/Developer/Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.2.sdk/usr/include/dispatch/once.h
++[OIDScopeUtilities disallowedScopeCharacters]
+___46+[OIDScopeUtilities disallowedScopeCharacters]_block_invoke
++[OIDScopeUtilities scopesWithArray:]
++[OIDScopeUtilities scopesArrayWithString:]
+_disallowedScopeCharacters.disallowedCharacters
+_disallowedScopeCharacters.onceToken
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDScopeUtilities.m
+__46+[OIDScopeUtilities disallowedScopeCharacters]_block_invoke
++[OIDRegistrationResponse fieldMap]
+___35+[OIDRegistrationResponse fieldMap]_block_invoke
+-[OIDRegistrationResponse init]
+-[OIDRegistrationResponse initWithRequest:parameters:]
+-[OIDRegistrationResponse copyWithZone:]
++[OIDRegistrationResponse supportsSecureCoding]
+-[OIDRegistrationResponse initWithCoder:]
+-[OIDRegistrationResponse encodeWithCoder:]
+-[OIDRegistrationResponse description]
+-[OIDRegistrationResponse request]
+-[OIDRegistrationResponse clientID]
+-[OIDRegistrationResponse clientIDIssuedAt]
+-[OIDRegistrationResponse clientSecret]
+-[OIDRegistrationResponse clientSecretExpiresAt]
+-[OIDRegistrationResponse registrationAccessToken]
+-[OIDRegistrationResponse registrationClientURI]
+-[OIDRegistrationResponse tokenEndpointAuthenticationMethod]
+-[OIDRegistrationResponse additionalParameters]
+-[OIDRegistrationResponse .cxx_destruct]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDRegistrationResponse.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDRegistrationResponse.h
+__35+[OIDRegistrationResponse fieldMap]_block_invoke
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDError.m
+-[OIDTokenRequest init]
+-[OIDTokenRequest initWithConfiguration:grantType:authorizationCode:redirectURL:clientID:clientSecret:scopes:refreshToken:codeVerifier:additionalParameters:]
+-[OIDTokenRequest initWithConfiguration:grantType:authorizationCode:redirectURL:clientID:clientSecret:scope:refreshToken:codeVerifier:additionalParameters:]
+-[OIDTokenRequest copyWithZone:]
++[OIDTokenRequest supportsSecureCoding]
+-[OIDTokenRequest initWithCoder:]
+-[OIDTokenRequest encodeWithCoder:]
+-[OIDTokenRequest description]
+-[OIDTokenRequest tokenRequestURL]
+-[OIDTokenRequest tokenRequestBody]
+-[OIDTokenRequest URLRequest]
+-[OIDTokenRequest configuration]
+-[OIDTokenRequest grantType]
+-[OIDTokenRequest authorizationCode]
+-[OIDTokenRequest redirectURL]
+-[OIDTokenRequest clientID]
+-[OIDTokenRequest clientSecret]
+-[OIDTokenRequest scope]
+-[OIDTokenRequest refreshToken]
+-[OIDTokenRequest codeVerifier]
+-[OIDTokenRequest additionalParameters]
+-[OIDTokenRequest .cxx_destruct]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDTokenRequest.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDTokenRequest.h
++[OIDTokenResponse fieldMap]
+___28+[OIDTokenResponse fieldMap]_block_invoke
+-[OIDTokenResponse init]
+-[OIDTokenResponse initWithRequest:parameters:]
+-[OIDTokenResponse copyWithZone:]
++[OIDTokenResponse supportsSecureCoding]
+-[OIDTokenResponse initWithCoder:]
+-[OIDTokenResponse encodeWithCoder:]
+-[OIDTokenResponse description]
+-[OIDTokenResponse request]
+-[OIDTokenResponse accessToken]
+-[OIDTokenResponse accessTokenExpirationDate]
+-[OIDTokenResponse tokenType]
+-[OIDTokenResponse idToken]
+-[OIDTokenResponse refreshToken]
+-[OIDTokenResponse scope]
+-[OIDTokenResponse additionalParameters]
+-[OIDTokenResponse .cxx_destruct]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDTokenResponse.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDTokenResponse.h
+__28+[OIDTokenResponse fieldMap]_block_invoke
+-[OIDServiceConfiguration init]
+-[OIDServiceConfiguration initWithAuthorizationEndpoint:tokenEndpoint:registrationEndpoint:discoveryDocument:]
+-[OIDServiceConfiguration initWithAuthorizationEndpoint:tokenEndpoint:]
+-[OIDServiceConfiguration initWithAuthorizationEndpoint:tokenEndpoint:registrationEndpoint:]
+-[OIDServiceConfiguration initWithDiscoveryDocument:]
+-[OIDServiceConfiguration copyWithZone:]
++[OIDServiceConfiguration supportsSecureCoding]
+-[OIDServiceConfiguration initWithCoder:]
+-[OIDServiceConfiguration encodeWithCoder:]
+-[OIDServiceConfiguration description]
+-[OIDServiceConfiguration authorizationEndpoint]
+-[OIDServiceConfiguration tokenEndpoint]
+-[OIDServiceConfiguration registrationEndpoint]
+-[OIDServiceConfiguration discoveryDocument]
+-[OIDServiceConfiguration .cxx_destruct]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDServiceConfiguration.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDServiceConfiguration.h
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDClientMetadataParameters.m
++[OIDTokenUtilities encodeBase64urlNoPadding:]
++[OIDTokenUtilities randomURLSafeStringWithSize:]
++[OIDTokenUtilities sha265:]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDTokenUtilities.m
+-[OIDAuthorizationFlowSessionImplementation initWithRequest:]
+-[OIDAuthorizationFlowSessionImplementation presentAuthorizationWithCoordinator:callback:]
+-[OIDAuthorizationFlowSessionImplementation cancel]
+___51-[OIDAuthorizationFlowSessionImplementation cancel]_block_invoke
+-[OIDAuthorizationFlowSessionImplementation shouldHandleURL:]
+-[OIDAuthorizationFlowSessionImplementation resumeAuthorizationFlowWithURL:]
+___76-[OIDAuthorizationFlowSessionImplementation resumeAuthorizationFlowWithURL:]_block_invoke
+___copy_helper_block_.71
+___destroy_helper_block_.72
+-[OIDAuthorizationFlowSessionImplementation failAuthorizationFlowWithError:]
+-[OIDAuthorizationFlowSessionImplementation didFinishWithResponse:error:]
+-[OIDAuthorizationFlowSessionImplementation .cxx_destruct]
++[OIDAuthorizationService discoverServiceConfigurationForIssuer:completion:]
++[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]
+___82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke
+___82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke_2
+___copy_helper_block_.144
+___destroy_helper_block_.145
+___82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke.151
+___copy_helper_block_.152
+___destroy_helper_block_.153
+___82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke.158
+___copy_helper_block_.159
+___destroy_helper_block_.160
+___82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke.165
+___copy_helper_block_.166
+___destroy_helper_block_.167
+___copy_helper_block_.169
+___destroy_helper_block_.170
++[OIDAuthorizationService presentAuthorizationRequest:UICoordinator:callback:]
++[OIDAuthorizationService performTokenRequest:callback:]
+___56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke
+___56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke_2
+___copy_helper_block_.182
+___destroy_helper_block_.183
+___56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.188
+___copy_helper_block_.189
+___destroy_helper_block_.190
+___56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.192
+___copy_helper_block_.193
+___destroy_helper_block_.194
+___56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.196
+___copy_helper_block_.197
+___destroy_helper_block_.198
+___56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.201
+___copy_helper_block_.202
+___destroy_helper_block_.203
+___56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.205
+___copy_helper_block_.206
+___destroy_helper_block_.207
+___copy_helper_block_.209
+___destroy_helper_block_.210
++[OIDAuthorizationService performRegistrationRequest:completion:]
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke
+___copy_helper_block_.216
+___destroy_helper_block_.217
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.219
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke_2
+___copy_helper_block_.220
+___destroy_helper_block_.221
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.223
+___copy_helper_block_.224
+___destroy_helper_block_.225
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.227
+___copy_helper_block_.228
+___destroy_helper_block_.229
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.231
+___copy_helper_block_.232
+___destroy_helper_block_.233
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.236
+___copy_helper_block_.237
+___destroy_helper_block_.238
+___65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.240
+___copy_helper_block_.241
+___destroy_helper_block_.242
+___copy_helper_block_.244
+___destroy_helper_block_.245
+-[OIDAuthorizationService configuration]
+-[OIDAuthorizationService .cxx_destruct]
+___block_descriptor_tmp.73
+l_OBJC_PROTOCOL_$_NSObject
+l_OBJC_LABEL_PROTOCOL_$_NSObject
+l_OBJC_PROTOCOL_$_OIDAuthorizationFlowSession
+l_OBJC_LABEL_PROTOCOL_$_OIDAuthorizationFlowSession
+___block_descriptor_tmp.146
+___block_descriptor_tmp.154
+___block_descriptor_tmp.161
+___block_descriptor_tmp.168
+___block_descriptor_tmp.172
+___block_descriptor_tmp.184
+___block_descriptor_tmp.191
+___block_descriptor_tmp.195
+___block_descriptor_tmp.199
+___block_descriptor_tmp.204
+___block_descriptor_tmp.208
+___block_descriptor_tmp.211
+___block_descriptor_tmp.218
+___block_descriptor_tmp.222
+___block_descriptor_tmp.226
+___block_descriptor_tmp.230
+___block_descriptor_tmp.234
+___block_descriptor_tmp.239
+___block_descriptor_tmp.243
+___block_descriptor_tmp.246
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthorizationService.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDAuthorizationService.h
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.240
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.236
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.231
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.227
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.223
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke_2
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke.219
+__65+[OIDAuthorizationService performRegistrationRequest:completion:]_block_invoke
+__56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.205
+__56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.201
+__56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.196
+__56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.192
+__56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke.188
+__56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke_2
+__56+[OIDAuthorizationService performTokenRequest:callback:]_block_invoke
+__82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke.165
+__82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke.158
+__82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke.151
+__82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke_2
+__82+[OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL:completion:]_block_invoke
+__76-[OIDAuthorizationFlowSessionImplementation resumeAuthorizationFlowWithURL:]_block_invoke
+__51-[OIDAuthorizationFlowSessionImplementation cancel]_block_invoke
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDResponseTypes.m
+-[OIDURLQueryComponent init]
+-[OIDURLQueryComponent initWithURL:]
+-[OIDURLQueryComponent parameters]
+-[OIDURLQueryComponent dictionaryValue]
+-[OIDURLQueryComponent valuesForParameter:]
+-[OIDURLQueryComponent addParameter:value:]
+-[OIDURLQueryComponent addParameters:]
+-[OIDURLQueryComponent queryItems]
+-[OIDURLQueryComponent percentEncodedQueryString]
+-[OIDURLQueryComponent URLEncodedParameters]
+-[OIDURLQueryComponent URLByReplacingQueryInURL:]
+-[OIDURLQueryComponent description]
+-[OIDURLQueryComponent .cxx_destruct]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDURLQueryComponent.m
++[OIDErrorUtilities errorWithCode:underlyingError:description:]
++[OIDErrorUtilities isOAuthErrorDomain:]
++[OIDErrorUtilities resourceServerAuthorizationErrorWithCode:errorResponse:underlyingError:]
++[OIDErrorUtilities OAuthErrorWithDomain:OAuthResponse:underlyingError:]
++[OIDErrorUtilities HTTPErrorWithHTTPResponse:data:]
++[OIDErrorUtilities OAuthErrorCodeFromString:]
++[OIDErrorUtilities raiseException:]
++[OIDErrorUtilities raiseException:message:]
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDErrorUtilities.m
+/Users/junesuh/Pictures/CoverTube/Carthage/Checkouts/AppAuth-iOS/Source/OIDGrantTypes.m
+/Users/junesuh/Library/Caches/org.carthage.CarthageKit/DerivedData/AppAuth-iOS/0acdc7bfc3377ac7bab21eeacfdfbd8815226377/Build/Intermediates/AppAuth.build/Release-watchos/AppAuth_watchOS.build/DerivedSources/AppAuth_vers.c

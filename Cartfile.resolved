@@ -1,4 +1,4 @@
 github "Igor-Palaguta/YoutubeEngine" "0.2.3"
 github "SwiftKickMobile/SwiftMessages" "3.3.3"
 github "gilesvangruisen/Swift-YouTube-Player" "v0.4.0"
-github "openid/AppAuth-iOS" "9232b82268d79360750728bddabdaec6657ff1a2"
+github "openid/AppAuth-iOS" "0acdc7bfc3377ac7bab21eeacfdfbd8815226377"

@@ -206,6 +206,7 @@ func validateToken()
             
             print("val dataStr = \(String(describing: dataStr))")
             YouTube.shared.populatePlaylists()
+            YouTube.shared.popularVideos()
         } else {
             print("validate : error = \(error?.localizedDescription)")
         }
