@@ -60,6 +60,16 @@ class PlaylistViewController: UIViewController,
             cell.thumbnail.setImageWith(imageURL)
         }
         
+        cell.shufflePlayButton.clipsToBounds = true
+        cell.shufflePlayButton.layer.cornerRadius = 5.0
+        
+        cell.shufflePlayButton.layer.borderWidth = 1.0
+        cell.shufflePlayButton.layer.borderColor = yellowCollor.cgColor
+        cell.shufflePlayButton.layer.cornerRadius = cell.shufflePlayButton.frame.size.height / 2.0
+        cell.shufflePlayButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        cell.shufflePlayButton.titleLabel?.numberOfLines = 2
+        cell.shufflePlayButton.titleLabel?.textAlignment = NSTextAlignment.center
+        
         return cell
     }
     
@@ -82,9 +92,11 @@ class PlaylistViewController: UIViewController,
         }
     }
     
-    @IBAction func shufflePlayButtonTapped(_ sender: UIButton)
+    @IBAction func shuffleWithCoverButtonTapped(_ sender: ProfileButton)
     {
-        
+        sender.animateTouchUpInside {
+            
+        }
     }
     
     

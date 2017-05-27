@@ -61,13 +61,16 @@ class MusicDetectionViewController: UIViewController
     
     func setupUI() {
         songDetectionButton.clipsToBounds = true
-        songDetectionButton.layer.cornerRadius = songDetectionButton.frame.size.width / 2.0
         songDetectionButton.frame.size = CGSize(width: screenWidth * 0.45, height: screenWidth * 0.45)
         songDetectionButton.center = CGPoint(x: screenWidth / 2.0, y: screenHeight / 2.0 + 20.0)
+        songDetectionButton.layer.cornerRadius = songDetectionButton.frame.size.width / 2.0
         
-        circleLoading.frame.size = CGSize(width: 280.0, height: 280.0)
+        circleLoading.frame = CGRect(x: 0.0, y: 0.0, width: 280.0, height: 280.0)
         circleLoading.isHidden = true
-        circleLoading.center = CGPoint(x: screenWidth / 2.0, y: screenHeight / 2.0)
+        circleLoading.center = songDetectionButton.center
+        circleLoading.stop()
+        
+        view.bringSubview(toFront: songDetectionButton)
     }
     
 

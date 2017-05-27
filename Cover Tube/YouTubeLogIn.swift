@@ -63,47 +63,6 @@ func getAuth2AccessTokenString () -> String? {
     }
 }
 
-/* updates root view controller based on logged in or not.
- Also sets the view controllers for the app delegate*/
-func updateRootViewController ()
-{
-    let appDelegate = AppDelegate.getAppDelegate()
-    if appDelegate == nil { return }
-    if appDelegate!.window == nil { return }
-    if appDelegate!.window! == nil { return }
-    
-    let window = appDelegate!.window!
-    
-    let currentRootVC = window.rootViewController
-    
-    if isUserLoggedIn()
-    {
-        if currentRootVC == nil {
-            window.rootViewController = AppDelegate.getSnapchatSwipeContainerVC()
-        } else if !(window.rootViewController is SwipeContainerViewController) {
-            window.rootViewController = AppDelegate.getSnapchatSwipeContainerVC()
-        } else {
-            // already swipeContainerVC is root
-        }
-    }
-    else // user is not logged in
-    {
-        if currentRootVC == nil {
-            window.rootViewController = AppDelegate.getViewController()
-        }
-        else
-        {
-            if !(window.rootViewController! is ViewController) {
-                window.rootViewController = AppDelegate.getViewController()
-            }
-            else {
-                // already loginVC is root
-            }
-            
-        }
-    }
-}
-
 /*
  Logs into youtube
  https://developers.google.com/identity/protocols/OAuth2UserAgent

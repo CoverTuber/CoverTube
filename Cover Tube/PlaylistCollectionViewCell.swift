@@ -14,12 +14,12 @@ class PlaylistCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    @IBOutlet weak var shufflePlayButton: UIButton!
+    @IBOutlet weak var shufflePlayButton: ProfileButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         shufflePlayButton.clipsToBounds = true
-        shufflePlayButton.layer.cornerRadius = shufflePlayButton.frame.size.height / 2.0
+        shufflePlayButton.layer.cornerRadius = 5.0
     }
     
     required init(coder aDecoder: NSCoder) {

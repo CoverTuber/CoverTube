@@ -75,6 +75,9 @@ final class YouTube : NSObject
     func populatePlaylists ()
     {
         let getPlaylistsURLString = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&mine=true"
+        // snippet,contentDetails,statistics
+        // let getPlaylistsURLString = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&part=contentDetails&part=statistics&mine=true"
+        // let getPlaylistsURLString = "https://www.googleapis.com/youtube/v3/playlists?part=contentDetails&mine=true"
         let getPlaylistURL = URL(string: getPlaylistsURLString)!
         var request = URLRequest(url: getPlaylistURL)
         request.httpMethod = "GET"
@@ -109,7 +112,9 @@ final class YouTube : NSObject
     
     func popularVideos ()
     {
-        let getVideosURLString = "https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=US&videoCategoryId=10"
+        // let getVideosURLString = "https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&regionCode=US&videoCategoryId=10"
+        // &part=contentDetails&
+        let getVideosURLString = "https://www.googleapis.com/youtube/v3/videos?part=statistics&chart=mostPopular&regionCode=US&videoCategoryId=10"
         let getVideosURL = URL(string: getVideosURLString)!
         var request  = URLRequest(url: getVideosURL)
         request.httpMethod = "GET"
@@ -157,8 +162,6 @@ final class YouTube : NSObject
     {
         if getAuth2AccessTokenString () == nil {
             print("OAuth2TokenKey is empty")
-            // MARK: Go to login view
-            updateRootViewController()
             return
         }
         

@@ -18,6 +18,7 @@ class YouTubeVideo: NSObject
     var videoId = ""
     var thumbnailMediumURLString = ""
     var title = ""
+    var channelTitle = ""
     
     
     init(withDictionary dict : NSDictionary) {
@@ -25,17 +26,26 @@ class YouTubeVideo: NSObject
         print("Video dict = \(dict)")
         etag = dict.object(forKey: "etag") as! String
         id = dict.object(forKey: "id") as! String
-        snippet = dict.object(forKey: "snippet") as! NSDictionary
-        let thumbnails = snippet.object(forKey: "thumbnails") as! NSDictionary
-        let mediumThumbnail : NSDictionary = thumbnails.object(forKey: "medium") as! NSDictionary
-        thumbnailMediumURLString = mediumThumbnail.object(forKey: "url") as! String
-        
-        title = snippet.object(forKey: "title") as! String
-        
-        if snippet.object(forKey: "resourceId") != nil
+        if dict.object(forKey: "snippet") != nil
         {
-            let resourceId = snippet.object(forKey: "resourceId") as! NSDictionary
-            videoId = resourceId.object(forKey: "videoId") as! String
+            snippet = dict.object(forKey: "snippet") as! NSDictionary
+        }
+        
+        if snippet.allKeys.count > 0
+        {
+            let thumbnails = snippet.object(forKey: "thumbnails") as! NSDictionary
+            let mediumThumbnail : NSDictionary = thumbnails.object(forKey: "medium") as! NSDictionary
+            thumbnailMediumURLString = mediumThumbnail.object(forKey: "url") as! String
+            
+            title = snippet.object(forKey: "title") as! String
+            
+            channelTitle = snippet.object(forKey: "channelTitle") as! String
+            
+            if snippet.object(forKey: "resourceId") != nil
+            {
+                let resourceId = snippet.object(forKey: "resourceId") as! NSDictionary
+                videoId = resourceId.object(forKey: "videoId") as! String
+            }
         }
     }
     

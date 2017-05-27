@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /* Two main view controllers for this app
      NOTE: swipeContainerVC contains three view controllers. */
-    private var vc : ViewController? = nil
     private var swipeContainerVC : SnapchatSwipeContainerViewController? = nil
     
     /* return app delegate */
@@ -30,23 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return UIApplication.shared.delegate as! AppDelegate
         } else {
             return nil
-        }
-    }
-    
-    /* return view controller to log in  */
-    class func getViewController() -> ViewController? {
-        if let appDelegate = getAppDelegate() {
-            return appDelegate.vc
-        } else {
-            return nil
-        }
-    }
-    
-    /* set VC to log in */
-    class func setViewController () {
-        if storyboard == nil { return }
-        if let appDelegate = getAppDelegate() {
-            appDelegate.vc = storyboard.instantiateViewController(withIdentifier: "VC") as? ViewController
         }
     }
     
@@ -70,7 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // getAuthState()
         // isAuthTokenActive()
-        AppDelegate.setViewController()
         AppDelegate.setSnapchatSwipeContainerVC()
         logout()
         // updateRootViewController()

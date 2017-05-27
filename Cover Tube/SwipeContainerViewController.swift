@@ -168,15 +168,13 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        hidePlayerViewAndControlButtons()
         
         didAutoplayPreviously = false
         
         setupBeginningUI()
         
         updateUI()
-        
-        /*  load video */
-        loadVideo()
         
         playerView.frame = rectangularFullYouTubePlayerViewFrame
         playerOverlayView.frame = rectangularFullYouTubePlayerOverlayViewFrame
@@ -208,6 +206,9 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupUI()
+        
+        // hidePlayerViewAndControlButtons()
+        
         playerView.frame = rectangularFullYouTubePlayerViewFrame
         playerOverlayView.frame = rectangularFullYouTubePlayerOverlayViewFrame
         playerViewGestureHandlerView.frame = rectangularFullYouTubePlayerOverlayViewFrame
@@ -222,6 +223,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         
         
         /* Testing Lottie */
+        /*
         let lottieAnimationView = LOTAnimationView(name: "data")
         lottieAnimationView?.frame = CGRect(x: 0.0, y: 0.0, width: 300.0, height: 300.0)
         lottieAnimationView?.contentMode = .scaleAspectFit
@@ -229,11 +231,18 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         view.bringSubview(toFront: lottieAnimationView!)
         lottieAnimationView?.loopAnimation = true
         lottieAnimationView?.play()
+        */
         
         if !viewDidAppearPreviouslyCalled
         {
             viewDidAppearPreviouslyCalled = true
             redirectToOAuth2Server()
+        }
+        
+        if isUserLoggedIn() == false
+        {
+            /* Just display playlists and hide player view etc */
+            hidePlayerViewAndControlButtons()
         }
         
     }
@@ -349,6 +358,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         
         /* setup currentPlaylistTableView */
         currentPlaylistTableview.frame = currentPlaylistTableviewFrame
+        let imageView2 = UIImageView(image: #imageLiteral(resourceName: "Blue_Gradient_Background"))
+        currentPlaylistTableview.backgroundView = imageView2
         
         /* setup search button */
         searchButton.frame = CGRect(x: screenWidth - 22.0 - 12.0, y: 12.0, width: 22.0, height: 22.0)
@@ -359,17 +370,20 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         /* set up search results tableView */
         searchResultTableView.keyboardDismissMode = .onDrag
         searchResultTableView.frame = CGRect(x: 0.0, y: 44.0, width: screenWidth, height: screenHeight - 44.0)
-        searchResultTableView.backgroundColor = UIColor.clear
+        // searchResultTableView.backgroundColor = UIColor.clear
         
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "Blue_Gradient_Background"))
-        imageView.frame = searchResultTableView.frame
-        // searchResultTableView.backgroundView = imageView
+        let imageView1 = UIImageView(image: #imageLiteral(resourceName: "Blue_Gradient_Background"))
         
+        imageView1.frame = searchResultTableView.frame
+        searchResultTableView.backgroundView = imageView1
+        
+        
+        
+        overlayImageView.center.x = screenWidth / 2.0
         
     }
     
     func setupBeginningUI () {
-        searchBar.isHidden = true
         searchResultTableView.isHidden = true
     }
     
@@ -628,8 +642,10 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         squareBoundsSizeWidthAnimation.isRemovedOnCompletion = false
         squareBoundsSizeWidthAnimation.fillMode = kCAFillModeForwards
         squareBoundsSizeWidthAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        /*
         playerView.layer.add(squareBoundsSizeWidthAnimation,
                              forKey: YouTubePlayerViewAnimation_BoundsSizeWidth)
+        */
         
         /* squraeBoundsAnimation - make size into square to make it into perfect circle.
          If I don't change the size to a square, then the shape will be changed into an oval. */
@@ -847,6 +863,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         prevButton.isHidden = true
         nextButton.isHidden = true
         playerViewGestureHandlerView.isHidden = true
+        circularTimeProgressBar.isHidden = true
         return
     }
     
@@ -869,6 +886,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         nextButton.isHidden = false
         minimizedPlayerViewOverlayButton.isHidden = false
         playerViewGestureHandlerView.isHidden = false
+        circularTimeProgressBar.isHidden = false
         return
     }
     
@@ -926,11 +944,55 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         })
     }
     
+    func hidePlayerViewAndControlButtons ()
+    {
+        
+        /* Just display playlists */
+        playerView.isHidden = true
+        playerOverlayView.isHidden = true
+        minimizePlayerViewButton.isHidden = true
+        repeatButton.isHidden = true
+        shuffleButton.isHidden = true
+        searchButton.isHidden = true
+        overlayImageView.isHidden = true
+        currentTimeLabel.isHidden = true
+        durationLabel.isHidden = true
+        playerViewGestureHandlerView.isHidden = true
+        prevButton.isHidden = true
+        minimizedPlayerViewOverlayButton.isHidden = true
+        nextButton.isHidden = true
+        currentPlaylistTableview.isHidden = true
+        linearTimeProgressBar.isHidden = true
+        circularTimeProgressBar.isHidden = true
+    }
+    
+    func showPlayerViewAndControlButtons ()
+    {
+        /* Display playerView and  */
+        playerView.isHidden = false
+        playerOverlayView.isHidden = false
+        minimizePlayerViewButton.isHidden = false
+        repeatButton.isHidden = false
+        shuffleButton.isHidden = false
+        searchButton.isHidden = false
+        overlayImageView.isHidden = false
+        currentTimeLabel.isHidden = false
+        durationLabel.isHidden = false
+        playerViewGestureHandlerView.isHidden = false
+        prevButton.isHidden = false
+        minimizedPlayerViewOverlayButton.isHidden = false
+        nextButton.isHidden = false
+        currentPlaylistTableview.isHidden = false
+        linearTimeProgressBar.isHidden = false
+        circularTimeProgressBar.isHidden = false
+    }
+    
+    
     // MARK: YouTube Video functions
     /*
      function loadVideo sets up the YouTubePlayer view's parameters and gives the youtube video's id
      */
-    func loadVideo()
+    func loadVideo(videoId : String)
     {
         /* youtube player's variables */
         playerView.playerVars = [
@@ -946,7 +1008,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         // youtubePlayerView.loadVideoID("PT2_F-1esPk") // chainsmokers closer original video
         // playerView.loadVideoID("zu4GOlrFDh4")
         // playerView.loadVideoID("OcPRNIycl7U") // minions
-        playerView.loadVideoID("WsptdUFthWI") // chainsmokers cover
+        playerView.loadVideoID(videoId) // "WsptdUFthWI") // chainsmokers cover
         // test rectangle - wM0HvuP5Aps
     }
     
@@ -1296,11 +1358,14 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         if tableView == currentPlaylistTableview
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "videoTableViewCell") as! VideoTableViewCell
+            cell.backgroundColor = UIColor.clear
             let video = currentPlaylist!.videos[indexPath.item]
             
             if let imageURL = URL(string: video.thumbnailMediumURLString ) {
                 cell.imageView?.setImageWith(imageURL)
             }
+            cell.textLabel?.textColor = UIColor.white
+            cell.textLabel?.font = UIFont(name: "GothamPro", size: 20)!
             cell.textLabel?.text = video.title
             
             return cell
@@ -1311,6 +1376,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             switch item {
             case .channelItem(let channel):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ChannelCell", for: indexPath) as! ChannelCell
+                cell.textLabel?.textColor = UIColor.white
                 cell.backgroundColor = UIColor(red: 77.0 / 255.0 , green: 77.0 / 255.0, blue: 77.0 / 255.0, alpha: 0.5)
                 cell.channel = channel
                 return cell
@@ -1318,6 +1384,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
                 let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell", for: indexPath) as! VideoCell
                 cell.video = video
                 cell.backgroundColor = UIColor(red: 77.0 / 255.0 , green: 77.0 / 255.0, blue: 77.0 / 255.0, alpha: 0.5)
+                cell.textLabel?.textColor = UIColor.white
                 return cell
             }
         }
@@ -1335,7 +1402,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             case .videoItem(let video):
                 searchBar.resignFirstResponder()
                 maximizeYouTubePlayerViewAnimation()
-                playerView.loadVideoID(video.id)
+                loadVideo(videoId: video.id)
+                // playerView.loadVideoID(video.id)
                 break
             }
         }
@@ -1357,8 +1425,12 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         return true
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (scrollView == searchResultTableView)
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+    }
+    
+    func scrollViewDidScroll(_ currentScrollView: UIScrollView) {
+        if (currentScrollView == searchResultTableView)
         {
             guard let provider = self.searchModel2.provider.value, !provider.items.value.isEmpty && !provider.isLoadingPage else {
                 return
@@ -1371,15 +1443,22 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             
             provider.pageLoader?.startWithFailed {
                 [weak self] error in
-                showStatusLineErrorNotification(title: error.localizedDescription,
-                                                bodyText: "",
+                showStatusLineErrorNotification(title: "",
+                                                bodyText: error.localizedDescription,
                                                 duration: 2)
             }
         }
-        else {
+        else // if currentScrollView == self.scrollView
+        {
             resignSearchBarFirstResponse()
-            let page = scrollView.contentOffset.x / screenWidth
-            if page == 1 {
+            let page = currentScrollView.contentOffset.x / screenWidth
+            if page == 0 {
+                if leftVC is MusicDetectionViewController {
+                    let musicDetectionVC = leftVC as! MusicDetectionViewController
+                    musicDetectionVC.setupUI()
+                }
+            }
+            else if page == 1 {
                 if middleVC is PlaylistViewController {
                     let middlePlaylistVC = middleVC as! PlaylistViewController
                     middlePlaylistVC.playlistCollectionView.reloadData()
@@ -1398,6 +1477,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             print("SwipeContainerVC playlistSelected. notificationUserInfo is wrong type")
             return
         }
+        
+        showPlayerViewAndControlButtons()
         
         if let userInfo = notification.userInfo as? [String : Any]
         {
@@ -1419,6 +1500,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
                 return
             }
             
+            showStatusLineNotification(title: "", bodyText: "Playing \(currentPlaylist!.title)", duration: 2, backgroundColor: lightBlueColor, foregroundColor: UIColor.white)
+            
             let firstVideo = currentPlaylist!.videos[0]
             
             /* play first video */
@@ -1426,7 +1509,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
             playerView.clear()
             playerView.stop()
             // playerView.loadPlaylistID(currentPlaylist!.id)
-            playerView.loadVideoID(firstVideo.videoId)
+            // playerView.loadVideoID(firstVideo.videoId)
+            loadVideo(videoId: firstVideo.videoId)
             maximizeYouTubePlayerViewAnimation()
             
             currentPlaylistTableview.reloadData()

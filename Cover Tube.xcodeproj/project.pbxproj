@@ -16,7 +16,6 @@
 		753B24F01E9C983900102148 /* MusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B24EF1E9C983900102148 /* MusicTableViewCell.swift */; };
 		75424B091ECC102900FB66F3 /* RepeatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75424B081ECC102900FB66F3 /* RepeatButton.swift */; };
 		7549D1721E6925FC00A6FCEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D1711E6925FC00A6FCEF /* AppDelegate.swift */; };
-		7549D1741E6925FC00A6FCEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D1731E6925FC00A6FCEF /* ViewController.swift */; };
 		7549D1771E6925FC00A6FCEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7549D1751E6925FC00A6FCEF /* Main.storyboard */; };
 		7549D1791E6925FC00A6FCEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7549D1781E6925FC00A6FCEF /* Assets.xcassets */; };
 		7549D17C1E6925FC00A6FCEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7549D17A1E6925FC00A6FCEF /* LaunchScreen.storyboard */; };
@@ -29,6 +28,9 @@
 		756E314B1ED67C66000C370F /* ItemsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756E314A1ED67C66000C370F /* ItemsProvider.swift */; };
 		756E314D1ED6C5F2000C370F /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756E314C1ED6C5F2000C370F /* ChannelCell.swift */; };
 		756E31511ED6C895000C370F /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756E31501ED6C895000C370F /* VideoCell.swift */; };
+		75AB77571ED93FDD007125D1 /* CircularRevealAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB77561ED93FDD007125D1 /* CircularRevealAnimator.swift */; };
+		75AB77591ED93FED007125D1 /* AnimationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB77581ED93FED007125D1 /* AnimationDelegate.swift */; };
+		75AB775B1ED940D2007125D1 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB775A1ED940D2007125D1 /* ProfileButton.swift */; };
 		75AF13831EC8240100F26E3F /* MusicDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF13821EC8240100F26E3F /* MusicDetectionViewController.swift */; };
 		75AF13851EC8244700F26E3F /* SwipeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF13841EC8244700F26E3F /* SwipeContainerViewController.swift */; };
 		75AF13871EC8254C00F26E3F /* BilboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF13861EC8254C00F26E3F /* BilboardViewController.swift */; };
@@ -62,7 +64,6 @@
 		75424B081ECC102900FB66F3 /* RepeatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeatButton.swift; sourceTree = "<group>"; };
 		7549D16E1E6925FC00A6FCEF /* Cover Tube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cover Tube.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7549D1711E6925FC00A6FCEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7549D1731E6925FC00A6FCEF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7549D1761E6925FC00A6FCEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7549D1781E6925FC00A6FCEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7549D17B1E6925FC00A6FCEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,6 +77,9 @@
 		756E314A1ED67C66000C370F /* ItemsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsProvider.swift; sourceTree = "<group>"; };
 		756E314C1ED6C5F2000C370F /* ChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		756E31501ED6C895000C370F /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		75AB77561ED93FDD007125D1 /* CircularRevealAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularRevealAnimator.swift; sourceTree = "<group>"; };
+		75AB77581ED93FED007125D1 /* AnimationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationDelegate.swift; sourceTree = "<group>"; };
+		75AB775A1ED940D2007125D1 /* ProfileButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		75AF13821EC8240100F26E3F /* MusicDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicDetectionViewController.swift; sourceTree = "<group>"; };
 		75AF13841EC8244700F26E3F /* SwipeContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeContainerViewController.swift; sourceTree = "<group>"; };
 		75AF13861EC8254C00F26E3F /* BilboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BilboardViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +137,9 @@
 		75209E311ECF803200D995D8 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				75AB775A1ED940D2007125D1 /* ProfileButton.swift */,
+				75AB77581ED93FED007125D1 /* AnimationDelegate.swift */,
+				75AB77561ED93FDD007125D1 /* CircularRevealAnimator.swift */,
 				756E31501ED6C895000C370F /* VideoCell.swift */,
 				756E314C1ED6C5F2000C370F /* ChannelCell.swift */,
 				75424B081ECC102900FB66F3 /* RepeatButton.swift */,
@@ -164,7 +171,6 @@
 			children = (
 				755850AF1ED7B7450089A176 /* data.json */,
 				7549D1711E6925FC00A6FCEF /* AppDelegate.swift */,
-				7549D1731E6925FC00A6FCEF /* ViewController.swift */,
 				7549D1751E6925FC00A6FCEF /* Main.storyboard */,
 				756E314F1ED6C851000C370F /* Bilboard */,
 				75209E2D1ECE93E800D995D8 /* VideoTableViewCell.swift */,
@@ -175,6 +181,8 @@
 				756278C31ECD0FAD007DBB52 /* PlaylistCollectionViewCell.swift */,
 				756E314A1ED67C66000C370F /* ItemsProvider.swift */,
 				756E31481ED67C21000C370F /* ItemsViewModel.swift */,
+				756E314E1ED6C83D000C370F /* Model */,
+				75209E311ECF803200D995D8 /* UI */,
 				7549D1781E6925FC00A6FCEF /* Assets.xcassets */,
 				7549D17A1E6925FC00A6FCEF /* LaunchScreen.storyboard */,
 				7549D17D1E6925FC00A6FCEF /* Info.plist */,
@@ -183,8 +191,6 @@
 				75F18C8E1EBC5D0400358487 /* UIImageExtension.swift */,
 				75C07B7B1EA0C3D400045740 /* UtilityConstants.swift */,
 				755850B11ED7C30A0089A176 /* UtilityFunctions.swift */,
-				756E314E1ED6C83D000C370F /* Model */,
-				75209E311ECF803200D995D8 /* UI */,
 				756278C01ECCF5C9007DBB52 /* Music Detection */,
 				75F18C8D1EBC5C5300358487 /* YouTube Player View */,
 				75C07B791EA09AE600045740 /* Assets */,
@@ -384,16 +390,17 @@
 				75209E2E1ECE93E800D995D8 /* VideoTableViewCell.swift in Sources */,
 				75209E301ECEDC6E00D995D8 /* CircleLoading.swift in Sources */,
 				753B24EA1E9C921C00102148 /* LoginViewController.swift in Sources */,
+				75AB77571ED93FDD007125D1 /* CircularRevealAnimator.swift in Sources */,
 				756278C41ECD0FAD007DBB52 /* PlaylistCollectionViewCell.swift in Sources */,
 				756278C21ECD068D007DBB52 /* Playlist.swift in Sources */,
 				75EE1CB41EBDCADF00C5CAA7 /* YouTubeSearcher.swift in Sources */,
 				750A078E1EC934C200559062 /* YouTube.swift in Sources */,
+				75AB77591ED93FED007125D1 /* AnimationDelegate.swift in Sources */,
 				75AF13871EC8254C00F26E3F /* BilboardViewController.swift in Sources */,
 				75EA10501EC6C95B00113C91 /* YouTubeLogIn.swift in Sources */,
 				755850B21ED7C30A0089A176 /* UtilityFunctions.swift in Sources */,
 				75C07B7C1EA0C3D400045740 /* UtilityConstants.swift in Sources */,
 				75F18C7E1EBC125800358487 /* YouTubePlayer.swift in Sources */,
-				7549D1741E6925FC00A6FCEF /* ViewController.swift in Sources */,
 				75F18C8F1EBC5D0400358487 /* UIImageExtension.swift in Sources */,
 				75424B091ECC102900FB66F3 /* RepeatButton.swift in Sources */,
 				750A078C1EC8402F00559062 /* MusicDetectionConstants.swift in Sources */,
@@ -401,6 +408,7 @@
 				7C3B4D5C1ED2C349003D28CC /* BillboardViewControllerCell.swift in Sources */,
 				7549D1721E6925FC00A6FCEF /* AppDelegate.swift in Sources */,
 				756E31491ED67C21000C370F /* ItemsViewModel.swift in Sources */,
+				75AB775B1ED940D2007125D1 /* ProfileButton.swift in Sources */,
 				750A07901EC971CC00559062 /* YouTubeLogInCredentials.swift in Sources */,
 				75F38CA21EC43D75001EC4B3 /* Notification.swift in Sources */,
 				756278C61ECDA502007DBB52 /* YouTubeVideo.swift in Sources */,
