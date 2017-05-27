@@ -24,7 +24,7 @@ let OAauth2_Auth_State_Key = "Oauth2AuthState"
 func isUserLoggedIn () -> Bool {
     if let authState = getAuthState() {
         print("authState = \(authState)")
-        return isAuthTokenActive()
+        return true // isAuthTokenActive()
     } else {
         return false
     }
@@ -112,11 +112,11 @@ func updateRootViewController ()
  */
 func redirectToOAuth2Server ()
 {
-    let vc = AppDelegate.getViewController()
-    if vc == nil { return }
+    let snapchatSwipeContainerVC = AppDelegate.getSnapchatSwipeContainerVC()
+    if snapchatSwipeContainerVC == nil { return }
     
     currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request,
-                                                      presenting: vc!,
+                                                      presenting: snapchatSwipeContainerVC!,
                                                       callback: { (authState : OIDAuthState?,
                                                         error : Error?) in
                                                         /* Step 4: Handle the OAuth 2.0 server response */
@@ -159,7 +159,7 @@ func handleRetrievedAuthState (authState : OIDAuthState)
     print("see freshly retrieved token's time interval since now = \(timeInterval)")
     
     
-    updateRootViewController()
+    // updateRootViewController()
 }
 
 /* returns AuthState if previously retrieved successfully. */

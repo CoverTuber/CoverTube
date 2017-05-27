@@ -105,8 +105,12 @@ class Playlist: NSObject {
                                                     print("getplaylistItems: dataString = \(String(describing: dataStr))")
                                                     if let playlistItemsDictionary = try! JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary
                                                     {
-                                                        let playlistItems = playlistItemsDictionary.object(forKey: "items") as! [NSDictionary]
-                                                        self.videos = YouTubeVideo.getVideos(fromDictionary: playlistItems)
+                                                        print("playlistItemsDictionary = \(playlistItemsDictionary)")
+                                                        if  playlistItemsDictionary.object(forKey: "items") != nil
+                                                        {
+                                                            let playlistItems = playlistItemsDictionary.object(forKey: "items")
+                                                            self.videos = YouTubeVideo.getVideos(fromDictionary: playlistItems as! [NSDictionary])
+                                                        }
                                                     }
                                                 }
                                                 else {

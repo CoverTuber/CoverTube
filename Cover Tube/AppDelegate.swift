@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppDelegate.setViewController()
         AppDelegate.setSnapchatSwipeContainerVC()
         logout()
-        updateRootViewController()
+        // updateRootViewController()
         window?.rootViewController = AppDelegate.getSnapchatSwipeContainerVC()
         // updateRootViewController()
         return true

@@ -127,6 +127,8 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
     /* UISearchController used when user searched on search bar */
     private let searchResultController = UISearchController(searchResultsController: nil)
     
+    private var viewDidAppearPreviouslyCalled = false
+    
     // MARK: ViewController life cycle functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -200,6 +202,7 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
                                                selector: #selector(self.showMinimizedPlayerViewAnimation),
                                                name: ShowMinimizedPlayerViewNotificationName,
                                                object: nil)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -226,6 +229,13 @@ class SwipeContainerViewController : SnapchatSwipeContainerViewController,
         view.bringSubview(toFront: lottieAnimationView!)
         lottieAnimationView?.loopAnimation = true
         lottieAnimationView?.play()
+        
+        if !viewDidAppearPreviouslyCalled
+        {
+            viewDidAppearPreviouslyCalled = true
+            redirectToOAuth2Server()
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
